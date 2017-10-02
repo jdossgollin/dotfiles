@@ -13,6 +13,7 @@ apps=(
   font-fira-code # cool font for code
   handbrake # work with media
   insomniax # cool app to keep system awake with closed lid or long time idle
+  java
   kindle # Amazon kindle reader
   mactex # install latex on mac
   miniconda # python (and R)

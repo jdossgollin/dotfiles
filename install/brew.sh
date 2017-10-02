@@ -19,29 +19,45 @@ brew tap caskroom/fonts
 
 # Install the Homebrew packages I use on a day-to-day basis.
 apps=(
-    bash-completion
+    bash-completion2
+    battery
+    bats
     boost
+    coreutils
     curl
+    diff-so-fancy
+    dockutil
+    fasd
     ffmpeg
     gdal
     geos
+    gifsicle
     git
-    gmt # cool mapping softwares
-    java
+    git-extras
+    gnu-sed --with-default-names
+    grep --with-default-names
+    hub
+    imagemagick
+    jq
     libsvg
     libxml2
+    lynx
     markdown
+    nano
     pandoc
     pandoc-citeproc
+    peco
     poppler # for pdfunite
+    psgrep
+    shellcheck
     source-highlight
     tree
+    unar
     wget
+    wifi-password
     youtube-dl
 )
-
 brew install "${apps[@]}"
-
 
 
 # Remove outdated versions from the cellar
