@@ -11,9 +11,10 @@ apps=(
   cd-to # open terminal window in current directory
   firefox-beta # keep it up to date!
   font-fira-code # cool font for code
+  github-desktop # can be helpful
   handbrake # work with media
   insomniax # cool app to keep system awake with closed lid or long time idle
-  java
+  java # for R
   kindle # Amazon kindle reader
   mactex # install latex on mac
   miniconda # python (and R)
