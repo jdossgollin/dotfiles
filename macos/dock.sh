@@ -14,4 +14,6 @@ dockutil --no-restart --add "/Applications/Evernote.app"
 dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
 dockutil --no-restart --add "/Applications/System Preferences.app"
 
+dockutil --no-restart --add "/Users/james/Documents/"
+dockutil --no-restart --add "/Users/james/Downloads/"
 killall Dock
