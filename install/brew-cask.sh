@@ -18,6 +18,7 @@ apps=(
   kindle # Amazon kindle reader
   mactex # install latex on mac
   miniconda # python (and R)
+  quodlibet # great lightweight music organizer & file manager
   rambox # cool app to keep a bunch of gmail, slack, etc windows open at once
   skim # PDF viewer that plays nicely with latex extension in Atom
   skype # for some reason doesn't play well with rambox
