@@ -33,6 +33,8 @@ sub_update () {
   apm upgrade --confirm false
   conda update conda
   Rscript -e "update.packages(ask=F, repos='http://r-forge.r-project.org')"
+  npm install npm -g
+  npm update -g
 }
 
 sub_clean () {
@@ -40,6 +42,7 @@ sub_clean () {
   brew cask cleanup
   brew prune
   conda clean -y --all
+  npm cache clean
 }
 
 sub_macos () {
