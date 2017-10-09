@@ -41,6 +41,7 @@ apps=(
     libsvg
     libxml2
     lynx
+    mackup # back up some config files
     markdown
     nano
     pandoc
