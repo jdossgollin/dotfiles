@@ -20,6 +20,7 @@ ln -sfv "$DOTFILES_DIR/runcom/.gemrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/system/.mackup.cfg" ~
+ln -sfv "$DOTFILES_DIR/system/.latexmkrc" ~
 
 # Package managers & packages
 . "$DOTFILES_DIR/install/brew.sh"
