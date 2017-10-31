@@ -16,6 +16,7 @@ apps=(
   insomniax # cool app to keep system awake with closed lid or long time idle
   java # for R
   kindle # Amazon kindle reader
+  latexit # for latex equations and Word/PPT/etc
   mactex # install latex on mac
   miniconda # python (and R)
   quodlibet # great lightweight music organizer & file manager
