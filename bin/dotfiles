@@ -42,7 +42,6 @@ sub_clean () {
   brew cask cleanup
   brew prune
   conda clean -y --all
-  npm cache clean
 }
 
 sub_macos () {
