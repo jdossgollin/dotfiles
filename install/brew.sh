@@ -28,8 +28,6 @@ apps=(
     dockutil
     fasd
     ffmpeg
-    gdal
-    geos
     gifsicle
     git
     git-extras
