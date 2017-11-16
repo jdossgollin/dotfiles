@@ -48,3 +48,5 @@ alias cd.='cd $(readlink -f .)'    # Go to real dir (i.e. if current dir is link
 
 alias week="date +%V"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
+
+alias LevelUp="dotfiles update && dotfiles clean && cd ~ && cleanupds"
