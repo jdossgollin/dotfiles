@@ -6,6 +6,7 @@ apm update && apm upgrade
 apps=(
   autocomplete-bibtex
   autocomplete-python
+  hydrogen
   language-latex
   language-r
   language-stan
