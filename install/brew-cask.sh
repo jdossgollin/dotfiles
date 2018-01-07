@@ -23,6 +23,7 @@ apps=(
   quodlibet # great lightweight music organizer & file manager
   rambox # cool app to keep a bunch of gmail, slack, etc windows open at once
   skim # PDF viewer that plays nicely with latex extension in Atom
+  slack #
   skype # for some reason doesn't play well with rambox
   spotify # why not
   whatsapp # also doesn't play well with Rambox
