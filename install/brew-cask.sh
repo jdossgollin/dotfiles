@@ -8,6 +8,7 @@ brew tap caskroom/cask
 # List of apps
 apps=(
   adobe-acrobat-reader # alternative to reading PDFs in Preview
+  boostnote # note-taking
   cd-to # open terminal window in current directory
   firefox-beta # keep it up to date!
   font-fira-code # cool font for code
@@ -24,6 +25,7 @@ apps=(
   skim # PDF viewer that plays nicely with latex extension in Atom
   skype # for some reason doesn't play well with rambox
   spotify # why not
+  whatsapp # also doesn't play well with Rambox
 )
 brew cask install "${apps[@]}"
 
