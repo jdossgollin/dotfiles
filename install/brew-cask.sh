@@ -9,7 +9,6 @@ brew tap caskroom/cask
 apps=(
   adobe-acrobat-reader  # alternative to reading PDFs in Preview
   Astro                 # astro mail
-  boostnote             # note-taking
   cd-to                 # open terminal window in current directory
   firefox-beta          # keep it up to date!
   github                # can be helpful
@@ -21,7 +20,7 @@ apps=(
   skype                 # for some reason doesn't play well with rambox
   spotify               # why not
   whatsapp              # also doesn't play well with Rambox
-  zotero                # bibliography management 
+  zotero                # bibliography management
 )
 brew cask install "${apps[@]}"
 
