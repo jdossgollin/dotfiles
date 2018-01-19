@@ -33,8 +33,6 @@ sub_update () {
   apm upgrade --confirm false
   conda update conda
   Rscript -e "update.packages(ask=F, repos='http://r-forge.r-project.org')"
-  sudo tlmgr update --self
-  sudo tlmgr update --all
 }
 
 sub_clean () {

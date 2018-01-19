@@ -12,6 +12,7 @@ apps=(
   language-stan
   latextools
   markdown-preview-plus
+  tablr
 )
 
 apm install "${apps[@]}"
