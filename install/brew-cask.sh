@@ -8,10 +8,10 @@ brew tap caskroom/cask
 # List of apps
 apps=(
   adobe-acrobat-reader # alternative to reading PDFs in Preview
+  Astro # astro mail
   boostnote # note-taking
   cd-to # open terminal window in current directory
   firefox-beta # keep it up to date!
-  font-fira-code # cool font for code
   github-desktop # can be helpful
   handbrake # work with media
   insomniax # cool app to keep system awake with closed lid or long time idle
@@ -21,7 +21,6 @@ apps=(
   mactex # install latex on mac
   miniconda # python (and R)
   quodlibet # great lightweight music organizer & file manager
-  rambox # cool app to keep a bunch of gmail, slack, etc windows open at once
   skim # PDF viewer that plays nicely with latex extension in Atom
   slack #
   skype # for some reason doesn't play well with rambox
