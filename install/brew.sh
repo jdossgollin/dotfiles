@@ -28,6 +28,7 @@ apps=(
     gifsicle
     git
     git-extras
+    git-lfs
     gnu-sed --with-default-names
     grep --with-default-names
     hub
