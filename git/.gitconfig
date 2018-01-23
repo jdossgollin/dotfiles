@@ -6,7 +6,7 @@
 	user = jdossgollin
 
 [core]
-  excludesfile = ~/.gitignore_global
+	excludesfile = /Users/james/.gitignore_global
   editor = nano
   filemode = false
   trustctime = false
