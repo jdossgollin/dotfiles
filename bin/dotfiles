@@ -32,7 +32,7 @@ sub_update () {
   brew upgrade
   apm upgrade --confirm false
   conda update conda
-  Rscript -e "update.packages(ask=F, repos='http://r-forge.r-project.org')"
+  Rscript -e "update.packages(ask=F, repos='https://cloud.r-project.org')"
 }
 
 sub_clean () {
