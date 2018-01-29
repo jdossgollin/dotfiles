@@ -22,6 +22,7 @@ apps=(
     coreutils
     curl
     diff-so-fancy
+    drake
     dockutil
     fasd
     ffmpeg
