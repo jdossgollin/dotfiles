@@ -19,6 +19,7 @@ apps=(
   slack                 #
   skype                 # for some reason doesn't play well with rambox
   spotify               # why not
+  visual-studio-code    # code!
   whatsapp              # also doesn't play well with Rambox
   zotero                # bibliography management
 )

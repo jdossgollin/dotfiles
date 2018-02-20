@@ -30,7 +30,6 @@ sub_update () {
   sudo softwareupdate -i -a
   brew update
   brew upgrade
-  apm upgrade --confirm false
   conda update conda
   Rscript -e "update.packages(ask=F, repos='https://cloud.r-project.org')"
 }

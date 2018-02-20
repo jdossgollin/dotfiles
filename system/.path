@@ -15,8 +15,8 @@ prepend-path "/sbin"
 prepend-path "/usr/sbin"
 prepend-path "/usr/local/sbin"
 
-# miniconda path
-prepend-path "/usr/local/miniconda3/bin"
+# VS Code
+prepend-path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # LaTeX path
 prepend-path "/Library/TeX/texbin"

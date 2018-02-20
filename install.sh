@@ -27,7 +27,6 @@ ln -sfv "$DOTFILES_DIR/system/.latexmkrc" ~
 . "$DOTFILES_DIR/install/brew-cask.sh"
 
 # Install extra stuff (R, Python, Atom, Docker)
-. "$DOTFILES_EXTRA_DIR/apm.sh"
 . "$DOTFILES_EXTRA_DIR/conda.sh"
 . "$DOTFILES_EXTRA_DIR/docker.sh"
 . "$DOTFILES_EXTRA_DIR/R.sh"
