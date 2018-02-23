@@ -16,6 +16,7 @@ apps=(
   latexit               # for latex equations and Word/PPT/etc
   mactex                # install latex on mac
   skim                  # PDF viewer that plays nicely with latex extension in Atom
+  signal                # messaging
   slack                 #
   skype                 # for some reason doesn't play well with rambox
   spotify               # why not
