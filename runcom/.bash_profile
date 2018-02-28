@@ -1,5 +1,4 @@
 # If not running interactively, don't do anything
-
 [ -z "$PS1" ] && return
 
 # Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
@@ -21,7 +20,7 @@ DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
 [ -f "$DOTFILES_CACHE" ] && . "$DOTFILES_CACHE"
 
 # Finally we can source the dotfiles (order matters)
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,completion,grep,prompt,nvm,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,completion,grep,prompt,nvm}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
@@ -43,11 +42,11 @@ if [ -d "$DOTFILES_EXTRA_DIR" ]; then
   done
 fi
 
-# Clean up
-unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE EXTRAFILE
-
 # Miniconda Path
 . /usr/local/miniconda3/etc/profile.d/conda.sh
+
+# Clean up
+unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE EXTRAFILE
 
 # Export
 export DOTFILES_DIR DOTFILES_EXTRA_DIR
