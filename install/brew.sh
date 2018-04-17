@@ -22,36 +22,31 @@ apps=(
     coreutils
     curl
     diff-so-fancy
-    drake
     dockutil
     fasd
     ffmpeg
-    gifsicle
     git
     git-extras
     git-lfs
     gnu-sed --with-default-names
     grep --with-default-names
-    hub
     imagemagick
     jq
     libsvg
     libxml2
-    lynx
-    mackup # back up some config files
+    make
     markdown
     nano
+    npm
     pandoc
     pandoc-citeproc
-    peco
-    poppler # for pdfunite
+    poppler
     psgrep
     shellcheck
     source-highlight
     tree
     unar
     wget
-    wifi-password
     youtube-dl
 )
 brew install "${apps[@]}"

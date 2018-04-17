@@ -7,20 +7,16 @@ brew tap caskroom/cask
 
 # List of apps
 apps=(
-  adobe-acrobat-reader  # alternative to reading PDFs in Preview
   Astro                 # astro mail
   cd-to                 # open terminal window in current directory
   firefox-beta          # keep it up to date!
-  github                # can be helpful
+  github                # can be helpful, I suck at git
   kindle                # Amazon kindle reader
   latexit               # for latex equations and Word/PPT/etc
   mactex                # install latex on mac
   skim                  # PDF viewer that plays nicely with latex extension in Atom
-  signal                # messaging
-  slack                 #
-  skype                 # for some reason doesn't play well with rambox
+  slack                 # messaging
   spotify               # why not
-  visual-studio-code    # code!
   whatsapp              # also doesn't play well with Rambox
   zotero                # bibliography management
 )

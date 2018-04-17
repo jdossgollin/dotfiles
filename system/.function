@@ -11,10 +11,7 @@ drstudio () {
   docker run -it -p 8787:8787 --rm -v $PWD:/tmp/working -w=/tmp/working kaggle/rstats /bin/bash -c "rstudio-server restart & /bin/bash"
 }
 
-
-
 # Switch long/short prompt
-
 ps0() {
   unset PROMPT_COMMAND
   PS1='$ '
@@ -51,13 +48,11 @@ is-supported() {
 }
 
 # Add to path
-
 prepend-path() {
   [ -d $1 ] && PATH="$1:$PATH"
 }
 
 # Update config file
-
 set-config() {
   local KEY="$1"
   local VALUE="$2"
@@ -71,7 +66,6 @@ set-config() {
 }
 
 # Show 256 TERM colors
-
 colors() {
   local X=$(tput op)
   local Y=$(printf %$((COLUMNS-6))s)
@@ -79,39 +73,4 @@ colors() {
   o=00$i;
   echo -e ${o:${#o}-3:3} $(tput setaf $i;tput setab $i)${Y// /=}$X;
   done
-}
-
-# Calculator
-
-calc() {
-  echo "$*" | bc -l;
-}
-
-# Weather
-
-meteo() {
-  local LOCALE=`echo ${LANG:-en} | cut -c1-2`
-  if [ $# -eq 0 ]; then
-    local LOCATION=`curl -s ipinfo.io/loc`
-  else
-    local LOCATION=$1
-  fi
-  curl -s "$LOCALE.wttr.in/$LOCATION"
-}
-
-# Markdown
-
-md() {
-  pandoc $1 | lynx -stdin -dump
-}
-
-# Visual Studio Code
-code () {
-if [[ $# = 0 ]]
-then
-    open -a "Visual Studio Code"
-else
-    [[ $1 = /* ]] && F="$1" || F="$PWD/${1#./}"
-    open -a "Visual Studio Code" --args "$F"
-fi
 }
