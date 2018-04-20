@@ -2,12 +2,33 @@
 ;; BASIC
 ;;----------------------------------------
 
+(defun paradox-require (feature &optional filename noerror package refresh)
+  "A replacement for `require' which also installs the feature if it is absent.."
+  (or (require feature filename t)
+      (let ((package (or package
+                         (if (stringp feature)
+                             (intern feature)
+                           feature))))
+        (require 'package)
+        (unless (and package-archive-contents (null refresh))
+          (package-refresh-contents))
+        (and (condition-case e
+                 (package-install package)
+               (error (if noerror nil (error (cadr e)))))
+             (require feature filename noerror)))))
+
 (package-initialize)
-(require 'package)
+(paradox-require 'package)
 
 ;; configure package archives
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa-stable" . "https://stable.melpa.org/packages/")))
+(setq package-archives
+      '(("GNU ELPA"     . "http://elpa.gnu.org/packages/")
+        ("MELPA Stable" . "https://stable.melpa.org/packages/")
+        ("MELPA"        . "https://melpa.org/packages/"))
+      package-archive-priorities
+      '(("MELPA Stable" . 10)
+        ("GNU ELPA"     . 5)
+        ("MELPA"        . 0)))
 
 ;;----------------------------------------
 ;; APPEARANCE
@@ -38,7 +59,7 @@
 (setq split-window-preferred-function 'my-split-window-sensibly)
 
 ;; turn on IDO
-(require 'ido)
+(paradox-require 'ido)
 (ido-mode t)
 
 ;; turn off tool and menu bars
@@ -57,11 +78,12 @@
 ;;ignore compiled files
 (add-to-list 'ido-ignore-files "\\.com")
 
-;; get solarized xterm colors
-;;(require 'xterm-color)
-
 ;; show line numbers
 (global-linum-mode t)
+
+;; theme
+(paradox-require 'solarized-theme)
+(load-theme 'solarized-dark t)
 
 ;;----------------------------------------
 ;; AUCTEX/LATEX
@@ -88,15 +110,15 @@
 ;; PYTHON
 ;;----------------------------------------
 
-;;(require 'pydoc)
-;;(require 'jedi)
-;;(require 'guru-mode)
+(paradox-require 'pydoc)
+(paradox-require 'jedi)
+(paradox-require 'guru-mode)
 
 ;; better whitespace
-;; (require 'whitespace)
+(paradox-require 'whitespace)
 
 ;; use pylint
-;; (setq-default python-check-command "pylint")
+(setq-default python-check-command "pylint")
 
 ;;----------------------------------------
 ;; ORG-MODE
@@ -143,10 +165,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (wombat)))
+ '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (auctex py-autopep8 material-theme flycheck elpy ein better-defaults))))
+    (pydoc auctex py-autopep8 material-theme flycheck elpy ein better-defaults))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
