@@ -2,23 +2,8 @@
 ;; BASIC
 ;;----------------------------------------
 
-(defun paradox-require (feature &optional filename noerror package refresh)
-  "A replacement for `require' which also installs the feature if it is absent.."
-  (or (require feature filename t)
-      (let ((package (or package
-                         (if (stringp feature)
-                             (intern feature)
-                           feature))))
-        (require 'package)
-        (unless (and package-archive-contents (null refresh))
-          (package-refresh-contents))
-        (and (condition-case e
-                 (package-install package)
-               (error (if noerror nil (error (cadr e)))))
-             (require feature filename noerror)))))
-
 (package-initialize)
-(paradox-require 'package)
+(require 'package)
 
 ;; configure package archives
 (setq package-archives
@@ -59,7 +44,7 @@
 (setq split-window-preferred-function 'my-split-window-sensibly)
 
 ;; turn on IDO
-(paradox-require 'ido)
+(require 'ido)
 (ido-mode t)
 
 ;; turn off tool and menu bars
@@ -82,8 +67,17 @@
 (global-linum-mode t)
 
 ;; theme
-(paradox-require 'solarized-theme)
+(require 'solarized-theme)
 (load-theme 'solarized-dark t)
+
+;; hide the splash screen at startup
+(setq inhibit-splash-screen t)
+
+;; hide the scroll bars
+(scroll-bar-mode -1)
+
+;; line break words not characters
+(visual-line-mode t)
 
 ;;----------------------------------------
 ;; AUCTEX/LATEX
@@ -93,9 +87,11 @@
 (setq TeX-parse-self t)
 (setq reftex-ref-macro-prompt nil)
 
-;; "add-hook" lets you run functions when modes are turned on
-;; in this case, turn-on-reftex is run latex mode is started
+;; turn-on-reftex is run when latex mode is started
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+
+;; visual-line-mode for latex-mode
+(add-hook 'LaTeX-mode-hook 'visual-line-mode)
 
 ;; word count latex
 (defun latex-word-count ()
@@ -104,18 +100,16 @@
                          ; "uncomment then options go here "
                          (buffer-file-name))))
 
-
-
 ;;----------------------------------------
 ;; PYTHON
 ;;----------------------------------------
 
-(paradox-require 'pydoc)
-(paradox-require 'jedi)
-(paradox-require 'guru-mode)
+(require 'pydoc)
+(require 'jedi)
+(require 'guru-mode)
 
 ;; better whitespace
-(paradox-require 'whitespace)
+(require 'whitespace)
 
 ;; use pylint
 (setq-default python-check-command "pylint")
