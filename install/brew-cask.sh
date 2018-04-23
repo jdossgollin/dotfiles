@@ -14,11 +14,9 @@ apps=(
   kindle                # Amazon kindle reader
   latexit               # for latex equations and Word/PPT/etc
   mactex                # install latex on mac
-  skim                  # PDF viewer that plays nicely with latex extension in Atom
   slack                 # messaging
   spotify               # why not
   whatsapp              # also doesn't play well with Rambox
-  zotero                # bibliography management
 )
 brew cask install "${apps[@]}"
 
