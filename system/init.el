@@ -100,6 +100,18 @@
                          ; "uncomment then options go here "
                          (buffer-file-name))))
 
+;; set the env for pkg-config to find some libraries for pdf-tools
+;; see https://github.com/politza/pdf-tools
+(setenv "PKG_CONFIG_PATH"
+	(concat
+	 "/usr/local/Cellar/zlib/1.2.8/lib/pkgconfig" ";"
+	 "/usr/local/lib/pkgconfig" ";"
+	 "/opt/X11/lib/pkgconfig" ";"
+	 (getenv "OKG_CONFIG_PATH")
+	)
+)
+
+
 ;;----------------------------------------
 ;; PYTHON
 ;;----------------------------------------
@@ -162,7 +174,7 @@
  '(inhibit-startup-screen t)
  '(package-selected-packages
    (quote
-    (pydoc auctex py-autopep8 material-theme flycheck elpy ein better-defaults))))
+    (pdf-tools pydoc auctex py-autopep8 material-theme flycheck elpy ein better-defaults))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
