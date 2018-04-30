@@ -16,6 +16,7 @@ apps=(
   github                # can be helpful, I suck at git
   google-backup-and-sync  # free storage from columbia :D
   iterm2                # superior terminal
+  java                  # java for some r applications
   kindle                # Amazon kindle reader
   mactex                # install latex on mac
   papers                # excellent papers app
