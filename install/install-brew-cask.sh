@@ -7,13 +7,19 @@ brew tap caskroom/cask
 
 # List of apps
 apps=(
+  anki                  # this is so cool
+  boostnote             # occasionally useful note app
   cd-to                 # open terminal window in current directory
+  dashlane              # password manager
   emacs                 # text editor!
   firefox-beta          # keep it up to date!
   github                # can be helpful, I suck at git
+  google-backup-and-sync  # free storage from columbia :D
+  iterm2                # superior terminal
   kindle                # Amazon kindle reader
   mactex                # install latex on mac
   slack                 # messaging
+  skype                 # can't quite get by w/o this app
   spotify               # why not
   whatsapp              # also doesn't play well with Rambox
 )
