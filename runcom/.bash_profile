@@ -20,14 +20,13 @@ DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
 [ -f "$DOTFILES_CACHE" ] && . "$DOTFILES_CACHE"
 
 # Finally we can source the dotfiles (order matters)
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,completion,grep,prompt,nvm}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,completion,prompt}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
 # Use autoenv
 # https://github.com/kennethreitz/autoenv
 source $(brew --prefix autoenv)/activate.sh
-
 
 # Set LSCOLORS
 eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
