@@ -24,6 +24,11 @@ for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,compl
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
+# Use autoenv
+# https://github.com/kennethreitz/autoenv
+source $(brew --prefix autoenv)/activate.sh
+
+
 # Set LSCOLORS
 eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
 

@@ -1,4 +1,4 @@
-COMPUTER_NAME="laptop"
+COMPUTER_NAME="James Macbook Pro"
 
 osascript -e 'tell application "System Preferences" to quit'
 

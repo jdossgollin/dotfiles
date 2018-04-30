@@ -1,4 +1,4 @@
-if ! is-macos -o ! is-executable ruby -o ! is-executable curl -o ! is-executable git; then
+if ! is-executable ruby -o ! is-executable curl -o ! is-executable git; then
   echo "Skipped: Homebrew (missing: ruby, curl and/or git)"
   return
 fi
@@ -22,9 +22,8 @@ apps=(
     boost
     coreutils
     curl
-    diff-so-fancy
     dockutil
-    fasd
+    emacs
     ffmpeg
     git
     git-extras
@@ -44,9 +43,7 @@ apps=(
     poppler
     psgrep
     shellcheck
-    source-highlight
     tree
-    unar
     wget
     youtube-dl
 )

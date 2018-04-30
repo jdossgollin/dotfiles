@@ -6,9 +6,8 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
 DOTFILES_EXTRA_DIR="$DOTFILES_DIR/.extra"
 
-# Common functions
+# get access to functions
 . "$DOTFILES_DIR/system/.function"
-. "$DOTFILES_DIR/system/.function_network"
 
 # Update dotfiles itself first
 if is-executable git -a -d "$DOTFILES_DIR/.git"; then git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master; fi
@@ -18,15 +17,16 @@ ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
 ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
+
+# emacs symlink
+ln -sfv "$DOTFILES_DIR/emacs.d/init.el" ~/.emacs.d/init.el
+
+# miscellaneous symlinks
 ln -sfv "$DOTFILES_DIR/system/.latexmkrc" ~
-ln -sfv "$DOTFILES_DIR/.extra/init.el" ~/.emacs.d/init.el
 
 # Package managers & packages
-. "$DOTFILES_DIR/install/brew.sh"
-. "$DOTFILES_DIR/install/bash.sh"
-. "$DOTFILES_DIR/install/brew-cask.sh"
-
-# Install extra stuff (R, Python, Atom, Docker)
-. "$DOTFILES_EXTRA_DIR/conda.sh"
-. "$DOTFILES_EXTRA_DIR/docker.sh"
-. "$DOTFILES_EXTRA_DIR/R.sh"
+. "$DOTFILES_DIR/install/install-brew.sh"       # install software on Homebrew
+. "$DOTFILES_DIR/install/install-bash.sh"       # use bash shell
+. "$DOTFILES_DIR/install/install-brew-cask.sh"  # install apps using Homebrew
+. "$DOTFILES_DIR/install/install-atom.sh"       # install Atom and packages
+. "$DOTFILES_DIR/install/install-conda.sh"      # install miniconda and a few packages

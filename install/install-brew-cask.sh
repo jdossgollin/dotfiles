@@ -7,12 +7,11 @@ brew tap caskroom/cask
 
 # List of apps
 apps=(
-  Astro                 # astro mail
   cd-to                 # open terminal window in current directory
+  emacs                 # text editor!
   firefox-beta          # keep it up to date!
   github                # can be helpful, I suck at git
   kindle                # Amazon kindle reader
-  latexit               # for latex equations and Word/PPT/etc
   mactex                # install latex on mac
   slack                 # messaging
   spotify               # why not
