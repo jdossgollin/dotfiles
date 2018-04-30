@@ -30,6 +30,8 @@ ln -sfv "$DOTFILES_DIR/system/.latexmkrc" ~
 . "$DOTFILES_DIR/install/install-brew-cask.sh"  # install apps using Homebrew
 . "$DOTFILES_DIR/install/install-atom.sh"       # install Atom and packages
 . "$DOTFILES_DIR/install/install-conda.sh"      # install miniconda and a few packages
+. "$DOTFILES_DIR/install/install-npm.sh"        # install npm and a few packages
+. "$DOTFILES_DIR/install/install-gem.sh"        # install ruby gem and a few packages
 
 # OSX defaults
 . $"$DOTFILES_DIR/macos/defaults.sh"

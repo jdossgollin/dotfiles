@@ -1,6 +1,6 @@
 # dotfiles
 
-These are my dotfiles. 
+These are my dotfiles.
 Take anything you want, but at your own risk.
 Most of what I have comes from other, better sources, particularly:
 
@@ -26,6 +26,8 @@ In particular, look at everything in the `install` directory:
 * `install/install-brew-cask.sh` lists a bunch of applications to download; you will likely want different ones
 * `install/install-atom.sh` installs the Atom text editor and uses the `apm` package manager to install some packages. If you don't like Atom or want different packages, change this
 * `install/install-conda.sh` installs `miniconda3`, then installs some useful **R** and python packages to the base state
+* `install/install-npm.sh` installs `npm`, which I don't use much
+* `install/install-gem.sh` installs ruby gem, which I also don't use much, but some apps need
 
 Because I'm an indecisive person, I also use emacs, which is installed in `brew-cask` and has configurations in `emacs/init.d`.
 
@@ -46,7 +48,7 @@ Next, install the dotfiles with either Git or curl:
 
     $ dotfiles help
     Usage: dotfiles <command>
-    
+
     Commands:
        clean            Clean up caches (brew, npm, gem, rvm)
        dock             Apply macOS Dock settings
