@@ -19,7 +19,7 @@ ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/system/.latexmkrc" ~
-ln -sfv "$DOTFILES_DIR/system/init.el" ~/.emacs.d/init.el
+ln -sfv "$DOTFILES_DIR/.extra/init.el" ~/.emacs.d/init.el
 
 # Package managers & packages
 . "$DOTFILES_DIR/install/brew.sh"

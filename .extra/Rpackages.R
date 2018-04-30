@@ -27,3 +27,6 @@ pacman::p_load(viridis)
 pacman::p_load(ggthemes)
 pacman::p_load(leaflet)
 pacman::p_load(ggmap)
+
+# update anything else
+pacman::p_update()

@@ -1,50 +1,40 @@
 # Shortcuts
-
-alias reload="source ~/.bash_profile"
-alias _="sudo"
 alias g="git"
-alias rr="rm -rf"
-
-# Default options
-
-alias rsync="rsync -vh"
-alias json="json -c"
-alias psgrep="psgrep -i"
 
 is-executable hub && eval "$(hub alias -s)" # alias git=hub
-
-# Global aliases
-
-if $(is-supported "alias -g"); then
-  alias -g G="| grep -i"
-  alias -g H="| head"
-  alias -g T="| tail"
-  alias -g L="| less"
-fi
 
 # List declared aliases, functions, paths
 alias aliases="alias | sed 's/=.*//'"
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
 
-# Directory listing/traversal
-
-LS_COLORS=`is-supported "ls --color" --color -G`
-LS_TIMESTYLEISO=`is-supported "ls --time-style=long-iso" --time-style=long-iso`
-LS_GROUPDIRSFIRST=`is-supported "ls --group-directories-first" --group-directories-first`
-
-alias l="ls -lahA $LS_COLORS $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
-alias ll="ls -lA $LS_COLORS"
-alias lt="ls -lhAtr $LS_COLORS $LS_TIMESTYLEISO $LS_GROUPDIRSFIRST"
-alias ld="ls -ld $LS_COLORS */"
-
-unset LS_COLORS LS_TIMESTYLEISO LS_GROUPDIRSFIRST
-
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-alias week="date +%V"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 
 alias LevelUp="dotfiles update && dotfiles clean && cd ~ && cleanupds"
+
+# Exclude macOS specific files in ZIP archives
+alias zip="zip -x *.DS_Store -x *__MACOSX* -x *.AppleDouble*"
+
+# Log off
+alias logoff="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+# Show/hide desktop icons
+alias desktopshow="defaults write com.apple.finder CreateDesktop -bool true && killfinder"
+alias desktophide="defaults write com.apple.finder CreateDesktop -bool false && killfinder"
+
+# Recursively remove Apple meta files
+alias cleanupds="find . -type f -name '*.DS_Store' -ls -exec /bin/rm {} \;"
+alias cleanupad="find . -type d -name '.AppleD*' -ls -exec /bin/rm -r {} \;"
+
+# Empty trash on mounted volumes and main HDD, and clear system logs
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
+# Reload native apps
+alias killfinder="killall Finder"
+alias killdock="killall Dock"
+alias killmenubar="killall SystemUIServer NotificationCenter"
+alias killos="killfinder && killdock && killmenubar"
