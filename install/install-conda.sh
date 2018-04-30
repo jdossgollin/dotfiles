@@ -1,28 +1,31 @@
 #!/usr/bin/env bash
 
-brew  cask install miniconda3
+brew  cask install miniconda
 
-packages=(
-  flake8
-  ipython
-  jedi
-  jupyter
-  matplotlib
-  numpy
-  pandas
-  scipy
-  scikit-learn
-  statsmodels
+echo "================================================="
+echo "installing conda python packages"
+conda install --yes --channel conda-forge \
+  bottleneck \
+  cartopy \
+  cython \
+  dask \
+  flake8 \
+  future \
+  ipython \
+  jedi \
+  jupyter \
+  matplotlib \
+  netcdf4 \
+  numpy \
+  pandas \
+  scipy \
+  scikit-learn \
+  statsmodels \
+  six \
+  tqdm \
   xarray
-)
-
-for item in ${packages[*]}; do
-    echo "================================================="
-    echo "installing ${item}"
-    conda install --yes ${item}
-done
 
 # install from r channel
-conda install --yes -c r r-essentials
 echo "================================================="
 echo "installing r-essentials"
+conda install --yes -c r r-essentials rstudio

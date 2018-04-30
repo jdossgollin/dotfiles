@@ -28,9 +28,6 @@ done
 # https://github.com/kennethreitz/autoenv
 source $(brew --prefix autoenv)/activate.sh
 
-# Set LSCOLORS
-eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
-
 # Hook for extra/custom stuff
 DOTFILES_EXTRA_DIR="$HOME/.extra"
 
