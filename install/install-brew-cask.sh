@@ -18,6 +18,7 @@ apps=(
   iterm2                # superior terminal
   kindle                # Amazon kindle reader
   mactex                # install latex on mac
+  papers                # excellent papers app
   slack                 # messaging
   skype                 # can't quite get by w/o this app
   spotify               # why not

@@ -12,7 +12,7 @@ dockutil --no-restart --add "/Applications/Firefox.app"
 dockutil --no-restart --add "/Applications/Papers.app"
 dockutil --no-restart --add "/Applications/GitHub Desktop.app"
 dockutil --no-restart --add "/Applications/System Preferences.app"
-dockutil --no-restart --add "/Applications/Utilities/iTerm.app"
+dockutil --no-restart --add "/Applications/iTerm.app"
 
 dockutil --no-restart --add "/Users/james/Documents/"
 dockutil --no-restart --add "/Users/james/Downloads/"
