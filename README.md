@@ -1,16 +1,33 @@
-# .files
+# dotfiles
 
-These are my dotfiles. Take anything you want, but at your own risk.
+These are my dotfiles. 
+Take anything you want, but at your own risk.
+Most of what I have comes from other, better sources, particularly:
 
-It targets macOS systems, but it should work on *nix as well (tested on a few Linux boxes and Ubuntu 16).
+* http://github.com/webpro/dotfiles/
+* http://efavdb.com/dotfiles/
 
-## Package overview
+## Overview
 
-* Core
-  * Bash + [coreutils](https://en.wikipedia.org/wiki/GNU_Core_Utilities) + bash-completion
-  * [Homebrew](https://brew.sh) + [homebrew-cask](https://caskroom.github.io)
-  * GNU [sed](https://www.gnu.org/software/sed/), [grep](https://www.gnu.org/software/grep/), [Wget](https://www.gnu.org/software/wget/)
-* [macOS apps](https://github.com/webpro/dotfiles/blob/master/install/brew-cask.sh)
+These dotfiles are targeted at a data science / scientific computing workflow on macOS.
+The key technologies that I use are:
+
+* `homebrew`, to install packages (and applications, via `brew cask`)
+* `conda` + `autoenv`, to create a specific environment for each project I use and to activate that environment by default whenever I change into its host directory. Please see http://efavdb.com/dotfiles/ for why and how I set this up.
+* `bash` shell
+* OSX defaults that make life easier
+
+So far, so good.
+If you want to use these dotfiles as a starting point, you'll probably want to change some things.
+In particular, look at everything in the `install` directory:
+
+* `install/install-brew.sh` defines a bunch of brew programs to install -- many are not necessary and some of them override programs installed by default by `xcode`, so make sure you want them.
+* `install/install-bash.sh` provides a newer version of the bash shell
+* `install/install-brew-cask.sh` lists a bunch of applications to download; you will likely want different ones
+* `install/install-atom.sh` installs the Atom text editor and uses the `apm` package manager to install some packages. If you don't like Atom or want different packages, change this
+* `install/install-conda.sh` installs `miniconda3`, then installs some useful **R** and python packages to the base state
+
+Because I'm an indecisive person, I also use emacs, which is installed in `brew-cask` and has configurations in `emacs/init.d`.
 
 ## Install
 
@@ -21,20 +38,8 @@ On a sparkling fresh installation of macOS:
 
 Install the dotfiles with either Git or curl:
 
-### Clone with Git
-
     git clone https://github.com/jdossgollin/dotfiles.git ~/.dotfiles
     source ~/.dotfiles/install.sh
-
-### Remotely install using curl
-
-Alternatively, you can install this into `~/.dotfiles` remotely without Git using curl:
-
-    bash -c "`curl -fsSL https://raw.github.com/jdossgollin/dotfiles/master/remote-install.sh`"
-
-Or, using wget:
-
-    bash -c "`wget -O - --no-check-certificate https://raw.githubusercontent.com/jdossgollin/dotfiles/master/remote-install.sh`"
 
 ## The `dotfiles` command
 
@@ -50,15 +55,6 @@ Or, using wget:
        test             Run tests
        update           Update packages and pkg managers (OS, brew, npm, gem)
 
-## Customize/extend
-
-You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from `.bash_profile` automatically. This file is in `.gitignore`.
-
-Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
-
-* The runcom `.bash_profile` sources all `~/.extra/runcom/*.sh` files.
-* The installer (`install.sh`) will run `~/.extra/install.sh`.
-
 ## Additional resources
 
 * [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles)
@@ -66,8 +62,3 @@ Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
 * [homebrew-cask](https://caskroom.github.io) / [usage](https://github.com/phinze/homebrew-cask/blob/master/USAGE.md)
 * [Bash prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 * [Solarized Color Theme for GNU ls](https://github.com/seebi/dircolors-solarized)
-
-## Credits
-
-Many thanks to the [dotfiles community](https://dotfiles.github.io).
-And specifically to github user @webpro
