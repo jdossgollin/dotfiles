@@ -1,0 +1,17 @@
+"*":
+  core:
+    disabledPackages: [
+      "language-gfm"
+    ]
+    packagesWithKeymapsDisabled: []
+    telemetryConsent: "no"
+    themes: [
+      "atom-material-ui"
+      "atom-material-syntax-dark"
+    ]
+  editor:
+    fontSize: 10
+  "exception-reporting":
+    userId: "a5e57d01-c43d-46cc-8a03-f06d4240c54e"
+  welcome:
+    showOnStartup: false

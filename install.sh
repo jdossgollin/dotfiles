@@ -19,7 +19,9 @@ ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 
 # emacs symlink
-ln -sfv "$DOTFILES_DIR/emacs.d/init.el" ~/.emacs.d/init.el
+ln -sfv "$DOTFILES_DIR/apps/emacs.d/init.el" ~/.emacs.d/init.el
+ln -svf "$DOTFILES_DIR/apps/.atom/config.cson" ~/.atom/config.cson
+
 
 # miscellaneous symlinks
 ln -sfv "$DOTFILES_DIR/system/.latexmkrc" ~
