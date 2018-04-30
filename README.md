@@ -36,7 +36,8 @@ On a sparkling fresh installation of macOS:
     sudo softwareupdate -i -a
     xcode-select --install
 
-Install the dotfiles with either Git or curl:
+Install any required apps from the app store.
+Next, install the dotfiles with either Git or curl:
 
     git clone https://github.com/jdossgollin/dotfiles.git ~/.dotfiles
     source ~/.dotfiles/install.sh
