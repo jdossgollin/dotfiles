@@ -1,7 +1,7 @@
 # install the Atom text editor/IDE and some packages
 brew cask install atom
 
-packages = (
+packages=(
   Hydrogen
   atom-beautify
   atom-latex

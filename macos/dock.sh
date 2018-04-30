@@ -15,7 +15,7 @@ dockutil --no-restart --add "/Applications/System Preferences.app"
 dockutil --no-restart --add "/Applications/iTerm.app"
 
 dockutil --no-restart --add "/Users/james/Documents/"
-dockutil --no-restart --add "/Users/james/Downloads/"
 dockutil --no-restart --add "/Users/james/Documents/Github/"
+dockutil --no-restart --add "/Users/james/Downloads/"
 
 killall Dock

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 brew  cask install miniconda
+prepend-path "/usr/local/miniconda3/bin"
+
 
 echo "================================================="
 echo "installing conda python packages"
