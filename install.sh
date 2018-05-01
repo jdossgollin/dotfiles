@@ -33,6 +33,7 @@ ln -sfv "$DOTFILES_DIR/system/.latexmkrc" ~
 # file symlink
 ln -sfv "$DOTFILES_DIR/apps/emacs.d/init.el" ~/.emacs.d/init.el
 ln -svf "$DOTFILES_DIR/apps/.atom/config.cson" ~/.atom/config.cson
+ln -svf "$DOTFILES_DIR/apps/.rstudio/monitored/user-settings/user-settings" ~/.rstudio-desktop/monitored/user-settings/user-settings
 
 # OSX defaults
 . $"$DOTFILES_DIR/macos/defaults.sh"
