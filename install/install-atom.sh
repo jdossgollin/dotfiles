@@ -12,6 +12,10 @@ packages=(
   language-latex
   language-markdown
   language-stan
+  linter
+  linter-ui-default
+  linter-chktex
+  linter-mypy
 )
 
 for item in ${packages[*]}; do
