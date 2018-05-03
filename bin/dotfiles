@@ -31,7 +31,6 @@ sub_update () {
   brew update
   brew upgrade
   conda update -n base conda
-  Rscript -e "update.packages(ask=F, repos='https://cloud.r-project.org')"
 }
 
 sub_clean () {
