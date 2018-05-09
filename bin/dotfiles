@@ -30,13 +30,13 @@ sub_update () {
   sudo softwareupdate -i -a
   brew update
   brew upgrade
-  conda update -n base conda
 }
 
 sub_clean () {
   brew cleanup
   brew cask cleanup
   brew prune
+  conda clean --all --yes
 }
 
 sub_macos () {

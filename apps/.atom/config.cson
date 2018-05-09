@@ -13,6 +13,19 @@
     fontSize: 10
   "exception-reporting":
     userId: "a5e57d01-c43d-46cc-8a03-f06d4240c54e"
-  "linter-ui-default": {}
+  "linter-chktex":
+    chktexArgs: [
+      "-wall"
+      "-n22"
+      "-n30"
+      "-e16"
+      "-n46"
+      "-n1"
+      "-n3"
+      "-n8"
+    ]
+    showId: true
+  "linter-ui-default":
+    panelHeight: 297
   welcome:
     showOnStartup: false
