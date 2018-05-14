@@ -12,7 +12,6 @@ sudo -v
 # Set computer name (as done via System Preferences → Sharing)
 sudo scutil --set ComputerName "$COMPUTER_NAME"
 sudo scutil --set HostName "$COMPUTER_NAME"
-sudo scutil --set LocalHostName "$COMPUTER_NAME"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "$COMPUTER_NAME"
 
 # Disable audio feedback when volume is changed
@@ -387,10 +386,10 @@ defaults write com.apple.Terminal ShowLineMarks -int 0
 ###############################################################################
 
 # Disable local Time Machine backups
-hash tmutil &> /dev/null && sudo tmutil disablelocal
+hash tmutil &> /dev/null
 
 # Disable local Time Machine snapshots
-sudo tmutil disablelocal
+sudo tmutil disable
 
 ###############################################################################
 # Activity Monitor                                                            #

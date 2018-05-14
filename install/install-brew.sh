@@ -26,6 +26,7 @@ apps=(
     dockutil
     emacs
     ffmpeg
+    gcc
     git
     git-extras
     git-lfs
@@ -38,7 +39,6 @@ apps=(
     make
     markdown
     nano
-    npm
     pandoc
     pandoc-citeproc
     poppler

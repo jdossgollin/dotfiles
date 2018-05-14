@@ -22,10 +22,6 @@ sub_edit () {
   sh -c "$DOTFILES_DIR"
 }
 
-sub_test () {
-  bats "$DOTFILES_DIR"/test/*.bats
-}
-
 sub_update () {
   sudo softwareupdate -i -a
   brew update
@@ -48,12 +44,6 @@ sub_macos () {
 
 sub_dock () {
   . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
-}
-
-# Make sure to keep this in sync with the available public commands
-
-sub_completion () {
-  echo "clean dock edit help macos test update"
 }
 
 case $COMMAND_NAME in
