@@ -15,6 +15,7 @@ DOTFILES_EXTRA_DIR="$DOTFILES_DIR/.extra"
 . "$DOTFILES_DIR/install/install-brew-cask.sh"  # install apps using Homebrew
 . "$DOTFILES_DIR/install/install-atom.sh"       # install Atom and packages
 . "$DOTFILES_DIR/install/install-conda.sh"      # install miniconda and a few packages
+. "$DOTFILES_DIR/install/install-powerline-fonts.sh"      # install miniconda and a few packages
 
 # symbolic links for core
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
