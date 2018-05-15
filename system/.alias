@@ -1,19 +1,17 @@
-# Shortcuts
-alias g="git"
-
-is-executable hub && eval "$(hub alias -s)" # alias git=hub
-
 # List declared aliases, functions, paths
 alias aliases="alias | sed 's/=.*//'"
 alias functions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'"
 alias paths='echo -e ${PATH//:/\\n}'
 
+# Change directory more easily
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
+# Check internet speed
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 
+# Update everything
 alias LevelUp="dotfiles update && dotfiles clean && cd ~ && cleanupds"
 
 # Exclude macOS specific files in ZIP archives
