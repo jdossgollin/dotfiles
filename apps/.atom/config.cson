@@ -25,6 +25,7 @@
       "-n8"
     ]
     showId: true
+  "linter-mypy": {}
   "linter-ui-default":
     panelHeight: 297
   welcome:

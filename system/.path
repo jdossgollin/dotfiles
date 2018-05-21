@@ -15,6 +15,9 @@ prepend-path "/sbin"
 prepend-path "/usr/sbin"
 prepend-path "/usr/local/sbin"
 
+# Conda path
+prepend-path "/usr/local/miniconda3/bin"
+
 # LaTeX path
 prepend-path "/Library/TeX/texbin"
 prepend-path "/usr/texbin"

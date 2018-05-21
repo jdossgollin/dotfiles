@@ -14,10 +14,10 @@ apps=(
   emacs                 # text editor!
   firefox-beta          # keep it up to date!
   github                # can be helpful, I suck at git
-  google-backup-and-sync  # free storage from columbia :D
+  google-backup-and-sync  # free storage from columbia
+  google-earth-pro      # i love this app
   iterm2                # superior terminal
   java                  # java for some r applications
-  kindle                # Amazon kindle reader
   mactex                # install latex on mac
   papers                # excellent papers app
   slack                 # messaging
