@@ -10,7 +10,7 @@
       "atom-material-syntax-dark"
     ]
   editor:
-    fontSize: 10
+    fontSize: 12
   "exception-reporting":
     userId: "a5e57d01-c43d-46cc-8a03-f06d4240c54e"
   "linter-chktex":
