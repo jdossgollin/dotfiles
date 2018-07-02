@@ -28,5 +28,6 @@
   "linter-mypy": {}
   "linter-ui-default":
     panelHeight: 297
+  "spell-check": {}
   welcome:
     showOnStartup: false

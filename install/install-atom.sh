@@ -16,6 +16,7 @@ packages=(
   linter-ui-default
   linter-chktex
   linter-mypy
+  tablr
 )
 
 for item in ${packages[*]}; do
