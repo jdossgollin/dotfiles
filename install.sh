@@ -23,9 +23,9 @@ ln -sfv "$DOTFILES_DIR/apps/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitignore_global" ~
 
 # symbolic links for apps
-ln -sfv "$DOTFILES_DIR/apps/emacs.d/init.el" ~/.emacs.d/init.el
-ln -svf "$DOTFILES_DIR/apps/.atom/config.cson" ~/.atom/config.cson
+
 ln -svf "$DOTFILES_DIR/apps/.rstudio/monitored/user-settings/user-settings" ~/.rstudio-desktop/monitored/user-settings/user-settings
+ln -svf "$DOTFILES_DIR/apps/.vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
 
 # OSX defaults
 . "$DOTFILES_DIR/macos/defaults.sh"
