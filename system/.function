@@ -22,6 +22,12 @@ prepend-path() {
   [ -d $1 ] && PATH="$1:$PATH"
 }
 
+# Open in Adobe Acrobat Reader
+adobe() {
+  open -a Adobe\ Acrobat\ Reader\ DC $1
+}
+
+
 # Update config file
 set-config() {
   local KEY="$1"
