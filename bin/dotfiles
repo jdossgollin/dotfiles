@@ -19,7 +19,6 @@ sub_help () {
 
 sub_edit () {
   sh -c "$DOTFILES_IDE $DOTFILES_DIR"
-  sh -c "$DOTFILES_DIR"
 }
 
 sub_update () {
@@ -30,7 +29,6 @@ sub_update () {
 
 sub_clean () {
   brew cleanup
-  brew cask cleanup
   brew prune
   conda clean --all --yes
 }
