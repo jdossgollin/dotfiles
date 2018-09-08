@@ -1,0 +1,3 @@
+brew install ruby
+sudo gem install bundler jekyll
+sudo gem install jekyll-scholar jekyll-display-medium-posts

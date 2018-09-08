@@ -81,3 +81,6 @@ source $DOTFILES_DIR/system/.path
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 . /usr/local/miniconda3/etc/profile.d/conda.sh
 source /usr/local/opt/autoenv/activate.sh
+
+# For my personal website and the jekyll-display-medium-posts plugin
+export MEDIUM_USERNAME="jdossgollin"
