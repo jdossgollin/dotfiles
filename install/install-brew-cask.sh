@@ -7,7 +7,6 @@ brew tap caskroom/cask
 
 # List of apps
 apps=(
-  anki                    # this is so cool
   dashlane                # password manager
   firefox-beta            # keep it up to date!
   github                  # can be helpful, I suck at git
@@ -15,11 +14,11 @@ apps=(
   iterm2                  # superior terminal
   mactex                  # install latex on mac
   miniconda               # package manager
-  papers                  # excellent papers app
   skype                   # can't quite get by w/o this app
   spotify                 # why not
   visual-studio-code      # code editor
   whatsapp                # also doesn't play well with Rambox
+  zotero                  # reference manager
 )
 brew cask install "${apps[@]}"
 
