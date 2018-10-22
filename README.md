@@ -28,8 +28,6 @@ In particular, look at everything in the `install` directory:
 * `install/install-atom.sh` installs the Atom text editor and uses the `apm` package manager to install some packages. If you don't like Atom or want different packages, change this
 * `install/install-conda.sh` installs `miniconda3`, then installs some useful **R** and python packages to the base state
 
-Because I'm an indecisive person, I also use `emacs`, which is installed in `brew-cask` and has configurations in `emacs/init.d`.
-
 ## Install
 
 On a sparkling fresh installation of macOS:

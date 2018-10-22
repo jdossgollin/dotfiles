@@ -25,7 +25,6 @@ apps=(
     coreutils
     curl
     dockutil
-    emacs
     ffmpeg
     gcc
     git

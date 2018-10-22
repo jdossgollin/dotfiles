@@ -8,6 +8,7 @@ brew tap caskroom/cask
 # List of apps
 apps=(
   dashlane                # password manager
+  evernote                # note taking
   firefox-beta            # keep it up to date!
   github                  # can be helpful, I suck at git
   google-backup-and-sync  # free storage from columbia

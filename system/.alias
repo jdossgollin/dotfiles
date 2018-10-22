@@ -12,7 +12,7 @@ alias ....="cd ../../.."
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 
 # Update everything
-alias LevelUp="dotfiles update && dotfiles clean && cd ~ && cleanupds"
+alias LevelUp="dotfiles update && dotfiles clean && cd ~/Documents && cleanupds"
 
 # Exclude macOS specific files in ZIP archives
 alias zip="zip -x *.DS_Store -x *__MACOSX* -x *.AppleDouble*"

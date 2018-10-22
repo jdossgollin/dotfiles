@@ -74,11 +74,14 @@
         "paleoclimate",
         "parameterize",
         "probabilistically",
+        "reproducibility",
         "sinuosities",
         "spatiotemporal",
         "stationarity",
         "stochastically",
         "streamflow",
+        "streamflows",
+        "streamfunction",
         "teleconnections",
         "thermodynamical",
         "ungauged",
@@ -86,4 +89,8 @@
         "waveguide",
         "wavenumbers"
     ],
+    "workbench.colorTheme": "Material Theme Ocean",
+    "workbench.iconTheme": "eq-material-theme-icons-ocean",
+    "editor.fontSize": 13,
+    "editor.fontFamily": "'Fira Code', 'Fira Mono for Powerline',Menlo, Monaco, 'Courier New', monospace",
 }

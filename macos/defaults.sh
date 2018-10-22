@@ -152,6 +152,11 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
+# Fix blurry font rendering on non-retina monitors
+# https://github.com/Microsoft/vscode/issues/51132
+defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO
+
+
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
