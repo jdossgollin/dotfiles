@@ -7,7 +7,9 @@ brew tap caskroom/cask
 
 # List of apps
 apps=(
+  adobe-acrobat-reader    # a standard PDF reader
   dashlane                # password manager
+  docker                  # virtual machines!
   evernote                # note taking
   firefox-beta            # keep it up to date!
   github                  # can be helpful, I suck at git
