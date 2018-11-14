@@ -1,3 +1,5 @@
+.vscode/
+
 ## Ignore Mac OS Stuff
 *.DS_Store
 *.AppleDouble
