@@ -29,8 +29,6 @@ sub_update () {
 
 sub_clean () {
   brew cleanup
-  brew prune
-  conda clean --all --yes
 }
 
 sub_macos () {
