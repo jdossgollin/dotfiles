@@ -25,6 +25,8 @@ sub_update () {
   sudo softwareupdate -i -a
   brew update
   brew upgrade
+  tlmgr update --self
+  tlmgr update --all
 }
 
 sub_clean () {
