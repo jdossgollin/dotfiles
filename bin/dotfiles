@@ -14,7 +14,8 @@ sub_help () {
   echo "   help             This help message"
   echo "   macos            Apply macOS system defaults"
   echo "   test             Run tests"
-  echo "   update           Update packages and pkg managers (OS, brew, npm, gem)"
+  echo "   update           Update core packages and pkg managers"
+  echo "   updateall        Update all packages and pkg managers"
 }
 
 sub_edit () {
@@ -25,9 +26,16 @@ sub_update () {
   sudo softwareupdate -i -a
   brew update
   brew upgrade
-  tlmgr update --self
-  tlmgr update --all
 }
+
+sub_updateall () {
+  sudo softwareupdate -i -a
+  brew update
+  brew upgrade
+  sudo tlmgr update --self
+  sudo tlmgr update --all
+}
+
 
 sub_clean () {
   brew cleanup
