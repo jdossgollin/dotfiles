@@ -33,7 +33,6 @@ apps=(
     gnu-sed --with-default-names
     grep --with-default-names
     imagemagick
-    jq
     libsvg
     libxml2
     make
@@ -42,7 +41,6 @@ apps=(
     pandoc
     pandoc-citeproc
     poppler
-    psgrep
     shellcheck
     tree
     wget

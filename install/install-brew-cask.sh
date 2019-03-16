@@ -9,12 +9,13 @@ brew tap caskroom/cask
 apps=(
   adobe-acrobat-reader    # a standard PDF reader
   dashlane                # password manager
+  docker                  # can be useful
   evernote                # note taking
   firefox-beta            # keep it up to date!
   github                  # can be helpful, I suck at git
   google-backup-and-sync  # free storage from columbia
   iterm2                  # superior terminal
-  mactex                  # install latex on mac
+  mactex                  # latex!
   miniconda               # package manager
   skype                   # can't quite get by w/o this app
   spotify                 # why not

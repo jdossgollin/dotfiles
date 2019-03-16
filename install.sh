@@ -14,7 +14,6 @@ DOTFILES_EXTRA_DIR="$DOTFILES_DIR/.extra"
 . "$DOTFILES_DIR/install/install-brew.sh"             # install software on Homebrew
 . "$DOTFILES_DIR/install/install-brew-cask.sh"        # install apps using Homebrew
 . "$DOTFILES_DIR/install/install-ruby.sh"             # useful for website
-. "$DOTFILES_DIR/install/install-docker.sh"           # install docker and pull some images
 
 # symbolic links for core
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
