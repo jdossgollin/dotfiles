@@ -20,6 +20,9 @@ prepend-path "/Library/TeX/texbin"
 prepend-path "/usr/texbin"
 prepend-path "/opt/local/bin"
 
+# Conda path
+source /usr/local/miniconda3/etc/profile.d/conda.sh
+
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
 PATH=`echo -n $PATH | awk -v RS=: '{ if (!arr[$0]++) {printf("%s%s",!ln++?"":":",$0)}}'`
