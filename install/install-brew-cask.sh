@@ -16,9 +16,10 @@ apps=(
   iterm2                  # superior terminal
   mactex                  # latex!
   miniconda               # package manager
-  rambox                  # email, whatsapp, and more
+  skype                   # chat
   spotify                 # why not
   visual-studio-code      # code editor
+  whatsapp                # messaging
   zotero                  # reference manager
 )
 brew cask install "${apps[@]}"
