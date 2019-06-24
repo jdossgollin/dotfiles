@@ -15,6 +15,7 @@ apps=(
   google-backup-and-sync  # free storage from columbia
   iterm2                  # superior terminal
   mactex                  # latex!
+  mathpix-snipping-tool   # magic!
   miniconda               # package manager
   skype                   # chat
   spotify                 # why not
