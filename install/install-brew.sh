@@ -19,7 +19,6 @@ brew tap caskroom/fonts
 # Install the Homebrew packages I use on a day-to-day basis.
 apps=(
     aspell
-    autoenv
     automake
     boost
     coreutils

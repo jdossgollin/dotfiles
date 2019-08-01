@@ -11,6 +11,7 @@ apps=(
   dashlane                # password manager
   docker                  # can be useful
   firefox-beta            # keep it up to date!
+  flash-npapi             # adobe flash player
   github                  # can be helpful, I suck at git
   google-backup-and-sync  # free storage from columbia
   iterm2                  # superior terminal

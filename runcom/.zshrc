@@ -65,6 +65,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  autoenv
   brew
   git
   osx
@@ -79,5 +80,4 @@ source $DOTFILES_DIR/system/.env
 source $DOTFILES_DIR/system/.path
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/opt/autoenv/activate.sh
 
