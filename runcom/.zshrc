@@ -72,14 +72,6 @@ plugins=(
   osx
 )
 
-# ZPM
-if [[ ! -f ~/.zpm/zpm.zsh ]]; then
-  git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
-fi
-source ~/.zpm/zpm.zsh
-# use it to load autoenv
-zpm load zpm-zsh/autoenv
-
 source $ZSH/oh-my-zsh.sh
 
 # source stuff in system folder
@@ -90,3 +82,10 @@ source $DOTFILES_DIR/system/.path
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# ZPM
+if [[ ! -f ~/.zpm/zpm.zsh ]]; then
+  git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
+fi
+source ~/.zpm/zpm.zsh
+# use it to load autoenv
+zpm load zpm-zsh/autoenv
