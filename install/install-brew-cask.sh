@@ -9,7 +9,6 @@ brew tap caskroom/cask
 apps=(
   adobe-acrobat-reader    # a standard PDF reader
   dashlane                # password manager
-  docker                  # can be useful
   firefox-beta            # keep it up to date!
   flash-npapi             # adobe flash player
   github                  # can be helpful, I suck at git
@@ -20,6 +19,7 @@ apps=(
   miniconda               # package manager
   skype                   # chat
   spotify                 # why not
+  the-unarchiver          # easier [un]zipping
   visual-studio-code      # code editor
   whatsapp                # messaging
   zotero                  # reference manager
