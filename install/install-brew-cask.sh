@@ -18,6 +18,7 @@ apps=(
   mathpix-snipping-tool   # magic!
   miniconda               # package manager
   skype                   # chat
+  slack                   # lab group
   spotify                 # why not
   the-unarchiver          # easier [un]zipping
   visual-studio-code      # code editor
