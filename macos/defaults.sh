@@ -448,3 +448,7 @@ defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 for app in "Address Book" "Calendar" "Contacts" "Dock" "Finder" "Mail" "Safari" "SystemUIServer" "iCal"; do
   killall "${app}" &> /dev/null
 done
+
+# JAMES: add sound to menu bar
+defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Volume.menu"
+killall SystemUIServer
