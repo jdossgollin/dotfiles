@@ -1,11 +1,11 @@
 #!/bin/sh
 
 dockutil --no-restart --remove all
-dockutil --no-restart --add "/Applications/System Preferences.app"
-dockutil --no-restart --add "/Applications/Photos.app"
-dockutil --no-restart --add "/Applications/Calendar.app"
+dockutil --no-restart --add "/System/Applications/System Preferences.app"
+dockutil --no-restart --add "/System/Applications/Photos.app"
+dockutil --no-restart --add "/System/Applications/Calendar.app"
 dockutil --no-restart --add "/Applications/Spotify.app"
-dockutil --no-restart --add "/Applications/Messages.app"
+dockutil --no-restart --add "/System/Applications/Messages.app"
 dockutil --no-restart --add "/Applications/WhatsApp.app"
 dockutil --no-restart --add "/Applications/Slack.app"
 dockutil --no-restart --add "/Applications/Kiwi for Gmail.app"
