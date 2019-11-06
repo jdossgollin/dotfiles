@@ -13,6 +13,7 @@ DOTFILES_EXTRA_DIR="$DOTFILES_DIR/.extra"
 . "$DOTFILES_DIR/install/install-zsh.sh"              # use zsh
 . "$DOTFILES_DIR/install/install-brew.sh"             # install software on Homebrew
 . "$DOTFILES_DIR/install/install-brew-cask.sh"        # install apps using Homebrew
+. "$DOTFILES_DIR/install/install-fonts.sh"        # install fonts using Homebrew
 . "$DOTFILES_DIR/install/install-ruby.sh"             # useful for website
 
 # symbolic links for core

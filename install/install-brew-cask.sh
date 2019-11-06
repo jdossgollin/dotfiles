@@ -26,11 +26,3 @@ apps=(
   zotero                  # reference manager
 )
 brew cask install "${apps[@]}"
-
-fonts=(
-  font-fira-code
-  font-fira-mono
-  font-fira-mono-for-powerline
-  font-fira-sans
-)
-brew cask install "${fonts[@]}"
