@@ -19,6 +19,9 @@ fonts=(
   homebrew/cask-fonts/font-titillium
   homebrew/cask-fonts/font-varela-round
   homebrew/cask-fonts/font-special-elite
+  homebrew/cask-fonts/font-eb-garamond
+  homebrew/cask-fonts/font-gfs-didot
+  homebrew/cask-fonts/font-trebuchet-ms
 )
 
 brew cask install "${fonts[@]}"
