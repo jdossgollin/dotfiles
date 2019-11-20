@@ -12,7 +12,7 @@
         "editor.rulers": [
             79,
         ]
-    }
+    },
     "git.confirmSync": false,
     "breadcrumbs.enabled": false,
     "cSpell.userWords": [
@@ -117,8 +117,8 @@
         "waveguide",
         "wavenumbers"
     ],
-    "workbench.colorTheme": "Material Theme Ocean",
-    "workbench.iconTheme": "eq-material-theme-icons-ocean",
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "material-icon-theme",
     "editor.fontSize": 13,
     "editor.fontFamily": "'Fira Code', 'Fira Mono for Powerline',Menlo, Monaco, 'Courier New', monospace",
     "python.dataScience.sendSelectionToInteractiveWindow": true,
