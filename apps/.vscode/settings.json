@@ -74,6 +74,7 @@
         "incentivized",
         "interannual",
         "interdisciplinarity",
+        "interpretability",
         "lockdown",
         "mar",
         "megadroughts",
@@ -103,6 +104,7 @@
         "sinuosities",
         "societally",
         "spatiotemporal",
+        "spatiotemporally",
         "stationarity",
         "stochastically",
         "streamflow",
@@ -118,9 +120,10 @@
         "wavenumbers"
     ],
     "workbench.colorTheme": "One Dark Pro",
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.iconTheme": "vscode-icons",
     "editor.fontSize": 13,
     "editor.fontFamily": "'Fira Code', 'Fira Mono for Powerline',Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontLigatures": true,
     "python.dataScience.sendSelectionToInteractiveWindow": true,
     "cSpell.enabledLanguageIds": [
         "asciidoc",
@@ -157,4 +160,5 @@
     ],
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
+    "vsicons.dontShowNewVersionMessage": true,
 }

@@ -89,3 +89,5 @@ fi
 source ~/.zpm/zpm.zsh
 # use it to load autoenv
 zpm load zpm-zsh/autoenv
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
