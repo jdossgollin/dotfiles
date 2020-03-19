@@ -23,6 +23,7 @@ apps=(
     boost
     coreutils
     curl
+    diff-so-fancy
     dockutil
     ffmpeg
     gcc
@@ -53,3 +54,6 @@ brew doctor
 
 export DOTFILES_BREW_PREFIX_COREUTILS=`brew --prefix coreutils`
 set-config "DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_CACHE"
+
+# use git diff-so-fancy
+git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
