@@ -5,13 +5,13 @@ export ZSH=/Users/james/.oh-my-zsh
 READLINK=$(which greadlink || which readlink)
 CURRENT_SCRIPT=$BASH_SOURCE
 if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
-  SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT")
-  export DOTFILES_DIR=$(dirname "$(dirname "$SCRIPT_PATH")")
-elif [ -d "$HOME/.dotfiles" ]; then
-  export DOTFILES_DIR="$HOME/.dotfiles"
+    SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT")
+    export DOTFILES_DIR=$(dirname "$(dirname "$SCRIPT_PATH")")
+    elif [ -d "$HOME/.dotfiles" ]; then
+    export DOTFILES_DIR="$HOME/.dotfiles"
 else
-  echo "Unable to find dotfiles, exiting."
-  return
+    echo "Unable to find dotfiles, exiting."
+    return
 fi
 
 # for z navigation
@@ -67,9 +67,9 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  brew
-  git
-  osx
+    brew
+    git
+    osx
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -84,7 +84,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ZPM
 if [[ ! -f ~/.zpm/zpm.zsh ]]; then
-  git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
+    git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
 fi
 source ~/.zpm/zpm.zsh
 # use it to load autoenv
