@@ -101,6 +101,7 @@
         "extratropics",
         "forcings",
         "geopotential",
+        "geosciences",
         "gollin",
         "graywater",
         "greywater",
@@ -125,6 +126,7 @@
         "megaproject",
         "meridional",
         "mesoscale",
+        "metaheuristic",
         "metastable",
         "meteorologically",
         "midlatitude",
@@ -137,11 +139,13 @@
         "multiscale",
         "nassim",
         "nonlinearity",
+        "nonlinearly",
         "nonprobabilistic",
         "nonstationarity",
         "nonstationary",
         "numpy",
         "orography",
+        "overfit",
         "overfitting",
         "paleo",
         "paleoclimate",
@@ -158,6 +162,7 @@
         "quantifiably",
         "quantile",
         "reproducibility",
+        "reputational",
         "scikit",
         "scipy",
         "sinuosities",
@@ -185,6 +190,7 @@
         "wavenumber",
         "wavenumbers",
         "wavetrain",
+        "wavetrains",
         "xarray"
     ],
     "workbench.colorTheme": "One Dark Pro",
@@ -234,5 +240,7 @@
         "MD007": false,
         "no-hard-tabs": false,
         "line-length": false
-    }
+    },
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true
 }
