@@ -1,4 +1,5 @@
 # dotfiles
+[![Build Status](https://travis-ci.com/jdossgollin/dotfiles.svg?branch=master)](https://travis-ci.com/jdossgollin/dotfiles)
 
 These are my dotfiles.
 Take anything you want, but at your own risk.
@@ -14,32 +15,29 @@ These dotfiles are targeted at a data science / scientific computing workflow on
 The key technologies that I use are:
 
 * `homebrew`, to install packages (and applications, via `brew cask`)
-* `conda` + `autoenv`, to create a specific environment for each project I use and to activate that environment by default whenever I change into its host directory. Please see http://efavdb.com/dotfiles/ for why and how I set this up.
 * `zsh` shell with [`oh-my-zsh`](http://jilles.me/badassify-your-terminal-and-shell/)
 * OSX defaults that make life easier
+* VS Code as an editor, with lots of defaults including a docker-based LaTeX workflow
 
 So far, so good.
 If you want to use these dotfiles as a starting point, you'll probably want to change some things.
-In particular, look at everything in the `install` directory:
-
-* `install/install-brew.sh` defines a bunch of brew programs to install -- many are not necessary and some of them override programs installed by default by `xcode`, so make sure you want them.
-* `install/install-zsh.sh` installs the `zsh` shell and `oh-my-zsh`. It also installs powerline fonts needed for the chosen theme.
-* `install/install-brew-cask.sh` lists a bunch of applications to download; you will likely want different ones
-* `install/install-atom.sh` installs the Atom text editor and uses the `apm` package manager to install some packages. If you don't like Atom or want different packages, change this
-* `install/install-conda.sh` installs `miniconda3`, then installs some useful **R** and python packages to the base state
 
 ## Install
 
 On a sparkling fresh installation of macOS:
 
-    sudo softwareupdate -i -a
-    xcode-select --install
+```
+sudo softwareupdate -i -a
+xcode-select --install
+```
 
 Install any required apps from the app store.
 Next, install the dotfiles with either Git or curl:
 
-    git clone https://github.com/jdossgollin/dotfiles.git ~/.dotfiles
-    source ~/.dotfiles/install.sh
+```
+git clone https://github.com/jdossgollin/dotfiles.git ~/.dotfiles
+source ~/.dotfiles/install.sh
+```
 
 ## The `dotfiles` command
 
@@ -49,7 +47,7 @@ Next, install the dotfiles with either Git or curl:
     Commands:
        clean            Clean up caches (brew, npm, gem, rvm)
        dock             Apply macOS Dock settings
-       edit             Open dotfiles in IDE (ws) and Git GUI (stree)
+       edit             Open dotfiles in VS code
        help             This help message
        macos            Apply macOS system defaults
        update           Update packages and pkg managers (OS, brew, npm, gem)
