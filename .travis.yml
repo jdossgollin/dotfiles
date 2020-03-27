@@ -1,0 +1,6 @@
+os: osx
+osx_image: xcode11.3
+sudo: required
+script:
+  - set -eo pipefail
+  - bash install.sh
