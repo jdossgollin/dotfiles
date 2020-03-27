@@ -36,3 +36,6 @@ alias killfinder="killall Finder"
 alias killdock="killall Dock"
 alias killmenubar="killall SystemUIServer NotificationCenter"
 alias killos="killfinder && killdock && killmenubar"
+
+# docker commands
+alias docker_pandoc="docker run --rm --volume '`pwd`:/data' --user `id -u`:`id -g` pandoc/latex:latest" README.md
