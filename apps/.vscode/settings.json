@@ -2,7 +2,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "editor.minimap.enabled": false,
     "latex-workshop.view.pdf.viewer": "tab",
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
     "editor.wordWrap": "on",
     "python.linting.mypyEnabled": true,
     "python.linting.pylintArgs": [
@@ -244,5 +244,8 @@
     "python.formatting.provider": "black",
     "editor.formatOnSave": true,
     "latex-workshop.latexindent.path": "/Library/TeX/texbin/latexindent",
-    "latex-workshop.docker.enabled": true
+    "latex-workshop.docker.enabled": true,
+    "[shellscript]": {
+        "editor.defaultFormatter": "foxundermoon.shell-format"
+    }
 }
