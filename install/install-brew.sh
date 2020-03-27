@@ -2,8 +2,7 @@ if ! is-executable ruby -o ! is-executable curl -o ! is-executable git; then
     echo "Skipped: Homebrew (missing: ruby, curl and/or git)"
     return
 fi
-if test ! $(which brew)
-then
+if test ! $(which brew); then
     echo "Installing Homebrew..."
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
@@ -30,8 +29,8 @@ apps=(
     git
     git-extras
     git-lfs
-    gnu-sed --with-default-names
-    grep --with-default-names
+    gnu-sed
+    grep
     imagemagick
     libsvg
     libxml2
@@ -52,7 +51,7 @@ brew install "${apps[@]}"
 brew cleanup
 brew doctor
 
-export DOTFILES_BREW_PREFIX_COREUTILS=`brew --prefix coreutils`
+export DOTFILES_BREW_PREFIX_COREUTILS=$(brew --prefix coreutils)
 set-config "DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_CACHE"
 
 # use git diff-so-fancy
