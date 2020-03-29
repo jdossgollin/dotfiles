@@ -2,7 +2,7 @@
 
 # Get current dir (so run this script from anywhere)
 export DOTFILES_DIR DOTFILES_CACHE DOTFILES_EXTRA_DIR
-DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
 DOTFILES_EXTRA_DIR="$DOTFILES_DIR/.extra"
 
@@ -10,12 +10,11 @@ DOTFILES_EXTRA_DIR="$DOTFILES_DIR/.extra"
 . "$DOTFILES_DIR/system/.function"
 
 # Package managers & packages
-. "$DOTFILES_DIR/install/install-zsh.sh"                # use zsh
-. "$DOTFILES_DIR/install/install-brew.sh"               # install software on Homebrew
-. "$DOTFILES_DIR/install/install-brew-cask.sh"          # install apps using Homebrew
-. "$DOTFILES_DIR/install/install-fonts.sh"              # install fonts using Homebrew
-. "$DOTFILES_DIR/install/install-ruby.sh"               # useful for website
-. "$DOTFILES_DIR/install/install-latex-indent.sh"       # perl modules for latex formatting
+. "$DOTFILES_DIR/install/install-zsh.sh"       # use zsh
+. "$DOTFILES_DIR/install/install-brew.sh"      # install software on Homebrew
+. "$DOTFILES_DIR/install/install-brew-cask.sh" # install apps using Homebrew
+. "$DOTFILES_DIR/install/install-fonts.sh"     # install fonts using Homebrew
+. "$DOTFILES_DIR/install/install-ruby.sh"      # useful for website
 
 # symbolic links for core
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
