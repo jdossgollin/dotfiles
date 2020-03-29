@@ -15,17 +15,8 @@ prepend-path "/sbin"
 prepend-path "/usr/sbin"
 prepend-path "/usr/local/sbin"
 
-# LaTeX path
-prepend-path "/Library/TeX/texbin"
-prepend-path "/usr/texbin"
-prepend-path "/opt/local/bin"
-
 # Conda path
 . /usr/local/miniconda3/etc/profile.d/conda.sh
-
-# Perl path
-. ~/perl5/perlbrew/etc/bashrc
-perlbrew switch perl-5.16.0
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755

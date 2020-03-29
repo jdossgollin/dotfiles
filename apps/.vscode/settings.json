@@ -2,7 +2,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "editor.minimap.enabled": false,
     "latex-workshop.view.pdf.viewer": "tab",
-    "window.zoomLevel": 0,
+    "window.zoomLevel": -1,
     "editor.wordWrap": "on",
     "python.linting.mypyEnabled": true,
     "python.linting.pylintArgs": [
