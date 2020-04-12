@@ -97,6 +97,7 @@
         "disaggregated",
         "discretized",
         "discretizing",
+        "disincentivize",
         "distance",
         "downscaling",
         "emcompassing",
@@ -208,7 +209,7 @@
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "vscode-icons",
     "editor.fontSize": 13,
-    "editor.fontFamily": "'Fira Code', 'Fira Mono for Powerline',Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "'Source Code Pro', 'Fira Code', 'Fira Mono for Powerline',Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "python.dataScience.sendSelectionToInteractiveWindow": true,
     "cSpell.enabledLanguageIds": [
@@ -276,5 +277,6 @@
     ],
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "latex-workshop.chktex.delay": 100
 }
