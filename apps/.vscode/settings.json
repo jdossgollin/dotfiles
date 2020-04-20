@@ -125,6 +125,7 @@
         "interdisciplinarity",
         "interpretability",
         "interquartile",
+        "intertemporal",
         "lamontagne",
         "lockdown",
         "mar",
@@ -173,6 +174,7 @@
         "quantile",
         "reproducibility",
         "reputational",
+        "satisficing",
         "scalarizing",
         "scikit",
         "scipy",
@@ -268,15 +270,21 @@
         "BUG",
         "FIXME",
         "TODO",
-        "XXX"
+        "XXX",
+        "CITE",
+        "CREF"
     ],
     "todo-tree.highlights.highlightDelay": 10,
-    "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^|%)\\s*($TAGS)|^\\s*- \\[ \\])",
     "todo-tree.filtering.excludeGlobs": [
         "\"*.pdf\""
     ],
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "latex-workshop.chktex.delay": 100
+    "latex-workshop.chktex.delay": 100,
+    "todo-tree.regex.regex": "((//|#|<!--|;|/\\\\*|^|%|\\()\\\\s*($TAGS)|^\\\\s*- \\\\[ \\\\])",
+    "vsnotes.defaultNotePath": "/Users/james/Documents/Github/notes",
+    "vsnotes.templates": [
+        "meeting"
+    ]
 }
