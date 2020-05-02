@@ -10,42 +10,24 @@ fi
 brew update
 brew upgrade
 
-# Some Taps
-brew tap caskroom/versions
-brew tap caskroom/cask
-brew tap caskroom/fonts
-
 # Install the Homebrew packages I use on a day-to-day basis.
 apps=(
     aspell
-    automake
     boost
-    coreutils
-    curl
     diff-so-fancy
     dockutil
-    ffmpeg
     gcc
     git
     git-extras
     git-lfs
-    gnu-sed
-    grep
-    imagemagick
-    libsvg
-    libxml2
-    make
-    markdown
     nano
-    pandoc
-    pandoc-citeproc
-    poppler
     shellcheck
     tree
-    wget
-    youtube-dl
 )
 brew install "${apps[@]}"
+
+# Install git LFS
+git lfs install —system
 
 # Remove outdated versions from the cellar
 brew cleanup

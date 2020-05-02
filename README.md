@@ -39,6 +39,18 @@ git clone https://github.com/jdossgollin/dotfiles.git ~/.dotfiles
 source ~/.dotfiles/install.sh
 ```
 
+### Manual aspects
+
+The process isn't _entirely_ automated
+
+* you will need to enter your password several times along the process
+* to set up the terminal (iTerm) properly, you will need to manually change the font and color schemes (after installing everything)
+May be useful to add to README: to set up iTerm properly, need to
+* you may get an error message from zsh about file security; this is remedied by going to the indicated folders and running `compaudit | xargs chmod g-w` (if you don't have a warning message this is not needed)
+
+And many applications require specific setup.
+
+
 ## The `dotfiles` command
 
     $ dotfiles help

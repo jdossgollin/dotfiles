@@ -24,6 +24,7 @@
         "Chiclet",
         "Crary",
         "Davide",
+        "Delfzijl",
         "Eady",
         "Enéas",
         "Extratropical",
@@ -172,6 +173,7 @@
         "probabilistically",
         "quantifiably",
         "quantile",
+        "regionalization",
         "reproducibility",
         "reputational",
         "satisficing",
@@ -195,10 +197,12 @@
         "taleb's",
         "teleconnection",
         "teleconnections",
+        "textcolor",
         "thermodynamical",
         "transformability",
         "troughing",
         "ungauged",
+        "unitless",
         "unmanaged",
         "upscaled",
         "waveguide",
@@ -208,8 +212,7 @@
         "wavetrains",
         "xarray"
     ],
-    "workbench.colorTheme": "One Dark Pro",
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.iconTheme": "eq-material-theme-icons",
     "editor.fontSize": 13,
     "editor.fontFamily": "'Source Code Pro', 'Fira Code', 'Fira Mono for Powerline',Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
@@ -286,5 +289,10 @@
     "vsnotes.defaultNotePath": "/Users/james/Documents/Github/notes",
     "vsnotes.templates": [
         "meeting"
-    ]
+    ],
+    "sync.autoUpload": true,
+    "sync.autoDownload": true,
+    "terminal.integrated.inheritEnv": false,
+    "sync.gist": "03e4bb2376f645bc8b92a2dc3fa409db",
+    "workbench.colorTheme": "Atom One Dark"
 }

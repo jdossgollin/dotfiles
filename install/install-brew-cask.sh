@@ -11,14 +11,18 @@ apps=(
     flash-npapi            # adobe flash player
     github                 # can be helpful, I suck at git
     google-backup-and-sync # free storage from columbia
-    iterm2                 # superior terminal
     mathpix-snipping-tool  # this is magic!
-    miniconda              # package manager
     slack                  # lab group
     spotify                # why not
     the-unarchiver         # easier [un]zipping
     visual-studio-code     # code editor
+    whatsapp               # benefits of having this on desktop are questionable
     zotero                 # reference manager
-    zoom                   # we all work remotely now
+    zoomus                 # we all work remotely now
 )
 brew cask install "${apps[@]}"
+
+# iTerm2
+brew cask install iterm2
+curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
+curl -L https://iterm2.com/shell_integration/zsh -o $DOTFILES_DIR/system/.iterm2_shell_integration.zsh
