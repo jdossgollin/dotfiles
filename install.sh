@@ -20,11 +20,12 @@ DOTFILES_EXTRA_DIR="$DOTFILES_DIR/.extra"
 # symbolic links for shell, git, etc
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.latexmkrc" ~
+ln -sfv "$DOTFILES_DIR/runcom/.p10k.zsh" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitignore_global" ~
 
 # symbolic links for VS Code
-ln -svf "$DOTFILES_DIR/apps/.vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
+# ln -svf "$DOTFILES_DIR/apps/.vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
 
 # OSX defaults
 . "$DOTFILES_DIR/macos/defaults.sh"

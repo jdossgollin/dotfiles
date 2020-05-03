@@ -2,7 +2,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "editor.minimap.enabled": false,
     "latex-workshop.view.pdf.viewer": "tab",
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
     "editor.wordWrap": "on",
     "python.linting.mypyEnabled": true,
     "python.linting.pylintArgs": [
@@ -174,6 +174,7 @@
         "quantifiably",
         "quantile",
         "regionalization",
+        "reinsurers",
         "reproducibility",
         "reputational",
         "satisficing",
@@ -294,5 +295,7 @@
     "sync.autoDownload": true,
     "terminal.integrated.inheritEnv": false,
     "sync.gist": "03e4bb2376f645bc8b92a2dc3fa409db",
-    "workbench.colorTheme": "Atom One Dark"
+    "workbench.colorTheme": "Atom One Dark",
+    "latex-workshop.intellisense.update.delay": 500,
+    "latex-workshop.intellisense.package.enabled": true
 }

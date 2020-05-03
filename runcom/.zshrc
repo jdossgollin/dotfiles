@@ -87,7 +87,6 @@ source $DOTFILES_DIR/system/.alias
 source $DOTFILES_DIR/system/.env
 source $DOTFILES_DIR/system/.path
 source $DOTFILES_DIR/system/.iterm2_shell_integration.zsh
-source $DOTFILES_DIR/system/.p10k.zsh
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
