@@ -3,6 +3,7 @@ brew tap homebrew/cask-fonts
 fonts=(
   homebrew/cask-fonts/font-changa-one
   homebrew/cask-fonts/font-charter
+  homebrew/cask-fonts/font-cormorant
   homebrew/cask-fonts/font-cooper-hewitt
   homebrew/cask-fonts/font-crimson-text
   homebrew/cask-fonts/font-eb-garamond

@@ -24,6 +24,9 @@ ln -sfv "$DOTFILES_DIR/runcom/.p10k.zsh" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitignore_global" ~
 
+# enable permissions for all the binaries in ./bin
+find $DOTFILES_DIR/bin/ -type f -name "*.sh" -exec chmod +x {} \;
+
 # symbolic links for VS Code
 # ln -svf "$DOTFILES_DIR/apps/.vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
 

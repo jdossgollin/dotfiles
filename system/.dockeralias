@@ -1,11 +1,4 @@
 # Use docker for some commands that are rarely used but have annoying dependencies
 
-# docker with latex and filters including citeproc
-alias pandoc="docker run --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker"
-
 # ffmpeg
 alias ffmpeg="docker run -v=`pwd`:/tmp/ffmpeg opencoconut/ffmpeg"
-
-# poppler (for pdfunite)
-alias poppler="docker run --rm  -v "`pwd`:/app" -w /app minidocks/poppler"
-alias pdfunite="docker run --rm  -v "`pwd`:/app" -w /app minidocks/poppler pdfunite"

@@ -2,7 +2,7 @@
     "workbench.startupEditor": "newUntitledFile",
     "editor.minimap.enabled": false,
     "latex-workshop.view.pdf.viewer": "tab",
-    "window.zoomLevel": 0,
+    "window.zoomLevel": -1,
     "editor.wordWrap": "on",
     "python.linting.mypyEnabled": true,
     "python.linting.pylintArgs": [
@@ -20,6 +20,7 @@
         "Assis",
         "Biblatex",
         "Bonnafous",
+        "Broward",
         "Bukovsky",
         "Chiclet",
         "Crary",
@@ -58,6 +59,7 @@
         "Pantanal",
         "Paulo",
         "Pois",
+        "Ponzi",
         "Rossby",
         "Rözer",
         "SERDP",
@@ -90,12 +92,15 @@
         "circumglobal",
         "classifiability",
         "conda",
+        "consolidative",
         "convolutional",
         "covariates",
+        "covid",
         "dataset",
         "decadal",
         "decarbonization",
         "disaggregated",
+        "discretization",
         "discretized",
         "discretizing",
         "disincentivize",
@@ -107,6 +112,7 @@
         "exceedance",
         "exceedances",
         "extratropics",
+        "floodwall",
         "forcings",
         "geopotential",
         "geosciences",
@@ -149,6 +155,7 @@
         "multiobjective",
         "multiscale",
         "nassim",
+        "ndjf",
         "nonlinearities",
         "nonlinearity",
         "nonlinearly",
@@ -157,6 +164,7 @@
         "nonstationary",
         "numpy",
         "orography",
+        "oroville",
         "overfit",
         "overfitting",
         "paleo",
@@ -170,6 +178,7 @@
         "phnom",
         "posteriori",
         "predictand",
+        "predictand's",
         "probabilistically",
         "quantifiably",
         "quantile",
@@ -198,8 +207,10 @@
         "taleb's",
         "teleconnection",
         "teleconnections",
+        "tercile",
         "textcolor",
         "thermodynamical",
+        "titleformat",
         "transformability",
         "troughing",
         "ungauged",
@@ -211,45 +222,15 @@
         "wavenumbers",
         "wavetrain",
         "wavetrains",
-        "xarray"
+        "wyman",
+        "xarray",
+        "yacyreta"
     ],
     "workbench.iconTheme": "eq-material-theme-icons",
     "editor.fontSize": 13,
     "editor.fontFamily": "'Source Code Pro', 'Fira Code', 'Fira Mono for Powerline',Menlo, Monaco, 'Courier New', monospace",
     "editor.fontLigatures": true,
     "python.dataScience.sendSelectionToInteractiveWindow": true,
-    "cSpell.enabledLanguageIds": [
-        "asciidoc",
-        "c",
-        "cpp",
-        "csharp",
-        "css",
-        "git-commit",
-        "go",
-        "handlebars",
-        "haskell",
-        "html",
-        "jade",
-        "java",
-        "javascript",
-        "javascriptreact",
-        "json",
-        "jsonc",
-        "latex",
-        "less",
-        "markdown",
-        "php",
-        "plaintext",
-        "pug",
-        "restructuredtext",
-        "rust",
-        "scala",
-        "scss",
-        "text",
-        "typescript",
-        "typescriptreact",
-        "yml"
-    ],
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "vsicons.dontShowNewVersionMessage": true,
@@ -297,5 +278,86 @@
     "sync.gist": "03e4bb2376f645bc8b92a2dc3fa409db",
     "workbench.colorTheme": "Atom One Dark",
     "latex-workshop.intellisense.update.delay": 500,
-    "latex-workshop.intellisense.package.enabled": true
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.message.badbox.show": false,
+    "latex-workshop.message.latexlog.exclude": [
+        "\\hbox"
+    ],
+    "cSpell.ignoreRegExpList": [
+        "\"\\\\\\\\\\\\w*(\\\\[.*?\\\\])?(\\\\{.*?\\\\})?\"",
+        "\"\\\\$.+?\\\\$\""
+    ],
+    "files.exclude": {
+        "*.aux": true,
+        "*.lof": true
+    },
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-xelatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "lualatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-lualatex",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "latexmk_rconly",
+            "command": "latexmk",
+            "args": [
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "rnw2tex",
+            "command": "Rscript",
+            "args": [
+                "-e",
+                "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+            ],
+            "env": {}
+        }
+    ],
+    "cSpell.allowCompoundWords": true,
+    "cSpell.enableFiletypes": [
+        "!python",
+        "!yaml"
+    ]
 }
