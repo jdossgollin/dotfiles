@@ -359,5 +359,9 @@
     "cSpell.enableFiletypes": [
         "!python",
         "!yaml"
-    ]
+    ],
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "latex-workshop.docker.image.latex": "jdossgollin/latex"
 }
