@@ -14,7 +14,7 @@ CURRENT_SCRIPT=$BASH_SOURCE
 if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
     SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT")
     export DOTFILES_DIR=$(dirname "$(dirname "$SCRIPT_PATH")")
-    elif [ -d "$HOME/.dotfiles" ]; then
+elif [ -d "$HOME/.dotfiles" ]; then
     export DOTFILES_DIR="$HOME/.dotfiles"
 else
     echo "Unable to find dotfiles, exiting."
@@ -22,7 +22,7 @@ else
 fi
 
 # for z navigation
-. `brew --prefix`/etc/profile.d/z.sh
+. $(brew --prefix)/etc/profile.d/z.sh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -49,7 +49,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -67,42 +67,35 @@ HIST_STAMPS="yyyy-mm-dd"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     brew
+    docker
     git
     osx
+    python
 )
 
 source $ZSH/oh-my-zsh.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # source stuff in system folder
 source $DOTFILES_DIR/system/.function
 source $DOTFILES_DIR/system/.alias
 source $DOTFILES_DIR/system/.env
 source $DOTFILES_DIR/system/.path
-source $DOTFILES_DIR/system/.iterm2_shell_integration.zsh
+# source $DOTFILES_DIR/system/.iterm2_shell_integration.zsh
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# ZPM
-if [[ ! -f ~/.zpm/zpm.zsh ]]; then
-    git clone --recursive https://github.com/zpm-zsh/zpm ~/.zpm
-fi
-source ~/.zpm/zpm.zsh
-# use it to load autoenv
-zpm load zpm-zsh/autoenv
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
+# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
@@ -114,6 +107,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

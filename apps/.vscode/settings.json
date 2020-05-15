@@ -363,5 +363,6 @@
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
-    "latex-workshop.docker.image.latex": "jdossgollin/latex"
+    "latex-workshop.docker.image.latex": "jdossgollin/latex",
+    "terminal.integrated.fontFamily": "MesloLGS NF"
 }

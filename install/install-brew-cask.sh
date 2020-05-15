@@ -24,5 +24,3 @@ brew cask install "${apps[@]}"
 
 # iTerm2
 brew cask install iterm2
-curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash
-curl -L https://iterm2.com/shell_integration/zsh -o $DOTFILES_DIR/system/.iterm2_shell_integration.zsh
