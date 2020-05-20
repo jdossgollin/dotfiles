@@ -244,7 +244,6 @@
     "python.formatting.provider": "black",
     "editor.formatOnSave": true,
     "latex-workshop.latexindent.path": "/Library/TeX/texbin/latexindent",
-    "latex-workshop.docker.enabled": true,
     "[shellscript]": {
         "editor.defaultFormatter": "foxundermoon.shell-format"
     },
@@ -358,11 +357,16 @@
     "cSpell.allowCompoundWords": true,
     "cSpell.enableFiletypes": [
         "!python",
-        "!yaml"
+        "dockerfile",
+        "jupyter",
+        "pip-requirements",
+        "r",
+        "snakemake",
+        "tex"
     ],
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
-    "latex-workshop.docker.image.latex": "jdossgollin/latex",
-    "terminal.integrated.fontFamily": "MesloLGS NF"
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "latex-workshop.docker.enabled": true
 }

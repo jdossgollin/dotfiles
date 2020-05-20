@@ -7,4 +7,4 @@ ARGS=$@
 
 set -euo pipefail
 
-docker run --rm -i --user="$(id -u):$(id -g)" -v "$(pwd)":/workdir $IMAGE /bin/bash -c "/usr/bin/convert $ARGS"
+docker run --rm -i --user="$(id -u):$(id -g)" -v "$(pwd)":/workdir:cached $IMAGE /bin/bash -c "/usr/bin/convert $ARGS"

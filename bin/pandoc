@@ -1,4 +1,4 @@
 #!/bin/sh
 set -euo pipefail
 
-docker run -i --rm -w "$(pwd)" -v "$(pwd):$(pwd)" dalibo/pandocker "@"
+docker run -i --rm -w "$(pwd)" -v "$(pwd):$(pwd):cached" dalibo/pandocker pandoc "@"
