@@ -21,6 +21,7 @@ apps=(
     git-extras
     git-lfs
     nano
+    pympress
     shellcheck
     tree
 )

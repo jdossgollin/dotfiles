@@ -11,6 +11,7 @@ fonts=(
   homebrew/cask-fonts/font-fira-mono
   homebrew/cask-fonts/font-fira-mono-for-powerline
   homebrew/cask-fonts/font-fira-sans
+  homebrew/cask-fonts/font-fontawesome
   homebrew/cask-fonts/font-gfs-didot
   homebrew/cask-fonts/font-graduate
   homebrew/cask-fonts/font-ibm-plex
