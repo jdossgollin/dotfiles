@@ -10,7 +10,7 @@
     ],
     "[python]": {
         "editor.rulers": [
-            79,
+            88,
         ]
     },
     "git.confirmSync": false,
@@ -94,6 +94,7 @@
         "changepoint",
         "circumglobal",
         "classifiability",
+        "cname",
         "conda",
         "consolidative",
         "convolutional",
@@ -117,6 +118,7 @@
         "exceedance",
         "exceedances",
         "extratropics",
+        "favicon",
         "floodwall",
         "forcings",
         "fundación",
@@ -181,10 +183,12 @@
         "paleo",
         "paleoclimate",
         "paragauya",
+        "parallelization",
         "parameterizations",
         "parameterize",
         "parameterizes",
         "parameterizing",
+        "parsed",
         "pastén",
         "pdfs",
         "penh",
@@ -196,6 +200,8 @@
         "quantifiably",
         "quantile",
         "regionalization",
+        "reimagine",
+        "reimagining",
         "reinsurers",
         "reproducibility",
         "reputational",
@@ -209,6 +215,7 @@
         "sociohydrology",
         "spatiotemporal",
         "spatiotemporally",
+        "sspeed",
         "stationarity",
         "stochastically",
         "stormwater",
@@ -230,6 +237,8 @@
         "unitless",
         "unmanaged",
         "upscaled",
+        "usgs",
+        "usgs parsed",
         "waveguide",
         "wavenumber",
         "wavenumbers",
@@ -247,7 +256,7 @@
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "vsicons.dontShowNewVersionMessage": true,
-    "python.pythonPath": "/usr/local/miniconda3/envs/geo_scipy/bin/python",
+    "python.pythonPath": "/usr/local/Caskroom/miniconda/base/envs/salib/bin/python",
     "markdownlint.config": {
         "default": true,
         "MD007": false,
@@ -381,5 +390,12 @@
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
     "terminal.integrated.fontFamily": "MesloLGS NF",
-    "latex-workshop.docker.image.latex": "jdossgollin/latex"
+    "latex-workshop.docker.image.latex": "jdossgollin/latex",
+    "julia.enableTelemetry": true,
+    "python.linting.enabled": true,
+    "python.dataScience.askForKernelRestart": false,
+    "editor.wordWrapColumn": 80,
+    "files.associations": {
+        "*.rmd": "markdown"
+    },
 }

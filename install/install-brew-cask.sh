@@ -5,6 +5,8 @@ fi
 
 # List of apps
 apps=(
+    atom                   # for working in Julia
+    brave-browser          # second browser to separate work/life
     dashlane               # password manager
     firefox                # keep it up to date!
     flash-npapi            # adobe flash player
