@@ -252,7 +252,6 @@
     "editor.fontSize": 13,
     "editor.fontFamily": "'Fira Code', 'Fira Mono for Powerline', 'Source Code Pro', monospace",
     "editor.fontLigatures": true,
-    "python.dataScience.sendSelectionToInteractiveWindow": true,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
     "vsicons.dontShowNewVersionMessage": true,
@@ -297,7 +296,6 @@
     "sync.autoDownload": true,
     "terminal.integrated.inheritEnv": false,
     "sync.gist": "03e4bb2376f645bc8b92a2dc3fa409db",
-    "workbench.colorTheme": "Atom One Dark",
     "latex-workshop.intellisense.update.delay": 500,
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.message.badbox.show": false,
@@ -393,9 +391,21 @@
     "latex-workshop.docker.image.latex": "jdossgollin/latex",
     "julia.enableTelemetry": true,
     "python.linting.enabled": true,
-    "python.dataScience.askForKernelRestart": false,
     "editor.wordWrapColumn": 80,
     "files.associations": {
         "*.rmd": "markdown"
     },
+    "workbench.colorTheme": "Atom One Dark",
+    "[julia]": {
+        "editor.defaultFormatter": "julialang.language-julia",
+    },
+    "julia.NumThreads": 4,
+    "markdown-preview-enhanced.breakOnSingleNewLine": false,
+    "markdown-preview-enhanced.enableHTML5Embed": true,
+    "julia.execution.resultType": "both",
+    "jupyter.sendSelectionToInteractiveWindow": true,
+    "jupyter.askForKernelRestart": false,
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
 }

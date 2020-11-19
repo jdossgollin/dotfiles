@@ -5,7 +5,6 @@ fi
 
 # List of apps
 apps=(
-    atom                   # for working in Julia
     brave-browser          # second browser to separate work/life
     dashlane               # password manager
     firefox                # keep it up to date!
@@ -13,6 +12,7 @@ apps=(
     github                 # can be helpful, I suck at git
     google-backup-and-sync # free storage from columbia
     iterm2                 # better terminal
+    joplin                 # note taking
     julia-lts              # programming language!
     mactex-no-gui          # latex
     mathpix-snipping-tool  # this is magic!

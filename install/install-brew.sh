@@ -21,6 +21,8 @@ apps=(
     git-extras
     git-lfs
     nano
+    pandoc
+    pandoc-citeproc
     pympress
     shellcheck
     tree
