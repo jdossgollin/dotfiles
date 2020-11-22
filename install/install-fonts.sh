@@ -18,6 +18,7 @@ fonts=(
   homebrew/cask-fonts/font-graduate
   homebrew/cask-fonts/font-ibm-plex
   homebrew/cask-fonts/font-iceland
+  homebrew/cask-fonts/font-juliamono
   homebrew/cask-fonts/font-kameron
   homebrew/cask-fonts/font-lato
   homebrew/cask-fonts/font-old-standard-tt

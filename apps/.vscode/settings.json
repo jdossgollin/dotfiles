@@ -250,7 +250,7 @@
     ],
     "workbench.iconTheme": "eq-material-theme-icons",
     "editor.fontSize": 13,
-    "editor.fontFamily": "'Fira Code', 'Fira Mono for Powerline', 'Source Code Pro', monospace",
+    "editor.fontFamily": "'JuliaMono', 'Fira Code', 'Fira Mono for Powerline', 'Source Code Pro', monospace",
     "editor.fontLigatures": true,
     "explorer.confirmDragAndDrop": false,
     "explorer.confirmDelete": false,
