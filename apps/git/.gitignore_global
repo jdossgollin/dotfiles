@@ -45,6 +45,7 @@ Temporary Items
 *.cb
 *.cb2
 *.xdv
+*.out
 
 ## Intermediate documents:
 *.dvi
