@@ -2,7 +2,7 @@ brew tap homebrew/cask-fonts
 
 fonts=(
   homebrew/cask-fonts/font-changa-one
-  homebrew/cask-fonts/font-charter
+  # homebrew/cask-fonts/font-charter
   homebrew/cask-fonts/font-cooper-hewitt
   homebrew/cask-fonts/font-cormorant
   homebrew/cask-fonts/font-crimson-text
@@ -21,11 +21,12 @@ fonts=(
   homebrew/cask-fonts/font-juliamono
   homebrew/cask-fonts/font-kameron
   homebrew/cask-fonts/font-lato
+  homebrew/cask-fonts/font-meslo-lg-nerd-font
   homebrew/cask-fonts/font-old-standard-tt
   homebrew/cask-fonts/font-open-sans
   homebrew/cask-fonts/font-open-sans-condensed
   homebrew/cask-fonts/font-roboto
-  homebrew/cask-fonts/font-roboto-condensed
+  # homebrew/cask-fonts/font-roboto-condensed
   homebrew/cask-fonts/font-source-code-pro
   homebrew/cask-fonts/font-source-code-pro-for-powerline
   homebrew/cask-fonts/font-special-elite
@@ -36,4 +37,5 @@ fonts=(
   homebrew/cask-fonts/font-varela-round
 )
 
+# arch -arm64 brew install svn
 brew install --cask "${fonts[@]}"

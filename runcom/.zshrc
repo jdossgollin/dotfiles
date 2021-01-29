@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/james/.oh-my-zsh
+export ZSH=/Users/jamesdoss-gollin/.oh-my-zsh
 
 # Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
 READLINK=$(which greadlink || which readlink)
@@ -110,3 +110,15 @@ unset __conda_setup
 
 # added by travis gem
 [ ! -s /Users/James/.travis/travis.sh ] || source /Users/James/.travis/travis.sh
+
+PATH="/Users/jamesdoss-gollin/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/jamesdoss-gollin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/jamesdoss-gollin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/jamesdoss-gollin/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/jamesdoss-gollin/perl5"; export PERL_MM_OPT;
+
+ZSH_DISABLE_COMPFIX="true"
+
+# get the brew command
+echo 'eval $(/opt/homebrew/bin/brew shellenv)' >>~/.zprofile
+eval $(/opt/homebrew/bin/brew shellenv)

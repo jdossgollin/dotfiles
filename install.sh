@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# get the brew command
+echo 'eval $(/opt/homebrew/bin/brew shellenv)' >>~/.zprofile
+eval $(/opt/homebrew/bin/brew shellenv)
+
 # Get current dir (so we can run this script from anywhere)
 export DOTFILES_DIR DOTFILES_CACHE DOTFILES_EXTRA_DIR
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -15,7 +19,7 @@ DOTFILES_EXTRA_DIR="$DOTFILES_DIR/.extra"
 . "$DOTFILES_DIR/install/install-brew-cask.sh" # install apps using Homebrew
 . "$DOTFILES_DIR/install/install-conda.sh"     # install apps using Homebrew
 . "$DOTFILES_DIR/install/install-fonts.sh"     # install fonts using Homebrew
-. "$DOTFILES_DIR/install/install-docker.sh"    # use docker!
+# . "$DOTFILES_DIR/install/install-docker.sh"    # use docker!
 
 # symbolic links for shell, git, etc
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
@@ -27,9 +31,5 @@ ln -sfv "$DOTFILES_DIR/apps/git/.gitignore_global" ~
 # enable permissions for all the binaries in ./bin
 find $DOTFILES_DIR/bin/ -type f -name "*.sh" -exec chmod +x {} \;
 
-# symbolic links for VS Code
-# ln -svf "$DOTFILES_DIR/apps/.vscode/settings.json" ~/Library/Application\ Support/Code/User/settings.json
-
 # OSX defaults
-. "$DOTFILES_DIR/macos/defaults.sh"
 . "$DOTFILES_DIR/macos/dock.sh"

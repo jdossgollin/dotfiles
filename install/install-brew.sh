@@ -21,11 +21,12 @@ apps=(
     git-extras
     git-lfs
     nano
-    pandoc
-    pandoc-citeproc
-    pympress
-    shellcheck
+    # pandoc
+    # pandoc-citeproc
+    # pympress
+    # shellcheck
     tree
+    # wget
 )
 brew install "${apps[@]}"
 

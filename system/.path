@@ -14,6 +14,7 @@ prepend-path "/usr/sbin"
 prepend-path "/usr/local/sbin"
 prepend-path "$DOTFILES_DIR/bin"
 prepend-path "/Library/TeX/texbin"
+prepend-path "$HOME/anaconda/bin"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
