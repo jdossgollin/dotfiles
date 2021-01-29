@@ -1,4 +1,4 @@
-brew cask install docker
+brew install --cask docker
 
 open /Applications/Docker.app
 sleep 60 # give it time to open

@@ -36,4 +36,4 @@ fonts=(
   homebrew/cask-fonts/font-varela-round
 )
 
-brew cask install "${fonts[@]}"
+brew install --cask "${fonts[@]}"

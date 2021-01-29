@@ -50,9 +50,9 @@ May be useful to add to README: to set up iTerm properly, need to
 
 And many applications require specific setup.
 
-
 ## The `dotfiles` command
 
+```
     $ dotfiles help
     Usage: dotfiles <command>
 
@@ -63,6 +63,7 @@ And many applications require specific setup.
        help             This help message
        macos            Apply macOS system defaults
        update           Update packages and pkg managers (OS, brew, npm, gem)
+```
 
 ## Additional resources
 

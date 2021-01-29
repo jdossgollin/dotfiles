@@ -1,4 +1,4 @@
 # This is short but merits its own function
 
-brew cask install miniconda
+brew install --cask miniconda
 conda init "$(basename "${SHELL}")
