@@ -7,20 +7,19 @@ fi
 apps=(
     brave-browser          # second browser to separate work/life
     firefox                # keep it up to date!
-    git-kraken             # can be helpful, I suck at git
-    google-backup-and-sync # free storage from columbia
+    github                 # can be helpful, I suck at git
+    google-backup-and-sync # free storage from rice
     iterm2                 # better terminal
     joplin                 # note taking
-    # mactex-no-gui          # latex
-    mailspring            # email client
-    mathpix-snipping-tool # this is magic!
-    selfcontrol           # block distractions
-    slack                 # lab group
-    spotify               # why not
-    the-unarchiver        # easier [un]zipping
-    # visual-studio-code    # code editor
-    whatsapp # benefits of having this on desktop are questionable
-    zoom     # we all work remotely now
-    zotero   # reference manager
+    mactex-no-gui          # latex
+    mathpix-snipping-tool  # this is magic!
+    selfcontrol            # block distractions
+    slack                  # lab group
+    spotify                # why not
+    the-unarchiver         # easier [un]zipping
+    visual-studio-code     # code editor
+    whatsapp               # benefits of having this on desktop are questionable
+    zoom                   # we all work remotely now
+    zotero                 # reference manager
 )
 brew install --cask "${apps[@]}"

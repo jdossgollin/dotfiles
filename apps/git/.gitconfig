@@ -6,7 +6,7 @@
 	user = jdossgollin
 
 [core]
-	excludesfile = /Users/james/.gitignore_global
+	excludesfile = /Users/jamesdoss-gollin/.gitignore_global
 	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [alias]
