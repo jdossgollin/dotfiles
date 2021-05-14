@@ -1,6 +1,6 @@
 [user]
 	name = James Doss-Gollin
-	email = james.dossgollin@gmail.com
+	email = jdossgollin@rice.edu
 
 [github]
 	user = jdossgollin
@@ -98,3 +98,5 @@
 	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main

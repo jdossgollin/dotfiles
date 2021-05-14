@@ -36,6 +36,3 @@ alias killfinder="killall Finder"
 alias killdock="killall Dock"
 alias killmenubar="killall SystemUIServer NotificationCenter"
 alias killos="killfinder && killdock && killmenubar"
-
-# mamba is like a faster, better conda
-alias conda="mamba"

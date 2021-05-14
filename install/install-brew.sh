@@ -24,6 +24,7 @@ apps=(
     # pandoc
     # pandoc-citeproc
     # pympress
+    ruby
     # shellcheck
     tree
     # wget
