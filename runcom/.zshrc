@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jamesdoss-gollin/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
 READLINK=$(which greadlink || which readlink)
@@ -20,9 +20,6 @@ else
     echo "Unable to find dotfiles, exiting."
     return
 fi
-
-# for z navigation
-. $(brew --prefix)/etc/profile.d/z.sh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -77,6 +74,7 @@ plugins=(
     git
     osx
     python
+    z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -119,6 +117,14 @@ PERL_MM_OPT="INSTALL_BASE=/Users/jamesdoss-gollin/perl5"; export PERL_MM_OPT;
 
 ZSH_DISABLE_COMPFIX="true"
 
-# get the brew command
-echo 'eval $(/opt/homebrew/bin/brew shellenv)' >>~/.zprofile
-eval $(/opt/homebrew/bin/brew shellenv)
+# OS specific commands
+case `uname` in
+  Darwin)
+     . $(brew --prefix)/etc/profile.d/z.sh
+    echo 'eval $(/opt/homebrew/bin/brew shellenv)' >>~/.zprofile
+    eval $(/opt/homebrew/bin/brew shellenv)
+  ;;
+  Linux)
+    # commands for Linux go here
+  ;;
+esac

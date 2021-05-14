@@ -15,7 +15,17 @@ prepend-path "/usr/local/sbin"
 prepend-path "$DOTFILES_DIR/bin"
 prepend-path "/Library/TeX/texbin"
 prepend-path "$HOME/anaconda/bin"
-prepend-path "/opt/homebrew/opt/ruby/bin"
+
+case `uname` in
+  Darwin)
+    # unique to Mac
+    prepend-path "/opt/homebrew/opt/ruby/bin"
+  ;;
+  Linux)
+    # commands for Linux go here
+    prepend-path "/snap/bin"
+  ;;
+esac
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
