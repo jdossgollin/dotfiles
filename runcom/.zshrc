@@ -82,39 +82,6 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# source stuff in system folder
-source $DOTFILES_DIR/system/.function
-source $DOTFILES_DIR/system/.alias
-source $DOTFILES_DIR/system/.env
-source $DOTFILES_DIR/system/.path
-# source $DOTFILES_DIR/system/.iterm2_shell_integration.zsh
-
-# source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/jamesdoss-gollin/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/jamesdoss-gollin/anaconda/etc/profile.d/conda.sh" ]; then
-        . "/Users/jamesdoss-gollin/anaconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/jamesdoss-gollin/anaconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# added by travis gem
-[ ! -s /Users/James/.travis/travis.sh ] || source /Users/James/.travis/travis.sh
-
-PATH="/Users/jamesdoss-gollin/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/jamesdoss-gollin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/jamesdoss-gollin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/jamesdoss-gollin/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/jamesdoss-gollin/perl5"; export PERL_MM_OPT;
-
 ZSH_DISABLE_COMPFIX="true"
 
 # OS specific commands
@@ -123,8 +90,33 @@ case `uname` in
      . $(brew --prefix)/etc/profile.d/z.sh
     echo 'eval $(/opt/homebrew/bin/brew shellenv)' >>~/.zprofile
     eval $(/opt/homebrew/bin/brew shellenv)
+    source $DOTFILES_DIR/system/.iterm2_shell_integration.zsh
+    PATH="/Users/jamesdoss-gollin/perl5/bin${PATH:+:${PATH}}"; export PATH;
+    PERL5LIB="/Users/jamesdoss-gollin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+    PERL_LOCAL_LIB_ROOT="/Users/jamesdoss-gollin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+    PERL_MB_OPT="--install_base \"/Users/jamesdoss-gollin/perl5\""; export PERL_MB_OPT;
+    PERL_MM_OPT="INSTALL_BASE=/Users/jamesdoss-gollin/perl5"; export PERL_MM_OPT;
   ;;
   Linux)
-    # commands for Linux go here
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/Users/jamesdoss-gollin/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/Users/jamesdoss-gollin/anaconda/etc/profile.d/conda.sh" ]; then
+            . "/Users/jamesdoss-gollin/anaconda/etc/profile.d/conda.sh"
+        else
+            export PATH="/Users/jamesdoss-gollin/anaconda/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+    # <<< conda initialize <<<
   ;;
 esac
+
+# source stuff in system folder
+source $DOTFILES_DIR/system/.function
+source $DOTFILES_DIR/system/.alias
+source $DOTFILES_DIR/system/.env
+source $DOTFILES_DIR/system/.path
