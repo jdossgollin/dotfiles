@@ -10,9 +10,9 @@ apps=(
     github                 # can be helpful, I suck at git
     google-backup-and-sync # free storage from rice
     iterm2                 # better terminal
-    joplin                 # note taking
     mactex-no-gui          # latex
     mathpix-snipping-tool  # this is magic!
+    notion                 # note taking
     selfcontrol            # block distractions
     slack                  # lab group
     spotify                # why not
