@@ -24,31 +24,29 @@ If you want to use these dotfiles as a starting point, you'll probably want to c
 
 ## Install
 
-On a sparkling fresh installation of macOS:
+First, update the OS and install the xcode developer tools you will need.
 
-```
+```bash
 sudo softwareupdate -i -a
 xcode-select --install
 ```
 
-Install any required apps from the app store.
-Next, install the dotfiles with either Git or curl:
+Next, install this repository
 
-```
+```bash
 git clone https://github.com/jdossgollin/dotfiles.git ~/.dotfiles
+```
+
+**CAUTION:** although in principle one can run this software with a "just press run and go" approach, that never quite works for me. 
+Versions change and stuff happens.
+**DO NOT** do the following:
+
+```bash
 source ~/.dotfiles/install.sh
 ```
 
-### Manual aspects
-
-The process isn't _entirely_ automated
-
-* you will need to enter your password several times along the process
-* to set up the terminal (iTerm) properly, you will need to manually change the font and color schemes (after installing everything)
-May be useful to add to README: to set up iTerm properly, need to
-* you may get an error message from zsh about file security; this is remedied by going to the indicated folders and running `compaudit | xargs chmod g-w` (if you don't have a warning message this is not needed)
-
-And many applications require specific setup.
+Instead, open ~/.dotfiles/install.sh in a text editor (or here on GitHub!) and run it line by line.
+**You want to keep track of any error messages or warnings in the terminal!**
 
 ## The `dotfiles` command
 
