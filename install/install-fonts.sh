@@ -26,7 +26,6 @@ fonts=(
   homebrew/cask-fonts/font-open-sans
   homebrew/cask-fonts/font-open-sans-condensed
   homebrew/cask-fonts/font-roboto
-  # homebrew/cask-fonts/font-roboto-condensed
   homebrew/cask-fonts/font-source-code-pro
   homebrew/cask-fonts/font-source-code-pro-for-powerline
   homebrew/cask-fonts/font-special-elite

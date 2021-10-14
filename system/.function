@@ -2,14 +2,14 @@
 is-macos() { [[ "$OSTYPE" =~ ^darwin ]] || return 1; }
 
 is-executable() {
-  type "$1" > /dev/null 2>&1 || return 1;
+  type "$1" >/dev/null 2>&1 || return 1
 }
 
 is-supported() {
   if [ $# -eq 1 ]; then
-    if eval "$1" > /dev/null 2>&1; then true; else false; fi
+    if eval "$1" >/dev/null 2>&1; then true; else false; fi
   else
-    if eval "$1" > /dev/null 2>&1; then
+    if eval "$1" >/dev/null 2>&1; then
       echo -n "$2"
     else
       echo -n "$3"
@@ -27,7 +27,6 @@ adobe() {
   open -a Adobe\ Acrobat\ Reader\ DC $1
 }
 
-
 # Update config file
 set-config() {
   local KEY="$1"
@@ -37,10 +36,21 @@ set-config() {
   if grep -q "$1=" "$FILE"; then
     sed "s@$KEY=.*@$KEY=\"$VALUE\"@" -i "$FILE"
   else
-    echo "export $KEY=$VALUE" >> "$FILE"
+    echo "export $KEY=$VALUE" >>"$FILE"
   fi
 }
 
-pyclean () {
-    find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+pyclean() {
+  find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+}
+
+# time how fast the shell loads
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
+
+# clear the biber cache
+clean_biber_cache() {
+  rm -rf $(biber --cache)
 }

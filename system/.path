@@ -7,24 +7,25 @@ is-executable getconf && PATH=$($(command -v getconf) PATH)
 
 prepend-path "$DOTFILES_DIR/bin"
 prepend-path "/bin"
-prepend-path "/opt/homebrew/bin"
-prepend-path "/sbin"
 prepend-path "/usr/bin"
+prepend-path "/Library/TeX/texbin"
+prepend-path "/sbin"
 prepend-path "/usr/local/bin"
 prepend-path "/usr/local/sbin"
 prepend-path "/usr/sbin"
-prepend-path "/Library/TeX/texbin"
+prepend-path "/opt/homebrew/bin"
 prepend-path "$HOME/anaconda/bin"
 prepend-path "$HOME/bin"
 
-case `uname` in
-  Darwin)
-    # unique to Mac
-    prepend-path "/opt/homebrew/opt/ruby/bin"
+case $(uname) in
+Darwin)
+  # unique to Mac
+  prepend-path "/opt/homebrew/opt/ruby/bin"
+  prepend-path "/opt/homebrew/Cellar/latexindent/3.11/bin"
   ;;
-  Linux)
-    # commands for Linux go here
-    prepend-path "/snap/bin"
+Linux)
+  # commands for Linux go here
+  prepend-path "/snap/bin"
   ;;
 esac
 

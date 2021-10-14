@@ -12,22 +12,20 @@ brew upgrade
 
 # Install the Homebrew packages I use on a day-to-day basis.
 apps=(
-    aspell
-    boost
-    diff-so-fancy
-    dockutil
-    gcc
-    git
-    git-extras
-    git-lfs
-    nano
-    # pandoc
-    # pandoc-citeproc
-    # pympress
-    ruby
-    # shellcheck
-    tree
-    # wget
+    aspell        # spell checker
+    boost         # some C/C++ libraries
+    diff-so-fancy # when you run git diff, get cleaner output
+    dockutil      # to edit what lives on the dock
+    gcc           # C compiler
+    git           # for version control!
+    git-extras    # extra utilities for git, helpful
+    git-lfs       # use git large file storage (see github docs)
+    nano          # built-in text editor, not powerful but lightweight
+    pandoc        # convert between Markdown, latex, HTML, Word, and more
+    ruby          # for web development
+    shellcheck    # check spelling mistakes in the shell
+    tree          # update the version installed by default
+    wget          # update the version installed by default
 )
 brew install "${apps[@]}"
 
