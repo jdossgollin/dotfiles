@@ -70,3 +70,7 @@ Instead, open ~/.dotfiles/install.sh in a text editor (or here on GitHub!) and r
 * [homebrew-cask](https://caskroom.github.io) / [usage](https://github.com/phinze/homebrew-cask/blob/master/USAGE.md)
 * [Bash prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 * [Solarized Color Theme for GNU ls](https://github.com/seebi/dircolors-solarized)
+
+## Debuggin Resources
+
+* take a look at `~/.zprofile`
