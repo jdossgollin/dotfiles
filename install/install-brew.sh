@@ -14,6 +14,7 @@ brew upgrade
 apps=(
     aspell        # spell checker
     boost         # some C/C++ libraries
+    cheat         # command line help https://github.com/cheat/cheat
     diff-so-fancy # when you run git diff, get cleaner output
     dockutil      # to edit what lives on the dock
     gcc           # C compiler
