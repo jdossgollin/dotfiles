@@ -1,5 +1,3 @@
-zmodload zsh/zprof # for profiling
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -70,6 +68,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
 plugins=(
     brew
     git
@@ -93,7 +92,6 @@ source $DOTFILES_DIR/system/.path
 case `uname` in
   Darwin)
      . $(brew --prefix)/etc/profile.d/z.sh
-    echo 'eval $(/opt/homebrew/bin/brew shellenv)' >>~/.zprofile
     eval $(/opt/homebrew/bin/brew shellenv)
   ;;
   Linux)
