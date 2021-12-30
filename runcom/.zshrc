@@ -72,7 +72,7 @@ HIST_STAMPS="yyyy-mm-dd"
 plugins=(
     brew
     git
-    osx
+    macos
     python
     z
 )
