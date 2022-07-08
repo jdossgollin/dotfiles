@@ -118,3 +118,5 @@ unset __conda_setup
 [ ! -s /Users/James/.travis/travis.sh ] || source /Users/James/.travis/travis.sh
 
 ZSH_DISABLE_COMPFIX="true"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
