@@ -1,3 +1,8 @@
 # manual install
+brew install juliaup # recommended Julia installer
 
-ln -s /Applications/Julia-1.5.app/Contents/Resources/julia/bin/julia /usr/local/bin/julia
+juliaup add 1.6.7
+juliaup add 1.7.3
+juliaup add release
+juliaup default 1.7.3
+juliaup update

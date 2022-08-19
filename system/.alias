@@ -36,6 +36,3 @@ alias killfinder="killall Finder"
 alias killdock="killall Dock"
 alias killmenubar="killall SystemUIServer NotificationCenter"
 alias killos="killfinder && killdock && killmenubar"
-
-# other julia versions
-alias julia16="exec '/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia'"

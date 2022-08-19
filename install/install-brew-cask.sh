@@ -11,15 +11,16 @@ apps=(
     google-backup-and-sync # free storage from rice
     iterm2                 # better terminal
     #mactex-no-gui          # latex
-    mathpix-snipping-tool  # this is magic!
-    notion                 # note taking
-    selfcontrol            # block distractions
-    slack                  # lab group
-    spotify                # why not
-    the-unarchiver         # easier [un]zipping
-    visual-studio-code     # code editor
-    whatsapp               # benefits of having this on desktop are questionable
-    zoom                   # we all work remotely now
-    zotero                 # reference manager
+    mathpix-snipping-tool # this is magic!
+    notion                # note taking
+    selfcontrol           # block distractions
+    slack                 # lab group
+    spotify               # why not
+    the-unarchiver        # easier [un]zipping
+    quarto                # next gen RMarkdown / bookdown
+    visual-studio-code    # code editor
+    whatsapp              # benefits of having this on desktop are questionable
+    zoom                  # we all work remotely now
+    zotero                # reference manager
 )
 brew install --cask "${apps[@]}"
