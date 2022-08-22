@@ -4,7 +4,7 @@ BIN_NAME=$(basename "$0")
 COMMAND_NAME=$1
 SUB_COMMAND_NAME=$2
 
-sub_help () {
+sub_help() {
   echo "Usage: $BIN_NAME <command>"
   echo
   echo "Commands:"
@@ -18,17 +18,18 @@ sub_help () {
   echo "   updateall        Update all packages and pkg managers"
 }
 
-sub_edit () {
+sub_edit() {
   sh -c "$DOTFILES_IDE $DOTFILES_DIR"
 }
 
-sub_update () {
+sub_update() {
   sudo softwareupdate -i -a
   brew update
   brew upgrade
+  juliaup update
 }
 
-sub_updateall () {
+sub_updateall() {
   sudo softwareupdate -i -a
   brew update
   brew upgrade
@@ -36,33 +37,32 @@ sub_updateall () {
   sudo tlmgr update --all
 }
 
-
-sub_clean () {
+sub_clean() {
   brew cleanup
 }
 
-sub_macos () {
+sub_macos() {
   for DEFAULTS_FILE in "${DOTFILES_DIR}"/macos/defaults*.sh; do
     echo "Applying ${DEFAULTS_FILE}" && . "${DEFAULTS_FILE}"
   done
   echo "Done. Some changes may require a logout/restart to take effect."
 }
 
-sub_dock () {
+sub_dock() {
   . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
 }
 
 case $COMMAND_NAME in
-  "" | "-h" | "--help")
+"" | "-h" | "--help")
+  sub_help
+  ;;
+*)
+  shift
+  sub_${COMMAND_NAME} $@
+  if [ $? = 127 ]; then
+    echo "'$COMMAND_NAME' is not a known command or has errors." >&2
     sub_help
-    ;;
-  *)
-    shift
-    sub_${COMMAND_NAME} $@
-    if [ $? = 127 ]; then
-      echo "'$COMMAND_NAME' is not a known command or has errors." >&2
-      sub_help
-      exit 1
-    fi
-    ;;
+    exit 1
+  fi
+  ;;
 esac
