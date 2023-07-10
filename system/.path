@@ -16,6 +16,7 @@ prepend-path "/usr/sbin"
 prepend-path "/opt/homebrew/bin"
 prepend-path "$HOME/anaconda/bin"
 prepend-path "$HOME/bin"
+prepend-path "$HOME/.local/bin"
 
 case $(uname) in
 Darwin)
