@@ -16,19 +16,22 @@ apps=(
     boost         # some C/C++ libraries
     cheat         # command line help https://github.com/cheat/cheat
     diff-so-fancy # when you run git diff, get cleaner output
-    dockutil      # to edit what lives on the dock
     gcc           # C compiler
     git           # for version control!
     git-extras    # extra utilities for git, helpful
     git-lfs       # use git large file storage (see github docs)
     nano          # built-in text editor, not powerful but lightweight
     pandoc        # convert between Markdown, latex, HTML, Word, and more
-    ruby          # for web development
     shellcheck    # check spelling mistakes in the shell
     tree          # update the version installed by default
     wget          # update the version installed by default
 )
 brew install "${apps[@]}"
+
+# the default version of dockutil on brew is old and doesn't work
+# workaround: https://github.com/webpro/dotfiles/issues/30
+brew tap lotyp/homebrew-formulae
+brew install lotyp/formulae/dockutil
 
 # Install git LFS
 git lfs install —system

@@ -5,12 +5,10 @@ fi
 
 # List of apps
 apps=(
-    brave-browser          # second browser to separate work/life
-    firefox                # keep it up to date!
-    github                 # can be helpful, I suck at git
-    google-backup-and-sync # free storage from rice
-    iterm2                 # better terminal
-    #mactex-no-gui          # latex
+    brave-browser         # second browser to separate work/life
+    firefox               # keep it up to date!
+    github                # can be helpful, I suck at git
+    iterm2                # better terminal
     mathpix-snipping-tool # this is magic!
     notion                # note taking
     selfcontrol           # block distractions
