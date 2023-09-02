@@ -20,5 +20,6 @@ apps=(
     whatsapp              # benefits of having this on desktop are questionable
     zoom                  # we all work remotely now
     zotero                # reference manager
+    zulip                 # chat
 )
 brew install --cask "${apps[@]}"
