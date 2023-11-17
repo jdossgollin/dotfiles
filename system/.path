@@ -37,3 +37,6 @@ PATH=$(echo -n $PATH | awk -v RS=: '{ if (!arr[$0]++) {printf("%s%s",!ln++?"":":
 
 # Wrap up
 export PATH
+
+# Quarto
+export QUARTO_PYTHON=$(which python)
