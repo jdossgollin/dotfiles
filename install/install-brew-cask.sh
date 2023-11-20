@@ -11,6 +11,8 @@ apps=(
     iterm2                # better terminal
     mathpix-snipping-tool # this is magic!
     notion                # note taking
+    raindropio            # bookmark manager
+    readdle-spark         # Spark email
     selfcontrol           # block distractions
     slack                 # lab group
     spotify               # why not
