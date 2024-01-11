@@ -12,7 +12,6 @@ apps=(
     mathpix-snipping-tool # this is magic!
     notion                # note taking
     raindropio            # bookmark manager
-    readdle-spark         # Spark email
     selfcontrol           # block distractions
     slack                 # lab group
     spotify               # why not
@@ -22,6 +21,5 @@ apps=(
     whatsapp              # benefits of having this on desktop are questionable
     zoom                  # we all work remotely now
     zotero                # reference manager
-    zulip                 # chat
 )
 brew install --cask "${apps[@]}"
