@@ -4,22 +4,26 @@ if ! is-macos -o ! is-executable brew; then
 fi
 
 # List of apps
-apps=(
-    brave-browser         # second browser to separate work/life
-    firefox               # keep it up to date!
-    github                # can be helpful, I suck at git
-    iterm2                # better terminal
-    mathpix-snipping-tool # this is magic!
-    notion                # note taking
-    raindropio            # bookmark manager
-    selfcontrol           # block distractions
-    slack                 # lab group
-    spotify               # why not
-    the-unarchiver        # easier [un]zipping
-    quarto                # next gen RMarkdown / bookdown
-    visual-studio-code    # code editor
-    whatsapp              # benefits of having this on desktop are questionable
-    zoom                  # we all work remotely now
-    zotero                # reference manager
+cask_apps=(
+    brave-browser      # second browser to separate work/life
+    firefox            # keep it up to date!
+    github             # can be helpful, I suck at git
+    iterm2             # better terminal
+    miniconda          # python package manager
+    obsidian           # note taking
+    raindropio         # bookmark manager
+    rambox-pro         # all-in-one messaging
+    slack              # lab group
+    spotify            # why not
+    the-unarchiver     # easier [un]zipping
+    quarto             # next gen RMarkdown / bookdown
+    visual-studio-code # code editor
+    zoom               # we all work remotely now
+    zotero             # reference manager
+    visual-studio-code
+    visual-studio-code@insiders
 )
-brew install --cask "${apps[@]}"
+brew install --cask "${cask_apps[@]}"
+
+brew tap buo/cask-upgrade
+brew cu --all --cleanup --yes

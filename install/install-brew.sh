@@ -24,14 +24,17 @@ apps=(
     pandoc        # convert between Markdown, latex, HTML, Word, and more
     shellcheck    # check spelling mistakes in the shell
     tree          # update the version installed by default
+    uvicorn       # python package manager
     wget          # update the version installed by default
 )
 brew install "${apps[@]}"
 
 # the default version of dockutil on brew is old and doesn't work
 # workaround: https://github.com/webpro/dotfiles/issues/30
-brew tap lotyp/homebrew-formulae
-brew install lotyp/formulae/dockutil
+brew install dockutil
+
+# Install cask apps
+brew tap buo/cask-upgrade
 
 # Install git LFS
 git lfs install —system
