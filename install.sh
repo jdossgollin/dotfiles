@@ -1,5 +1,22 @@
 #!/usr/bin/env bash
 
+# Setup logging
+mkdir -p ~/.dotfiles/logs
+LOG_FILE="$HOME/.dotfiles/logs/install_$(date '+%Y%m%d_%H%M%S').log"
+exec 1> >(tee "${LOG_FILE}")
+exec 2> >(tee "${LOG_FILE}" >&2)
+echo "Installation started at $(date '+%Y-%m-%d %H:%M:%S')"
+
+# Error handling
+set -e
+trap 'echo "[$(date '+%Y-%m-%d %H:%M:%S')] Error on line $LINENO. Exit code: $?" | tee -a "${LOG_FILE}"' ERR
+
+# Version check
+if [[ "$(sw_vers -productVersion)" < "10.15" ]]; then
+    echo "Error: macOS 10.15 or higher required"
+    exit 1
+fi
+
 # get the brew command
 echo 'eval $(/opt/homebrew/bin/brew shellenv)' >>~/.zprofile
 eval $(/opt/homebrew/bin/brew shellenv)
@@ -13,13 +30,20 @@ DOTFILES_EXTRA_DIR="$DOTFILES_DIR/.extra"
 # get access to functions
 . "$DOTFILES_DIR/system/.function"
 
+# Create functions for modular installation
+install_package() {
+    echo "Installing $1..."
+    if ! $2; then
+        echo "Failed to install $1"
+        return 1
+    fi
+}
+
 # use package managers to install some key packages
-. "$DOTFILES_DIR/install/install-zsh.sh"       # use zsh
-. "$DOTFILES_DIR/install/install-brew.sh"      # install software on Homebrew
-. "$DOTFILES_DIR/install/install-brew-cask.sh" # install apps using Homebrew
-. "$DOTFILES_DIR/install/install-conda.sh"     # install apps using Homebrew
-. "$DOTFILES_DIR/install/install-fonts.sh"     # install fonts using Homebrew
-# . "$DOTFILES_DIR/install/install-docker.sh"    # use docker!
+install_package "zsh" ". $DOTFILES_DIR/install/install-zsh.sh"
+install_package "brew" ". $DOTFILES_DIR/install/install-brew.sh"
+install_package "brew cask" ". $DOTFILES_DIR/install/install-brew-cask.sh"
+install_package "fonts" ". $DOTFILES_DIR/install/install-fonts.sh"
 
 # symbolic links for shell, git, etc
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~

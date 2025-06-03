@@ -29,6 +29,22 @@ apps=(
 )
 brew install "${apps[@]}"
 
+# Group dependencies by purpose
+development_tools=(
+    gcc@11        # Pin gcc version
+    git@2.39.0    # Pin git version
+    git-lfs@3.2.0 # Pin git-lfs version
+)
+
+utilities=(
+    aspell@0.60.8
+    pandoc@2.19
+    wget@1.21.3
+)
+
+brew install "${development_tools[@]}"
+brew install "${utilities[@]}"
+
 # the default version of dockutil on brew is old and doesn't work
 # workaround: https://github.com/webpro/dotfiles/issues/30
 brew install dockutil

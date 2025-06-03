@@ -1,13 +1,14 @@
 # dotfiles
+
 [![Build Status](https://travis-ci.com/jdossgollin/dotfiles.svg?branch=master)](https://travis-ci.com/jdossgollin/dotfiles)
 
 These are my dotfiles.
 Take anything you want, but at your own risk.
 Most of what I have comes from other, better sources, particularly:
 
-* http://github.com/webpro/dotfiles/
-* http://efavdb.com/dotfiles/
-* http://jilles.me/badassify-your-terminal-and-shell/
+* <http://github.com/webpro/dotfiles/>
+* <http://efavdb.com/dotfiles/>
+* <http://jilles.me/badassify-your-terminal-and-shell/>
 
 ## Overview
 
@@ -37,7 +38,7 @@ Next, install this repository
 git clone https://github.com/jdossgollin/dotfiles.git ~/.dotfiles
 ```
 
-**CAUTION:** although in principle one can run this software with a "just press run and go" approach, that never quite works for me. 
+**CAUTION:** although in principle one can run this software with a "just press run and go" approach, that never quite works for me.
 Versions change and stuff happens.
 **DO NOT** do the following:
 
@@ -48,20 +49,48 @@ source ~/.dotfiles/install.sh
 Instead, open ~/.dotfiles/install.sh in a text editor (or here on GitHub!) and run it line by line.
 **You want to keep track of any error messages or warnings in the terminal!**
 
+## Prerequisites
+
+* macOS 10.15 or higher
+* Git
+* Terminal access
+* Admin privileges
+
+## Before Installing
+
+Back up your existing dotfiles:
+
+```bash
+mkdir -p ~/.dotfiles-backup
+for file in ~/.{zshrc,gitconfig,vimrc}; do
+    [ -f "$file" ] && mv "$file" ~/.dotfiles-backup/
+done
+```
+
 ## The `dotfiles` command
 
-```
-    $ dotfiles help
-    Usage: dotfiles <command>
+```bash
+$ dotfiles help
+Usage: dotfiles <command>
 
-    Commands:
-       clean            Clean up caches (brew, npm, gem, rvm)
-       dock             Apply macOS Dock settings
-       edit             Open dotfiles in VS code
-       help             This help message
-       macos            Apply macOS system defaults
-       update           Update packages and pkg managers (OS, brew, npm, gem)
+Commands:
+   clean            Clean up caches (brew, npm, gem, rvm)
+   dock             Apply macOS Dock settings
+   edit             Open dotfiles in VS code
+   help             This help message
+   macos            Apply macOS system defaults
+   update           Update packages and pkg managers (OS, brew, npm, gem)
 ```
+
+## Debugging Resources
+
+Common issues:
+
+* Check shell initialization order: `~/.zshenv` → `~/.zprofile` → `~/.zshrc`
+* Verify Homebrew installation: `brew doctor`
+* Check for conflicting dotfiles: `ls -la ~/.{zshrc,gitconfig,vimrc}`
+* Review logs: `~/.dotfiles/install.log`
+* For PATH issues: `echo $PATH`
 
 ## Additional resources
 
@@ -70,7 +99,3 @@ Instead, open ~/.dotfiles/install.sh in a text editor (or here on GitHub!) and r
 * [homebrew-cask](https://caskroom.github.io) / [usage](https://github.com/phinze/homebrew-cask/blob/master/USAGE.md)
 * [Bash prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 * [Solarized Color Theme for GNU ls](https://github.com/seebi/dircolors-solarized)
-
-## Debuggin Resources
-
-* take a look at `~/.zprofile`

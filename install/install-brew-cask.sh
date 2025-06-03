@@ -20,8 +20,6 @@ cask_apps=(
     visual-studio-code # code editor
     zoom               # we all work remotely now
     zotero             # reference manager
-    visual-studio-code
-    visual-studio-code@insiders
 )
 brew install --cask "${cask_apps[@]}"
 

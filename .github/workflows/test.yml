@@ -1,0 +1,36 @@
+name: Test Install
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install Homebrew
+      run: |
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        echo "HOMEBREW_PREFIX=/opt/homebrew" >> $GITHUB_ENV
+        echo "/opt/homebrew/bin:/opt/homebrew/sbin" >> $GITHUB_PATH
+    
+    - name: Run install script
+      run: bash install.sh
+      
+    - name: Verify installation
+      run: |
+        # Check core tools
+        which zsh
+        which brew
+        brew --version
+        
+        # Check symlinks
+        test -L ~/.zshrc
+        test -L ~/.gitconfig
+        
+        # Test dotfiles command
+        ~/.dotfiles/bin/dotfiles help

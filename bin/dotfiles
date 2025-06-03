@@ -38,6 +38,9 @@ sub_updateall() {
 
 sub_clean() {
   brew cleanup
+  conda clean --all -y
+  rm -rf ~/Library/Caches/*
+  rm -rf ~/Library/Developer/Xcode/DerivedData/*
 }
 
 sub_macos() {
