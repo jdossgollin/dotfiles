@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+BIN_NAME=$(basename "$0")
+COMMAND_NAME=$1
+SUB_COMMAND_NAME=$2
+
+sub_help() {
+    echo "Usage: $BIN_NAME <command>"
+    echo
+    echo "Commands:"
+    echo "   conda            Uninstall all conda environments"
+}
+
+sub_conda() {
+    for environment_name in $(conda env list | grep -v "^#" | grep -v "^base" | cut -d' ' -f1); do
+        if [ -n "$environment_name" ]; then
+            echo "Removing environment: $environment_name"
+            conda env remove --name "$environment_name" --yes
+        fi
+    done
+}
+
+case $COMMAND_NAME in
+"" | "-h" | "--help")
+    sub_help
+    ;;
+*)
+    shift
+    sub_${COMMAND_NAME} $@
+    if [ $? = 127 ]; then
+        echo "'$COMMAND_NAME' is not a known command or has errors." >&2
+        sub_help
+        exit 1
+    fi
+    ;;
+esac

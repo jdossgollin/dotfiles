@@ -56,7 +56,7 @@ ln -sfv "$DOTFILES_DIR/apps/git/.gitignore_global" ~
 git config --global core.excludesfile ~/.gitignore_global
 
 # enable permissions for all the binaries in ./bin
-find $DOTFILES_DIR/bin/ -type f -name "*.sh" -exec chmod +x {} \;
+find $DOTFILES_DIR/bin/ -type f -exec chmod +x {} \;
 
 # OSX defaults
 . "$DOTFILES_DIR/macos/dock.sh"

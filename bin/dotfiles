@@ -14,7 +14,6 @@ sub_help() {
   echo "   help             This help message"
   echo "   macos            Apply macOS system defaults"
   echo "   update           Update core packages and pkg managers"
-  echo "   updateall        Update all packages and pkg managers"
 }
 
 sub_edit() {
@@ -26,18 +25,11 @@ sub_update() {
   brew update
   brew upgrade
   juliaup update
-}
-
-sub_updateall() {
-  sudo softwareupdate -i -a
-  brew update
-  brew upgrade
-  sudo tlmgr update --self
-  sudo tlmgr update --all
+  conda update -n base conda
 }
 
 sub_clean() {
-  brew cleanup
+  brew cleanup --prune=all
   conda clean --all --yes
   juliaup gc
 }

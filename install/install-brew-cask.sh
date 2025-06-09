@@ -12,14 +12,16 @@ cask_apps=(
     miniconda          # python package manager
     obsidian           # note taking
     raindropio         # bookmark manager
-    rambox-pro         # all-in-one messaging
     slack              # lab group
     spotify            # why not
+    superhuman         # email client
     the-unarchiver     # easier [un]zipping
     quarto             # next gen RMarkdown / bookdown
     visual-studio-code # code editor
-    zoom               # we all work remotely now
-    zotero             # reference manager
+    visual-studio-code@insiders
+    whatsapp # messaging
+    zoom     # we all work remotely now
+    zotero   # reference manager
 )
 brew install --cask "${cask_apps[@]}"
 
