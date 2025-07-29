@@ -80,7 +80,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Move conda initialization to the end since it's slow
 if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-    . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+# . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"  # commented out by conda initialize
 else
     export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
 fi
@@ -108,3 +108,31 @@ esac
 
 ZSH_DISABLE_COMPFIX="true"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/jamesdoss-gollin/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/jamesdoss-gollin/anaconda/etc/profile.d/conda.sh" ]; then
+        . "/Users/jamesdoss-gollin/anaconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/jamesdoss-gollin/anaconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+export MAMBA_EXE='/Users/jamesdoss-gollin/anaconda/bin/mamba';
+export MAMBA_ROOT_PREFIX='/Users/jamesdoss-gollin/.local/share/mamba';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<

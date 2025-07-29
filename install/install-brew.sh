@@ -21,25 +21,26 @@ apps=(
     git-extras    # extra utilities for git, helpful
     git-lfs       # use git large file storage (see github docs)
     nano          # built-in text editor, not powerful but lightweight
-    pandoc        # convert between Markdown, latex, HTML, Word, and more
-    shellcheck    # check spelling mistakes in the shell
-    tree          # update the version installed by default
-    uvicorn       # python package manager
-    wget          # update the version installed by default
+    node
+    pandoc     # convert between Markdown, latex, HTML, Word, and more
+    shellcheck # check spelling mistakes in the shell
+    tree       # update the version installed by default
+    uvicorn    # python package manager
+    wget       # update the version installed by default
 )
 brew install "${apps[@]}"
 
 # Group dependencies by purpose
 development_tools=(
-    gcc@11        # Pin gcc version
-    git@2.39.0    # Pin git version
-    git-lfs@3.2.0 # Pin git-lfs version
+    gcc     # Pin gcc version
+    git     # Pin git version
+    git-lfs # Pin git-lfs version
 )
 
 utilities=(
-    aspell@0.60.8
-    pandoc@2.19
-    wget@1.21.3
+    aspell
+    pandoc
+    wget
 )
 
 brew install "${development_tools[@]}"
@@ -48,10 +49,6 @@ brew install "${utilities[@]}"
 # the default version of dockutil on brew is old and doesn't work
 # workaround: https://github.com/webpro/dotfiles/issues/30
 brew install dockutil
-
-# Install cask apps
-brew tap buo/cask-upgrade
-
 # Install git LFS
 git lfs install —system
 

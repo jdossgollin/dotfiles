@@ -26,6 +26,7 @@ sub_update() {
   brew upgrade
   juliaup update
   conda update -n base conda
+  npm update -g
 }
 
 sub_clean() {

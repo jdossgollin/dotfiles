@@ -9,7 +9,6 @@ cask_apps=(
     firefox            # keep it up to date!
     github             # can be helpful, I suck at git
     iterm2             # better terminal
-    miniconda          # python package manager
     obsidian           # note taking
     raindropio         # bookmark manager
     slack              # lab group
@@ -25,5 +24,7 @@ cask_apps=(
 )
 brew install --cask "${cask_apps[@]}"
 
+# Install cask apps
 brew tap buo/cask-upgrade
+
 brew cu --all --cleanup --yes
