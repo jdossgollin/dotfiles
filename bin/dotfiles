@@ -25,8 +25,9 @@ sub_update() {
   brew update
   brew upgrade
   juliaup update
-  conda update -n base conda
+  conda update -n base conda --yes
   npm update -g
+  brew link --overwrite node # seems to be necessary although shouldn't
 }
 
 sub_clean() {
