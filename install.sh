@@ -9,7 +9,7 @@ echo "Installation started at $(date '+%Y-%m-%d %H:%M:%S')"
 
 # Error handling
 set -e
-trap 'echo "[$(date '+%Y-%m-%d %H:%M:%S')] Error on line $LINENO. Exit code: $?" | tee -a "${LOG_FILE}"' ERR
+trap 'echo "[$(date "+%Y-%m-%d %H:%M:%S")] Error on line $LINENO. Exit code: $?" | tee -a "${LOG_FILE}"' ERR
 
 # Get current dir (so we can run this script from anywhere)
 export DOTFILES_DIR DOTFILES_CACHE DOTFILES_EXTRA_DIR
