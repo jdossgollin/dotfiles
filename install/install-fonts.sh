@@ -3,7 +3,6 @@
 if is-macos 2>/dev/null; then
     # macOS font installation via Homebrew
     fonts=(
-        font-changa-one
         font-cooper-hewitt
         font-cormorant
         font-crimson-text
