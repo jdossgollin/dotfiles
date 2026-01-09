@@ -16,15 +16,14 @@ dockutil --no-restart --add '' --type small-spacer --section apps
 
 # Messaging
 add_app "/Applications/Superhuman.app"
-add_app "/Applications/Messages.app"
+add_app "/System/Applications/Messages.app"
 add_app "/Applications/Slack.app"
 add_app "/Applications/zoom.us.app"
 
 dockutil --no-restart --add '' --type small-spacer --section apps
 
 # Time Management
-add_app "$HOME/Applications/Reclaim.app"
-add_app "$HOME/Applications/Todoist.app"
+add_app "$HOME/Applications/Skedpal.app"
 add_app "$HOME/Applications/Trello.app"
 add_app "$HOME/Applications/Fireflies.app"
 

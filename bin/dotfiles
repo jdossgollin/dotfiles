@@ -24,6 +24,7 @@ sub_update() {
   sudo softwareupdate -i -a
   brew update
   brew upgrade
+  brew cu --all --cleanup --yes
   juliaup update
   conda update -n base conda --yes
   npm update -g
