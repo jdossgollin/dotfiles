@@ -13,11 +13,9 @@ cask_apps=(
     raindropio         # bookmark manager
     slack              # lab group
     spotify            # why not
-    superhuman         # email client
     the-unarchiver     # easier [un]zipping
     quarto             # next gen RMarkdown / bookdown
     visual-studio-code # code editor
-    visual-studio-code@insiders
     whatsapp # messaging
     zoom     # we all work remotely now
     zotero   # reference manager
