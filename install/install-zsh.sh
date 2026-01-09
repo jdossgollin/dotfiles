@@ -1,21 +1,31 @@
-brew install zsh
+#!/usr/bin/env bash
 
-# change shells -- first add it to list of shells
-command -v zsh | sudo tee -a /etc/shells
-if test ! ${CI:-}; then
-    # it will ask for a password on Travis CI
-    chsh -s `which zsh`
+# Install zsh based on platform
+if is-macos 2>/dev/null; then
+    brew install zsh
+    brew install zsh-syntax-highlighting
+    brew install z
+elif is-apt-available 2>/dev/null; then
+    sudo apt-get install -y zsh zsh-syntax-highlighting
+fi
+
+# Change default shell - first add to list of shells
+if ! grep -q "$(command -v zsh)" /etc/shells 2>/dev/null; then
+    command -v zsh | sudo tee -a /etc/shells
+fi
+
+# Change shell (skip in CI environments)
+if [[ -z "${CI:-}" ]]; then
+    chsh -s "$(command -v zsh)"
 fi
 
 # Oh My Zsh
-curl -L http://install.ohmyz.sh | sh
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
 
-# Syntax highlighting
-brew install zsh-syntax-highlighting
-
-# install z for completion
-brew install z
-
-# powerline 10 theme
-# https://github.com/romkatv/powerlevel10k#oh-my-zsh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
+# Powerlevel10k theme
+if [[ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]]; then
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
+        "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+fi

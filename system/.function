@@ -1,6 +1,22 @@
-# Feature detection
+# Platform Detection
 is-macos() { [[ "$OSTYPE" =~ ^darwin ]] || return 1; }
+is-linux() { [[ "$OSTYPE" =~ ^linux ]] || return 1; }
+is-ubuntu() { is-linux && [[ -f /etc/lsb-release ]] && grep -q "Ubuntu" /etc/lsb-release 2>/dev/null; }
+is-apt-available() { command -v apt-get >/dev/null 2>&1; }
+is-snap-available() { command -v snap >/dev/null 2>&1; }
 
+# Dynamic Homebrew prefix (supports Intel + Apple Silicon)
+get-brew-prefix() {
+  if is-macos; then
+    if [[ "$(uname -m)" == "arm64" ]]; then
+      echo "/opt/homebrew"
+    else
+      echo "/usr/local"
+    fi
+  fi
+}
+
+# Feature detection
 is-executable() {
   type "$1" >/dev/null 2>&1 || return 1
 }

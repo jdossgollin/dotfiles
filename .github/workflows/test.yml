@@ -2,35 +2,47 @@ name: Test Install
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   test:
-    runs-on: macos-latest
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Install Homebrew
+    - uses: actions/checkout@v4
+
+    - name: Install Homebrew (macOS)
+      if: runner.os == 'macOS'
       run: |
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        echo "HOMEBREW_PREFIX=/opt/homebrew" >> $GITHUB_ENV
         echo "/opt/homebrew/bin:/opt/homebrew/sbin" >> $GITHUB_PATH
-    
+
+    - name: Install dependencies (Ubuntu)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y git curl
+
     - name: Run install script
       run: bash install.sh
-      
+
     - name: Verify installation
       run: |
-        # Check core tools
         which zsh
-        which brew
-        brew --version
-        
-        # Check symlinks
         test -L ~/.zshrc
         test -L ~/.gitconfig
-        
-        # Test dotfiles command
         ~/.dotfiles/bin/dotfiles help
+
+    - name: Verify macOS-specific (macOS only)
+      if: runner.os == 'macOS'
+      run: |
+        which brew
+        brew --version
+
+    - name: Verify Linux-specific (Ubuntu only)
+      if: runner.os == 'Linux'
+      run: |
+        which apt-get

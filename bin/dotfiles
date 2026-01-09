@@ -4,16 +4,24 @@ BIN_NAME=$(basename "$0")
 COMMAND_NAME=$1
 SUB_COMMAND_NAME=$2
 
+# Source platform detection functions
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="$(dirname "$SCRIPT_DIR")"
+. "$DOTFILES_DIR/system/.function"
+
 sub_help() {
   echo "Usage: $BIN_NAME <command>"
   echo
   echo "Commands:"
-  echo "   clean            Clean up caches (brew, apm, conda)"
-  echo "   dock             Apply macOS Dock settings"
+  echo "   clean            Clean up caches (brew/apt, conda, julia)"
   echo "   edit             Open dotfiles in IDE ($DOTFILES_IDE)"
   echo "   help             This help message"
-  echo "   macos            Apply macOS system defaults"
-  echo "   update           Update core packages and pkg managers"
+  echo "   themes           Update shell themes (oh-my-zsh, powerlevel10k)"
+  echo "   update           Update packages and package managers"
+  if is-macos; then
+    echo "   dock             Apply macOS Dock settings"
+    echo "   macos            Apply macOS system defaults"
+  fi
 }
 
 sub_edit() {
@@ -21,23 +29,45 @@ sub_edit() {
 }
 
 sub_update() {
-  sudo softwareupdate -i -a
-  brew update
-  brew upgrade
-  brew cu --all --cleanup --yes
-  juliaup update
-  conda update -n base conda --yes
-  npm update -g
-  brew link --overwrite node # seems to be necessary although shouldn't
+  if is-macos; then
+    sudo softwareupdate -i -a
+    brew update
+    brew upgrade
+    brew upgrade --cask --greedy
+  elif is-apt-available; then
+    sudo apt-get update
+    sudo apt-get upgrade -y
+    sudo apt-get autoremove -y
+    if is-snap-available; then
+      sudo snap refresh
+    fi
+  fi
+
+  # Cross-platform updates
+  command -v juliaup >/dev/null && juliaup update
+  command -v conda >/dev/null && conda update -n base conda --yes
+  command -v npm >/dev/null && npm update -g
 }
 
 sub_clean() {
-  brew cleanup --prune=all
-  conda clean --all --yes
-  juliaup gc
+  if is-macos && command -v brew >/dev/null; then
+    brew cleanup --prune=all
+  fi
+
+  if is-apt-available; then
+    sudo apt-get autoremove -y
+    sudo apt-get autoclean -y
+  fi
+
+  command -v conda >/dev/null && conda clean --all --yes
+  command -v juliaup >/dev/null && juliaup gc
 }
 
 sub_macos() {
+  if ! is-macos; then
+    echo "Error: 'macos' command is only available on macOS"
+    return 1
+  fi
   for DEFAULTS_FILE in "${DOTFILES_DIR}"/macos/defaults*.sh; do
     echo "Applying ${DEFAULTS_FILE}" && . "${DEFAULTS_FILE}"
   done
@@ -45,7 +75,35 @@ sub_macos() {
 }
 
 sub_dock() {
+  if ! is-macos; then
+    echo "Error: 'dock' command is only available on macOS"
+    return 1
+  fi
   . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
+}
+
+sub_themes() {
+  echo "Updating shell themes..."
+
+  # Update Oh My Zsh
+  if [[ -d "$HOME/.oh-my-zsh" ]]; then
+    echo "Updating Oh My Zsh..."
+    git -C "$HOME/.oh-my-zsh" pull --rebase --stat origin master
+  fi
+
+  # Update Powerlevel10k
+  P10K_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+  if [[ -d "$P10K_DIR" ]]; then
+    echo "Updating Powerlevel10k..."
+    git -C "$P10K_DIR" pull --rebase --stat origin master
+
+    # Update gitstatus binary
+    echo "Updating gitstatus..."
+    "$P10K_DIR/gitstatus/install" -f
+  fi
+
+  echo ""
+  echo "Theme updates complete. Run 'exec zsh' to reload."
 }
 
 case $COMMAND_NAME in

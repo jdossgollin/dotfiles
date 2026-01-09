@@ -78,61 +78,76 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Move conda initialization to the end since it's slow
-if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-# . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"  # commented out by conda initialize
-else
-    export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-fi
-
-# Must be at the end
+# Must be at the end of oh-my-zsh setup
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# source stuff in system folder
+# Source system configuration files
 source $DOTFILES_DIR/system/.function
 source $DOTFILES_DIR/system/.alias
 source $DOTFILES_DIR/system/.env
 source $DOTFILES_DIR/system/.path
-source $DOTFILES_DIR/secrets/.api_keys
+
+# Source API keys if they exist (gitignored)
+[[ -f "$DOTFILES_DIR/secrets/.api_keys" ]] && source "$DOTFILES_DIR/secrets/.api_keys"
 
 # OS specific commands
-case `uname` in
+case $(uname) in
   Darwin)
-     . $(brew --prefix)/etc/profile.d/z.sh
-    eval $(/opt/homebrew/bin/brew shellenv)
-  ;;
+    # Note: z plugin already loaded above, brew shellenv should be in .zprofile
+    ;;
   Linux)
-    # commands for Linux go here
-  ;;
+    # Linux-specific commands
+    ;;
 esac
 
 ZSH_DISABLE_COMPFIX="true"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/jamesdoss-gollin/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/jamesdoss-gollin/anaconda/etc/profile.d/conda.sh" ]; then
-        . "/Users/jamesdoss-gollin/anaconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/jamesdoss-gollin/anaconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
+# === LAZY CONDA/MAMBA INITIALIZATION ===
+# Saves 200-500ms on shell startup by deferring init until first use
 
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba shell init' !!
-export MAMBA_EXE='/Users/jamesdoss-gollin/anaconda/bin/mamba';
-export MAMBA_ROOT_PREFIX='/Users/jamesdoss-gollin/.local/share/mamba';
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+# Detect conda location based on platform
+if [[ -d "$HOME/miniforge3" ]]; then
+    _CONDA_ROOT="$HOME/miniforge3"
+elif [[ -d "$HOME/anaconda" ]]; then
+    _CONDA_ROOT="$HOME/anaconda"
+elif [[ -d "$(get-brew-prefix 2>/dev/null)/Caskroom/miniconda/base" ]]; then
+    _CONDA_ROOT="$(get-brew-prefix)/Caskroom/miniconda/base"
+elif [[ -d "/opt/homebrew/Caskroom/miniconda/base" ]]; then
+    _CONDA_ROOT="/opt/homebrew/Caskroom/miniconda/base"
+elif [[ -d "/usr/local/Caskroom/miniconda/base" ]]; then
+    _CONDA_ROOT="/usr/local/Caskroom/miniconda/base"
 fi
-unset __mamba_setup
-# <<< mamba initialize <<<
+
+if [[ -n "$_CONDA_ROOT" ]]; then
+    __conda_lazy_init() {
+        # Remove the lazy wrapper functions
+        unfunction conda mamba 2>/dev/null
+
+        # Actually initialize conda
+        __conda_setup="$("$_CONDA_ROOT/bin/conda" 'shell.zsh' 'hook' 2>/dev/null)"
+        if [[ $? -eq 0 ]]; then
+            eval "$__conda_setup"
+        else
+            [[ -f "$_CONDA_ROOT/etc/profile.d/conda.sh" ]] && . "$_CONDA_ROOT/etc/profile.d/conda.sh"
+        fi
+        unset __conda_setup
+
+        # Initialize mamba if available
+        if [[ -x "$_CONDA_ROOT/bin/mamba" ]]; then
+            export MAMBA_EXE="$_CONDA_ROOT/bin/mamba"
+            export MAMBA_ROOT_PREFIX="$_CONDA_ROOT"
+        fi
+    }
+
+    # Wrapper functions - replaced on first call
+    conda() {
+        __conda_lazy_init
+        conda "$@"
+    }
+
+    mamba() {
+        __conda_lazy_init
+        mamba "$@"
+    }
+fi

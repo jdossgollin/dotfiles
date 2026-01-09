@@ -15,17 +15,9 @@ add_app "/Applications/Firefox.app"
 dockutil --no-restart --add '' --type small-spacer --section apps
 
 # Messaging
-add_app "/Applications/Superhuman.app"
 add_app "/System/Applications/Messages.app"
 add_app "/Applications/Slack.app"
 add_app "/Applications/zoom.us.app"
-
-dockutil --no-restart --add '' --type small-spacer --section apps
-
-# Time Management
-add_app "$HOME/Applications/Skedpal.app"
-add_app "$HOME/Applications/Trello.app"
-add_app "$HOME/Applications/Fireflies.app"
 
 dockutil --no-restart --add '' --type small-spacer --section apps
 

@@ -11,26 +11,42 @@ echo "Installation started at $(date '+%Y-%m-%d %H:%M:%S')"
 set -e
 trap 'echo "[$(date '+%Y-%m-%d %H:%M:%S')] Error on line $LINENO. Exit code: $?" | tee -a "${LOG_FILE}"' ERR
 
-# Version check
-if [[ "$(sw_vers -productVersion)" < "10.15" ]]; then
-    echo "Error: macOS 10.15 or higher required"
-    exit 1
-fi
-
-# get the brew command
-echo 'eval $(/opt/homebrew/bin/brew shellenv)' >>~/.zprofile
-eval $(/opt/homebrew/bin/brew shellenv)
-
 # Get current dir (so we can run this script from anywhere)
 export DOTFILES_DIR DOTFILES_CACHE DOTFILES_EXTRA_DIR
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
 DOTFILES_EXTRA_DIR="$DOTFILES_DIR/.extra"
 
-# get access to functions
+# Get access to platform detection functions
 . "$DOTFILES_DIR/system/.function"
 
-# Create functions for modular installation
+# Platform-specific initialization
+if is-macos; then
+    echo "Detected macOS"
+    # Detect architecture and set Homebrew path
+    if [[ "$(uname -m)" == "arm64" ]]; then
+        BREW_PREFIX="/opt/homebrew"
+    else
+        BREW_PREFIX="/usr/local"
+    fi
+
+    # Initialize Homebrew if installed
+    if [[ -x "${BREW_PREFIX}/bin/brew" ]]; then
+        eval "$("${BREW_PREFIX}/bin/brew" shellenv)"
+        # Only add to .zprofile if not already present
+        if ! grep -q 'brew shellenv' ~/.zprofile 2>/dev/null; then
+            echo "eval \"\$(${BREW_PREFIX}/bin/brew shellenv)\"" >> ~/.zprofile
+        fi
+    fi
+elif is-linux; then
+    echo "Detected Linux"
+    # Ensure apt is up to date
+    if is-apt-available; then
+        sudo apt-get update
+    fi
+fi
+
+# Create function for modular installation
 install_package() {
     echo "Installing $1..."
     if ! $2; then
@@ -39,24 +55,71 @@ install_package() {
     fi
 }
 
-# use package managers to install some key packages
-install_package "zsh" ". $DOTFILES_DIR/install/install-zsh.sh"
-install_package "brew" ". $DOTFILES_DIR/install/install-brew.sh"
-install_package "brew cask" ". $DOTFILES_DIR/install/install-brew-cask.sh"
-install_package "fonts" ". $DOTFILES_DIR/install/install-fonts.sh"
+# Platform-specific package installation
+if is-macos; then
+    install_package "zsh" ". $DOTFILES_DIR/install/install-zsh.sh"
+    install_package "brew" ". $DOTFILES_DIR/install/install-brew.sh"
+    install_package "brew cask" ". $DOTFILES_DIR/install/install-brew-cask.sh"
+    install_package "fonts" ". $DOTFILES_DIR/install/install-fonts.sh"
+elif is-linux; then
+    install_package "apt packages" ". $DOTFILES_DIR/install/install-apt.sh"
+    install_package "zsh" ". $DOTFILES_DIR/install/install-zsh.sh"
+    install_package "fonts" ". $DOTFILES_DIR/install/install-fonts.sh"
+fi
 
-# symbolic links for shell, git, etc
+# Cross-platform installations
+install_package "conda" ". $DOTFILES_DIR/install/install-conda.sh"
+install_package "node" ". $DOTFILES_DIR/install/install-node.sh"
+install_package "julia" ". $DOTFILES_DIR/install/install-julia.sh"
+
+# Symbolic links for shell, git, etc (same for all platforms)
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.latexmkrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.p10k.zsh" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitignore_global" ~
 
-# set global gitignore
+# Set global gitignore
 git config --global core.excludesfile ~/.gitignore_global
 
-# enable permissions for all the binaries in ./bin
-find $DOTFILES_DIR/bin/ -type f -exec chmod +x {} \;
+# Configure git identity from secrets (if available)
+if [[ -f "$DOTFILES_DIR/secrets/.git_identity" ]]; then
+    echo "Configuring git identity from secrets..."
+    source "$DOTFILES_DIR/secrets/.git_identity"
+    [[ -n "$GIT_USER_NAME" ]] && git config --global user.name "$GIT_USER_NAME"
+    [[ -n "$GIT_USER_EMAIL" ]] && git config --global user.email "$GIT_USER_EMAIL"
+    [[ -n "$GIT_GITHUB_USER" ]] && git config --global github.user "$GIT_GITHUB_USER"
+else
+    echo ""
+    echo "NOTE: Git identity not configured."
+    echo "  1. Copy the template: cp $DOTFILES_DIR/secrets/.git_identity.template $DOTFILES_DIR/secrets/.git_identity"
+    echo "  2. Edit with your details"
+    echo "  3. Re-run this script or configure manually with 'git config --global user.name/email'"
+    echo ""
+fi
 
-# OSX defaults
-. "$DOTFILES_DIR/macos/dock.sh"
+# Set platform-specific git credential helper
+if is-macos; then
+    git config --global credential.helper osxkeychain
+elif is-linux; then
+    git config --global credential.helper cache
+fi
+
+# Enable permissions for all the binaries in ./bin
+find "$DOTFILES_DIR/bin/" -type f -exec chmod +x {} \;
+
+# macOS-specific defaults
+if is-macos; then
+    . "$DOTFILES_DIR/macos/dock.sh"
+fi
+
+echo ""
+echo "Installation complete!"
+echo "Log file: ${LOG_FILE}"
+echo ""
+echo "Next steps:"
+echo "  1. Set up git identity (see above if not already done)"
+echo "  2. Restart your terminal or run: source ~/.zshrc"
+if is-macos; then
+    echo "  3. Run 'dotfiles macos' to apply macOS system preferences"
+fi

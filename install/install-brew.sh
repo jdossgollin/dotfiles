@@ -49,8 +49,9 @@ brew install "${utilities[@]}"
 # the default version of dockutil on brew is old and doesn't work
 # workaround: https://github.com/webpro/dotfiles/issues/30
 brew install dockutil
+
 # Install git LFS
-git lfs install —system
+git lfs install --system
 
 # Remove outdated versions from the cellar
 brew cleanup

@@ -1,42 +1,38 @@
-# Start with system path
-# Retrieve it from getconf, otherwise it's just current $PATH
+# Use native zsh PATH deduplication (faster than awk)
+typeset -U path
 
+# Start with system path
 is-executable getconf && PATH=$($(command -v getconf) PATH)
 
 # Prepend new items to path (if directory exists)
-
 prepend-path "$DOTFILES_DIR/bin"
 prepend-path "/bin"
 prepend-path "/usr/bin"
-prepend-path "/Library/TeX/texbin"
 prepend-path "/sbin"
 prepend-path "/usr/local/bin"
 prepend-path "/usr/local/sbin"
 prepend-path "/usr/sbin"
-prepend-path "/opt/homebrew/bin"
-prepend-path "$HOME/anaconda/bin"
 prepend-path "$HOME/bin"
 prepend-path "$HOME/.local/bin"
 
 case $(uname) in
 Darwin)
-  # unique to Mac
-  prepend-path "/opt/homebrew/opt/ruby/bin"
-  prepend-path "/opt/homebrew/lib/ruby/gems/3.0.0/bin" # By default, binaries installed by gem will be placed here
-  prepend-path "/opt/homebrew/Cellar/latexindent/3.11/bin"
+  # macOS paths - use dynamic brew prefix
+  BREW_PREFIX="$(get-brew-prefix 2>/dev/null || echo '/opt/homebrew')"
+  prepend-path "${BREW_PREFIX}/bin"
+  prepend-path "${BREW_PREFIX}/sbin"
+  prepend-path "${BREW_PREFIX}/opt/ruby/bin"
+  prepend-path "/Library/TeX/texbin"
+  # Conda paths handled by lazy init in .zshrc
   ;;
 Linux)
-  # commands for Linux go here
   prepend-path "/snap/bin"
+  # Conda paths handled by lazy init in .zshrc
   ;;
 esac
-
-# Remove duplicates (preserving prepended items)
-# Source: http://unix.stackexchange.com/a/40755
-PATH=$(echo -n $PATH | awk -v RS=: '{ if (!arr[$0]++) {printf("%s%s",!ln++?"":":",$0)}}')
 
 # Wrap up
 export PATH
 
-# Quarto
-export QUARTO_PYTHON=$(which python)
+# Quarto - lazy evaluation
+export QUARTO_PYTHON="${QUARTO_PYTHON:-$(command -v python 2>/dev/null)}"
