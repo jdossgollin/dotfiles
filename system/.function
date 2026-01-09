@@ -50,9 +50,13 @@ set-config() {
   local FILE="$3"
   touch "$FILE"
   if grep -q "$1=" "$FILE"; then
-    sed "s@$KEY=.*@$KEY=\"$VALUE\"@" -i "$FILE"
+    if is-macos; then
+      sed -i '' "s@$KEY=.*@$KEY=\"$VALUE\"@" "$FILE"
+    else
+      sed -i "s@$KEY=.*@$KEY=\"$VALUE\"@" "$FILE"
+    fi
   else
-    echo "export $KEY=$VALUE" >>"$FILE"
+    echo "export $KEY=\"$VALUE\"" >>"$FILE"
   fi
 }
 
