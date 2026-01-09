@@ -30,16 +30,4 @@ if [[ -f "$CONDA_SH" ]]; then
     . "$CONDA_SH"
 fi
 
-# Create environments from YAML files
-for env_file in "${DOTFILES_DIR}/conda/"*.yml; do
-    # Check if the glob pattern actually matched any files
-    if [[ ! -f "$env_file" ]]; then
-        echo "No conda environment files found in ${DOTFILES_DIR}/conda/"
-        break
-    fi
-
-    env_name=$(basename "${env_file}" .yml)
-    echo "Creating conda environment: ${env_name}"
-    conda env create -f "${env_file}" --name "${env_name}" 2>/dev/null || \
-        conda env update -f "${env_file}" --name "${env_name}"
-done
+echo "Conda/Mamba installed. Create environments manually with: conda env create -f <file>.yml"

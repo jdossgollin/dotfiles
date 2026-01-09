@@ -55,7 +55,12 @@ git lfs install --system
 
 # Remove outdated versions from the cellar
 brew cleanup
-brew doctor
+
+# Clean up unnecessary taps (these are now built-in)
+brew untap homebrew/cask 2>/dev/null || true
+brew untap homebrew/core 2>/dev/null || true
+
+brew doctor || echo "brew doctor reported warnings (non-fatal)"
 
 export DOTFILES_BREW_PREFIX_COREUTILS=$(brew --prefix coreutils)
 set-config "DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_CACHE"
