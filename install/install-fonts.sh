@@ -24,7 +24,6 @@ if is-macos 2>/dev/null; then
         font-meslo-lg-nerd-font
         font-old-standard-tt
         font-open-sans
-        font-open-sans-condensed
         font-roboto
         font-source-code-pro
         font-source-code-pro-for-powerline
@@ -37,7 +36,7 @@ if is-macos 2>/dev/null; then
         font-xkcd-script
     )
 
-    brew install --cask "${fonts[@]}"
+    brew install --cask "${fonts[@]}" || echo "Some fonts failed to install (non-fatal)"
 
 elif is-linux 2>/dev/null; then
     # Linux font installation
