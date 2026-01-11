@@ -6,6 +6,8 @@ fi
 # List of apps
 cask_apps=(
     brave-browser      # second browser to separate work/life
+    claude             # Claude desktop app
+    claude-code        # AI coding assistant CLI
     firefox            # keep it up to date!
     github             # can be helpful, I suck at git
     iterm2             # better terminal

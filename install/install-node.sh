@@ -12,7 +12,8 @@ elif is-linux 2>/dev/null; then
     fi
 fi
 
-# Install global npm packages (cross-platform)
-if command -v npm >/dev/null 2>&1; then
+# Install global npm packages
+# On Linux, install claude-code via npm (macOS uses Homebrew cask)
+if command -v npm >/dev/null 2>&1 && is-linux 2>/dev/null; then
     npm install -g @anthropic-ai/claude-code
 fi
