@@ -1,10 +1,16 @@
-if ! is-executable ruby -o ! is-executable curl -o ! is-executable git; then
-    echo "Skipped: Homebrew (missing: ruby, curl and/or git)"
+if ! is-executable curl -o ! is-executable git; then
+    echo "Skipped: Homebrew (missing: curl and/or git)"
     return
 fi
-if test ! $(which brew); then
+if ! command -v brew &>/dev/null; then
     echo "Installing Homebrew..."
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # Initialize Homebrew in current shell
+    if [[ "$(uname -m)" == "arm64" ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    else
+        eval "$(/usr/local/bin/brew shellenv)"
+    fi
 fi
 
 brew update

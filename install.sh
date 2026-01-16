@@ -57,8 +57,8 @@ install_package() {
 
 # Platform-specific package installation
 if is-macos; then
-    install_package "zsh" ". $DOTFILES_DIR/install/install-zsh.sh"
     install_package "brew" ". $DOTFILES_DIR/install/install-brew.sh"
+    install_package "zsh" ". $DOTFILES_DIR/install/install-zsh.sh"
     install_package "brew cask" ". $DOTFILES_DIR/install/install-brew-cask.sh"
     install_package "fonts" ". $DOTFILES_DIR/install/install-fonts.sh"
 elif is-linux; then
