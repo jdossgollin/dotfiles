@@ -18,6 +18,7 @@ dockutil --no-restart --add '' --type small-spacer --section apps
 add_app "/System/Applications/Messages.app"
 add_app "/Applications/Slack.app"
 add_app "/Applications/zoom.us.app"
+add_app "/System/Applications/Calendar.app"
 
 dockutil --no-restart --add '' --type small-spacer --section apps
 
