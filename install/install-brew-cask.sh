@@ -22,7 +22,16 @@ cask_apps=(
     zoom     # we all work remotely now
     zotero   # reference manager
 )
-brew install --cask "${cask_apps[@]}"
+
+# Install each cask, skipping if already installed
+for app in "${cask_apps[@]}"; do
+    if brew list --cask "$app" &>/dev/null; then
+        echo "$app already installed via Homebrew, skipping"
+    else
+        echo "Installing $app..."
+        brew install --cask "$app" || echo "Warning: $app failed to install (may already exist)"
+    fi
+done
 
 # Install cask apps
 brew tap buo/cask-upgrade
