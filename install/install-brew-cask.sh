@@ -10,6 +10,7 @@ cask_apps=(
     claude-code        # AI coding assistant CLI
     firefox            # keep it up to date!
     github             # can be helpful, I suck at git
+    insync             # Google Drive / OneDrive sync
     iterm2             # better terminal
     obsidian           # note taking
     raindropio         # bookmark manager
@@ -37,3 +38,8 @@ done
 brew tap buo/cask-upgrade
 
 brew cu --all --cleanup --yes
+
+# Set Firefox as default browser (requires user confirmation dialog)
+if command -v defaultbrowser >/dev/null 2>&1; then
+    defaultbrowser firefox
+fi

@@ -18,12 +18,13 @@ brew upgrade
 
 # Install the Homebrew packages I use on a day-to-day basis.
 apps=(
-    aspell        # spell checker
-    boost         # some C/C++ libraries
-    cheat         # command line help https://github.com/cheat/cheat
-    diff-so-fancy # when you run git diff, get cleaner output
-    gcc           # C compiler
-    git           # for version control!
+    aspell         # spell checker
+    boost          # some C/C++ libraries
+    cheat          # command line help https://github.com/cheat/cheat
+    defaultbrowser # set default browser from CLI
+    diff-so-fancy  # when you run git diff, get cleaner output
+    gcc            # C compiler
+    git            # for version control!
     git-extras    # extra utilities for git, helpful
     git-lfs       # use git large file storage (see github docs)
     nano          # built-in text editor, not powerful but lightweight

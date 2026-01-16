@@ -60,6 +60,16 @@ if is-snap-available 2>/dev/null; then
     if ! command -v slack >/dev/null 2>&1; then
         sudo snap install slack --classic 2>/dev/null || echo "Note: Slack snap install failed (may need manual install)"
     fi
+
+    # Insync - Google Drive / OneDrive sync
+    if ! command -v insync >/dev/null 2>&1; then
+        sudo snap install insync 2>/dev/null || echo "Note: Insync snap install failed (may need manual install)"
+    fi
+fi
+
+# Set Firefox as default browser
+if command -v firefox >/dev/null 2>&1 && command -v xdg-settings >/dev/null 2>&1; then
+    xdg-settings set default-web-browser firefox.desktop 2>/dev/null || true
 fi
 
 echo "apt package installation complete"
