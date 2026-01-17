@@ -3,7 +3,7 @@
 # Then edit with your details and re-run install.sh
 
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/jd82/.gitignore_global
 	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [alias]
@@ -99,6 +99,8 @@
 	required = true
 [user]
 	name = James Doss-Gollin
-	email = jdossgollin@rice.edu
+	email = jdossgollin@users.noreply.github.com
 [github]
 	user = jdossgollin
+[credential]
+	helper = osxkeychain
