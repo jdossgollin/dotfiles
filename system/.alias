@@ -33,3 +33,6 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 
 # open PDF files with Preview
 alias preview="open -a Preview"
+
+# VSCodium (use 'code' command for muscle memory)
+alias code="codium"

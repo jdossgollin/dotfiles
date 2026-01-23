@@ -18,7 +18,7 @@ cask_apps=(
     spotify            # why not
     the-unarchiver     # easier [un]zipping
     quarto             # next gen RMarkdown / bookdown
-    visual-studio-code # code editor
+    vscodium           # code editor (open-source VS Code)
     whatsapp # messaging
     zoom     # we all work remotely now
     zotero   # reference manager

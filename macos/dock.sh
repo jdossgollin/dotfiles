@@ -30,10 +30,9 @@ dockutil --no-restart --add '' --type small-spacer --section apps
 
 # Code
 add_app "/Applications/iTerm.app"
-add_app "/Applications/Visual Studio Code.app"
+add_app "/Applications/VSCodium.app"
 add_app "/Applications/GitHub Desktop.app"
-
-
+add_app "/System/Applications/Utilities/Activity Monitor.app"
 
 # Folders
 dockutil --no-restart --add "~/Insync/jd82@rice.edu/Google Drive/"

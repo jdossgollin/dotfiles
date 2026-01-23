@@ -24,6 +24,7 @@ apps=(
     defaultbrowser # set default browser from CLI
     diff-so-fancy  # when you run git diff, get cleaner output
     gcc            # C compiler
+    gh             # GitHub CLI
     git            # for version control!
     git-extras    # extra utilities for git, helpful
     git-lfs       # use git large file storage (see github docs)

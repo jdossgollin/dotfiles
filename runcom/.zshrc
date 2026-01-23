@@ -137,6 +137,7 @@ if [[ -n "$_CONDA_ROOT" ]]; then
         if [[ -x "$_CONDA_ROOT/bin/mamba" ]]; then
             export MAMBA_EXE="$_CONDA_ROOT/bin/mamba"
             export MAMBA_ROOT_PREFIX="$_CONDA_ROOT"
+            eval "$("$MAMBA_EXE" shell hook --shell zsh)"
         fi
     }
 
