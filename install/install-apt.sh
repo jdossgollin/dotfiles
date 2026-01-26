@@ -61,13 +61,13 @@ if ! command -v quarto >/dev/null 2>&1; then
     rm -f "quarto-${QUARTO_VERSION}-linux-amd64.deb"
 fi
 
-# Lazygit (terminal UI for git, replaces GitHub Desktop)
-if ! command -v lazygit >/dev/null 2>&1; then
-    echo "Installing Lazygit..."
-    LAZYGIT_VERSION=$(curl -sS https://api.github.com/repos/jesseduffield/lazygit/releases/latest | grep -oP '"tag_name":\s*"v\K[^"]+')
-    curl -LO "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-    sudo tar xf "lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" -C /usr/local/bin lazygit
-    rm -f "lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+# SourceGit (open-source Git GUI, replaces GitHub Desktop)
+if ! command -v sourcegit >/dev/null 2>&1; then
+    echo "Installing SourceGit..."
+    SOURCEGIT_VERSION=$(curl -sS https://api.github.com/repos/sourcegit-scm/sourcegit/releases/latest | grep -oP '"tag_name":\s*"v\K[^"]+')
+    curl -LO "https://github.com/sourcegit-scm/sourcegit/releases/download/v${SOURCEGIT_VERSION}/sourcegit_${SOURCEGIT_VERSION}.linux-x64.AppImage"
+    chmod +x "sourcegit_${SOURCEGIT_VERSION}.linux-x64.AppImage"
+    sudo mv "sourcegit_${SOURCEGIT_VERSION}.linux-x64.AppImage" /usr/local/bin/sourcegit
 fi
 
 # WezTerm terminal (cross-platform, replaces iTerm2)

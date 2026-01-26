@@ -12,6 +12,7 @@ cask_apps=(
     obsidian           # note taking
     raindropio         # bookmark manager
     slack              # lab group
+    sourcegit          # open-source Git GUI (replaces GitHub Desktop)
     spotify            # why not
     quarto             # next gen RMarkdown / bookdown
     vscodium           # code editor (open-source VS Code)
