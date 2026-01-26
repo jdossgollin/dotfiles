@@ -22,7 +22,7 @@ apps=(
     boost          # some C/C++ libraries
     cheat          # command line help https://github.com/cheat/cheat
     defaultbrowser # set default browser from CLI
-    diff-so-fancy  # when you run git diff, get cleaner output
+    git-delta      # syntax-highlighted git diffs (replaces diff-so-fancy)
     gcc            # C compiler
     gh             # GitHub CLI
     git            # for version control!
@@ -30,6 +30,7 @@ apps=(
     git-lfs       # use git large file storage (see github docs)
     nano          # built-in text editor, not powerful but lightweight
     node
+    p7zip      # archive tool (replaces The Unarchiver)
     pandoc     # convert between Markdown, latex, HTML, Word, and more
     shellcheck # check spelling mistakes in the shell
     tree       # update the version installed by default
@@ -73,5 +74,4 @@ brew doctor || echo "brew doctor reported warnings (non-fatal)"
 export DOTFILES_BREW_PREFIX_COREUTILS=$(brew --prefix coreutils)
 set-config "DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_CACHE"
 
-# use git diff-so-fancy
-git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+# use git-delta for diffs (configured in .gitconfig)

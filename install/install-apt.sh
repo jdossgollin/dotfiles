@@ -24,6 +24,7 @@ sudo apt-get install -y \
     nano \
     nodejs \
     npm \
+    p7zip-full \
     pandoc \
     shellcheck \
     tree \
@@ -34,11 +35,13 @@ sudo apt-get install -y \
 # Install git LFS
 git lfs install --system
 
-# diff-so-fancy (via npm)
-if ! command -v diff-so-fancy >/dev/null 2>&1; then
-    echo "Installing diff-so-fancy..."
-    sudo npm install -g diff-so-fancy
-    git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+# git-delta (syntax-highlighted diffs, replaces diff-so-fancy)
+if ! command -v delta >/dev/null 2>&1; then
+    echo "Installing git-delta..."
+    DELTA_VERSION=$(curl -sS https://api.github.com/repos/dandavison/delta/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
+    curl -LO "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_amd64.deb"
+    sudo dpkg -i "git-delta_${DELTA_VERSION}_amd64.deb"
+    rm -f "git-delta_${DELTA_VERSION}_amd64.deb"
 fi
 
 # Zotero (via zotero-deb repository)
@@ -58,14 +61,14 @@ if ! command -v quarto >/dev/null 2>&1; then
     rm -f "quarto-${QUARTO_VERSION}-linux-amd64.deb"
 fi
 
-# Brave browser (via apt repository)
-if ! command -v brave-browser >/dev/null 2>&1; then
-    echo "Installing Brave browser..."
-    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-    echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | \
-        sudo tee /etc/apt/sources.list.d/brave-browser-release.list > /dev/null
+# WezTerm terminal (cross-platform, replaces iTerm2)
+if ! command -v wezterm >/dev/null 2>&1; then
+    echo "Installing WezTerm..."
+    curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+    echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | \
+        sudo tee /etc/apt/sources.list.d/wezterm.list > /dev/null
     sudo apt-get update
-    sudo apt-get install -y brave-browser
+    sudo apt-get install -y wezterm
 fi
 
 # VSCodium (open-source VS Code)

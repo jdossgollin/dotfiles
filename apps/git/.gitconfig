@@ -4,7 +4,7 @@
 
 [core]
 	excludesfile = /Users/jd82/.gitignore_global
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
 
 [alias]
   st = status
@@ -28,11 +28,14 @@
   changed = green
   untracked = cyan
 
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
+[delta]
+	navigate = true
+	line-numbers = true
+	syntax-theme = OneHalfDark
+	side-by-side = false
+
+[interactive]
+	diffFilter = delta --color-only
 
 # Credential helper configured via install.sh based on platform
 # macOS: osxkeychain, Linux: cache
@@ -59,26 +62,20 @@
 [diff]
   renames = copies
   indentHeuristic = true
-  tool = Kaleidoscope
+  colorMoved = default
+  tool = codium
 
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path =
+[difftool "codium"]
+  cmd = codium --wait --diff \"$LOCAL\" \"$REMOTE\"
 
 [merge]
-	tool = Kaleidoscope
+  tool = codium
   conflictstyle = diff3
   defaultToUpstream = true
 
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+[mergetool "codium"]
+  cmd = codium --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\"
   trustExitCode = true
-
-[mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
 [diff "jupyternotebook"]
 	command = git-nbdiffdriver diff
 [merge "jupyternotebook"]

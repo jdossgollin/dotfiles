@@ -101,7 +101,6 @@ case $(uname) in
 esac
 
 ZSH_DISABLE_COMPFIX="true"
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # === LAZY CONDA/MAMBA INITIALIZATION ===
 # Saves 200-500ms on shell startup by deferring init until first use
