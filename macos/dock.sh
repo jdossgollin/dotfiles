@@ -11,12 +11,13 @@ dockutil --no-restart --remove all
 
 # Web
 add_app "/Applications/Firefox.app"
+add_app "/System/Applications/Calendar.app"
 
 # Messaging
 add_app "/System/Applications/Messages.app"
+add_app "/System/Applications/Signal.app"
 add_app "/Applications/Slack.app"
 add_app "/Applications/zoom.us.app"
-add_app "/System/Applications/Calendar.app"
 
 # Reading
 add_app "/Applications/Zotero.app"
@@ -24,7 +25,7 @@ add_app "/Applications/Zotero.app"
 # Code
 add_app "/Applications/WezTerm.app"
 add_app "/Applications/VSCodium.app"
-add_app "/Applications/GitHub Desktop.app"
+add_app "/Applications/SourceGit.app"
 add_app "/System/Applications/Utilities/Activity Monitor.app"
 
 # Folders
