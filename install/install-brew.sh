@@ -28,6 +28,7 @@ apps=(
     git            # for version control!
     git-extras    # extra utilities for git, helpful
     git-lfs       # use git large file storage (see github docs)
+    lazygit       # terminal UI for git (replaces GitHub Desktop)
     nano          # built-in text editor, not powerful but lightweight
     node
     p7zip      # archive tool (replaces The Unarchiver)

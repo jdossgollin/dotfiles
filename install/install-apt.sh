@@ -61,6 +61,15 @@ if ! command -v quarto >/dev/null 2>&1; then
     rm -f "quarto-${QUARTO_VERSION}-linux-amd64.deb"
 fi
 
+# Lazygit (terminal UI for git, replaces GitHub Desktop)
+if ! command -v lazygit >/dev/null 2>&1; then
+    echo "Installing Lazygit..."
+    LAZYGIT_VERSION=$(curl -sS https://api.github.com/repos/jesseduffield/lazygit/releases/latest | grep -oP '"tag_name":\s*"v\K[^"]+')
+    curl -LO "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    sudo tar xf "lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" -C /usr/local/bin lazygit
+    rm -f "lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+fi
+
 # WezTerm terminal (cross-platform, replaces iTerm2)
 if ! command -v wezterm >/dev/null 2>&1; then
     echo "Installing WezTerm..."
@@ -130,5 +139,4 @@ echo ""
 echo "Note: Some applications must be installed manually on Linux:"
 echo "  - Zoom: https://zoom.us/download"
 echo "  - Claude desktop: No Linux version available"
-echo "  - GitHub Desktop: No official Linux version (use gh CLI instead)"
 echo "  - WhatsApp: No official Linux client (use web version)"

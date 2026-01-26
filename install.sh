@@ -78,6 +78,7 @@ ln -sfv "$DOTFILES_DIR/runcom/.latexmkrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.p10k.zsh" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitignore_global" ~
+ln -sfv "$DOTFILES_DIR/apps/wezterm/wezterm.lua" ~/.wezterm.lua
 
 # Set global gitignore
 git config --global core.excludesfile ~/.gitignore_global
