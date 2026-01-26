@@ -15,7 +15,7 @@ add_app "/System/Applications/Calendar.app"
 
 # Messaging
 add_app "/System/Applications/Messages.app"
-add_app "/System/Applications/Signal.app"
+add_app "/Applications/Signal.app"
 add_app "/Applications/Slack.app"
 add_app "/Applications/zoom.us.app"
 
