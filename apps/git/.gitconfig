@@ -4,6 +4,7 @@
 
 [core]
 	excludesfile = /Users/jd82/.gitignore_global
+	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [alias]
   st = status
@@ -98,7 +99,7 @@
 	required = true
 [user]
 	name = James Doss-Gollin
-	email = jdossgollin@users.noreply.github.com
+	email = james.dossgollin@gmail.com
 [github]
 	user = jdossgollin
 [credential]
