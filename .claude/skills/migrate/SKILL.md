@@ -23,7 +23,7 @@ Migrate code between versions, frameworks, or patterns.
 - `Glob` - fast file pattern matching
 - `Read` - read file contents
 - `Bash` - for running migration tools
-- `mcp__context7__resolve-library-id` and `mcp__context7__get-library-docs` - fetch current documentation
+- Context7 MCP (if installed): `resolve-library-id`, `query-docs`
 
 Do NOT shell out for search/read operations - use the dedicated tools.
 
@@ -39,12 +39,10 @@ Ask:
 
 ### 1. Fetch Current Documentation
 
-Use context7 MCP to get up-to-date docs for the target version:
+If Context7 MCP is available, use it to get up-to-date docs:
 
-```
-mcp__context7__resolve-library-id for the library
-mcp__context7__get-library-docs for migration guides, breaking changes
-```
+1. `resolve-library-id` with the library name
+2. `query-docs` with the library ID and "migration guide" or "breaking changes"
 
 Look for:
 
@@ -123,13 +121,13 @@ STOP. Tell user:
 ## During Migration
 
 - Make changes incrementally
-- Run `/test-debug` after each major change
+- Run `/test` after each major change
 - Commit working states frequently
 
 ## After Migration
 
 Suggest:
 
-- Run full test suite (`/test-debug`)
+- Run full test suite (`/test`)
 - Update documentation (`/update-docs`)
 - Check reproducibility (`/check-reproducibility`) if environment changed

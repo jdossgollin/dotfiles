@@ -39,16 +39,17 @@ Use subagents for:
 
 ## Skills Quick Reference
 
-| Need to... | Use | Not |
-|------------|-----|-----|
-| Run tests, fix failures | `/test-debug` | `/debug` |
-| Debug non-test issues | `/debug` | `/test-debug` |
-| Review/critique code | `/review-code` | `/refactor` |
-| Plan code improvements | `/refactor` | `/review-code` |
+| Need to... | Use | Notes |
+|------------|-----|-------|
+| Run tests | `/test` | Summarizes failures, suggests `/debug` |
+| Debug issues | `/debug` | Root cause analysis for any bug |
+| Review or improve code | `/refactor` | Asks: review only or plan changes? |
 | Create new tests | `/test-gen` | |
-| Create new docs | `/doc-gen` | `/update-docs` |
-| Sync docs with changes | `/update-docs` | `/doc-gen` |
-| Pre-PR checklist | `/pr-ready` | |
+| Create new docs | `/doc-gen` | For new documentation |
+| Sync docs with changes | `/update-docs` | After code changes |
+| Pre-PR checklist | `/pr-ready` | Orchestrates test, docs, review |
 | Audit reproducibility | `/check-reproducibility` | |
 | Export environment | `/env-export` | |
 | Upgrade versions | `/migrate` | |
+| Parse data files | `/data-read` | |
+| Clean notebooks | `/notebook-clean` | |

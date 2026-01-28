@@ -12,6 +12,11 @@ Figure out how to read/parse an unfamiliar data file.
 - Have a data file and don't know how to load it
 - Need to understand file format, encoding, structure
 
+## See Also
+
+- `/check-reproducibility` - if concerned about data pipeline reproducibility
+- `/notebook-clean` - if loading data in a notebook
+
 ## Available Tools
 
 - `Read` - read file contents (use for inspection)

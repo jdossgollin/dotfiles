@@ -14,7 +14,7 @@ Orchestrate pre-PR checks (runs other skills).
 
 ## Orchestrates
 
-- `/test-debug` - verify tests pass
+- `/test` - verify tests pass
 - `/update-docs` - verify docs are current
 - `/refactor` (optional) - suggest improvements
 
@@ -29,7 +29,7 @@ Orchestrate pre-PR checks (runs other skills).
 
 ### 1. Tests
 
-Use the Skill tool to invoke `test-debug`:
+Use the Skill tool to invoke `test`:
 
 - All tests pass?
 - New code has test coverage?

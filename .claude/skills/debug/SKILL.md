@@ -15,7 +15,7 @@ Systematic debugging for issues not caught by tests.
 
 ## See Also
 
-- `/test-debug` - if you have failing tests (use that instead)
+- `/test` - if you have failing tests (use that instead)
 - `/profile` - if the issue is performance, not correctness
 
 ## Available Tools

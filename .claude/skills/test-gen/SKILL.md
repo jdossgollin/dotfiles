@@ -15,7 +15,7 @@ Create new tests for specified function(s).
 
 ## See Also
 
-- `/test-debug` - if tests exist and you want to run them
+- `/test` - if tests exist and you want to run them
 
 ## Available Tools
 
