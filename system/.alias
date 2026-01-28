@@ -12,27 +12,10 @@ alias ....="cd ../../.."
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 
 # Update everything
-alias LevelUp="dotfiles update && dotfiles clean && cd ~/Documents && cleanupds"
+alias LevelUp="dotfiles update && dotfiles clean"
 
 # Exclude macOS specific files in ZIP archives
 alias zip="zip -x *.DS_Store -x *__MACOSX* -x *.AppleDouble*"
-
-# Log off
-alias logoff="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-
-# Show/hide desktop icons
-alias desktopshow="defaults write com.apple.finder CreateDesktop -bool true && killfinder"
-alias desktophide="defaults write com.apple.finder CreateDesktop -bool false && killfinder"
-
-# Recursively remove Apple meta files
-alias cleanupds="find ~/Documents -type f -name '*.DS_Store' -ls -exec /bin/rm {} \;"
-alias cleanupad="find ~/Documents -type d -name '.AppleD*' -ls -exec /bin/rm -r {} \;"
-
-# Empty trash on mounted volumes and main HDD, and clear system logs
-alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
-
-# open PDF files with Preview
-alias preview="open -a Preview"
 
 # VSCodium (use 'code' command for muscle memory)
 alias code="codium"
@@ -49,4 +32,42 @@ if command -v batcat &>/dev/null; then
     alias cat="batcat --paging=never"
 elif command -v bat &>/dev/null; then
     alias cat="bat --paging=never"
+fi
+
+# === Platform-specific aliases ===
+if [[ "$OSTYPE" == darwin* ]]; then
+    # macOS: Log off
+    alias logoff="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+
+    # macOS: Show/hide desktop icons
+    alias desktopshow="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+    alias desktophide="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+
+    # macOS: Recursively remove Apple meta files
+    alias cleanupds="find ~/Documents -type f -name '*.DS_Store' -ls -delete"
+    alias cleanupad="find ~/Documents -type d -name '.AppleD*' -ls -exec rm -r {} +"
+
+    # macOS: Empty trash
+    alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl"
+
+    # macOS: Open PDF with Preview
+    alias preview="open -a Preview"
+
+    # macOS: Open anything with default app
+    alias o="open"
+    alias oo="open ."
+
+elif [[ "$OSTYPE" == linux* ]]; then
+    # Linux: Log off (GNOME/systemd)
+    alias logoff="gnome-session-quit --logout --no-prompt 2>/dev/null || loginctl terminate-user $USER"
+
+    # Linux: Empty trash
+    alias emptytrash="rm -rfv ~/.local/share/Trash/*"
+
+    # Linux: Open with default app
+    alias o="xdg-open"
+    alias oo="xdg-open ."
+
+    # Linux: Open PDF with default viewer
+    alias preview="xdg-open"
 fi
