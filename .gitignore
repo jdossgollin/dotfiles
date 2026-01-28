@@ -2,3 +2,4 @@
 secrets/*
 logs/
 .claude/settings.local.json
+.claude/plans/

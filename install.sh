@@ -80,6 +80,9 @@ ln -sfv "$DOTFILES_DIR/apps/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/apps/wezterm/wezterm.lua" ~/.wezterm.lua
 
+# Claude Code configuration (rules, skills, settings)
+ln -sfnv "$DOTFILES_DIR/.claude" ~/.claude
+
 # Set global gitignore
 git config --global core.excludesfile ~/.gitignore_global
 
@@ -124,3 +127,8 @@ echo "  2. Restart your terminal or run: source ~/.zshrc"
 if is-macos; then
     echo "  3. Run 'dotfiles macos' to apply macOS system preferences"
 fi
+echo ""
+echo "Claude Code MCP setup (optional):"
+echo "  claude mcp add github --transport http https://api.githubcopilot.com/mcp/ --scope user"
+echo "  claude mcp add context7 --transport http https://mcp.context7.com/mcp --scope user"
+echo "  Then run /mcp in a Claude Code session to authenticate"
