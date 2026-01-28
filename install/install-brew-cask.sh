@@ -9,17 +9,15 @@ cask_apps=(
     claude-code        # AI coding assistant CLI
     firefox            # keep it up to date!
     insync             # Google Drive / OneDrive sync
-    obsidian           # note taking
-    raindropio         # bookmark manager
     slack              # lab group
     sourcegit          # open-source Git GUI (replaces GitHub Desktop)
     spotify            # why not
     quarto             # next gen RMarkdown / bookdown
     vscodium           # code editor (open-source VS Code)
     wezterm            # cross-platform terminal (replaces iTerm2)
-    whatsapp # messaging
-    zoom     # we all work remotely now
-    zotero   # reference manager
+    whatsapp           # messaging
+    zoom               # we all work remotely now
+    zotero             # reference manager
 )
 
 # Install each cask, skipping if already installed

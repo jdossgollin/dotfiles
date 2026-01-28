@@ -113,11 +113,6 @@ if is-snap-available 2>/dev/null; then
         sudo snap install insync 2>/dev/null || echo "Note: Insync snap install failed (may need manual install)"
     fi
 
-    # Obsidian - note taking
-    if ! snap list obsidian >/dev/null 2>&1; then
-        sudo snap install obsidian --classic 2>/dev/null || echo "Note: Obsidian snap install failed (may need manual install)"
-    fi
-
     # Slack
     if ! command -v slack >/dev/null 2>&1; then
         sudo snap install slack --classic 2>/dev/null || echo "Note: Slack snap install failed (may need manual install)"
