@@ -5,7 +5,7 @@ local config = wezterm.config_builder()
 config.font = wezterm.font("MesloLGS NF")
 config.font_size = 13.0
 
--- Color scheme: Atom One Dark (matches previous iTerm2 setup)
+-- Color scheme: OneHalfDark (dark theme)
 config.color_scheme = "OneHalfDark"
 
 -- Window
