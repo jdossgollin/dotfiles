@@ -1,124 +1,99 @@
 ---
 name: debug
-description: Debug crashes, wrong outputs, or unexpected behavior
+description: Debugs crashes, wrong outputs, or unexpected behavior. Use for any bug not caught by tests.
 ---
 
 # Debug
 
-Systematic debugging for issues not caught by tests.
+Systematic root cause analysis for bugs.
 
 ## When to Use
 
-- Script crashes or throws unexpected errors
+- Script crashes or throws errors
 - Function returns wrong output
-- Behavior differs from expectation but no test catches it
+- Unexpected behavior
 
 ## See Also
 
-- `/test` - if you have failing tests (use that instead)
-- `/profile` - if the issue is performance, not correctness
-
-## Available Tools
-
-- `Grep` - ripgrep-based search
-- `Glob` - fast file pattern matching
-- `Read` - read file contents
-- `Bash` - for running code with instrumentation
-
-Do NOT shell out for search/read operations - use the dedicated tools.
+- `/test` - if you have failing tests (run that first)
+- `/profile` - if issue is performance, not correctness
 
 ## Gather Information
 
 Ask if not provided:
 
-- What's the expected behavior?
-- What's the actual behavior?
+- Expected behavior?
+- Actual behavior?
 - Steps to reproduce?
-- Any recent changes?
+- Recent changes?
 
 ## Debug Process
 
-### 1. Reproduce the Issue
+### 1. Reproduce
 
 - Run the failing case
-- Confirm the error/behavior
+- Confirm the error
 - If can't reproduce: ask for more details
 
-### 2. Isolate the Problem
+### 2. Isolate
 
-- Identify the failing code path
-- Narrow down to smallest reproducing case
-- Check inputs at each stage
+- Identify failing code path
+- Narrow to smallest reproducing case
 
-### 3. Generate Hypotheses
+### 3. Hypothesize
 
-List 2-4 potential causes, ranked by likelihood:
+List 2-4 causes ranked by likelihood:
 
 ```markdown
-1. **Most likely**: <hypothesis> - because <reasoning>
-2. **Possible**: <hypothesis> - because <reasoning>
-3. **Less likely**: <hypothesis> - because <reasoning>
+1. **Most likely**: <hypothesis> - <reasoning>
+2. **Possible**: <hypothesis> - <reasoning>
 ```
 
 ### 4. Test Hypotheses
 
-- Add diagnostic output (print/logging)
+- Add diagnostic output
 - Check variable values at key points
-- Verify assumptions about data/state
+- Verify assumptions
 
-### 5. Identify Root Cause
+### 5. Root Cause
 
-- Explain what's actually happening vs. expected
-- Show the specific line(s) causing the issue
+- Explain what's happening vs. expected
+- Show specific line(s) causing issue
 
-### 6. Propose Fix
+### 6. Fix
 
-- Show the fix with explanation
-- Explain why it solves the problem
-- Note any edge cases the fix handles
+- Show fix with explanation
+- Note edge cases handled
 
-## After Finding Fix
+## Language-Specific Tools
 
-### Suggest Follow-ups
-
-**Capture as test:**
-
-> "Want me to create a test that catches this bug? (use `/test-gen`)"
-
-This prevents regression.
-
-**If fix reveals deeper issues:**
-
-> "This fix works, but I noticed structural issues. Want a refactor plan? (use `/refactor`)"
-
-**If performance was the issue:**
-
-> "The bug was performance-related. Want to profile further? (use `/profile`)"
+- **Python**: See [python-debugging.md](python-debugging.md)
+- **Julia**: See [julia-debugging.md](julia-debugging.md)
 
 ## Output Format
 
 ```markdown
 ## Problem
 
-<concise description of the issue>
+<concise description>
 
 ## Root Cause
 
-<explanation of what's wrong and why>
+<explanation>
 
 **Location**: `file.py:42`
 
 ## Fix
 
-<code change with explanation>
+<code change>
 
 ## Verification
 
-<how to confirm the fix works>
-
-## Suggested Follow-up
-
-- [ ] Add regression test (`/test-gen`)
+<how to confirm>
 ```
+
+## After Fix
+
+> "Want a regression test? (use `/test-gen`)"
 
 Present fix for review before implementing.

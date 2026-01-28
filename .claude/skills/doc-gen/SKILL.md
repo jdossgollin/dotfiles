@@ -15,6 +15,7 @@ Create new documentation from scratch.
 ## See Also
 
 - `/update-docs` - if docs exist but need to sync with code changes
+- `/brand-guidelines` - to check style consistency
 
 ## Available Tools
 

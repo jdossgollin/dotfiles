@@ -17,6 +17,7 @@ Run tests and report results. Delegates debugging to `/debug`.
 
 - `/debug` - to analyze and fix failures (called after this skill if needed)
 - `/test-gen` - if tests don't exist yet
+- `/git-worktree` - to run tests in isolation while continuing development
 
 ## Available Tools
 

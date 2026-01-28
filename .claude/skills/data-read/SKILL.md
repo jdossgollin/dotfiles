@@ -16,6 +16,7 @@ Figure out how to read/parse an unfamiliar data file.
 
 - `/check-reproducibility` - if concerned about data pipeline reproducibility
 - `/notebook-clean` - if loading data in a notebook
+- `/visual-output` - to create charts or tables from the data
 
 ## Available Tools
 

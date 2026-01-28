@@ -16,6 +16,8 @@ Migrate code between versions, frameworks, or patterns.
 ## See Also
 
 - `/deps-check` - to identify what needs upgrading first
+- `/brainstorm` - if unsure about migration approach
+- `/execute-plan` - to execute an approved migration plan
 
 ## Available Tools
 

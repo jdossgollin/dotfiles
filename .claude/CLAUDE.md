@@ -41,15 +41,21 @@ Use subagents for:
 
 | Need to... | Use | Notes |
 |------------|-----|-------|
+| Clarify requirements | `/brainstorm` | Socratic questioning before coding |
 | Run tests | `/test` | Summarizes failures, suggests `/debug` |
 | Debug issues | `/debug` | Root cause analysis for any bug |
+| Profile performance | `/profile` | Find bottlenecks |
 | Review or improve code | `/refactor` | Asks: review only or plan changes? |
+| Execute approved plan | `/execute-plan` | Step-by-step with checkpoints |
 | Create new tests | `/test-gen` | |
 | Create new docs | `/doc-gen` | For new documentation |
 | Sync docs with changes | `/update-docs` | After code changes |
+| Check doc style | `/brand-guidelines` | Consistent documentation |
 | Pre-PR checklist | `/pr-ready` | Orchestrates test, docs, review |
+| Parallel development | `/git-worktree` | Work on multiple branches |
 | Audit reproducibility | `/check-reproducibility` | |
 | Export environment | `/env-export` | |
 | Upgrade versions | `/migrate` | |
 | Parse data files | `/data-read` | |
+| Visualize data | `/visual-output` | Interactive HTML charts |
 | Clean notebooks | `/notebook-clean` | |

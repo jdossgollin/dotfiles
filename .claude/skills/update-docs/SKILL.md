@@ -15,6 +15,7 @@ Sync existing documentation with code changes.
 ## See Also
 
 - `/doc-gen` - if no docs exist yet (create from scratch)
+- `/brand-guidelines` - to check style consistency
 
 ## Available Tools
 

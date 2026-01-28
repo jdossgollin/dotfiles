@@ -15,8 +15,10 @@ Review code for issues and optionally plan improvements.
 
 ## See Also
 
+- `/brainstorm` - if requirements need clarification first
 - `/test-gen` - if tests don't exist (recommended before refactoring)
 - `/profile` - if performance is the concern
+- `/execute-plan` - to execute an approved refactor plan
 
 ## Available Tools
 

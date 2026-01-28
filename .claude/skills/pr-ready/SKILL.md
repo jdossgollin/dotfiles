@@ -12,6 +12,11 @@ Orchestrate pre-PR checks (runs other skills).
 - About to open a pull request
 - Want a comprehensive check before sharing code
 
+## See Also
+
+- `/git-worktree` - if developing in a separate worktree
+- `/brand-guidelines` - to check documentation style consistency
+
 ## Orchestrates
 
 - `/test` - verify tests pass

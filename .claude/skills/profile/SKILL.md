@@ -1,51 +1,43 @@
 ---
 name: profile
-description: Profile code and identify performance bottlenecks
+description: Profiles code to identify performance bottlenecks. Use when code is slow.
 ---
 
 # Profile
 
-Profile code to identify performance bottlenecks.
+Identify performance bottlenecks in code.
 
 ## When to Use
 
-- Code is slow and you want to find out why
-- Comparing performance of different implementations
+- Code is slow
+- Comparing implementations
 
 ## See Also
 
-- `/debug` - if the issue is incorrect behavior, not performance
-
-## Available Tools
-
-- `Grep` - ripgrep-based search
-- `Glob` - fast file pattern matching
-- `Read` - read file contents
-- `Bash` - for running profilers
+- `/debug` - if issue is correctness, not performance
+- `/refactor` - after identifying bottlenecks
+- `/visual-output` - to visualize profiling results
 
 ## Safety
 
-- If data is large, create minimal reproduction with mock/sample data
+- If data is large, create minimal reproduction
 - Verify no destructive operations before running
 
 ## Process
 
-### 1. Identify Profiler
+1. Identify language and profiler
+2. Run profiler on target
+3. Analyze results
+4. Suggest optimizations ranked by impact
 
-- Python: cProfile, line_profiler, `py-spy` for sampling
-- Julia:
-  - Quick timing: `@time`, `@elapsed`
-  - Benchmarking: `BenchmarkTools.jl` (`@btime`, `@benchmark`) - more accurate, runs multiple times
-  - Profiling: `@profile` with `Profile.print()` or `ProfileView.jl`
-  - Type stability: `@code_warntype`, `JET.jl`
+## Language-Specific
 
-### 2. Run Profiler
+- **Python**: See [python-profiling.md](python-profiling.md)
+- **Julia**: See [julia-profiling.md](julia-profiling.md)
 
-Run on target function or script.
+## Output Format
 
-### 3. Analyze & Visualize
-
-Top 5 time-consumers (ASCII bar chart):
+Top time-consumers (ASCII bar chart):
 
 ```
 function_a  ████████████████ 45%
@@ -53,20 +45,6 @@ function_b  ████████         22%
 function_c  ██████           15%
 ```
 
-Also report:
-
-- Memory hotspots
-- Type instability (Julia)
-- Note if profiler overhead may skew results on small functions
-
-### 4. Suggest Optimizations
-
-Rank by impact:
-
-- Quick wins (easy fixes, big impact)
-- Algorithmic improvements
-- Trade-offs to consider
-
-## Output
-
 Present findings. Ask before implementing changes.
+
+> "Found bottleneck in X. Want to refactor? (use `/refactor`)"

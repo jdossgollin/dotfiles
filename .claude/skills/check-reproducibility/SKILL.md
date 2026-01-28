@@ -17,6 +17,7 @@ Audit project for reproducibility issues (read-only analysis).
 
 - `/env-export` - if you want to CREATE a reproducible environment spec
 - `/deps-check` - for security/version issues specifically
+- `/visual-output` - to visualize dependency graphs or data pipelines
 
 ## Available Tools
 
