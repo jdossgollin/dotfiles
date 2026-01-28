@@ -102,6 +102,18 @@ esac
 
 ZSH_DISABLE_COMPFIX="true"
 
+# === FZF KEYBINDINGS ===
+# Enables Ctrl+R (history), Ctrl+T (files), Alt+C (cd)
+if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
+    # Linux (apt)
+    source /usr/share/doc/fzf/examples/key-bindings.zsh
+    [[ -f /usr/share/doc/fzf/examples/completion.zsh ]] && source /usr/share/doc/fzf/examples/completion.zsh
+elif [[ -f "${HOMEBREW_PREFIX:-/opt/homebrew}/opt/fzf/shell/key-bindings.zsh" ]]; then
+    # macOS (Homebrew)
+    source "${HOMEBREW_PREFIX:-/opt/homebrew}/opt/fzf/shell/key-bindings.zsh"
+    [[ -f "${HOMEBREW_PREFIX:-/opt/homebrew}/opt/fzf/shell/completion.zsh" ]] && source "${HOMEBREW_PREFIX:-/opt/homebrew}/opt/fzf/shell/completion.zsh"
+fi
+
 # === LAZY CONDA/MAMBA INITIALIZATION ===
 # Saves 200-500ms on shell startup by deferring init until first use
 
