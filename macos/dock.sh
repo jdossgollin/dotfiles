@@ -31,7 +31,6 @@ dockutil --no-restart --add '' --type small-spacer --section apps
 add_app "/Applications/WezTerm.app"
 add_app "/Applications/VSCodium.app"
 add_app "/Applications/SourceGit.app"
-add_app "/System/Applications/Utilities/Activity Monitor.app"
 
 # Folders
 dockutil --no-restart --add "~/Insync/jd82@rice.edu/Google Drive/"

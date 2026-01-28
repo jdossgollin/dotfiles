@@ -19,23 +19,29 @@ brew upgrade
 # Install the Homebrew packages I use on a day-to-day basis.
 apps=(
     aspell         # spell checker
+    bat            # cat with syntax highlighting
     boost          # some C/C++ libraries
-    cheat          # command line help https://github.com/cheat/cheat
+    btop           # beautiful system monitor
     defaultbrowser # set default browser from CLI
-    git-delta      # syntax-highlighted git diffs (replaces diff-so-fancy)
+    eza            # modern ls replacement
+    fzf            # fuzzy finder
     gcc            # C compiler
     gh             # GitHub CLI
     git            # for version control!
-    git-extras    # extra utilities for git, helpful
-    git-lfs       # use git large file storage (see github docs)
-    nano          # built-in text editor, not powerful but lightweight
+    git-delta      # syntax-highlighted git diffs (replaces diff-so-fancy)
+    git-extras     # extra utilities for git, helpful
+    git-lfs        # use git large file storage (see github docs)
+    nano           # built-in text editor, not powerful but lightweight
+    ncdu           # disk usage analyzer
     node
-    p7zip      # archive tool (replaces The Unarchiver)
-    pandoc     # convert between Markdown, latex, HTML, Word, and more
-    shellcheck # check spelling mistakes in the shell
-    tree       # update the version installed by default
-    uvicorn    # python package manager
-    wget       # update the version installed by default
+    p7zip          # archive tool (replaces The Unarchiver)
+    pandoc         # convert between Markdown, latex, HTML, Word, and more
+    ripgrep        # fast grep replacement
+    shellcheck     # check spelling mistakes in the shell
+    tldr           # simplified man pages
+    tree           # update the version installed by default
+    uvicorn        # python package manager
+    wget           # update the version installed by default
 )
 brew install "${apps[@]}"
 

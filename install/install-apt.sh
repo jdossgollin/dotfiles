@@ -13,20 +13,26 @@ sudo apt-get update
 # Core development tools
 sudo apt-get install -y \
     aspell \
+    bat \
+    btop \
     build-essential \
     curl \
     firefox \
+    fzf \
     gh \
     git \
     git-extras \
     git-lfs \
     libboost-all-dev \
     nano \
+    ncdu \
     nodejs \
     npm \
     p7zip-full \
     pandoc \
+    ripgrep \
     shellcheck \
+    tldr \
     tree \
     wget \
     zsh \
@@ -34,6 +40,17 @@ sudo apt-get install -y \
 
 # Install git LFS
 git lfs install --system
+
+# eza (modern ls replacement, not in standard apt repos)
+if ! command -v eza >/dev/null 2>&1; then
+    echo "Installing eza..."
+    sudo mkdir -p /etc/apt/keyrings
+    wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+    echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+    sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+    sudo apt-get update
+    sudo apt-get install -y eza
+fi
 
 # git-delta (syntax-highlighted diffs, replaces diff-so-fancy)
 if ! command -v delta >/dev/null 2>&1; then
@@ -102,11 +119,6 @@ fi
 # Apps via snap (only for apps not available in apt)
 if is-snap-available 2>/dev/null; then
     echo "Installing snap packages..."
-
-    # cheat - command line cheatsheets
-    if ! command -v cheat >/dev/null 2>&1; then
-        sudo snap install cheat 2>/dev/null || echo "Note: cheat snap install failed (may need manual install)"
-    fi
 
     # Insync - Google Drive / OneDrive sync
     if ! command -v insync >/dev/null 2>&1; then

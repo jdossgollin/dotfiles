@@ -12,6 +12,7 @@ cask_apps=(
     slack              # lab group
     sourcegit          # open-source Git GUI (replaces GitHub Desktop)
     spotify            # why not
+    stats              # menu bar system monitor (replaces Activity Monitor)
     quarto             # next gen RMarkdown / bookdown
     vscodium           # code editor (open-source VS Code)
     wezterm            # cross-platform terminal (replaces iTerm2)

@@ -36,3 +36,17 @@ alias preview="open -a Preview"
 
 # VSCodium (use 'code' command for muscle memory)
 alias code="codium"
+
+# Modern CLI replacements
+alias ls="eza --icons --group-directories-first"
+alias ll="eza --icons --group-directories-first -la"
+alias la="eza --icons --group-directories-first -a"
+alias lt="eza --icons --group-directories-first --tree --level=2"
+
+# bat (cat with syntax highlighting) - Ubuntu installs as 'batcat'
+if command -v batcat &>/dev/null; then
+    alias bat="batcat"
+    alias cat="batcat --paging=never"
+elif command -v bat &>/dev/null; then
+    alias cat="bat --paging=never"
+fi
