@@ -36,3 +36,19 @@ Use subagents for:
 - Read existing code first
 - Understand the patterns already in use
 - Match existing style and conventions
+
+## Skills Quick Reference
+
+| Need to... | Use | Not |
+|------------|-----|-----|
+| Run tests, fix failures | `/test-debug` | `/debug` |
+| Debug non-test issues | `/debug` | `/test-debug` |
+| Review/critique code | `/review-code` | `/refactor` |
+| Plan code improvements | `/refactor` | `/review-code` |
+| Create new tests | `/test-gen` | |
+| Create new docs | `/doc-gen` | `/update-docs` |
+| Sync docs with changes | `/update-docs` | `/doc-gen` |
+| Pre-PR checklist | `/pr-ready` | |
+| Audit reproducibility | `/check-reproducibility` | |
+| Export environment | `/env-export` | |
+| Upgrade versions | `/migrate` | |

@@ -5,7 +5,18 @@ description: Export environment to reproducible specification
 
 # Environment Export
 
-Export project environment.
+Export current environment to a reproducible specification.
+
+## When to Use
+
+- Want to share your environment with others
+- Setting up CI/CD
+- Creating a reproducible project setup
+
+## See Also
+
+- `/check-reproducibility` - to AUDIT an existing project's reproducibility
+- `/deps-check` - to audit for security/outdated/unused deps
 
 ## Available Tools
 

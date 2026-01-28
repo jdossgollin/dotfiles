@@ -5,7 +5,17 @@ description: Clean notebook for version control and reproducibility
 
 # Notebook Clean
 
-Clean Jupyter/Quarto notebook.
+Clean notebook for version control and reproducibility.
+
+## When to Use
+
+- Before committing a notebook to git
+- Notebook has hidden state or execution order issues
+- Want to check notebook reproducibility
+
+## See Also
+
+- `/check-reproducibility` - broader project-level reproducibility audit
 
 ## Available Tools
 
@@ -34,7 +44,7 @@ Clean Jupyter/Quarto notebook.
 
 ### 4. Version Pinning
 
-Suggest adding version watermark cell:
+Suggest adding version watermark cell (this runs in the notebook, not via Claude's Bash tool):
 
 ```python
 %pip freeze | grep -E "pandas|numpy|..."

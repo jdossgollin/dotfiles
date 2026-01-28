@@ -7,6 +7,16 @@ description: Run tests, analyze failures, propose fixes
 
 Run tests and debug failures.
 
+## When to Use
+
+- Tests exist and you want to run them
+- Tests are failing and you need to fix the CODE (not the tests)
+
+## See Also
+
+- `/test-gen` - if tests don't exist yet
+- `/debug` - for bugs not caught by tests (crashes, wrong output)
+
 ## Available Tools
 
 - `Grep` - ripgrep-based search (use instead of `grep` or `rg` in bash)

@@ -5,7 +5,12 @@ description: Figure out how to read/parse a data file
 
 # Data Read
 
-Analyze data file and write reading code.
+Figure out how to read/parse an unfamiliar data file.
+
+## When to Use
+
+- Have a data file and don't know how to load it
+- Need to understand file format, encoding, structure
 
 ## Available Tools
 

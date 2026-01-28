@@ -5,7 +5,18 @@ description: Analyze project for reproducibility issues
 
 # Check Reproducibility
 
-Analyze reproducibility WITHOUT running code.
+Audit project for reproducibility issues (read-only analysis).
+
+## When to Use
+
+- Before sharing code/data with others
+- Reviewing a data science project
+- Part of `/pr-ready` checklist for data pipelines
+
+## See Also
+
+- `/env-export` - if you want to CREATE a reproducible environment spec
+- `/deps-check` - for security/version issues specifically
 
 ## Available Tools
 
@@ -48,6 +59,11 @@ If file count exceeds 20, stop and ask before proceeding.
 ### 6. Hardware Requirements
 
 - GPU/CUDA code? (`.cuda()`, `torch.device`, `CUDA.jl`)
+- If GPU detected, check for version pinning:
+  - CUDA toolkit version specified?
+  - cuDNN version (if deep learning)?
+  - GPU memory requirements documented?
+- Check for `nvidia-smi` or similar in setup scripts
 - Document if not already noted
 
 ## Output

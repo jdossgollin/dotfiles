@@ -5,7 +5,16 @@ description: Review code and create improvement plan
 
 # Refactor
 
-Review code and create a refactoring plan (no direct edits).
+Plan improvements to code you own (creates plan, then implements after approval).
+
+## When to Use
+
+- You want to improve code structure, readability, or design
+- You're ready to make changes (after plan approval)
+
+## See Also
+
+- `/review-code` - if you just want critique/feedback without planning changes
 
 ## Available Tools
 

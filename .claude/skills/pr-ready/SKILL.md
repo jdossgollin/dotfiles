@@ -5,7 +5,18 @@ description: Prepare changes for pull request
 
 # PR Ready
 
-Prepare current branch for PR.
+Orchestrate pre-PR checks (runs other skills).
+
+## When to Use
+
+- About to open a pull request
+- Want a comprehensive check before sharing code
+
+## Orchestrates
+
+- `/test-debug` - verify tests pass
+- `/update-docs` - verify docs are current
+- `/refactor` (optional) - suggest improvements
 
 ## Available Tools
 
@@ -18,14 +29,14 @@ Prepare current branch for PR.
 
 ### 1. Tests
 
-Run `/test-debug`:
+Use the Skill tool to invoke `test-debug`:
 
 - All tests pass?
 - New code has test coverage?
 
 ### 2. Docs
 
-Run `/update-docs`:
+Use the Skill tool to invoke `update-docs`:
 
 - README accurate?
 - API docs updated?
@@ -33,8 +44,8 @@ Run `/update-docs`:
 
 ### 3. Code Quality (ask first)
 
-- Want a `/refactor` review?
-- If yes: creates plan, doesn't auto-implement
+- Want a refactor review?
+- If yes: use the Skill tool to invoke `refactor` (creates plan, doesn't auto-implement)
 
 ## Output
 

@@ -5,7 +5,16 @@ description: Check and update documentation for recent changes
 
 # Update Docs
 
-Review and update documentation to match code changes.
+Sync existing documentation with code changes.
+
+## When to Use
+
+- Code changed and docs may be stale
+- Called from `/git-commit` or `/pr-ready` to check doc accuracy
+
+## See Also
+
+- `/doc-gen` - if no docs exist yet (create from scratch)
 
 ## Available Tools
 

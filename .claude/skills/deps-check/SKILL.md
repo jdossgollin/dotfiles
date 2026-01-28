@@ -5,7 +5,18 @@ description: Audit project dependencies for issues
 
 # Dependency Check
 
-Audit dependencies.
+Audit dependencies for security, outdated packages, and issues.
+
+## When to Use
+
+- Security audit before release
+- Checking for outdated or vulnerable packages
+- Investigating dependency conflicts
+
+## See Also
+
+- `/check-reproducibility` - broader reproducibility audit (includes more than deps)
+- `/migrate` - if you need to upgrade to new versions
 
 ## Available Tools
 

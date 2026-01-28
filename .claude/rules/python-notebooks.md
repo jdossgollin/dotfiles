@@ -1,6 +1,7 @@
 ---
 paths:
   - "**/*.ipynb"
+description: For Python notebooks (check kernel). Julia notebooks use julia-notebooks.md.
 ---
 
 # Python (Notebooks/Analysis)

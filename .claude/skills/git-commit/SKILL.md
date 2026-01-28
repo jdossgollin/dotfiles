@@ -5,7 +5,16 @@ description: Generate semantic commit message from staged changes
 
 # Git Commit
 
-Generate structured commit message.
+Generate structured commit message from staged changes.
+
+## When to Use
+
+- Ready to commit and want a well-formatted message
+- Want to check if docs need updating before commit
+
+## May Call
+
+- `/update-docs` - if changes touch public APIs (asks first)
 
 ## Available Tools
 
@@ -40,7 +49,7 @@ git diff --staged
 If changes touch public APIs or user-facing features:
 
 - Ask: "Should I check if docs need updating? (y/n)"
-- If yes: invoke `/update-docs` workflow
+- If yes: use the Skill tool to invoke `update-docs`
 
 ### 5. Present for Review
 

@@ -5,7 +5,16 @@ description: Profile code and identify performance bottlenecks
 
 # Profile
 
-Profile specified code for performance issues.
+Profile code to identify performance bottlenecks.
+
+## When to Use
+
+- Code is slow and you want to find out why
+- Comparing performance of different implementations
+
+## See Also
+
+- `/debug` - if the issue is incorrect behavior, not performance
 
 ## Available Tools
 
@@ -23,8 +32,12 @@ Profile specified code for performance issues.
 
 ### 1. Identify Profiler
 
-- Python: cProfile, line_profiler
-- Julia: @time, @profile, @code_warntype
+- Python: cProfile, line_profiler, `py-spy` for sampling
+- Julia:
+  - Quick timing: `@time`, `@elapsed`
+  - Benchmarking: `BenchmarkTools.jl` (`@btime`, `@benchmark`) - more accurate, runs multiple times
+  - Profiling: `@profile` with `Profile.print()` or `ProfileView.jl`
+  - Type stability: `@code_warntype`, `JET.jl`
 
 ### 2. Run Profiler
 

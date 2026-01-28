@@ -5,7 +5,16 @@ description: Generate documentation for code
 
 # Documentation Generator
 
-Generate documentation for specified code.
+Create new documentation from scratch.
+
+## When to Use
+
+- No documentation exists yet
+- Need to document a new module/feature from scratch
+
+## See Also
+
+- `/update-docs` - if docs exist but need to sync with code changes
 
 ## Available Tools
 
