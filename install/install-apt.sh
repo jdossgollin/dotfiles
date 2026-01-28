@@ -13,19 +13,26 @@ sudo apt-get update
 # Core development tools
 sudo apt-get install -y \
     aspell \
+    bat \
+    btop \
     build-essential \
     curl \
     firefox \
+    fzf \
     gh \
     git \
     git-extras \
     git-lfs \
     libboost-all-dev \
     nano \
+    ncdu \
     nodejs \
     npm \
+    p7zip-full \
     pandoc \
+    ripgrep \
     shellcheck \
+    tldr \
     tree \
     wget \
     zsh \
@@ -34,11 +41,24 @@ sudo apt-get install -y \
 # Install git LFS
 git lfs install --system
 
-# diff-so-fancy (via npm)
-if ! command -v diff-so-fancy >/dev/null 2>&1; then
-    echo "Installing diff-so-fancy..."
-    sudo npm install -g diff-so-fancy
-    git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
+# eza (modern ls replacement, not in standard apt repos)
+if ! command -v eza >/dev/null 2>&1; then
+    echo "Installing eza..."
+    sudo mkdir -p /etc/apt/keyrings
+    wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+    echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+    sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+    sudo apt-get update
+    sudo apt-get install -y eza
+fi
+
+# git-delta (syntax-highlighted diffs, replaces diff-so-fancy)
+if ! command -v delta >/dev/null 2>&1; then
+    echo "Installing git-delta..."
+    DELTA_VERSION=$(curl -sS https://api.github.com/repos/dandavison/delta/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
+    curl -LO "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_amd64.deb"
+    sudo dpkg -i "git-delta_${DELTA_VERSION}_amd64.deb"
+    rm -f "git-delta_${DELTA_VERSION}_amd64.deb"
 fi
 
 # Zotero (via zotero-deb repository)
@@ -58,14 +78,23 @@ if ! command -v quarto >/dev/null 2>&1; then
     rm -f "quarto-${QUARTO_VERSION}-linux-amd64.deb"
 fi
 
-# Brave browser (via apt repository)
-if ! command -v brave-browser >/dev/null 2>&1; then
-    echo "Installing Brave browser..."
-    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-    echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" | \
-        sudo tee /etc/apt/sources.list.d/brave-browser-release.list > /dev/null
+# SourceGit (open-source Git GUI, replaces GitHub Desktop)
+if ! command -v sourcegit >/dev/null 2>&1; then
+    echo "Installing SourceGit..."
+    SOURCEGIT_VERSION=$(curl -sS https://api.github.com/repos/sourcegit-scm/sourcegit/releases/latest | grep -oP '"tag_name":\s*"v\K[^"]+')
+    curl -LO "https://github.com/sourcegit-scm/sourcegit/releases/download/v${SOURCEGIT_VERSION}/sourcegit_${SOURCEGIT_VERSION}.linux-x64.AppImage"
+    chmod +x "sourcegit_${SOURCEGIT_VERSION}.linux-x64.AppImage"
+    sudo mv "sourcegit_${SOURCEGIT_VERSION}.linux-x64.AppImage" /usr/local/bin/sourcegit
+fi
+
+# WezTerm terminal (cross-platform, replaces iTerm2)
+if ! command -v wezterm >/dev/null 2>&1; then
+    echo "Installing WezTerm..."
+    curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+    echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | \
+        sudo tee /etc/apt/sources.list.d/wezterm.list > /dev/null
     sudo apt-get update
-    sudo apt-get install -y brave-browser
+    sudo apt-get install -y wezterm
 fi
 
 # VSCodium (open-source VS Code)
@@ -91,19 +120,9 @@ fi
 if is-snap-available 2>/dev/null; then
     echo "Installing snap packages..."
 
-    # cheat - command line cheatsheets
-    if ! command -v cheat >/dev/null 2>&1; then
-        sudo snap install cheat 2>/dev/null || echo "Note: cheat snap install failed (may need manual install)"
-    fi
-
     # Insync - Google Drive / OneDrive sync
     if ! command -v insync >/dev/null 2>&1; then
         sudo snap install insync 2>/dev/null || echo "Note: Insync snap install failed (may need manual install)"
-    fi
-
-    # Obsidian - note taking
-    if ! snap list obsidian >/dev/null 2>&1; then
-        sudo snap install obsidian --classic 2>/dev/null || echo "Note: Obsidian snap install failed (may need manual install)"
     fi
 
     # Slack
@@ -127,5 +146,4 @@ echo ""
 echo "Note: Some applications must be installed manually on Linux:"
 echo "  - Zoom: https://zoom.us/download"
 echo "  - Claude desktop: No Linux version available"
-echo "  - GitHub Desktop: No official Linux version (use gh CLI instead)"
 echo "  - WhatsApp: No official Linux client (use web version)"

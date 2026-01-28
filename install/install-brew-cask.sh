@@ -5,23 +5,20 @@ fi
 
 # List of apps
 cask_apps=(
-    brave-browser      # second browser to separate work/life
     claude             # Claude desktop app
     claude-code        # AI coding assistant CLI
     firefox            # keep it up to date!
-    github             # can be helpful, I suck at git
     insync             # Google Drive / OneDrive sync
-    iterm2             # better terminal
-    obsidian           # note taking
-    raindropio         # bookmark manager
     slack              # lab group
+    sourcegit          # open-source Git GUI (replaces GitHub Desktop)
     spotify            # why not
-    the-unarchiver     # easier [un]zipping
+    stats              # menu bar system monitor (replaces Activity Monitor)
     quarto             # next gen RMarkdown / bookdown
     vscodium           # code editor (open-source VS Code)
-    whatsapp # messaging
-    zoom     # we all work remotely now
-    zotero   # reference manager
+    wezterm            # cross-platform terminal (replaces iTerm2)
+    whatsapp           # messaging
+    zoom               # we all work remotely now
+    zotero             # reference manager
 )
 
 # Install each cask, skipping if already installed

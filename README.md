@@ -18,7 +18,7 @@ Key technologies:
 - Conda/Mamba for Python environments
 - Julia via juliaup
 - Node.js for JavaScript tooling
-- VS Code as primary editor
+- VSCodium as primary editor
 
 ## Quick Start
 
@@ -127,8 +127,8 @@ Commands:
 |----------|-------|
 | Shell | zsh, oh-my-zsh, powerlevel10k, z |
 | Dev Tools | git, git-lfs, gcc, node, shellcheck |
-| Apps | VS Code, iTerm2, Slack, Zoom (via cask) |
-| Fonts | Fira Code, Meslo Nerd Font, JuliaMono |
+| Apps | VSCodium, WezTerm, SourceGit, Slack, Zoom (via cask) |
+| Fonts | Meslo Nerd Font, JetBrains Mono, Cascadia Code, Iosevka, Monaspace |
 | Python | Miniconda |
 | Julia | juliaup |
 
@@ -138,8 +138,8 @@ Commands:
 |----------|-------|
 | Shell | zsh, oh-my-zsh, powerlevel10k |
 | Dev Tools | git, git-lfs, build-essential, node, shellcheck |
-| Apps | VS Code (apt), Slack, Spotify (snap) |
-| Fonts | Fira Code, Meslo Nerd Font |
+| Apps | VSCodium, WezTerm, SourceGit, Slack, Spotify |
+| Fonts | Meslo Nerd Font, JetBrains Mono, Cascadia Code |
 | Python | Miniforge (includes mamba) |
 | Julia | juliaup |
 

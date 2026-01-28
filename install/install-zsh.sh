@@ -31,4 +31,5 @@ if [[ ! -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ]]; the
 fi
 
 echo ""
-echo "==> After install, open iTerm2 and run 'p10k configure' to set up fonts and theme"
+echo "==> After install, open WezTerm and run 'p10k configure' if you want to customize the Powerlevel10k theme"
+echo "    (Fonts are already configured in ~/.wezterm.lua)"

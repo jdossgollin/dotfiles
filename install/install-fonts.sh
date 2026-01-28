@@ -3,6 +3,7 @@
 if is-macos 2>/dev/null; then
     # macOS font installation via Homebrew
     fonts=(
+        font-cascadia-code
         font-cooper-hewitt
         font-cormorant
         font-crimson-text
@@ -17,10 +18,13 @@ if is-macos 2>/dev/null; then
         font-gfs-didot
         font-graduate
         font-iceland
+        font-iosevka
+        font-jetbrains-mono
         font-juliamono
         font-kameron
         font-lato
         font-meslo-lg-nerd-font
+        font-monaspace
         font-old-standard-tt
         font-open-sans
         font-roboto
@@ -44,8 +48,17 @@ elif is-linux 2>/dev/null; then
 
     # Install via apt where available
     if is-apt-available 2>/dev/null; then
-        sudo apt-get install -y fonts-firacode fonts-dejavu 2>/dev/null || true
+        sudo apt-get install -y fonts-firacode fonts-dejavu fonts-cascadia-code 2>/dev/null || true
     fi
+
+    # Download JetBrains Mono
+    echo "Downloading JetBrains Mono..."
+    JETBRAINS_URL="https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip"
+    curl -fLo "/tmp/JetBrainsMono.zip" "$JETBRAINS_URL" 2>/dev/null && \
+        unzip -o -q "/tmp/JetBrainsMono.zip" -d "/tmp/JetBrainsMono" && \
+        cp /tmp/JetBrainsMono/fonts/ttf/*.ttf "$FONT_DIR/" && \
+        rm -rf /tmp/JetBrainsMono /tmp/JetBrainsMono.zip || \
+        echo "Warning: Could not download JetBrains Mono"
 
     # Download Meslo Nerd Font (required for Powerlevel10k)
     echo "Downloading MesloLGS NF fonts for Powerlevel10k..."

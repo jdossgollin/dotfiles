@@ -468,60 +468,6 @@ if [ -f "$NCPREFS_PLIST" ]; then
     killall usernoted 2>/dev/null
 fi
 
-###############################################################################
-# iTerm2                                                                      #
-###############################################################################
-
-# Apply Atom One Dark color scheme to iTerm2
-if [ -d "/Applications/iTerm.app" ]; then
-    ITERM_COLORS_URL="https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Atom%20One%20Dark.itermcolors"
-    ITERM_COLORS_FILE="/tmp/AtomOneDark.itermcolors"
-    ITERM_PLIST="$HOME/Library/Preferences/com.googlecode.iterm2.plist"
-
-    echo "Downloading Atom One Dark color scheme for iTerm2..."
-    curl -sL "$ITERM_COLORS_URL" -o "$ITERM_COLORS_FILE"
-
-    # Apply colors directly to the Default profile
-    if [ -f "$ITERM_PLIST" ]; then
-        echo "Applying Atom One Dark colors to iTerm2 Default profile..."
-
-        # List of color keys to copy from the scheme to the profile
-        COLOR_KEYS=(
-            "Ansi 0 Color" "Ansi 1 Color" "Ansi 2 Color" "Ansi 3 Color"
-            "Ansi 4 Color" "Ansi 5 Color" "Ansi 6 Color" "Ansi 7 Color"
-            "Ansi 8 Color" "Ansi 9 Color" "Ansi 10 Color" "Ansi 11 Color"
-            "Ansi 12 Color" "Ansi 13 Color" "Ansi 14 Color" "Ansi 15 Color"
-            "Background Color" "Bold Color" "Cursor Color" "Cursor Text Color"
-            "Foreground Color" "Selected Text Color" "Selection Color"
-        )
-
-        for key in "${COLOR_KEYS[@]}"; do
-            # Read color components from the scheme file
-            red=$(/usr/libexec/PlistBuddy -c "Print ':$key:Red Component'" "$ITERM_COLORS_FILE" 2>/dev/null)
-            green=$(/usr/libexec/PlistBuddy -c "Print ':$key:Green Component'" "$ITERM_COLORS_FILE" 2>/dev/null)
-            blue=$(/usr/libexec/PlistBuddy -c "Print ':$key:Blue Component'" "$ITERM_COLORS_FILE" 2>/dev/null)
-
-            if [ -n "$red" ] && [ -n "$green" ] && [ -n "$blue" ]; then
-                # Delete existing color dict and recreate with new values
-                /usr/libexec/PlistBuddy -c "Delete ':New Bookmarks:0:$key'" "$ITERM_PLIST" 2>/dev/null
-                /usr/libexec/PlistBuddy \
-                    -c "Add ':New Bookmarks:0:$key' dict" \
-                    -c "Add ':New Bookmarks:0:$key:Color Space' string sRGB" \
-                    -c "Add ':New Bookmarks:0:$key:Red Component' real $red" \
-                    -c "Add ':New Bookmarks:0:$key:Green Component' real $green" \
-                    -c "Add ':New Bookmarks:0:$key:Blue Component' real $blue" \
-                    "$ITERM_PLIST"
-            fi
-        done
-
-        echo "iTerm2 Atom One Dark theme applied. Restart iTerm2 to see changes."
-    else
-        # Fallback: just import if no plist exists yet
-        open "$ITERM_COLORS_FILE"
-        echo "iTerm2 color scheme imported. Select 'Atom One Dark' from Preferences > Profiles > Colors > Color Presets."
-    fi
-fi
-
 # JAMES: add sound to menu bar
 defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Volume.menu"
 killall SystemUIServer
