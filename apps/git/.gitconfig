@@ -3,7 +3,7 @@
 # Then edit with your details and re-run install.sh
 
 [core]
-	excludesfile = ~/.gitignore_global
+	excludesfile = /Users/jamesdoss-gollin/.gitignore_global
 	pager = delta
 
 [alias]
@@ -96,7 +96,7 @@
 	required = true
 [user]
 	name = James Doss-Gollin
-	email = james.dossgollin@gmail.com
+	email = jdossgollin@rice.edu
 [github]
 	user = jdossgollin
 [credential]

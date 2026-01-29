@@ -312,10 +312,7 @@
     "vsnotes.templates": [
         "meeting"
     ],
-    "sync.autoUpload": true,
-    "sync.autoDownload": true,
     "terminal.integrated.inheritEnv": false,
-    "sync.gist": "03e4bb2376f645bc8b92a2dc3fa409db",
     "latex-workshop.intellisense.update.delay": 500,
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.message.badbox.show": "none",
@@ -403,6 +400,19 @@
             "args": [
                 "-e",
                 "knitr::opts_knit$set(concordance = TRUE); knitr::knit('%DOCFILE_EXT%')"
+            ],
+            "env": {}
+        },
+        {
+            "name": "tectonic",
+            "command": "tectonic",
+            "args": [
+                "-X",
+                "compile",
+                "%DOC%.tex",
+                "--synctex",
+                "--keep-logs",
+                "--keep-intermediates"
             ],
             "env": {}
         }

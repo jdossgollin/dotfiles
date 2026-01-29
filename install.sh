@@ -80,6 +80,17 @@ ln -sfv "$DOTFILES_DIR/apps/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/apps/wezterm/wezterm.lua" ~/.wezterm.lua
 
+# VSCodium settings (platform-specific paths)
+if is-macos; then
+    VSCODIUM_USER_DIR="$HOME/Library/Application Support/VSCodium/User"
+elif is-linux; then
+    VSCODIUM_USER_DIR="$HOME/.config/VSCodium/User"
+fi
+if [[ -n "$VSCODIUM_USER_DIR" ]]; then
+    mkdir -p "$VSCODIUM_USER_DIR"
+    ln -sfv "$DOTFILES_DIR/apps/.vscode/settings.json" "$VSCODIUM_USER_DIR/settings.json"
+fi
+
 # Set global gitignore
 git config --global core.excludesfile ~/.gitignore_global
 
