@@ -5,8 +5,8 @@ local config = wezterm.config_builder()
 config.font = wezterm.font("MesloLGS NF")
 config.font_size = 13.0
 
--- Color scheme: OneHalfDark (dark theme)
-config.color_scheme = "OneHalfDark"
+-- Color scheme: MaterialDark
+config.color_scheme = "MaterialDark"
 
 -- Window
 config.window_decorations = "RESIZE"
