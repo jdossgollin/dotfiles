@@ -114,6 +114,15 @@ elif [[ -f "${HOMEBREW_PREFIX:-/opt/homebrew}/opt/fzf/shell/key-bindings.zsh" ]]
     [[ -f "${HOMEBREW_PREFIX:-/opt/homebrew}/opt/fzf/shell/completion.zsh" ]] && source "${HOMEBREW_PREFIX:-/opt/homebrew}/opt/fzf/shell/completion.zsh"
 fi
 
+# === SHIFT+ENTER KEYBINDING ===
+# Handle CSI u sequence from WezTerm for Shift+Enter
+# Inserts a literal newline for multiline command editing
+function zle-insert-newline() {
+    LBUFFER+=$'\n'
+}
+zle -N zle-insert-newline
+bindkey '\e[13;2u' zle-insert-newline
+
 # === LAZY CONDA/MAMBA INITIALIZATION ===
 # Saves 200-500ms on shell startup by deferring init until first use
 

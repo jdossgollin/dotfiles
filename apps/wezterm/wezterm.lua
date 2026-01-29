@@ -28,4 +28,13 @@ if wezterm.target_triple:find("darwin") then
 	config.send_composed_key_when_right_alt_is_pressed = true
 end
 
+-- Fix Shift+Enter to send CSI u escape sequence (only for this specific key)
+config.keys = {
+	{
+		key = "Enter",
+		mods = "SHIFT",
+		action = wezterm.action.SendString("\x1b[13;2u"),
+	},
+}
+
 return config
