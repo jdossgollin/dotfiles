@@ -18,95 +18,71 @@ Create a structured skeleton for a document.
 - `/brainstorm` - if purpose/audience not yet clear
 - `/expand` - to turn outline into prose
 
+## Dialogue Rules
+
+See [dialogue-rules.md](../dialogue-rules.md). Key points:
+
+- **One question at a time**
+- **Present structure incrementally** (not all at once for long docs)
+- **Validate before elaborating**
+
 ## Ask First: Format
 
-> "What are you writing? (paper, slides, grant proposal, lecture notes, other)"
+> "What are you writing?
+> A) Paper
+> B) Slides / presentation
+> C) Grant proposal
+> D) Lecture notes
+> E) Something else"
 
-Adapt structure based on response.
-
-## Format-Specific Structures
-
-### Paper
-
-```
-1. Introduction
-   - Hook / motivation
-   - Gap in knowledge
-   - This paper's contribution
-   - Roadmap
-2. Background / Related Work
-3. Methods / Approach
-4. Results
-5. Discussion
-6. Conclusion
-```
-
-### Grant Proposal
-
-```
-1. Specific Aims (1 page)
-   - Opening paragraph (significance)
-   - Aim 1
-   - Aim 2
-   - Aim 3
-   - Impact statement
-2. Significance
-3. Innovation
-4. Approach
-   - Preliminary data
-   - Research plan by aim
-   - Timeline
-   - Potential pitfalls
-```
-
-### Slides / Presentation
-
-```
-1. Title slide
-2. Motivation (why should audience care?)
-3. Problem statement
-4. Key insight / contribution
-5. Evidence (2-4 slides)
-6. Implications
-7. Conclusion / takeaway
-8. (Optional) Questions / discussion
-```
-
-### Lecture Notes
-
-```
-1. Learning objectives
-2. Motivation / context
-3. Core concepts (chunked)
-4. Examples for each concept
-5. Common misconceptions
-6. Summary
-7. Exercises / problems
-```
+Wait for response. Structure adapts based on format.
 
 ## Process
 
-### 1. Get Context
+### 1. Get Context (One Question at a Time)
 
-If not provided, ask:
+If not provided, ask sequentially:
 
-- What's the main argument or purpose?
-- Who's the audience?
-- Any length/format constraints?
+1. "What's the main argument or message?"
+2. (wait) "Who's the audience?"
+3. (wait) "Any length or format constraints?"
 
-### 2. Draft Outline
+### 2. Propose Top-Level Structure
 
-Create hierarchical structure with:
+Present just the major sections first:
 
-- Section headings
-- 1-2 bullet points per section describing content
-- Logical flow from section to section
+> "For a paper on X, I'd suggest:
+> 1. Introduction
+> 2. Background
+> 3. Methods
+> 4. Results
+> 5. Discussion
+>
+> Does this structure work, or do you have a different shape in mind?"
 
-### 3. Present and Iterate
+Wait before filling in details.
 
-Show outline, ask:
+### 3. Elaborate Section by Section
 
-> "Does this structure work? Any sections to add, remove, or reorder?"
+After top-level approval, flesh out ONE section:
+
+> "For the Introduction, I'm thinking:
+> - Hook: <idea>
+> - Gap: <idea>
+> - Contribution: <idea>
+>
+> Sound right?"
+
+Continue section by section.
+
+## Format Templates
+
+See [format-templates.md](format-templates.md) for detailed structures:
+
+- Paper
+- Grant proposal
+- Slides
+- Lecture notes
 
 ## Output Format
 
@@ -125,7 +101,7 @@ Show outline, ask:
 
 2. **<Section>**
    - <what goes here>
-   ...
+...
 ```
 
 ## After Outlining

@@ -18,30 +18,58 @@ Extract the main arguments and structure from existing text.
 - `/critique` - after summarizing, to evaluate the draft
 - `/outline` - if you want to restructure based on summary
 
+## Dialogue Rules
+
+See [dialogue-rules.md](../dialogue-rules.md). Key points:
+
+- **Present summary incrementally** for long documents
+- **Validate understanding** before proceeding
+
+## Ask First: Scope
+
+> "Summarize the whole document, or a specific section?"
+
+For long documents, offer to summarize section by section.
+
 ## Process
 
-### 1. Identify Scope
-
-Ask if not clear:
-
-- Summarize the whole document?
-- Summarize a specific section?
-
-### 2. Read and Extract
+### 1. Read and Extract
 
 For each major section, identify:
 
-- **Main claim/point**: What is this section arguing or explaining?
-- **Key evidence/support**: What backs up the claim?
+- **Main claim/point**: What is this section arguing?
+- **Key evidence**: What backs it up?
 - **Gaps**: What's asserted but not supported?
 
-### 3. Identify Structure
+### 2. Present Main Argument First
 
-- What's the logical flow?
-- How do sections connect?
-- Is there a clear thread?
+Start with the core:
 
-## Output Format
+> "The main argument seems to be: <1-2 sentences>
+>
+> Is that right?"
+
+Wait for confirmation before continuing.
+
+### 3. Walk Through Structure
+
+After main argument is confirmed:
+
+> "The structure is:
+> 1. **<Section>**: <what it does>
+> 2. **<Section>**: <what it does>
+>
+> Want me to go deeper on any section?"
+
+### 4. Note Observations
+
+If relevant, mention:
+
+- Strengths in the current draft
+- Gaps or unclear areas
+- Structural observations
+
+## Output Format (Full Summary)
 
 ```markdown
 ## Summary: <document title>
@@ -60,7 +88,6 @@ For each major section, identify:
 
 - <point 1>
 - <point 2>
-- ...
 
 ### Observations
 

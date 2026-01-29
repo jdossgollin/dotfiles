@@ -19,31 +19,62 @@ Convert outline bullet points into full prose.
 - `/critique` - after drafting, to evaluate
 - `/polish` - for sentence-level refinement
 
+## Dialogue Rules
+
+See [dialogue-rules.md](../dialogue-rules.md). Key points:
+
+- **Work section by section** (not whole document at once)
+- **Validate after each section** before continuing
+- **Ask about tone/style** if unclear
+
 ## Ask First: Scope
 
-If ambiguous:
-
-> "Expand the whole document, or a specific section?"
+> "Which section should I expand?
+> A) <section 1>
+> B) <section 2>
+> C) ...
+> D) Start from the beginning and go section by section"
 
 For long documents, section-by-section is usually better.
 
 ## Process
 
-### 1. Understand the Section
+### 1. Confirm the Section
 
-- What's the purpose of this section?
-- What comes before and after?
-- What tone is appropriate?
+> "I'll expand <section name>. The outline says:
+> - <bullet 1>
+> - <bullet 2>
+>
+> Anything to add before I draft?"
 
-### 2. Expand Each Point
+### 2. Draft the Section
 
-For each bullet in the outline:
+Turn each bullet into prose:
 
-- Turn into 1-3 sentences (or a paragraph)
+- 1-3 sentences per bullet (or a paragraph)
 - Add transitions between points
 - Maintain logical flow
 
-### 3. Match the Format
+### 3. Present and Validate
+
+Show the draft (max 300-400 words at a time):
+
+> "Here's the draft for <section>:
+>
+> <prose>
+>
+> Does this work? Should I adjust tone, add detail, or move on?"
+
+Wait for response.
+
+### 4. Continue or Revise
+
+Based on feedback:
+
+- If good: "Continue to <next section>?"
+- If needs work: revise and show again
+
+## Format Guidance
 
 **Papers**: Formal, precise, cite-ready prose
 **Slides**: Brief, punchy, one idea per bullet
@@ -55,30 +86,16 @@ For each bullet in the outline:
 ### Do
 
 - Follow the outline structure
-- Use transitions ("However," "Building on this," "In contrast,")
-- Keep paragraphs focused (one main idea each)
-- Match the existing tone if drafting into existing work
+- Use transitions ("However," "Building on this,")
+- Keep paragraphs focused
+- Match existing tone
 
 ### Don't
 
-- Add new major points not in the outline
+- Add major points not in the outline
 - Over-elaborate simple points
 - Use filler phrases
-- Repeat the same idea in different words
-
-## Output
-
-Present the drafted prose. For long sections, show one at a time:
-
-```markdown
-## Section: <name>
-
-<drafted prose>
-
----
-
-Continue to next section?
-```
+- Write more than ~400 words without checking in
 
 ## After Expanding
 

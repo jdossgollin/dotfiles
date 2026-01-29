@@ -19,25 +19,48 @@ Evaluate a draft for argument quality, structure, and clarity.
 - `/polish` - for sentence-level refinement (after addressing critique)
 - `/outline` - if structural problems require reorganization
 
+## Dialogue Rules
+
+See [dialogue-rules.md](../dialogue-rules.md). Key points:
+
+- **One question at a time**
+- **Incremental feedback** (don't dump everything at once)
+- **Validate before continuing** ("Does this resonate?")
+
 ## Ask First: Feedback Level
 
-> "What kind of feedback? (argument/structure, clarity, or comprehensive)"
+> "What kind of feedback?
+> A) Argument/structure (big picture)
+> B) Clarity (is it easy to follow?)
+> C) Comprehensive (both)"
 
-**Default to argument/structure** for papers and grants.
-
-### Feedback Levels
-
-- **Argument/structure**: Is the logic sound? Are claims supported? Does flow make sense?
-- **Clarity**: Is it easy to follow? Are terms defined? Is anything confusing?
-- **Comprehensive**: Both of the above
+Wait for response. **Default to A** for papers and grants if user is uncertain.
 
 ## Process
 
 ### 1. Read for Understanding
 
-First pass: understand what the text is trying to say.
+First pass: understand what the text is trying to say. Don't critique yet.
 
-### 2. Evaluate (based on level)
+### 2. Start with Biggest Issue
+
+Identify the MOST important issue. Present it:
+
+> "The main thing I noticed: <issue>. Does this resonate, or should I look at something else?"
+
+Wait for response before continuing.
+
+### 3. Continue Incrementally
+
+After validation, present 2-3 more issues. Then pause:
+
+> "Want me to continue, or focus on one of these?"
+
+### 4. Specific Locations
+
+Always reference specific locations (section names, paragraphs, or quotes).
+
+## Feedback Levels
 
 **Argument/Structure:**
 
@@ -45,63 +68,41 @@ First pass: understand what the text is trying to say.
 - Is each claim supported by evidence?
 - Are there logical gaps or leaps?
 - Does the order make sense?
-- Are counterarguments addressed?
 
 **Clarity:**
 
 - Is the audience clear?
 - Are technical terms explained?
 - Are sentences parseable on first read?
-- Is anything ambiguous?
 
-### 3. Note Specific Issues
-
-Reference specific locations (section names, paragraphs, or quotes).
-
-## Output Format
+## Output Format (when presenting multiple issues)
 
 ```markdown
-## Critique: <document/section>
+## Issues Found
 
-### Strengths
-
-- <what works well>
-
-### Issues
-
-**Argument/Structure:**
-
+**Most important:**
 - **<location>**: <issue and why it matters>
-- ...
 
-**Clarity:**
-
+**Also notable:**
 - **<location>**: <issue>
-- ...
+- **<location>**: <issue>
 
-### Suggestions
-
-1. <specific actionable suggestion>
-2. ...
-
-### Questions
-
-- <clarifying questions about intent>
+Should I continue, or discuss one of these?
 ```
 
 ## Guidelines
 
 ### Do
 
+- Start with the biggest issue
 - Be specific (point to exact locations)
 - Explain why something is an issue
-- Prioritize (major issues first)
 - Acknowledge what works
 
 ### Don't
 
+- Dump 10 issues at once
 - Rewrite the text (that's `/polish`)
-- Suggest style changes in argument critique
 - Be vague ("this section is weak")
 - Make changes without permission
 

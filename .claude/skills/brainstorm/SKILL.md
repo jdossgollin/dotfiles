@@ -26,62 +26,95 @@ Refine ideas through structured questioning before diving in.
 - `/outline` - after brainstorming, when ready to structure
 - `/expand` - after outline is set
 
-## Philosophy
+## Dialogue Rules
 
-**Don't dive in first.** Understand the problem deeply before writing code or prose.
+**These rules are critical. Follow them exactly.**
+
+### One Question Per Message
+
+Ask ONE question, then wait. Do not ask multiple questions or dump a list.
+
+```
+❌ "What's the goal? Who's the audience? What constraints exist?"
+✓ "What problem are we trying to solve?"
+```
+
+### Prefer Multiple Choice
+
+When possible, offer structured options rather than open-ended questions:
+
+```
+❌ "What approach do you want to take?"
+✓ "Which direction fits better?
+   A) Build on the existing auth system
+   B) Replace with OAuth provider
+   C) Something else"
+```
+
+### Incremental Validation
+
+After presenting ideas (max 200-300 words), pause and check:
+
+```
+"Does this direction feel right so far?"
+```
+
+Do NOT present a complete design upfront. Build understanding incrementally.
+
+### 2-3 Alternatives with Trade-offs
+
+Before finalizing any direction, present options:
+
+```markdown
+## Option A: <name>
+**Approach**: <1-2 sentences>
+**Pros**: <key advantages>
+**Cons**: <key disadvantages>
+
+## Option B: <name>
+...
+```
+
+Then ask: "Which resonates? Or hybrid?"
 
 ## Process
 
 ### 1. Understand the Goal
 
-Ask clarifying questions:
+Start with ONE question about the core problem:
 
-- What problem are we solving?
-- Who is the user/audience?
-- What does success look like?
+> "What's the main problem we're solving?"
+
+Wait for response. Then explore audience, success criteria—one at a time.
 
 ### 2. Explore Constraints
 
-- What are the hard requirements?
-- What resources are available?
-- What's the timeline?
-- What's already built that we can use?
+Ask about constraints incrementally:
+
+- Hard requirements?
+- Resources/timeline?
+- What already exists?
 
 ### 3. Generate Options
 
-Present 2-4 approaches:
+Present 2-3 approaches with trade-offs (see format above).
 
-```markdown
-## Option A: <name>
+### 4. Refine
 
-**Approach**: <brief description>
-**Pros**: <advantages>
-**Cons**: <disadvantages>
-**Effort**: low/medium/high
+For the emerging direction, probe:
 
-## Option B: <name>
-
-...
-```
-
-### 4. Socratic Refinement
-
-For each option, ask:
-
-- What could go wrong?
-- What assumptions are we making?
-- How would this scale?
-- What's the simplest version that works?
+- "What could go wrong with this?"
+- "What's the simplest version that works?"
 
 ### 5. Converge
 
-- Summarize the emerging direction
-- Identify remaining open questions
-- Ask: "Does this direction feel right?"
+Summarize (briefly) and confirm:
+
+> "So we're going with X because Y. Ready to move forward?"
 
 ## Output
 
-**Do NOT write code.** Output is:
+**Do NOT write code or prose.** Output is understanding:
 
 1. Refined problem statement
 2. Key decisions made
@@ -97,7 +130,3 @@ For each option, ask:
 **For writing:**
 
 > "Ready to structure? (use `/outline`)"
-
-Or if more exploration needed:
-
-> "Want to explore option B more deeply?"

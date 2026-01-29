@@ -18,97 +18,72 @@ Improve text at the sentence level: word choice, flow, concision.
 - `/critique` - if structural/argument issues remain
 - `/expand` - if sections need more content, not refinement
 
+## Dialogue Rules
+
+See [dialogue-rules.md](../dialogue-rules.md). Key points:
+
+- **Work in small chunks** (paragraph or section at a time)
+- **Show changes incrementally** (not all at once)
+- **Validate before continuing**
+
 ## Ask First: Scope
 
-> "Polish the whole document, or specific sections/paragraphs?"
+> "What should I polish?
+> A) Whole document (I'll go section by section)
+> B) Specific section: <name>
+> C) Specific paragraph or sentence"
 
 For long documents, work section by section.
 
 ## Process
 
-### 1. Read Aloud (Mentally)
+### 1. Focus on One Section
 
-Identify sentences that:
+> "I'll start with <section>. Here are the changes I'd suggest..."
 
-- Are hard to parse
-- Feel wordy
-- Have awkward rhythm
-- Use weak verbs or vague nouns
+### 2. Present Changes (Max 3-5 at a Time)
 
-### 2. Apply Refinements
+```markdown
+**Original:**
+> <sentence>
+
+**Suggested:**
+> <revised sentence>
+
+**Why:** <brief reason>
+
+---
+
+<2-3 more changes>
+
+Apply these, or adjust?
+```
+
+Wait for approval before continuing.
+
+### 3. Continue or Move On
+
+> "Continue with more edits in this section, or move to <next section>?"
+
+## What to Look For
 
 **Concision:**
 
-- Cut filler words ("very," "really," "quite," "somewhat")
-- Remove redundancy ("past history" → "history")
-- Prefer active voice where appropriate
+- Cut filler ("very," "really," "quite")
+- Remove redundancy
+- Prefer active voice
 
 **Clarity:**
 
 - One idea per sentence
 - Subject near verb
-- Concrete nouns over abstractions
+- Concrete over abstract
 
 **Flow:**
 
 - Vary sentence length
-- Use transitions appropriately
-- Maintain consistent tone
-
-**Precision:**
-
-- Replace vague words ("things," "stuff," "aspects")
-- Use specific verbs over verb + adverb
-
-### 3. Preserve Voice
-
-Don't over-edit. The goal is clarity, not uniformity. Preserve the author's voice and style.
-
-## Output Format
-
-Show changes with context:
-
-```markdown
-## Polished: <section>
-
-**Original:**
-> <original sentence or paragraph>
-
-**Revised:**
-> <polished version>
-
-**Why:** <brief explanation>
-
----
-
-<next change>
-```
-
-Or for light edits, show inline:
-
-```markdown
-## Suggestions
-
-- "very important" → "critical" (concision)
-- "It is shown that X" → "X" or "We show X" (active voice)
-- ...
-```
-
-## Guidelines
-
-### Do
-
-- Make targeted changes
-- Explain the reasoning
-- Preserve meaning exactly
-- Respect author's voice
-
-### Don't
-
-- Rewrite substantially (that's `/expand`)
-- Change meaning
-- Impose stylistic preferences
-- Over-polish (diminishing returns)
+- Appropriate transitions
+- Consistent tone
 
 ## Common Patterns
 
@@ -116,9 +91,25 @@ Or for light edits, show inline:
 |--------|-------|-----|
 | "in order to" | "to" | concision |
 | "due to the fact that" | "because" | concision |
-| "it is important to note that" | (delete or) "notably," | filler |
-| "was performed by" | "<subject> performed" | active voice |
-| "a number of" | "several" or specific number | precision |
+| "it is important to note" | "notably" or delete | filler |
+| "was performed by X" | "X performed" | active voice |
+| "a number of" | "several" or specific | precision |
+
+## Guidelines
+
+### Do
+
+- Make targeted changes
+- Explain the reasoning briefly
+- Preserve meaning exactly
+- Respect author's voice
+
+### Don't
+
+- Rewrite substantially (that's `/expand`)
+- Change meaning
+- Dump 20 edits at once
+- Over-polish
 
 ## After Polishing
 
