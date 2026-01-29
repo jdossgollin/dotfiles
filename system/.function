@@ -21,6 +21,46 @@ is-executable() {
   type "$1" >/dev/null 2>&1 || return 1
 }
 
+# Check if a GUI app exists (cross-platform)
+# Usage: app-exists "Firefox" or app-exists "Firefox.app"
+app-exists() {
+  local app_name="${1%.app}"  # strip .app if present
+
+  if is-macos; then
+    # Check common macOS app locations
+    [[ -d "/Applications/${app_name}.app" ]] && return 0
+    [[ -d "$HOME/Applications/${app_name}.app" ]] && return 0
+    # mdfind is faster than find for macOS
+    mdfind "kMDItemKind == 'Application' && kMDItemDisplayName == '${app_name}'" 2>/dev/null | grep -q . && return 0
+  elif is-linux; then
+    # Check for .desktop file (standard Linux app registration)
+    local desktop_name="${app_name,,}"  # lowercase
+    desktop_name="${desktop_name// /-}" # spaces to dashes
+    [[ -f "/usr/share/applications/${desktop_name}.desktop" ]] && return 0
+    [[ -f "$HOME/.local/share/applications/${desktop_name}.desktop" ]] && return 0
+    # Check common Linux app paths
+    [[ -d "/opt/${desktop_name}" ]] && return 0
+    [[ -f "/usr/local/bin/${desktop_name}" ]] && return 0
+  fi
+  return 1
+}
+
+# Check if a command or app exists (tries CLI first, then GUI)
+# Usage: cmd-or-app-exists "firefox" "Firefox"
+#        cmd-or-app-exists "code"  # CLI only
+cmd-or-app-exists() {
+  local cmd_name="$1"
+  local app_name="${2:-}"
+
+  # Check CLI command first
+  command -v "$cmd_name" >/dev/null 2>&1 && return 0
+
+  # Check GUI app if name provided
+  [[ -n "$app_name" ]] && app-exists "$app_name" && return 0
+
+  return 1
+}
+
 is-supported() {
   if [ $# -eq 1 ]; then
     if eval "$1" >/dev/null 2>&1; then true; else false; fi
