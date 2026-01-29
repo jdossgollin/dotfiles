@@ -91,6 +91,26 @@ if [[ -n "$VSCODIUM_USER_DIR" ]]; then
     ln -sfv "$DOTFILES_DIR/apps/.vscode/settings.json" "$VSCODIUM_USER_DIR/settings.json"
 fi
 
+# Claude Code configuration
+mkdir -p ~/.claude
+
+# Install Claude skills repo (includes CLAUDE.md and skills)
+if [ -d ~/.claude/skills/.git ]; then
+    echo "Updating Claude skills..."
+    git -C ~/.claude/skills pull --quiet
+else
+    echo "Installing Claude skills..."
+    git clone https://github.com/jdossgollin/claude-skills ~/.claude/skills 2>/dev/null || \
+        echo "Note: Could not clone claude-skills. Clone manually or create ~/.claude/skills"
+fi
+
+# Symlink global CLAUDE.md from skills repo
+if [ -f ~/.claude/skills/CLAUDE.md ]; then
+    ln -sfv ~/.claude/skills/CLAUDE.md ~/.claude/CLAUDE.md
+fi
+
+# Link language-specific rules from dotfiles
+ln -sfnv "$DOTFILES_DIR/.claude/rules" ~/.claude/rules
 # Set global gitignore
 git config --global core.excludesfile ~/.gitignore_global
 
@@ -135,3 +155,8 @@ echo "  2. Restart your terminal or run: source ~/.zshrc"
 if is-macos; then
     echo "  3. Run 'dotfiles macos' to apply macOS system preferences"
 fi
+echo ""
+echo "Claude Code MCP setup (optional):"
+echo "  claude mcp add github --transport http https://api.githubcopilot.com/mcp/ --scope user"
+echo "  claude mcp add context7 --transport http https://mcp.context7.com/mcp --scope user"
+echo "  Then run /mcp in a Claude Code session to authenticate"
