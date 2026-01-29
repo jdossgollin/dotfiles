@@ -81,12 +81,9 @@ ln -sfv "$DOTFILES_DIR/apps/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/apps/wezterm/wezterm.lua" ~/.wezterm.lua
 
 # Claude Code configuration
-# Link rules and settings from dotfiles
 mkdir -p ~/.claude
-ln -sfv "$DOTFILES_DIR/.claude/CLAUDE.md" ~/.claude/CLAUDE.md
-ln -sfnv "$DOTFILES_DIR/.claude/rules" ~/.claude/rules
 
-# Install Claude skills (separate repo)
+# Install Claude skills repo (includes CLAUDE.md and skills)
 if [ -d ~/.claude/skills/.git ]; then
     echo "Updating Claude skills..."
     git -C ~/.claude/skills pull --quiet
@@ -95,6 +92,14 @@ else
     git clone https://github.com/jdossgollin/claude-skills ~/.claude/skills 2>/dev/null || \
         echo "Note: Could not clone claude-skills. Clone manually or create ~/.claude/skills"
 fi
+
+# Symlink global CLAUDE.md from skills repo
+if [ -f ~/.claude/skills/CLAUDE.md ]; then
+    ln -sfv ~/.claude/skills/CLAUDE.md ~/.claude/CLAUDE.md
+fi
+
+# Link language-specific rules from dotfiles
+ln -sfnv "$DOTFILES_DIR/.claude/rules" ~/.claude/rules
 
 # Set global gitignore
 git config --global core.excludesfile ~/.gitignore_global
