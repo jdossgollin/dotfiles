@@ -39,14 +39,21 @@ Use subagents for:
 
 ## Skills Quick Reference
 
+### General
+
 | Need to... | Use | Notes |
 |------------|-----|-------|
-| Clarify requirements | `/brainstorm` | Socratic questioning before coding |
+| Clarify requirements | `/brainstorm` | Socratic questioning before coding or writing |
+| Execute approved plan | `/execute-plan` | Step-by-step with checkpoints |
+
+### Coding
+
+| Need to... | Use | Notes |
+|------------|-----|-------|
 | Run tests | `/test` | Summarizes failures, suggests `/debug` |
 | Debug issues | `/debug` | Root cause analysis for any bug |
 | Profile performance | `/profile` | Find bottlenecks |
 | Review or improve code | `/refactor` | Asks: review only or plan changes? |
-| Execute approved plan | `/execute-plan` | Step-by-step with checkpoints |
 | Create new tests | `/test-gen` | |
 | Create new docs | `/doc-gen` | For new documentation |
 | Sync docs with changes | `/update-docs` | After code changes |
@@ -59,3 +66,13 @@ Use subagents for:
 | Parse data files | `/data-read` | |
 | Visualize data | `/visual-output` | Interactive HTML charts |
 | Clean notebooks | `/notebook-clean` | |
+
+### Writing (papers, slides, grants)
+
+| Need to... | Use | Notes |
+|------------|-----|-------|
+| Understand existing draft | `/summarize` | Distill key points |
+| Structure a document | `/outline` | Adapts to format (paper/slides/grant) |
+| Turn outline into prose | `/expand` | Section by section |
+| Evaluate argument/clarity | `/critique` | Asks feedback level; defaults to structure |
+| Sentence-level refinement | `/polish` | Word choice, flow, concision |

@@ -5,24 +5,30 @@ description: Explores ideas through Socratic questioning before implementation. 
 
 # Brainstorm
 
-Refine ideas through structured questioning before diving into code.
+Refine ideas through structured questioning before diving in.
 
 ## When to Use
 
 - Requirements are vague or incomplete
 - Multiple approaches seem viable
 - Design decisions need exploration
-- Starting a new feature or project
+- Starting a new feature, project, or document
 
 ## See Also
 
+**For code:**
+
 - `/refactor` - after brainstorming, when ready to plan changes
 - `/execute-plan` - after plan is approved
-- `/git-worktree` - if working on multiple approaches in parallel
+
+**For writing:**
+
+- `/outline` - after brainstorming, when ready to structure
+- `/expand` - after outline is set
 
 ## Philosophy
 
-**Don't code first.** Understand the problem deeply before writing.
+**Don't dive in first.** Understand the problem deeply before writing code or prose.
 
 ## Process
 
@@ -84,7 +90,13 @@ For each option, ask:
 
 ## After Brainstorming
 
+**For code:**
+
 > "Ready to make a plan? (use `/refactor` in plan mode)"
+
+**For writing:**
+
+> "Ready to structure? (use `/outline`)"
 
 Or if more exploration needed:
 
