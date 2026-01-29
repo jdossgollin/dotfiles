@@ -10,33 +10,57 @@ echo "Installing apt packages..."
 
 sudo apt-get update
 
-# Core development tools
-sudo apt-get install -y \
-    aspell \
-    bat \
-    btop \
-    build-essential \
-    curl \
-    firefox \
-    fzf \
-    gh \
-    git \
-    git-extras \
-    git-lfs \
-    libboost-all-dev \
-    nano \
-    ncdu \
-    nodejs \
-    npm \
-    p7zip-full \
-    pandoc \
-    ripgrep \
-    shellcheck \
-    tldr \
-    tree \
-    wget \
-    zsh \
-    zsh-syntax-highlighting
+# Map apt package names to their CLI commands (for existence check)
+# Format: "package:command" (command defaults to package name if omitted)
+apt_packages=(
+    "aspell"
+    "bat:batcat"        # Ubuntu names it batcat
+    "btop"
+    "build-essential:gcc"
+    "curl"
+    "firefox"
+    "fzf"
+    "gh"
+    "git"
+    "git-extras"
+    "git-lfs"
+    "libboost-all-dev"  # library, no command check
+    "nano"
+    "ncdu"
+    "nodejs:node"
+    "npm"
+    "p7zip-full:7z"
+    "pandoc"
+    "ripgrep:rg"
+    "shellcheck"
+    "tldr"
+    "tree"
+    "wget"
+    "zsh"
+    "zsh-syntax-highlighting"
+)
+
+# Build list of packages to install
+to_install=()
+for entry in "${apt_packages[@]}"; do
+    IFS=':' read -r pkg cmd <<< "$entry"
+    cmd="${cmd:-$pkg}"  # default to package name
+
+    if dpkg -l "$pkg" 2>/dev/null | grep -q "^ii"; then
+        echo "$pkg: already installed via apt"
+    elif command -v "$cmd" >/dev/null 2>&1; then
+        echo "$pkg: found '$cmd' in PATH, skipping"
+    else
+        to_install+=("$pkg")
+    fi
+done
+
+if [[ ${#to_install[@]} -gt 0 ]]; then
+    echo "Installing: ${to_install[*]}"
+    sudo apt-get install -y "${to_install[@]}"
+else
+    echo "All apt packages already installed"
+fi
 
 # Install git LFS
 git lfs install --system
@@ -50,6 +74,12 @@ if ! command -v eza >/dev/null 2>&1; then
     sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
     sudo apt-get update
     sudo apt-get install -y eza
+fi
+
+# uv (fast Python package manager)
+if ! command -v uv >/dev/null 2>&1; then
+    echo "Installing uv..."
+    curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
 
 # git-delta (syntax-highlighted diffs, replaces diff-so-fancy)
@@ -81,10 +111,15 @@ fi
 # SourceGit (open-source Git GUI, replaces GitHub Desktop)
 if ! command -v sourcegit >/dev/null 2>&1; then
     echo "Installing SourceGit..."
-    SOURCEGIT_VERSION=$(curl -sS https://api.github.com/repos/sourcegit-scm/sourcegit/releases/latest | grep -oP '"tag_name":\s*"v\K[^"]+')
-    curl -LO "https://github.com/sourcegit-scm/sourcegit/releases/download/v${SOURCEGIT_VERSION}/sourcegit_${SOURCEGIT_VERSION}.linux-x64.AppImage"
-    chmod +x "sourcegit_${SOURCEGIT_VERSION}.linux-x64.AppImage"
-    sudo mv "sourcegit_${SOURCEGIT_VERSION}.linux-x64.AppImage" /usr/local/bin/sourcegit
+    # Add SourceGit GPG key
+    curl https://codeberg.org/api/packages/yataro/debian/repository.key | sudo tee /etc/apt/keyrings/sourcegit.asc >/dev/null
+
+    # Add SourceGit repository
+    echo "deb [signed-by=/etc/apt/keyrings/sourcegit.asc, arch=amd64,arm64] https://codeberg.org/api/packages/yataro/debian generic main" | \
+        sudo tee /etc/apt/sources.list.d/sourcegit.list >/dev/null
+
+    sudo apt-get update
+    sudo apt-get install -y sourcegit
 fi
 
 # WezTerm terminal (cross-platform, replaces iTerm2)
@@ -120,20 +155,36 @@ fi
 if is-snap-available 2>/dev/null; then
     echo "Installing snap packages..."
 
-    # Insync - Google Drive / OneDrive sync
-    if ! command -v insync >/dev/null 2>&1; then
-        sudo snap install insync 2>/dev/null || echo "Note: Insync snap install failed (may need manual install)"
-    fi
+    # Map snap names to cli command and app name for existence checks
+    # Format: "snap_name:cli_cmd:app_name:flags" (use - for empty fields)
+    snap_apps=(
+        "insync:insync:Insync:-"
+        "slack:slack:Slack:--classic"
+        "spotify:spotify:Spotify:-"
+    )
 
-    # Slack
-    if ! command -v slack >/dev/null 2>&1; then
-        sudo snap install slack --classic 2>/dev/null || echo "Note: Slack snap install failed (may need manual install)"
-    fi
+    for entry in "${snap_apps[@]}"; do
+        IFS=':' read -r snap_name cli_cmd app_name flags <<< "$entry"
+        [[ "$cli_cmd" == "-" ]] && cli_cmd=""
+        [[ "$app_name" == "-" ]] && app_name=""
+        [[ "$flags" == "-" ]] && flags=""
 
-    # Spotify - not in apt
-    if ! command -v spotify >/dev/null 2>&1; then
-        sudo snap install spotify 2>/dev/null || echo "Note: Spotify snap install failed (may need manual install)"
-    fi
+        if snap list "$snap_name" &>/dev/null; then
+            echo "$snap_name: already installed via snap"
+            continue
+        fi
+        if [[ -n "$cli_cmd" ]] && command -v "$cli_cmd" >/dev/null 2>&1; then
+            echo "$snap_name: found '$cli_cmd' in PATH, skipping"
+            continue
+        fi
+        if [[ -n "$app_name" ]] && app-exists "$app_name"; then
+            echo "$snap_name: found '$app_name' app, skipping"
+            continue
+        fi
+
+        echo "Installing $snap_name..."
+        sudo snap install "$snap_name" $flags 2>/dev/null || echo "Note: $snap_name snap install failed (may need manual install)"
+    done
 fi
 
 # Set Firefox as default browser

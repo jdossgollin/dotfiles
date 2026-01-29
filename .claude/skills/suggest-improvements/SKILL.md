@@ -25,7 +25,27 @@ Review installation methods and suggest improvements based on official documenta
 
 ## Process
 
-### 1. Ask: What to Review?
+### 1. Check Recent Audits
+
+**Before starting, read `.claude/MAINTENANCE.md` to check:**
+
+- When was the last audit performed?
+- Which tools were recently verified?
+- Are there any tools flagged to watch?
+
+**If an audit was performed within the last 6 months:**
+
+Ask the user:
+> "The last comprehensive audit was performed on YYYY-MM-DD (X days ago). All tools were verified at that time.
+>
+> Would you like to:
+> A) Skip audit (too recent)
+> B) Check specific tools anyway
+> C) Focus only on tools flagged to watch"
+
+**If no MAINTENANCE.md exists or audit is older than 6 months:** Proceed with full audit.
+
+### 2. Ask: What to Review?
 
 > "What would you like to review?
 > A) All installation scripts (comprehensive audit)
@@ -33,7 +53,7 @@ Review installation methods and suggest improvements based on official documenta
 > C) Recent additions (tools added in last N commits)
 > D) Security-focused review (curl-piped-to-bash, etc.)"
 
-### 2. Autonomous Research Phase
+### 3. Autonomous Research Phase
 
 For each tool found, research its official installation docs:
 
@@ -247,11 +267,50 @@ This dotfiles repo prioritizes scientific computing. Consider:
 
 **Ask user about their needs before suggesting changes in this domain.**
 
-## Output: Conversation Only
+## Output: Update MAINTENANCE.md
 
-Do not write plans to files. This is an interactive research and improvement task.
+**After completing an audit, append results to `.claude/MAINTENANCE.md`:**
 
-Present findings, ask for approval, make changes, verify.
+1. **Read the existing file** to understand the format
+2. **Add new audit entry** with:
+   - Date
+   - Scope (comprehensive, specific tools, security review)
+   - Tools verified (table format)
+   - Tools updated (table format)
+   - Next audit recommendation
+3. **Update "Tools to Watch"** section if needed
+
+**Format:**
+
+```markdown
+### YYYY-MM-DD: [Audit Type]
+
+**Auditor:** Claude Code (via `/suggest-improvements`)
+**Scope:** [Description]
+**Result:** X/Y tools using optimal installation methods
+
+#### ✅ Verified - No Changes Needed
+
+| Tool | Method | Location | Official Source |
+|------|--------|----------|-----------------|
+| ... | ... | ... | ... |
+
+#### 🔧 Updated
+
+| Tool | Old Method | New Method | Reason |
+|------|------------|------------|--------|
+| ... | ... | ... | ... |
+
+**Change Details:**
+- **File:** [file:line]
+- **Repository:** [URL]
+- ...
+
+#### Next Audit Recommended
+
+- **When:** YYYY-MM-DD (6 months)
+- **Focus:** [Specific areas to check]
+```
 
 ## After Improvements
 

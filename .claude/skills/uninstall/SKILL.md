@@ -39,6 +39,7 @@ grep -r "<package-name>" *.md docs/
 ```
 
 Look for:
+
 - Package name in arrays (brew, apt, conda, npm)
 - Command aliases referencing the tool
 - PATH additions
@@ -50,6 +51,7 @@ Look for:
 ### 2. Analyze What You Found
 
 Use judgment to determine:
+
 - **Core vs auxiliary**: Is this a critical dependency?
 - **Used by other tools**: Will removing this break something?
 - **Config complexity**: Simple removal or needs careful cleanup?
@@ -118,6 +120,8 @@ fi
 **For dotfiles cleanup:**
 
 Use Edit tool to:
+1
+
 1. Remove from installation script arrays
 2. Remove config blocks (may span multiple lines)
 3. Remove aliases/functions/env vars
@@ -148,6 +152,7 @@ After changes:
 ### Manual Installations
 
 If you find patterns like:
+
 ```bash
 curl -LO "https://..."
 sudo dpkg -i file.deb
@@ -155,6 +160,7 @@ rm file.deb
 ```
 
 Trace where it installed to:
+
 - Check `/usr/local/bin/` for binaries
 - Check `/opt/` for application directories
 - Look for custom repo additions in `/etc/apt/sources.list.d/`
@@ -162,10 +168,12 @@ Trace where it installed to:
 ### System Dependencies
 
 **Never remove without warning:**
+
 - git, curl, wget, zsh, bash, gcc, make
 - Tools used by dotfiles scripts (fzf, ripgrep used in .zshrc)
 
 **Warn and suggest alternatives:**
+
 ```
 ⚠️ Warning: `fzf` is used in your .zshrc for command history search.
 Removing it will break this feature.
@@ -178,6 +186,7 @@ Proceed anyway? (y/n)
 ### Application Bundles (macOS)
 
 If it's a cask app, also mention:
+
 ```bash
 # Cask uninstall usually removes app, but check:
 rm -rf ~/Library/Application\ Support/<AppName>
@@ -188,11 +197,13 @@ rm -rf ~/Library/Caches/<AppName>
 ### Conda Environments
 
 Search [conda/](conda/) directory for YAML files:
+
 ```bash
 grep -r "package-name" conda/
 ```
 
 If found, warn:
+
 ```
 ⚠️ Found in conda environment files:
 - [conda/science.yml](conda/science.yml)
@@ -220,6 +231,7 @@ Do not write plans to files. This is an interactive task - search, present findi
 ## After Uninstall
 
 Suggest:
+
 ```
 Run `/audit-sync` to verify both platforms are still consistent.
 ```
