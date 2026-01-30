@@ -111,14 +111,14 @@ else
         echo "Note: Could not clone claude-skills. Clone manually or create $CLAUDE_SKILLS_DIR"
 fi
 
-# Symlink skills directory and global CLAUDE.md
-ln -sfnv "$CLAUDE_SKILLS_DIR" ~/.claude/skills
-if [ -f "$CLAUDE_SKILLS_DIR/CLAUDE.md" ]; then
-    ln -sfv "$CLAUDE_SKILLS_DIR/CLAUDE.md" ~/.claude/CLAUDE.md
+# Symlink skills, agents, rules, and config files from claude-skills repo
+if [ -d "$CLAUDE_SKILLS_DIR" ]; then
+    ln -sfnv "$CLAUDE_SKILLS_DIR/skills" ~/.claude/skills
+    ln -sfnv "$CLAUDE_SKILLS_DIR/agents" ~/.claude/agents
+    ln -sfnv "$CLAUDE_SKILLS_DIR/rules" ~/.claude/rules
+    [ -f "$CLAUDE_SKILLS_DIR/CLAUDE.md" ] && ln -sfv "$CLAUDE_SKILLS_DIR/CLAUDE.md" ~/.claude/CLAUDE.md
+    [ -f "$CLAUDE_SKILLS_DIR/dialogue-rules.md" ] && ln -sfv "$CLAUDE_SKILLS_DIR/dialogue-rules.md" ~/.claude/dialogue-rules.md
 fi
-
-# Link language-specific rules from claude-skills
-ln -sfnv "$CLAUDE_SKILLS_DIR/rules" ~/.claude/rules
 # Set global gitignore
 git config --global core.excludesfile ~/.gitignore_global
 
