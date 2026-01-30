@@ -38,6 +38,7 @@ apt_packages=(
     "wget"
     "zsh"
     "zsh-syntax-highlighting"
+    "texlive-full:pdflatex"
 )
 
 # Build list of packages to install

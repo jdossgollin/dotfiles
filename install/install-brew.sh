@@ -72,6 +72,12 @@ if ! command -v dockutil >/dev/null 2>&1; then
     brew install dockutil
 fi
 
+# TeX Live (full distribution, no GUI apps)
+if ! command -v pdflatex >/dev/null 2>&1; then
+    echo "Installing MacTeX (no GUI)..."
+    brew install --cask mactex-no-gui
+fi
+
 # Install git LFS
 git lfs install --system
 
