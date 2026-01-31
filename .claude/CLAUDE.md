@@ -98,6 +98,7 @@ Benchmark with: `for i in {1..10}; do time zsh -i -c exit; done`
 ### Symlink Pattern
 
 Install script creates these symlinks from home directory:
+
 - `~/.zshrc` → `runcom/.zshrc`
 - `~/.p10k.zsh` → `runcom/.p10k.zsh`
 - `~/.latexmkrc` → `runcom/.latexmkrc`
@@ -125,3 +126,23 @@ Scripts in `macos/` modify system preferences via `defaults write`. The `dock.sh
 - **runcom/.zshrc** - Shell config with lazy conda initialization
 - **secrets/.git_identity.template** - Template for git user config
 - **secrets/.api_keys.template** - Template for API keys
+
+## Maintenance Skills
+
+Three custom skills are available in `.claude/skills/` for maintaining this repository:
+
+- **`/suggest-improvements`** - Audit installation methods against official documentation
+  - Checks `.claude/MAINTENANCE.md` to avoid redundant audits (6-month interval)
+  - Researches official installation methods for all tools
+  - Suggests improvements and updates MAINTENANCE.md with findings
+  - Use periodically or after adding new tools
+
+- **`/audit-sync`** - Verify macOS and Linux installations are synchronized
+  - Ensures tools installed on both platforms where appropriate
+  - Flags platform-specific differences
+  - Validates consistency of installation approaches
+
+- **`/uninstall`** - Remove packages from dotfiles and both platforms
+  - Searches autonomously for all references to a tool
+  - Removes from install scripts, configs, and documentation
+  - Handles platform-specific uninstallation

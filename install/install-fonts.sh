@@ -3,7 +3,9 @@
 if is-macos 2>/dev/null; then
     # macOS font installation via Homebrew
     fonts=(
+        font-bebas-neue
         font-cascadia-code
+        font-cinzel
         font-cooper-hewitt
         font-cormorant
         font-crimson-text
@@ -23,10 +25,13 @@ if is-macos 2>/dev/null; then
         font-juliamono
         font-kameron
         font-lato
+        font-merriweather
         font-meslo-lg-nerd-font
         font-monaspace
+        font-montserrat
         font-old-standard-tt
         font-open-sans
+        font-oswald
         font-roboto
         font-source-code-pro
         font-source-code-pro-for-powerline

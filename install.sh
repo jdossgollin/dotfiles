@@ -95,22 +95,30 @@ fi
 mkdir -p ~/.claude
 
 # Install Claude skills repo (includes CLAUDE.md and skills)
-if [ -d ~/.claude/skills/.git ]; then
+# Use platform-appropriate location
+if is-macos; then
+    CLAUDE_SKILLS_DIR="$HOME/Documents/claude-skills"
+else
+    CLAUDE_SKILLS_DIR="$HOME/.local/share/claude-skills"
+    mkdir -p "$(dirname "$CLAUDE_SKILLS_DIR")"
+fi
+if [ -d "$CLAUDE_SKILLS_DIR/.git" ]; then
     echo "Updating Claude skills..."
-    git -C ~/.claude/skills pull --quiet
+    git -C "$CLAUDE_SKILLS_DIR" pull --quiet
 else
     echo "Installing Claude skills..."
-    git clone https://github.com/jdossgollin/claude-skills ~/.claude/skills 2>/dev/null || \
-        echo "Note: Could not clone claude-skills. Clone manually or create ~/.claude/skills"
+    git clone https://github.com/jdossgollin/claude-skills "$CLAUDE_SKILLS_DIR" 2>/dev/null || \
+        echo "Note: Could not clone claude-skills. Clone manually or create $CLAUDE_SKILLS_DIR"
 fi
 
-# Symlink global CLAUDE.md from skills repo
-if [ -f ~/.claude/skills/CLAUDE.md ]; then
-    ln -sfv ~/.claude/skills/CLAUDE.md ~/.claude/CLAUDE.md
+# Symlink skills, agents, rules, and config files from claude-skills repo
+if [ -d "$CLAUDE_SKILLS_DIR" ]; then
+    ln -sfnv "$CLAUDE_SKILLS_DIR/skills" ~/.claude/skills
+    ln -sfnv "$CLAUDE_SKILLS_DIR/agents" ~/.claude/agents
+    ln -sfnv "$CLAUDE_SKILLS_DIR/rules" ~/.claude/rules
+    [ -f "$CLAUDE_SKILLS_DIR/CLAUDE.md" ] && ln -sfv "$CLAUDE_SKILLS_DIR/CLAUDE.md" ~/.claude/CLAUDE.md
+    [ -f "$CLAUDE_SKILLS_DIR/dialogue-rules.md" ] && ln -sfv "$CLAUDE_SKILLS_DIR/dialogue-rules.md" ~/.claude/dialogue-rules.md
 fi
-
-# Link language-specific rules from dotfiles
-ln -sfnv "$DOTFILES_DIR/.claude/rules" ~/.claude/rules
 # Set global gitignore
 git config --global core.excludesfile ~/.gitignore_global
 

@@ -16,54 +16,67 @@ fi
 brew update
 brew upgrade
 
-# Install the Homebrew packages I use on a day-to-day basis.
+# Map brew formula names to their CLI commands (for existence check)
+# Format: "formula:command" (command defaults to formula name if omitted)
 apps=(
-    aspell         # spell checker
-    bat            # cat with syntax highlighting
-    boost          # some C/C++ libraries
-    btop           # beautiful system monitor
-    defaultbrowser # set default browser from CLI
-    eza            # modern ls replacement
-    fzf            # fuzzy finder
-    gcc            # C compiler
-    gh             # GitHub CLI
-    git            # for version control!
-    git-delta      # syntax-highlighted git diffs (replaces diff-so-fancy)
-    git-extras     # extra utilities for git, helpful
-    git-lfs        # use git large file storage (see github docs)
-    nano           # built-in text editor, not powerful but lightweight
-    ncdu           # disk usage analyzer
-    node
-    p7zip          # archive tool (replaces The Unarchiver)
-    pandoc         # convert between Markdown, latex, HTML, Word, and more
-    ripgrep        # fast grep replacement
-    shellcheck     # check spelling mistakes in the shell
-    tldr           # simplified man pages
-    tree           # update the version installed by default
-    uvicorn        # python package manager
-    wget           # update the version installed by default
-)
-brew install "${apps[@]}"
-
-# Group dependencies by purpose
-development_tools=(
-    gcc     # Pin gcc version
-    git     # Pin git version
-    git-lfs # Pin git-lfs version
+    "aspell"            # Spell checker
+    "bat"               # Modern cat with syntax highlighting
+    "boost"             # C++ libraries, no command
+    "btop"              # Modern resource monitor
+    "defaultbrowser"    # Set default browser from CLI
+    "eza"               # Modern ls replacement
+    "fzf"               # Fuzzy finder
+    "gcc"               # GNU compiler collection
+    "gh"                # GitHub CLI
+    "git"               # Version control
+    "git-delta:delta"   # Better git diff viewer
+    "git-extras"        # Additional git commands
+    "git-lfs"           # Git Large File Storage
+    "nano"              # Simple text editor
+    "ncdu"              # Disk usage analyzer
+    "node"              # JavaScript runtime
+    "p7zip:7z"          # File archiver
+    "pandoc"            # Document converter
+    "ripgrep:rg"        # Fast text search
+    "shellcheck"        # Shell script linter
+    "tldr"              # Simplified man pages
+    "tree"              # Directory tree viewer
+    "uv"                # Python package manager
+    "wget"              # Download files from web
 )
 
-utilities=(
-    aspell
-    pandoc
-    wget
-)
+# Install each formula, skipping if command already exists
+to_install=()
+for entry in "${apps[@]}"; do
+    IFS=':' read -r formula cmd <<< "$entry"
+    cmd="${cmd:-$formula}"  # default to formula name
 
-brew install "${development_tools[@]}"
-brew install "${utilities[@]}"
+    if brew list "$formula" &>/dev/null; then
+        echo "$formula: already installed via Homebrew"
+    elif command -v "$cmd" >/dev/null 2>&1; then
+        echo "$formula: found '$cmd' in PATH, skipping"
+    else
+        to_install+=("$formula")
+    fi
+done
 
-# the default version of dockutil on brew is old and doesn't work
-# workaround: https://github.com/webpro/dotfiles/issues/30
-brew install dockutil
+if [[ ${#to_install[@]} -gt 0 ]]; then
+    echo "Installing: ${to_install[*]}"
+    brew install "${to_install[@]}"
+else
+    echo "All brew formulae already installed"
+fi
+
+# dockutil for managing macOS dock
+if ! command -v dockutil >/dev/null 2>&1; then
+    brew install dockutil
+fi
+
+# TeX Live (full distribution, no GUI apps)
+if ! command -v pdflatex >/dev/null 2>&1; then
+    echo "Installing MacTeX (no GUI)..."
+    brew install --cask mactex-no-gui
+fi
 
 # Install git LFS
 git lfs install --system
@@ -79,5 +92,3 @@ brew doctor || echo "brew doctor reported warnings (non-fatal)"
 
 export DOTFILES_BREW_PREFIX_COREUTILS=$(brew --prefix coreutils)
 set-config "DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_BREW_PREFIX_COREUTILS" "$DOTFILES_CACHE"
-
-# use git-delta for diffs (configured in .gitconfig)
