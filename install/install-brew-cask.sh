@@ -11,6 +11,7 @@ cask_apps=(
     "firefox:firefox:Firefox"
     "insync:insync:Insync"
     "slack:-:Slack"
+    "slidepilot:-:SlidePilot"
     "sourcegit:sourcegit:SourceGit"
     "spotify:-:Spotify"
     "stats:-:Stats"
