@@ -29,6 +29,7 @@ apps=(
     "gcc"               # GNU compiler collection
     "gh"                # GitHub CLI
     "git"               # Version control
+    "imagemagick:magick" # Image manipulation tools
     "git-delta:delta"   # Better git diff viewer
     "git-extras"        # Additional git commands
     "git-lfs"           # Git Large File Storage
@@ -76,6 +77,11 @@ fi
 if ! command -v pdflatex >/dev/null 2>&1; then
     echo "Installing MacTeX (no GUI)..."
     brew install --cask mactex-no-gui
+fi
+
+# Dashlane CLI (requires custom tap)
+if ! command -v dcli >/dev/null 2>&1; then
+    brew install dashlane/tap/dashlane-cli
 fi
 
 # Install git LFS
