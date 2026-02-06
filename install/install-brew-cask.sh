@@ -12,7 +12,7 @@ cask_apps=(
     "insync:insync:Insync"
     "slack:-:Slack"
     "slidepilot:-:SlidePilot"
-    "sourcegit:sourcegit:SourceGit"
+    "github:-:GitHub Desktop"
     "spotify:-:Spotify"
     "stats:-:Stats"
     "quarto:quarto:-"

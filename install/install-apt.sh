@@ -109,18 +109,18 @@ if ! command -v quarto >/dev/null 2>&1; then
     rm -f "quarto-${QUARTO_VERSION}-linux-amd64.deb"
 fi
 
-# SourceGit (open-source Git GUI, replaces GitHub Desktop)
-if ! command -v sourcegit >/dev/null 2>&1; then
-    echo "Installing SourceGit..."
-    # Add SourceGit GPG key
-    curl https://codeberg.org/api/packages/yataro/debian/repository.key | sudo tee /etc/apt/keyrings/sourcegit.asc >/dev/null
+# GitHub Desktop (Git GUI, via shiftkey/desktop Linux fork)
+if ! command -v github-desktop >/dev/null 2>&1; then
+    echo "Installing GitHub Desktop..."
+    # Add shiftkey GPG key
+    wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg >/dev/null
 
-    # Add SourceGit repository
-    echo "deb [signed-by=/etc/apt/keyrings/sourcegit.asc, arch=amd64,arm64] https://codeberg.org/api/packages/yataro/debian generic main" | \
-        sudo tee /etc/apt/sources.list.d/sourcegit.list >/dev/null
+    # Add shiftkey repository
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" | \
+        sudo tee /etc/apt/sources.list.d/shiftkey-packages.list >/dev/null
 
     sudo apt-get update
-    sudo apt-get install -y sourcegit
+    sudo apt-get install -y github-desktop
 fi
 
 # WezTerm terminal (cross-platform, replaces iTerm2)

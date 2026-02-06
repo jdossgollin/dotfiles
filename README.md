@@ -127,7 +127,7 @@ Commands:
 |----------|-------|
 | Shell | zsh, oh-my-zsh, powerlevel10k, z |
 | Dev Tools | git, git-lfs, gcc, node, shellcheck |
-| Apps | VSCodium, WezTerm, SourceGit, Slack, Zoom (via cask) |
+| Apps | VSCodium, WezTerm, GitHub Desktop, Slack, Zoom (via cask) |
 | Fonts | Meslo Nerd Font, JetBrains Mono, Cascadia Code, Iosevka, Monaspace |
 | Python | Miniconda |
 | Julia | juliaup |
@@ -138,7 +138,7 @@ Commands:
 |----------|-------|
 | Shell | zsh, oh-my-zsh, powerlevel10k |
 | Dev Tools | git, git-lfs, build-essential, node, shellcheck |
-| Apps | VSCodium, WezTerm, SourceGit, Slack, Spotify |
+| Apps | VSCodium, WezTerm, GitHub Desktop, Slack, Spotify |
 | Fonts | Meslo Nerd Font, JetBrains Mono, Cascadia Code |
 | Python | Miniforge (includes mamba) |
 | Julia | juliaup |

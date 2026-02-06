@@ -40,6 +40,23 @@ The following tools were verified to use official recommended installation metho
 - **Maintainer:** @aikawayataro
 - **Official Source:** https://github.com/sourcegit-scm/sourcegit
 
+### 2026-02-06: Replace SourceGit with GitHub Desktop
+
+**Auditor:** Claude Code (manual request)
+**Scope:** Git GUI application
+
+#### 🔧 Updated
+
+| Tool | Old | New | Reason |
+|------|-----|-----|--------|
+| Git GUI | SourceGit | GitHub Desktop | User preference |
+
+**Change Details:**
+- **macOS:** Replaced `sourcegit` cask with `github` cask in install-brew-cask.sh
+- **Linux:** Replaced SourceGit Debian repo with shiftkey/desktop apt repo in install-apt.sh
+- **Linux Source:** https://github.com/shiftkey/desktop (community-maintained Linux fork)
+- **Dock:** Updated macos/dock.sh to reference GitHub Desktop
+
 #### Next Audit Recommended
 
 - **When:** 2026-07-29 (6 months)

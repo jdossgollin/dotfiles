@@ -27,7 +27,7 @@ dockutil --no-restart --add '' --type small-spacer --section apps
 # Code
 add_app "/Applications/WezTerm.app"
 add_app "/Applications/VSCodium.app"
-add_app "/Applications/SourceGit.app"
+add_app "/Applications/GitHub Desktop.app"
 
 # Folders
 dockutil --no-restart --add '' --type small-spacer --section apps
