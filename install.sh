@@ -71,6 +71,7 @@ fi
 install_package "conda" ". $DOTFILES_DIR/install/install-conda.sh"
 install_package "node" ". $DOTFILES_DIR/install/install-node.sh"
 install_package "julia" ". $DOTFILES_DIR/install/install-julia.sh"
+install_package "rtk" ". $DOTFILES_DIR/install/install-rtk.sh"
 
 # Symbolic links for shell, git, etc (same for all platforms)
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
@@ -163,8 +164,3 @@ echo "  2. Restart your terminal or run: source ~/.zshrc"
 if is-macos; then
     echo "  3. Run 'dotfiles macos' to apply macOS system preferences"
 fi
-echo ""
-echo "Claude Code MCP setup (optional):"
-echo "  claude mcp add github --transport http https://api.githubcopilot.com/mcp/ --scope user"
-echo "  claude mcp add context7 --transport http https://mcp.context7.com/mcp --scope user"
-echo "  Then run /mcp in a Claude Code session to authenticate"
