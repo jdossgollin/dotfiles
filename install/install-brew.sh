@@ -25,6 +25,7 @@ apps=(
     "btop"              # Modern resource monitor
     "defaultbrowser"    # Set default browser from CLI
     "eza"               # Modern ls replacement
+    "ffmpeg"            # Audio/video processing
     "fzf"               # Fuzzy finder
     "gcc"               # GNU compiler collection
     "gh"                # GitHub CLI
