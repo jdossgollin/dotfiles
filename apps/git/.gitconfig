@@ -3,7 +3,7 @@
 # Then edit with your details and re-run install.sh
 
 [core]
-	excludesfile = /Users/jamesdoss-gollin/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	pager = delta
 
 [alias]

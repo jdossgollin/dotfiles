@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# Sync all cloud storage remotes using rclone bisync.
+# Run automatically (launchd/cron) or manually via 'sync-all' alias.
+
+# Ensure rclone is on PATH (needed when run from launchd/cron)
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+
+GDRIVE_FILTERS="$HOME/.dotfiles/rclone/gdrive-filters.txt"
+GDRIVE_FLAGS="--resync-mode newer --create-empty-src-dirs --drive-skip-dangling-shortcuts --drive-skip-gdocs --ignore-errors --resilient --filter-from=$GDRIVE_FILTERS"
+BOX_FLAGS="--resync-mode newer --create-empty-src-dirs"
+ERRORS=0
+
+sync_remote() {
+    local name="$1"
+    local local_path="$2"
+    local remote="$3"
+    local flags="$4"
+
+    if [[ ! -d "$local_path" ]]; then
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] $name: local path $local_path not found, skipping"
+        return
+    fi
+
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Syncing $name..."
+    if rclone bisync "$local_path" "$remote" $flags; then
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] $name: done"
+    else
+        echo "[$(date '+%Y-%m-%d %H:%M:%S')] $name: FAILED (exit $?)"
+        ERRORS=$((ERRORS + 1))
+    fi
+}
+
+sync_remote "gdrive-work"     "$HOME/gdrive-work"     "gdrive-work:"     "$GDRIVE_FLAGS"
+sync_remote "gdrive-personal" "$HOME/gdrive-personal" "gdrive-personal:" "$GDRIVE_FLAGS"
+sync_remote "box"             "$HOME/box"             "box:"             "$BOX_FLAGS"
+
+if [[ $ERRORS -gt 0 ]]; then
+    echo "[$ERRORS remote(s) failed]"
+    exit 1
+fi

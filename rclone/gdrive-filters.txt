@@ -1,0 +1,58 @@
+# rclone filter rules for Google Drive bisync
+# Syntax: "- pattern" to exclude, "+ pattern" to include (order matters)
+# Patterns with / are path-based; without / match anywhere
+
+# === Google Docs stubs (created by Insync, not real files) ===
+- *.gdoc
+- *.gsheet
+- *.gslides
+- *.gform
+- *.gdraw
+- *.gmap
+
+# === macOS metadata ===
+- .DS_Store
+- .Spotlight-V100/
+- .Trashes/
+- .fseventsd/
+
+# === LaTeX build artifacts ===
+- *.aux
+- *.bbl
+- *.blg
+- *.fls
+- *.fdb_latexmk
+- *.synctex.gz
+- *.synctex(busy)
+- *.log
+- *.out
+- *.toc
+- *.lof
+- *.lot
+- *.bcf
+- *.run.xml
+- *-blx.bib
+
+# === R artifacts ===
+- .Rhistory
+- .RData
+- .Rapp.history
+
+# === Python artifacts ===
+- __pycache__/
+- *.pyc
+- *.pyo
+- .ipynb_checkpoints/
+
+# === Editor artifacts ===
+- *.swp
+- *.swo
+- *~
+- .#*
+
+# === Read-only shared folders (no write permission) ===
+- archive/2020-09-17-ERC-CARCC/**
+- archive/2020-09-17-ERC-CARCC/
+
+# === Include everything else ===
++ *

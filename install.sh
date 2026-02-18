@@ -72,6 +72,7 @@ install_package "conda" ". $DOTFILES_DIR/install/install-conda.sh"
 install_package "node" ". $DOTFILES_DIR/install/install-node.sh"
 install_package "julia" ". $DOTFILES_DIR/install/install-julia.sh"
 install_package "rtk" ". $DOTFILES_DIR/install/install-rtk.sh"
+install_package "rclone" ". $DOTFILES_DIR/install/install-rclone.sh"
 
 # Symbolic links for shell, git, etc (same for all platforms)
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
@@ -164,3 +165,5 @@ echo "  2. Restart your terminal or run: source ~/.zshrc"
 if is-macos; then
     echo "  3. Run 'dotfiles macos' to apply macOS system preferences"
 fi
+echo "  3. Run 'rclone config' to set up cloud remotes (gdrive-work, gdrive-personal, box)"
+echo "     Then run 'sync-init-gdrive-work', 'sync-init-gdrive-personal', 'sync-init-box'"

@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Find all Google Drive folders where we lack write permission and add them
+# to the rclone filter file. Loops until bisync completes without 403 errors.
+
+FILTER_FILE="$HOME/.dotfiles/rclone/gdrive-filters.txt"
+RCLONE_CMD="rclone bisync $HOME/gdrive-work gdrive-work: --resync --create-empty-src-dirs --drive-skip-dangling-shortcuts --drive-skip-gdocs --ignore-errors --filter-from=$FILTER_FILE"
+MAX_ITERS=20
+
+for i in $(seq 1 $MAX_ITERS); do
+    echo "=== Attempt $i ==="
+    output=$($RCLONE_CMD 2>&1)
+    echo "$output" | tail -5
+
+    # Extract paths from 403 errors
+    errors=$(echo "$output" | grep "ERROR" | grep "403" | sed 's/.*ERROR : //; s/: Failed.*//')
+
+    if [[ -z "$errors" ]]; then
+        echo ""
+        echo "No more 403 errors — bisync succeeded!"
+        exit 0
+    fi
+
+    echo ""
+    echo "Adding to filter file:"
+    while IFS= read -r path; do
+        dir=$(dirname "$path")
+        rule="- ${dir}/**"
+        if ! grep -qF "$rule" "$FILTER_FILE"; then
+            echo "  $rule"
+            sed -i '' "s|# === Read-only shared folders|# === Read-only shared folders\n${rule}|" "$FILTER_FILE"
+        fi
+    done <<< "$errors"
+done
+
+echo "Reached max iterations ($MAX_ITERS). Check $FILTER_FILE for accumulated exclusions."
+exit 1

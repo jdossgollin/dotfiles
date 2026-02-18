@@ -159,7 +159,6 @@ if is-snap-available 2>/dev/null; then
     # Map snap names to cli command and app name for existence checks
     # Format: "snap_name:cli_cmd:app_name:flags" (use - for empty fields)
     snap_apps=(
-        "insync:insync:Insync:-"
         "slack:slack:Slack:--classic"
         "spotify:spotify:Spotify:-"
     )

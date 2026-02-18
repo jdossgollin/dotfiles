@@ -9,7 +9,6 @@ cask_apps=(
     "claude:-:Claude"
     "claude-code:claude:-"
     "firefox:firefox:Firefox"
-    "insync:insync:Insync"
     "slack:-:Slack"
     "slidepilot:-:SlidePilot"
     "github:-:GitHub Desktop"

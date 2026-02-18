@@ -34,6 +34,22 @@ elif command -v bat &>/dev/null; then
     alias cat="bat --paging=never"
 fi
 
+# === rclone cloud sync ===
+# Prerequisites: run 'rclone config' to set up remotes, then 'sync-init-*' once per remote
+alias sync-gdrive-work='rclone bisync ~/gdrive-work gdrive-work: --resync-mode newer --create-empty-src-dirs --drive-skip-dangling-shortcuts --drive-skip-gdocs --ignore-errors --resilient --filter-from=$HOME/.dotfiles/rclone/gdrive-filters.txt'
+alias sync-gdrive-personal='rclone bisync ~/gdrive-personal gdrive-personal: --resync-mode newer --create-empty-src-dirs --drive-skip-dangling-shortcuts --drive-skip-gdocs --ignore-errors --resilient --filter-from=$HOME/.dotfiles/rclone/gdrive-filters.txt'
+alias sync-box='rclone bisync ~/box box: --resync-mode newer --create-empty-src-dirs'
+alias sync-all='~/.dotfiles/bin/sync-cloud'
+
+# First-time init (run once per remote after 'rclone config')
+alias sync-init-gdrive-work='rclone bisync ~/gdrive-work gdrive-work: --resync --create-empty-src-dirs --drive-skip-dangling-shortcuts --drive-skip-gdocs --ignore-errors --resilient --filter-from=$HOME/.dotfiles/rclone/gdrive-filters.txt'
+alias sync-init-gdrive-personal='rclone bisync ~/gdrive-personal gdrive-personal: --resync --create-empty-src-dirs --drive-skip-dangling-shortcuts --drive-skip-gdocs --ignore-errors --resilient --filter-from=$HOME/.dotfiles/rclone/gdrive-filters.txt'
+alias sync-init-box='rclone bisync ~/box box: --resync --create-empty-src-dirs'
+
+# Status / management
+alias rclone-status='rclone listremotes'
+alias rclone-log='cat /tmp/rclone-sync.log'
+
 # === Platform-specific aliases ===
 if [[ "$OSTYPE" == darwin* ]]; then
     # macOS: Log off
