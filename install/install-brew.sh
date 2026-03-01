@@ -39,7 +39,6 @@ apps=(
     "node"              # JavaScript runtime
     "p7zip:7z"          # File archiver
     "pandoc"            # Document converter
-    "rclone"            # Cloud storage sync
     "ripgrep:rg"        # Fast text search
     "shellcheck"        # Shell script linter
     "tldr"              # Simplified man pages

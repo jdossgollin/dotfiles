@@ -12,6 +12,7 @@ cask_apps=(
     "slack:-:Slack"
     "slidepilot:-:SlidePilot"
     "github:-:GitHub Desktop"
+    "google-drive:-:Google Drive"
     "spotify:-:Spotify"
     "stats:-:Stats"
     "quarto:quarto:-"
