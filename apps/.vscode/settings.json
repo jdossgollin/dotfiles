@@ -582,5 +582,6 @@
     "claudeCode.selectedModel": "default",
     "claudeCode.preferredLocation": "panel",
     "claudeCode.respectGitIgnore": false,
-    "python.analysis.typeCheckingMode": "standard"
+    "python.analysis.typeCheckingMode": "standard",
+    "latex-workshop.formatting.latexindent.path": "/Library/TeX/texbin/latexindent"
 }
