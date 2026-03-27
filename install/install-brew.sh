@@ -14,7 +14,7 @@ if ! command -v brew &>/dev/null; then
 fi
 
 brew update
-brew upgrade
+brew upgrade || echo "brew upgrade reported issues (non-fatal)"
 
 # Map brew formula names to their CLI commands (for existence check)
 # Format: "formula:command" (command defaults to formula name if omitted)
