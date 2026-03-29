@@ -1,9 +1,6 @@
 # Use native zsh PATH deduplication (faster than awk)
 typeset -U path
 
-# Start with system path
-is-executable getconf && PATH=$($(command -v getconf) PATH)
-
 # Prepend new items to path (if directory exists)
 prepend-path "$DOTFILES_DIR/bin"
 prepend-path "/bin"
@@ -15,24 +12,18 @@ prepend-path "/usr/sbin"
 prepend-path "$HOME/bin"
 prepend-path "$HOME/.local/bin"
 
-case $(uname) in
-Darwin)
-  # macOS paths - use dynamic brew prefix
+# Platform paths using $OSTYPE (zsh builtin, no fork)
+if [[ "$OSTYPE" =~ ^darwin ]]; then
   BREW_PREFIX="$(get-brew-prefix 2>/dev/null || echo '/opt/homebrew')"
   prepend-path "${BREW_PREFIX}/bin"
   prepend-path "${BREW_PREFIX}/sbin"
   prepend-path "${BREW_PREFIX}/opt/ruby/bin"
   prepend-path "/Library/TeX/texbin"
-  # Conda paths handled by lazy init in .zshrc
-  ;;
-Linux)
+elif [[ "$OSTYPE" =~ ^linux ]]; then
   prepend-path "/snap/bin"
-  # Conda paths handled by lazy init in .zshrc
-  ;;
-esac
+fi
 
-# Wrap up
 export PATH
 
-# Quarto - lazy evaluation
-export QUARTO_PYTHON="${QUARTO_PYTHON:-$(command -v python 2>/dev/null)}"
+# Quarto - defer python lookup to avoid fork on every shell start
+export QUARTO_PYTHON="${QUARTO_PYTHON:-}"
