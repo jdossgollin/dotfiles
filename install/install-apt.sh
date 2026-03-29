@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Linux CLI tools and apps via apt/snap. macOS equivalent: install-brew.sh + install-brew-cask.sh
+# Run /audit-sync to verify parity between platforms.
+
 # Exit if not Linux or apt not available
 if ! is-apt-available; then
     echo "Skipped: apt packages (apt not available)"

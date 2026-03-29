@@ -1,3 +1,6 @@
+# macOS CLI tools via Homebrew. Linux equivalent: install-apt.sh
+# Run /audit-sync to verify parity between platforms.
+
 if ! is-executable curl -o ! is-executable git; then
     echo "Skipped: Homebrew (missing: curl and/or git)"
     return

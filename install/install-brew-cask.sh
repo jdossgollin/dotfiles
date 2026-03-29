@@ -1,3 +1,6 @@
+# macOS GUI apps via Homebrew Cask. Linux equivalents in: install-apt.sh (apt/snap section)
+# Run /audit-sync to verify parity between platforms.
+
 if ! is-macos -o ! is-executable brew; then
     echo "Skipped: Homebrew-Cask"
     return
