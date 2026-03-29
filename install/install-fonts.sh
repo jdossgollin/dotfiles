@@ -99,6 +99,7 @@ elif is-linux 2>/dev/null; then
     install_font_zip "Monaspace"    "https://github.com/githubnext/monaspace/releases/latest/download/monaspace-v1.101.zip"
     install_font_zip "SourceCodePro" "https://github.com/adobe-fonts/source-code-pro/releases/latest/download/OTF-source-code-pro.zip"
     install_font_zip "CooperHewitt" "https://github.com/cooperhewitt/cooperhewitt-typeface/archive/refs/heads/master.zip"
+    install_font_zip "xkcd-script"  "https://github.com/ipython/xkcd-font/archive/refs/heads/master.zip"
 
     # Download Meslo Nerd Font (required for Powerlevel10k)
     echo "Downloading MesloLGS NF fonts for Powerlevel10k..."

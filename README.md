@@ -101,7 +101,6 @@ dotfiles macos   # Apply system preferences
 Some apps must be installed manually on Linux:
 
 - **Zoom**: Download from [zoom.us](https://zoom.us/download)
-- **Zotero**: Download from [zotero.org](https://www.zotero.org/download/)
 
 ## The `dotfiles` Command
 

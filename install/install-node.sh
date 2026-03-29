@@ -7,7 +7,7 @@ elif is-linux 2>/dev/null; then
     # Use NodeSource for latest LTS
     if ! command -v node >/dev/null 2>&1; then
         echo "Installing Node.js via NodeSource..."
-        curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+        curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo bash -
         sudo apt-get install -y nodejs
     fi
 fi
