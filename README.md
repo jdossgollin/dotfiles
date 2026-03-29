@@ -127,7 +127,7 @@ Commands:
 | Shell | zsh, oh-my-zsh, powerlevel10k, z |
 | Dev Tools | git, git-lfs, gcc, node, shellcheck |
 | Apps | VSCodium, WezTerm, GitHub Desktop, Slack, Zoom (via cask) |
-| Fonts | See [Fonts](#fonts) section below |
+| Fonts | 40+ fonts across coding, scientific, and presentation categories |
 | Python | Miniconda |
 | Julia | juliaup |
 
@@ -138,74 +138,24 @@ Commands:
 | Shell | zsh, oh-my-zsh, powerlevel10k |
 | Dev Tools | git, git-lfs, build-essential, node, shellcheck |
 | Apps | VSCodium, WezTerm, GitHub Desktop, Slack, Spotify |
-| Fonts | See [Fonts](#fonts) section below |
+| Fonts | 40+ fonts across coding, scientific, and presentation categories |
 | Python | Miniforge (includes mamba) |
 | Julia | juliaup |
 
-## Fonts
+### Fonts
 
-All fonts are installed on both macOS (via Homebrew cask) and Linux (via apt + direct download). Managed in `install/install-fonts.sh`.
+Managed in [`install/install-fonts.sh`](install/install-fonts.sh). Installed on both platforms.
 
-### Terminal & Coding
+- **Terminal & Coding** — MesloLGS NF, JetBrains Mono, Cascadia Code, Fira Code, Geist Mono, Commit Mono, Intel One Mono, Iosevka, Monaspace, Source Code Pro, JuliaMono, and more
+- **Scientific Writing** — Libertinus, STIX Two, EB Garamond, TeX Gyre Pagella, Alegreya, Cormorant, and more
+- **Presentations & UI** — Inter, DM Sans, Atkinson Hyperlegible, Roboto, Montserrat, Lato, and more
+- **Novelty** — XKCD Script, Special Elite, Cooper Hewitt, and more
 
-| Font | Description |
-|------|-------------|
-| [**MesloLGS NF**](https://github.com/romkatv/powerlevel10k#fonts) | Required for Powerlevel10k prompt. Nerd Font with icons/powerline glyphs. |
-| [**JetBrains Mono**](https://www.jetbrains.com/lp/mono/) | Default coding font. Tall x-height, excellent ligatures. |
-| [**Cascadia Code**](https://github.com/microsoft/cascadia-code) | Microsoft's coding font with cursive italics variant. |
-| [**Fira Code**](https://github.com/tonsky/FiraCode) | Pioneer of coding ligatures. Great for presentations about code. |
-| [**Geist Mono**](https://vercel.com/font) | Vercel's modern monospace. Clean and minimal. |
-| [**Commit Mono**](https://commitmono.com/) | Neutral monospace designed specifically for code readability. |
-| [**Intel One Mono**](https://github.com/intel/intel-one-mono) | Optimized for legibility at small sizes and low-res displays. |
-| [**Iosevka**](https://typeof.net/Iosevka/) | Narrow monospace — fits more columns on screen. Highly customizable. |
-| [**Monaspace**](https://monaspace.githubnext.com/) | GitHub's texture healing monospace. Five variants (Neon, Argon, etc.). |
-| [**Source Code Pro**](https://adobe-fonts.github.io/source-code-pro/) | Adobe's monospace. Clean and widely supported. |
-| [**Fira Mono**](https://mozilla.github.io/Fira/) | Mozilla's monospace. Pairs well with Fira Sans. |
-| [**JuliaMono**](https://juliamono.netlify.app/) | Designed for scientific computing. Full Unicode math symbol coverage. |
+For visual specimens with pairing suggestions, compile [`docs/font-specimens.typ`](docs/font-specimens.typ):
 
-### Scientific Writing (LaTeX/Quarto)
-
-| Font | Description |
-|------|-------------|
-| [**Libertinus**](https://github.com/alerque/libertinus) | Modern successor to Linux Libertine. Includes math font for LaTeX. |
-| [**STIX Two**](https://www.stixfonts.org/) | Created by scientific publishers (AMS, AIP, IEEE). Full math coverage. |
-| [**EB Garamond**](http://www.georgduffner.at/ebgaramond/) | Beautiful Garamond revival. Great for humanities papers. |
-| [**Crimson Text**](https://github.com/skosch/Crimson) | Elegant old-style serif inspired by Minion. |
-| [**Cormorant**](https://github.com/CatharsisFonts/Cormorant) | Display serif inspired by Garamond. Striking at large sizes. |
-| [**Old Standard TT**](https://github.com/niclasr/ofontSmallCaps) | Reproduces early 20th century typefaces. Academic feel. |
-| [**TeX Gyre Pagella**](http://www.gust.org.pl/projects/e-foundry/tex-gyre/pagella) | Free Palatino equivalent with math support. LaTeX standard. |
-| [**Alegreya**](https://www.huertatipografica.com/en/fonts/alegreya-ht-pro) | Dynamic serif with small caps. Excellent for thesis/book work. |
-| [**Cinzel**](https://github.com/niclasr) | Inspired by Roman inscriptions. Great for titles and headings. |
-| [**GFS Didot**](https://www.greekfontsociety-gfs.gr/) | Classic Didone style. macOS only. |
-| [**Merriweather**](https://ebensorkin.wordpress.com/) | Designed for comfortable on-screen reading. |
-
-### Presentations & UI (Quarto/Slides)
-
-| Font | Description |
-|------|-------------|
-| [**Inter**](https://rsms.me/inter/) | One of the most popular UI typefaces. Extremely legible at all sizes. |
-| [**DM Sans**](https://github.com/googlefonts/dm-fonts) | Clean geometric sans-serif. Works great in slides. |
-| [**Atkinson Hyperlegible**](https://brailleinstitute.org/freefont) | Braille Institute design for maximum readability. Surprisingly stylish. |
-| [**Roboto**](https://fonts.google.com/specimen/Roboto) | Google's signature typeface. Versatile and neutral. |
-| [**Open Sans**](https://fonts.google.com/specimen/Open+Sans) | Humanist sans-serif. Optimized for web and print. |
-| [**Lato**](https://www.latofonts.com/) | Warm sans-serif. Looks professional without being cold. |
-| [**Montserrat**](https://github.com/JulietaUla/Montserrat) | Geometric sans inspired by Buenos Aires signage. Great for headings. |
-| [**Fira Sans**](https://mozilla.github.io/Fira/) | Mozilla's sans-serif. Pairs with Fira Code/Mono. |
-| [**Oswald**](https://github.com/googlefonts/OswaldFont) | Condensed sans-serif. Bold and attention-grabbing for titles. |
-| [**Bebas Neue**](https://www.fontfabric.com/fonts/bebas-neue/) | All-caps display font. Eye-catching for poster titles. |
-| [**Varela Round**](https://fonts.google.com/specimen/Varela+Round) | Friendly rounded sans-serif. Approachable feel. |
-
-### Novelty & Special Purpose
-
-| Font | Description |
-|------|-------------|
-| [**XKCD Script**](https://github.com/ipython/xkcd-font) | Handwriting font matching XKCD comics. Use with `matplotlib`'s `xkcd()` mode. |
-| [**Special Elite**](https://fonts.google.com/specimen/Special+Elite) | Typewriter font. Great for stylized quotes or asides. |
-| [**Cooper Hewitt**](https://www.cooperhewitt.org/open-source-at-cooper-hewitt/cooper-hewitt-the-typeface-by-chester-jenkins/) | Smithsonian design museum's house typeface. Contemporary sans-serif. |
-| [**Font Awesome**](https://fontawesome.com/) | Icon font. Useful for presentations and documents with inline icons. |
-| [**Iceland**](https://fonts.google.com/specimen/Iceland) | Geometric display font with Nordic character. |
-| [**Graduate**](https://fonts.google.com/specimen/Graduate) | Slab serif inspired by college lettering. |
-| [**Kameron**](https://fonts.google.com/specimen/Kameron) | Sturdy slab serif for headings. |
+```bash
+typst compile docs/font-specimens.typ
+```
 
 ## Shell Performance
 
