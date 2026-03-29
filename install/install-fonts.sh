@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if is-macos 2>/dev/null; then
+if is-macos; then
     # macOS font installation via Homebrew
     # For descriptions and visual specimens, see: docs/font-specimens.typ
     fonts=(
@@ -66,14 +66,14 @@ if is-macos 2>/dev/null; then
 
     brew install --cask "${fonts[@]}" || echo "Some fonts failed to install (non-fatal)"
 
-elif is-linux 2>/dev/null; then
+elif is-linux; then
     # Linux font installation
     FONT_DIR="$HOME/.local/share/fonts"
     mkdir -p "$FONT_DIR"
 
     # Install via apt where available (covers: Fira Code, DejaVu, Cascadia Code,
     # Font Awesome, Roboto, Lato, Open Sans, Montserrat, EB Garamond, TeX Gyre)
-    if is-apt-available 2>/dev/null; then
+    if is-apt-available; then
         sudo apt-get install -y fonts-firacode fonts-dejavu fonts-cascadia-code \
             fonts-font-awesome fonts-roboto fonts-lato fonts-open-sans \
             fonts-montserrat fonts-ebgaramond fonts-texgyre 2>/dev/null || true

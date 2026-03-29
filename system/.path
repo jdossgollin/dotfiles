@@ -1,24 +1,17 @@
 # Use native zsh PATH deduplication (faster than awk)
 typeset -U path
 
-# Prepend new items to path (if directory exists)
-prepend-path "$DOTFILES_DIR/bin"
-prepend-path "/bin"
-prepend-path "/usr/bin"
-prepend-path "/sbin"
-prepend-path "/usr/local/bin"
-prepend-path "/usr/local/sbin"
-prepend-path "/usr/sbin"
-prepend-path "$HOME/bin"
+# Custom paths (system paths like /usr/bin are already in PATH)
 prepend-path "$HOME/.local/bin"
+prepend-path "$HOME/bin"
+prepend-path "$DOTFILES_DIR/bin"
 
 # Platform paths using $OSTYPE (zsh builtin, no fork)
 if [[ "$OSTYPE" =~ ^darwin ]]; then
   BREW_PREFIX="$(get-brew-prefix 2>/dev/null || echo '/opt/homebrew')"
-  prepend-path "${BREW_PREFIX}/bin"
-  prepend-path "${BREW_PREFIX}/sbin"
   prepend-path "${BREW_PREFIX}/opt/ruby/bin"
   prepend-path "/Library/TeX/texbin"
+  # Homebrew bin/sbin added by brew shellenv in .zprofile
 elif [[ "$OSTYPE" =~ ^linux ]]; then
   prepend-path "/snap/bin"
 fi

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Exit if not Linux or apt not available
-if ! is-apt-available 2>/dev/null; then
+if ! is-apt-available; then
     echo "Skipped: apt packages (apt not available)"
     return 0 2>/dev/null || exit 0
 fi
@@ -189,7 +189,7 @@ if ! command -v codium >/dev/null 2>&1; then
 fi
 
 # Apps via snap (only for apps not available in apt)
-if is-snap-available 2>/dev/null; then
+if is-snap-available; then
     echo "Installing snap packages..."
 
     # Map snap names to cli command and app name for existence checks

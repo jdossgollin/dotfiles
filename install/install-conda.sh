@@ -3,9 +3,9 @@
 # Install Miniforge (includes mamba, conda-forge default) on all platforms
 if [[ ! -d "$HOME/miniforge3" ]]; then
     echo "Installing Miniforge..."
-    if is-macos 2>/dev/null; then
+    if is-macos; then
         MINIFORGE_URL="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-$(uname -m).sh"
-    elif is-linux 2>/dev/null; then
+    elif is-linux; then
         MINIFORGE_URL="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-$(uname -m).sh"
     else
         echo "Unsupported platform"

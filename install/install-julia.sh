@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # Install juliaup based on platform
-if is-macos 2>/dev/null; then
+if is-macos; then
     brew install juliaup
-elif is-linux 2>/dev/null; then
+elif is-linux; then
     # Official juliaup installer for Linux
     if ! command -v juliaup >/dev/null 2>&1; then
         echo "Installing juliaup..."

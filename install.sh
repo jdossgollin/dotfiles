@@ -12,10 +12,9 @@ set -e
 trap 'echo "[$(date "+%Y-%m-%d %H:%M:%S")] Error on line $LINENO. Exit code: $?" | tee -a "${LOG_FILE}"' ERR
 
 # Get current dir (so we can run this script from anywhere)
-export DOTFILES_DIR DOTFILES_CACHE DOTFILES_EXTRA_DIR
+export DOTFILES_DIR DOTFILES_CACHE
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
-DOTFILES_EXTRA_DIR="$DOTFILES_DIR/.extra"
 
 # Get access to platform detection functions
 . "$DOTFILES_DIR/system/.function"
@@ -23,12 +22,7 @@ DOTFILES_EXTRA_DIR="$DOTFILES_DIR/.extra"
 # Platform-specific initialization
 if is-macos; then
     echo "Detected macOS"
-    # Detect architecture and set Homebrew path
-    if [[ "$(uname -m)" == "arm64" ]]; then
-        BREW_PREFIX="/opt/homebrew"
-    else
-        BREW_PREFIX="/usr/local"
-    fi
+    BREW_PREFIX="$(get-brew-prefix)"
 
     # Initialize Homebrew if installed
     if [[ -x "${BREW_PREFIX}/bin/brew" ]]; then
@@ -46,32 +40,23 @@ elif is-linux; then
     fi
 fi
 
-# Create function for modular installation
-install_package() {
-    echo "Installing $1..."
-    if ! $2; then
-        echo "Failed to install $1"
-        return 1
-    fi
-}
-
 # Platform-specific package installation
 if is-macos; then
-    install_package "brew" ". $DOTFILES_DIR/install/install-brew.sh"
-    install_package "zsh" ". $DOTFILES_DIR/install/install-zsh.sh"
-    install_package "brew cask" ". $DOTFILES_DIR/install/install-brew-cask.sh"
-    install_package "fonts" ". $DOTFILES_DIR/install/install-fonts.sh"
+    . "$DOTFILES_DIR/install/install-brew.sh"
+    . "$DOTFILES_DIR/install/install-zsh.sh"
+    . "$DOTFILES_DIR/install/install-brew-cask.sh"
+    . "$DOTFILES_DIR/install/install-fonts.sh"
 elif is-linux; then
-    install_package "apt packages" ". $DOTFILES_DIR/install/install-apt.sh"
-    install_package "zsh" ". $DOTFILES_DIR/install/install-zsh.sh"
-    install_package "fonts" ". $DOTFILES_DIR/install/install-fonts.sh"
+    . "$DOTFILES_DIR/install/install-apt.sh"
+    . "$DOTFILES_DIR/install/install-zsh.sh"
+    . "$DOTFILES_DIR/install/install-fonts.sh"
 fi
 
 # Cross-platform installations
-install_package "conda" ". $DOTFILES_DIR/install/install-conda.sh"
-install_package "node" ". $DOTFILES_DIR/install/install-node.sh"
-install_package "julia" ". $DOTFILES_DIR/install/install-julia.sh"
-install_package "rtk" ". $DOTFILES_DIR/install/install-rtk.sh"
+. "$DOTFILES_DIR/install/install-conda.sh"
+. "$DOTFILES_DIR/install/install-node.sh"
+. "$DOTFILES_DIR/install/install-julia.sh"
+. "$DOTFILES_DIR/install/install-rtk.sh"
 
 # Symbolic links for shell, git, etc (same for all platforms)
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
