@@ -10,7 +10,6 @@ cask_apps=(
     "vscodium:codium:VSCodium"          # Open-source VS Code editor
     "wezterm:wezterm:WezTerm"           # GPU-accelerated terminal emulator
     "github:-:GitHub Desktop"           # Git GUI client
-    "claude:-:Claude"                   # Claude AI assistant
     "claude-code:claude:-"              # Claude Code CLI
     "quarto:quarto:-"                   # Scientific publishing (markdown → PDF/HTML/slides)
 
