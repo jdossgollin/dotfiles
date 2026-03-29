@@ -3,8 +3,8 @@
 # Install zsh based on platform
 if is-macos 2>/dev/null; then
     brew install zsh
-    brew install zsh-syntax-highlighting
-    brew install z
+    brew install zsh-syntax-highlighting  # Fish-like syntax highlighting
+    brew install z                        # Directory frecency tracker (jump to recent dirs)
 elif is-apt-available 2>/dev/null; then
     sudo apt-get install -y zsh zsh-syntax-highlighting
 fi

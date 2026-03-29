@@ -6,21 +6,26 @@ fi
 # Map cask names to their CLI command and/or app bundle name
 # Format: "cask_name:cli_command:App Name" (use - for empty fields)
 cask_apps=(
-    "claude:-:Claude"
-    "claude-code:claude:-"
-    "firefox:firefox:Firefox"
-    "slack:-:Slack"
-    "slidepilot:-:SlidePilot"
-    "github:-:GitHub Desktop"
-    "google-drive:-:Google Drive"
-    "spotify:-:Spotify"
-    "stats:-:Stats"
-    "quarto:quarto:-"
-    "vscodium:codium:VSCodium"
-    "wezterm:wezterm:WezTerm"
-    "whatsapp:-:WhatsApp"
-    "zoom:-:zoom.us"
-    "zotero:zotero:Zotero"
+    # Dev tools
+    "vscodium:codium:VSCodium"          # Open-source VS Code editor
+    "wezterm:wezterm:WezTerm"           # GPU-accelerated terminal emulator
+    "github:-:GitHub Desktop"           # Git GUI client
+    "claude:-:Claude"                   # Claude AI assistant
+    "claude-code:claude:-"              # Claude Code CLI
+    "quarto:quarto:-"                   # Scientific publishing (markdown → PDF/HTML/slides)
+
+    # Browsers & communication
+    "firefox:firefox:Firefox"           # Web browser
+    "slack:-:Slack"                     # Team messaging
+    "whatsapp:-:WhatsApp"              # Personal messaging
+    "zoom:-:zoom.us"                    # Video conferencing
+
+    # Productivity
+    "google-drive:-:Google Drive"       # Cloud file sync
+    "zotero:zotero:Zotero"             # Reference manager for academic papers
+    "slidepilot:-:SlidePilot"          # PDF presentation tool (presenter view)
+    "spotify:-:Spotify"                 # Music streaming
+    "stats:-:Stats"                     # macOS menubar system monitor
 )
 
 # Install each cask, skipping if already installed

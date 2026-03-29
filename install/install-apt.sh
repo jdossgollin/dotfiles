@@ -13,38 +13,49 @@ sudo apt-get update
 # Map apt package names to their CLI commands (for existence check)
 # Format: "package:command" (command defaults to package name if omitted)
 apt_packages=(
-    "aspell"
-    "bat:batcat"        # Ubuntu names it batcat
-    "btop"
-    "build-essential:gcc"
-    "curl"
-    "firefox"
-    "fzf"
-    "gh"
-    "git"
-    "git-extras"
-    "git-lfs"
-    "libboost-all-dev"  # library, no command check
-    "nano"
-    "ncdu"
-    "nodejs:node"
-    "npm"
-    "p7zip-full:7z"
-    "pandoc"
-    "ripgrep:rg"
-    "shellcheck"
-    "tldr"
-    "tree"
-    "wget"
-    "ffmpeg"
-    "imagemagick:magick"
-    "fd-find:fdfind"    # Ubuntu names it fd-find
-    "jq"
-    "yq"
-    "direnv"
-    "zsh"
-    "zsh-syntax-highlighting"
-    "texlive-full:pdflatex"
+    # Shell
+    "zsh"                       # Modern shell (replaces bash)
+    "zsh-syntax-highlighting"   # Fish-like syntax highlighting for zsh
+
+    # Core utilities
+    "curl"                      # HTTP client
+    "wget"                      # File downloader
+    "git"                       # Version control
+    "git-extras"                # Extra git commands (git-summary, git-effort, etc.)
+    "git-lfs"                   # Git Large File Storage
+    "nano"                      # Simple text editor
+    "build-essential:gcc"       # C/C++ compiler toolchain
+    "libboost-all-dev"          # C++ Boost libraries (no CLI command)
+    "p7zip-full:7z"             # 7-Zip file archiver
+
+    # Modern CLI replacements
+    "bat:batcat"                # cat with syntax highlighting (Ubuntu names it batcat)
+    "fd-find:fdfind"            # Modern find replacement (Ubuntu names it fd-find)
+    "fzf"                       # Fuzzy finder for files, history, etc.
+    "ripgrep:rg"                # Fast grep replacement
+    "btop"                      # Modern system monitor (top/htop replacement)
+    "ncdu"                      # Interactive disk usage analyzer
+    "tree"                      # Directory tree viewer
+    "tldr"                      # Simplified man pages with examples
+    "jq"                        # JSON processor
+    "yq"                        # YAML processor
+    "direnv"                    # Per-directory environment variables
+
+    # Dev tools
+    "gh"                        # GitHub CLI
+    "shellcheck"                # Shell script linter
+    "pandoc"                    # Universal document converter
+    "nodejs:node"               # JavaScript runtime
+    "npm"                       # Node.js package manager
+
+    # Media & science
+    "ffmpeg"                    # Audio/video processing
+    "imagemagick:magick"        # Image manipulation (convert, resize, etc.)
+    "aspell"                    # Spell checker
+    "texlive-full:pdflatex"     # Full TeX/LaTeX distribution
+
+    # Apps
+    "firefox"                   # Web browser
 )
 
 # Build list of packages to install
@@ -184,8 +195,8 @@ if is-snap-available 2>/dev/null; then
     # Map snap names to cli command and app name for existence checks
     # Format: "snap_name:cli_cmd:app_name:flags" (use - for empty fields)
     snap_apps=(
-        "slack:slack:Slack:--classic"
-        "spotify:spotify:Spotify:-"
+        "slack:slack:Slack:--classic"       # Team messaging
+        "spotify:spotify:Spotify:-"         # Music streaming
     )
 
     for entry in "${snap_apps[@]}"; do

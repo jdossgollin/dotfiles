@@ -2,56 +2,66 @@
 
 if is-macos 2>/dev/null; then
     # macOS font installation via Homebrew
+    # For descriptions and visual specimens, see: docs/font-specimens.typ
     fonts=(
-        font-bebas-neue
+        # Terminal & coding
+        font-meslo-lg-nerd-font             # Required for Powerlevel10k
+        font-jetbrains-mono
         font-cascadia-code
-        font-cinzel
-        font-cooper-hewitt
-        font-cormorant
-        font-crimson-text
-        font-dejavu
-        font-dejavu-sans-mono-for-powerline
-        font-eb-garamond
         font-fira-code
         font-fira-mono
         font-fira-mono-for-powerline
-        font-fira-sans
-        font-fontawesome
-        font-gfs-didot
-        font-graduate
-        font-iceland
-        font-iosevka
-        font-jetbrains-mono
-        font-juliamono
-        font-kameron
-        font-lato
-        font-merriweather
-        font-meslo-lg-nerd-font
-        font-monaspace
-        font-montserrat
-        font-old-standard-tt
-        font-open-sans
-        font-oswald
-        font-roboto
-        font-source-code-pro
-        font-source-code-pro-for-powerline
-        font-special-elite
-        font-tex-gyre-pagella
-        font-tex-gyre-pagella-math
-        font-trebuchet-ms
-        font-varela-round
-        font-xkcd
-        font-xkcd-script
         font-geist-mono
         font-commit-mono
         font-intel-one-mono
-        font-libertinus
-        font-stix-two-text
+        font-iosevka
+        font-monaspace
+        font-source-code-pro
+        font-source-code-pro-for-powerline
+        font-juliamono
+
+        # Scientific writing (LaTeX/Quarto)
+        font-libertinus                     # Includes math font
+        font-stix-two-text                  # Includes math font
         font-stix-two-math
+        font-eb-garamond
+        font-crimson-text
+        font-cormorant
+        font-old-standard-tt
+        font-tex-gyre-pagella
+        font-tex-gyre-pagella-math
         font-alegreya
+        font-cinzel
+        font-gfs-didot
+        font-merriweather
+
+        # Presentations & UI
         font-inter
         font-dm-sans
         font-atkinson-hyperlegible
+        font-roboto
+        font-open-sans
+        font-lato
+        font-montserrat
+        font-fira-sans
+        font-oswald
+        font-bebas-neue
+        font-varela-round
+
+        # Novelty & special purpose
+        font-xkcd
+        font-xkcd-script
+        font-special-elite
+        font-cooper-hewitt
+        font-fontawesome
+        font-iceland
+        font-graduate
+        font-kameron
+
+        # System
+        font-dejavu
+        font-dejavu-sans-mono-for-powerline
+        font-trebuchet-ms
     )
 
     brew install --cask "${fonts[@]}" || echo "Some fonts failed to install (non-fatal)"
