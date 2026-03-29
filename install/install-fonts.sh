@@ -53,18 +53,52 @@ elif is-linux 2>/dev/null; then
 
     # Install via apt where available
     if is-apt-available 2>/dev/null; then
-        sudo apt-get install -y fonts-firacode fonts-dejavu fonts-cascadia-code 2>/dev/null || true
+        sudo apt-get install -y fonts-firacode fonts-dejavu fonts-cascadia-code \
+            fonts-font-awesome fonts-roboto fonts-lato fonts-open-sans \
+            fonts-montserrat fonts-ebgaramond fonts-texgyre 2>/dev/null || true
     fi
 
-    # Download JetBrains Mono
-    echo "Downloading JetBrains Mono..."
-    JETBRAINS_URL="https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip"
-    JB_TMP="$(mktemp -d "${TMPDIR:-/tmp}/jetbrains-mono.XXXXXXXXXX")"
-    curl -fLo "$JB_TMP/JetBrainsMono.zip" "$JETBRAINS_URL" 2>/dev/null && \
-        unzip -o -q "$JB_TMP/JetBrainsMono.zip" -d "$JB_TMP/extracted" && \
-        cp "$JB_TMP/extracted/fonts/ttf/"*.ttf "$FONT_DIR/" && \
-        rm -rf "$JB_TMP" || \
-        { rm -rf "$JB_TMP"; echo "Warning: Could not download JetBrains Mono"; }
+    # Helper: download and install a zip of fonts (from Google Fonts or GitHub)
+    install_font_zip() {
+        local name="$1" url="$2"
+        if ls "$FONT_DIR"/"$name"*.ttf &>/dev/null || ls "$FONT_DIR"/"$name"*.otf &>/dev/null; then
+            echo "$name: already installed"
+            return
+        fi
+        echo "Downloading $name..."
+        local tmp="$(mktemp -d "${TMPDIR:-/tmp}/font-${name}.XXXXXXXXXX")"
+        if curl -fLo "$tmp/font.zip" "$url" 2>/dev/null; then
+            unzip -o -q "$tmp/font.zip" -d "$tmp/extracted" 2>/dev/null
+            find "$tmp/extracted" \( -name '*.ttf' -o -name '*.otf' \) -exec cp {} "$FONT_DIR/" \;
+            echo "$name: installed"
+        else
+            echo "Warning: Could not download $name"
+        fi
+        rm -rf "$tmp"
+    }
+
+    # Google Fonts (matching macOS brew cask list)
+    install_font_zip "BebasNeue"    "https://fonts.google.com/download?family=Bebas+Neue"
+    install_font_zip "Cinzel"       "https://fonts.google.com/download?family=Cinzel"
+    install_font_zip "Cormorant"    "https://fonts.google.com/download?family=Cormorant"
+    install_font_zip "CrimsonText"  "https://fonts.google.com/download?family=Crimson+Text"
+    install_font_zip "Graduate"     "https://fonts.google.com/download?family=Graduate"
+    install_font_zip "Iceland"      "https://fonts.google.com/download?family=Iceland"
+    install_font_zip "Kameron"      "https://fonts.google.com/download?family=Kameron"
+    install_font_zip "Merriweather" "https://fonts.google.com/download?family=Merriweather"
+    install_font_zip "OldStandardTT" "https://fonts.google.com/download?family=Old+Standard+TT"
+    install_font_zip "Oswald"       "https://fonts.google.com/download?family=Oswald"
+    install_font_zip "SpecialElite" "https://fonts.google.com/download?family=Special+Elite"
+    install_font_zip "VarelaRound"  "https://fonts.google.com/download?family=Varela+Round"
+    install_font_zip "FiraSans"     "https://fonts.google.com/download?family=Fira+Sans"
+
+    # GitHub releases (not on Google Fonts)
+    install_font_zip "JetBrainsMono" "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip"
+    install_font_zip "Iosevka"      "https://github.com/be5invis/Iosevka/releases/latest/download/PkgTTF-Iosevka-32.5.1.zip"
+    install_font_zip "JuliaMono"    "https://github.com/cormullion/juliamono/releases/latest/download/JuliaMono-ttf.tar.gz"
+    install_font_zip "Monaspace"    "https://github.com/githubnext/monaspace/releases/latest/download/monaspace-v1.101.zip"
+    install_font_zip "SourceCodePro" "https://github.com/adobe-fonts/source-code-pro/releases/latest/download/OTF-source-code-pro.zip"
+    install_font_zip "CooperHewitt" "https://github.com/cooperhewitt/cooperhewitt-typeface/archive/refs/heads/master.zip"
 
     # Download Meslo Nerd Font (required for Powerlevel10k)
     echo "Downloading MesloLGS NF fonts for Powerlevel10k..."
