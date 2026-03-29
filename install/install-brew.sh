@@ -46,6 +46,10 @@ apps=(
     "uv"                # Python package manager
     "wget"              # Download files from web
     "fd"                # Modern find replacement
+    "jq"                # JSON processor
+    "yq"                # YAML processor
+    "direnv"            # Per-directory environments
+    "ruff"              # Fast Python linter/formatter
     "lazygit"           # TUI for git
 )
 
