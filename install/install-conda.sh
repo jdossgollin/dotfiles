@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# Get the directory where this script is located
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOTFILES_DIR="$(dirname "${SCRIPT_DIR}")"
-
 # Install Miniforge (includes mamba, conda-forge default) on all platforms
 if [[ ! -d "$HOME/miniforge3" ]]; then
     echo "Installing Miniforge..."

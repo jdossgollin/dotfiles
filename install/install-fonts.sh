@@ -71,7 +71,8 @@ elif is-linux 2>/dev/null; then
     FONT_DIR="$HOME/.local/share/fonts"
     mkdir -p "$FONT_DIR"
 
-    # Install via apt where available
+    # Install via apt where available (covers: Fira Code, DejaVu, Cascadia Code,
+    # Font Awesome, Roboto, Lato, Open Sans, Montserrat, EB Garamond, TeX Gyre)
     if is-apt-available 2>/dev/null; then
         sudo apt-get install -y fonts-firacode fonts-dejavu fonts-cascadia-code \
             fonts-font-awesome fonts-roboto fonts-lato fonts-open-sans \
@@ -97,44 +98,47 @@ elif is-linux 2>/dev/null; then
         rm -rf "$tmp"
     }
 
-    # Google Fonts (matching macOS brew cask list)
-    install_font_zip "BebasNeue"    "https://fonts.google.com/download?family=Bebas+Neue"
-    install_font_zip "Cinzel"       "https://fonts.google.com/download?family=Cinzel"
-    install_font_zip "Cormorant"    "https://fonts.google.com/download?family=Cormorant"
-    install_font_zip "CrimsonText"  "https://fonts.google.com/download?family=Crimson+Text"
-    install_font_zip "Graduate"     "https://fonts.google.com/download?family=Graduate"
-    install_font_zip "Iceland"      "https://fonts.google.com/download?family=Iceland"
-    install_font_zip "Kameron"      "https://fonts.google.com/download?family=Kameron"
-    install_font_zip "Merriweather" "https://fonts.google.com/download?family=Merriweather"
-    install_font_zip "OldStandardTT" "https://fonts.google.com/download?family=Old+Standard+TT"
-    install_font_zip "Oswald"       "https://fonts.google.com/download?family=Oswald"
-    install_font_zip "SpecialElite" "https://fonts.google.com/download?family=Special+Elite"
-    install_font_zip "VarelaRound"  "https://fonts.google.com/download?family=Varela+Round"
-    install_font_zip "FiraSans"     "https://fonts.google.com/download?family=Fira+Sans"
+    # For descriptions and visual specimens, see: docs/font-specimens.typ
+    # Fonts already covered by apt above are NOT re-downloaded here.
 
-    # Coding fonts
+    # Terminal & coding (not in apt)
+    install_font_zip "JetBrainsMono" "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip"
+    install_font_zip "GeistMono"    "https://github.com/vercel/geist-font/releases/latest/download/geist-font.zip"
     install_font_zip "CommitMono"   "https://fonts.google.com/download?family=Commit+Mono"
     install_font_zip "IntelOneMono" "https://fonts.google.com/download?family=Intel+One+Mono"
+    install_font_zip "Iosevka"      "https://github.com/be5invis/Iosevka/releases/latest/download/PkgTTF-Iosevka-32.5.1.zip"
+    install_font_zip "Monaspace"    "https://github.com/githubnext/monaspace/releases/latest/download/monaspace-v1.101.zip"
+    install_font_zip "SourceCodePro" "https://github.com/adobe-fonts/source-code-pro/releases/latest/download/OTF-source-code-pro.zip"
+    install_font_zip "JuliaMono"    "https://github.com/cormullion/juliamono/releases/latest/download/JuliaMono-ttf.tar.gz"
+    install_font_zip "FiraMono"     "https://fonts.google.com/download?family=Fira+Mono"
 
-    # Scientific/academic fonts
+    # Scientific writing (not in apt)
+    install_font_zip "Libertinus"   "https://github.com/alerque/libertinus/releases/latest/download/Libertinus-7.051.zip"
     install_font_zip "STIXTwoText"  "https://fonts.google.com/download?family=STIX+Two+Text"
+    install_font_zip "STIXTwoMath"  "https://fonts.google.com/download?family=STIX+Two+Math"
+    install_font_zip "CrimsonText"  "https://fonts.google.com/download?family=Crimson+Text"
+    install_font_zip "Cormorant"    "https://fonts.google.com/download?family=Cormorant"
+    install_font_zip "OldStandardTT" "https://fonts.google.com/download?family=Old+Standard+TT"
     install_font_zip "Alegreya"     "https://fonts.google.com/download?family=Alegreya"
+    install_font_zip "Cinzel"       "https://fonts.google.com/download?family=Cinzel"
+    install_font_zip "Merriweather" "https://fonts.google.com/download?family=Merriweather"
 
-    # Presentation/UI fonts
+    # Presentations & UI (not in apt)
     install_font_zip "Inter"        "https://fonts.google.com/download?family=Inter"
     install_font_zip "DMSans"       "https://fonts.google.com/download?family=DM+Sans"
     install_font_zip "AtkinsonHyperlegible" "https://fonts.google.com/download?family=Atkinson+Hyperlegible"
+    install_font_zip "FiraSans"     "https://fonts.google.com/download?family=Fira+Sans"
+    install_font_zip "Oswald"       "https://fonts.google.com/download?family=Oswald"
+    install_font_zip "BebasNeue"    "https://fonts.google.com/download?family=Bebas+Neue"
+    install_font_zip "VarelaRound"  "https://fonts.google.com/download?family=Varela+Round"
 
-    # GitHub releases (not on Google Fonts)
-    install_font_zip "JetBrainsMono" "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip"
-    install_font_zip "Iosevka"      "https://github.com/be5invis/Iosevka/releases/latest/download/PkgTTF-Iosevka-32.5.1.zip"
-    install_font_zip "JuliaMono"    "https://github.com/cormullion/juliamono/releases/latest/download/JuliaMono-ttf.tar.gz"
-    install_font_zip "Monaspace"    "https://github.com/githubnext/monaspace/releases/latest/download/monaspace-v1.101.zip"
-    install_font_zip "SourceCodePro" "https://github.com/adobe-fonts/source-code-pro/releases/latest/download/OTF-source-code-pro.zip"
+    # Novelty & special purpose (not in apt)
+    install_font_zip "xkcd-font"    "https://github.com/ipython/xkcd-font/archive/refs/heads/master.zip"
+    install_font_zip "SpecialElite" "https://fonts.google.com/download?family=Special+Elite"
     install_font_zip "CooperHewitt" "https://github.com/cooperhewitt/cooperhewitt-typeface/archive/refs/heads/master.zip"
-    install_font_zip "xkcd-script"  "https://github.com/ipython/xkcd-font/archive/refs/heads/master.zip"
-    install_font_zip "GeistMono"    "https://github.com/vercel/geist-font/releases/latest/download/geist-font.zip"
-    install_font_zip "Libertinus"   "https://github.com/alerque/libertinus/releases/latest/download/Libertinus-7.051.zip"
+    install_font_zip "Graduate"     "https://fonts.google.com/download?family=Graduate"
+    install_font_zip "Iceland"      "https://fonts.google.com/download?family=Iceland"
+    install_font_zip "Kameron"      "https://fonts.google.com/download?family=Kameron"
 
     # Download Meslo Nerd Font (required for Powerlevel10k)
     echo "Downloading MesloLGS NF fonts for Powerlevel10k..."
