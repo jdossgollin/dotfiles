@@ -42,6 +42,16 @@ if is-macos 2>/dev/null; then
         font-varela-round
         font-xkcd
         font-xkcd-script
+        font-geist-mono
+        font-commit-mono
+        font-intel-one-mono
+        font-libertinus
+        font-stix-two-text
+        font-stix-two-math
+        font-alegreya
+        font-inter
+        font-dm-sans
+        font-atkinson-hyperlegible
     )
 
     brew install --cask "${fonts[@]}" || echo "Some fonts failed to install (non-fatal)"
@@ -92,6 +102,19 @@ elif is-linux 2>/dev/null; then
     install_font_zip "VarelaRound"  "https://fonts.google.com/download?family=Varela+Round"
     install_font_zip "FiraSans"     "https://fonts.google.com/download?family=Fira+Sans"
 
+    # Coding fonts
+    install_font_zip "CommitMono"   "https://fonts.google.com/download?family=Commit+Mono"
+    install_font_zip "IntelOneMono" "https://fonts.google.com/download?family=Intel+One+Mono"
+
+    # Scientific/academic fonts
+    install_font_zip "STIXTwoText"  "https://fonts.google.com/download?family=STIX+Two+Text"
+    install_font_zip "Alegreya"     "https://fonts.google.com/download?family=Alegreya"
+
+    # Presentation/UI fonts
+    install_font_zip "Inter"        "https://fonts.google.com/download?family=Inter"
+    install_font_zip "DMSans"       "https://fonts.google.com/download?family=DM+Sans"
+    install_font_zip "AtkinsonHyperlegible" "https://fonts.google.com/download?family=Atkinson+Hyperlegible"
+
     # GitHub releases (not on Google Fonts)
     install_font_zip "JetBrainsMono" "https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip"
     install_font_zip "Iosevka"      "https://github.com/be5invis/Iosevka/releases/latest/download/PkgTTF-Iosevka-32.5.1.zip"
@@ -100,6 +123,8 @@ elif is-linux 2>/dev/null; then
     install_font_zip "SourceCodePro" "https://github.com/adobe-fonts/source-code-pro/releases/latest/download/OTF-source-code-pro.zip"
     install_font_zip "CooperHewitt" "https://github.com/cooperhewitt/cooperhewitt-typeface/archive/refs/heads/master.zip"
     install_font_zip "xkcd-script"  "https://github.com/ipython/xkcd-font/archive/refs/heads/master.zip"
+    install_font_zip "GeistMono"    "https://github.com/vercel/geist-font/releases/latest/download/geist-font.zip"
+    install_font_zip "Libertinus"   "https://github.com/alerque/libertinus/releases/latest/download/Libertinus-7.051.zip"
 
     # Download Meslo Nerd Font (required for Powerlevel10k)
     echo "Downloading MesloLGS NF fonts for Powerlevel10k..."
