@@ -59,11 +59,12 @@ elif is-linux 2>/dev/null; then
     # Download JetBrains Mono
     echo "Downloading JetBrains Mono..."
     JETBRAINS_URL="https://github.com/JetBrains/JetBrainsMono/releases/download/v2.304/JetBrainsMono-2.304.zip"
-    curl -fLo "/tmp/JetBrainsMono.zip" "$JETBRAINS_URL" 2>/dev/null && \
-        unzip -o -q "/tmp/JetBrainsMono.zip" -d "/tmp/JetBrainsMono" && \
-        cp /tmp/JetBrainsMono/fonts/ttf/*.ttf "$FONT_DIR/" && \
-        rm -rf /tmp/JetBrainsMono /tmp/JetBrainsMono.zip || \
-        echo "Warning: Could not download JetBrains Mono"
+    JB_TMP="$(mktemp -d "${TMPDIR:-/tmp}/jetbrains-mono.XXXXXXXXXX")"
+    curl -fLo "$JB_TMP/JetBrainsMono.zip" "$JETBRAINS_URL" 2>/dev/null && \
+        unzip -o -q "$JB_TMP/JetBrainsMono.zip" -d "$JB_TMP/extracted" && \
+        cp "$JB_TMP/extracted/fonts/ttf/"*.ttf "$FONT_DIR/" && \
+        rm -rf "$JB_TMP" || \
+        { rm -rf "$JB_TMP"; echo "Warning: Could not download JetBrains Mono"; }
 
     # Download Meslo Nerd Font (required for Powerlevel10k)
     echo "Downloading MesloLGS NF fonts for Powerlevel10k..."

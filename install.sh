@@ -143,7 +143,7 @@ fi
 if is-macos; then
     git config --global credential.helper osxkeychain
 elif is-linux; then
-    git config --global credential.helper cache
+    git config --global credential.helper 'cache --timeout=3600'
 fi
 
 # Enable permissions for all the binaries in ./bin

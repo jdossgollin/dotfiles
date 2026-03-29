@@ -94,10 +94,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[user]
-	name = James Doss-Gollin
-	email = james.dossgollin@gmail.com
-[github]
-	user = jdossgollin
-[credential]
-	helper = osxkeychain
+# [user], [github], and [credential] sections are configured by install.sh
+# from secrets/.git_identity (platform-aware). Do not hardcode here.

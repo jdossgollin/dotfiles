@@ -15,9 +15,10 @@ if [[ ! -d "$HOME/miniforge3" ]]; then
         echo "Unsupported platform"
         exit 1
     fi
-    curl -L "$MINIFORGE_URL" -o /tmp/miniforge.sh
-    bash /tmp/miniforge.sh -b -p "$HOME/miniforge3"
-    rm /tmp/miniforge.sh
+    MINIFORGE_TMP="$(mktemp "${TMPDIR:-/tmp}/miniforge.XXXXXXXXXX.sh")"
+    curl -L "$MINIFORGE_URL" -o "$MINIFORGE_TMP"
+    bash "$MINIFORGE_TMP" -b -p "$HOME/miniforge3"
+    rm -f "$MINIFORGE_TMP"
 fi
 CONDA_SH="$HOME/miniforge3/etc/profile.d/conda.sh"
 

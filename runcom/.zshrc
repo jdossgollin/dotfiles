@@ -68,24 +68,20 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(
-    brew
-    git
-    macos
-    python
-    z
-)
+plugins=(git python z)
+# Load macOS-specific plugins only on macOS (no-ops on Linux but add overhead)
+[[ "$OSTYPE" =~ ^darwin ]] && plugins+=(brew macos)
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # Must be at the end of oh-my-zsh setup
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Source system configuration files
-source $DOTFILES_DIR/system/.function
-source $DOTFILES_DIR/system/.alias
-source $DOTFILES_DIR/system/.env
-source $DOTFILES_DIR/system/.path
+source "$DOTFILES_DIR/system/.function"
+source "$DOTFILES_DIR/system/.alias"
+source "$DOTFILES_DIR/system/.env"
+source "$DOTFILES_DIR/system/.path"
 
 # Source API keys if they exist (gitignored)
 [[ -f "$DOTFILES_DIR/secrets/.api_keys" ]] && source "$DOTFILES_DIR/secrets/.api_keys"

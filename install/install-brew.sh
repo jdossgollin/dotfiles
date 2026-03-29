@@ -45,6 +45,8 @@ apps=(
     "tree"              # Directory tree viewer
     "uv"                # Python package manager
     "wget"              # Download files from web
+    "fd"                # Modern find replacement
+    "lazygit"           # TUI for git
 )
 
 # Install each formula, skipping if command already exists
