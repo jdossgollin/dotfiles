@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Skip font installation in CI (large downloads, not what CI tests)
+if [[ -n "${CI:-}" ]]; then
+    echo "Skipped: font installation (CI environment)"
+    return 0 2>/dev/null || exit 0
+fi
+
 if is-macos; then
     # macOS font installation via Homebrew
     # For descriptions and visual specimens, see: docs/font-specimens.typ

@@ -82,8 +82,8 @@ if ! command -v dockutil >/dev/null 2>&1; then
     brew install dockutil
 fi
 
-# TeX Live (full distribution, no GUI apps)
-if ! command -v pdflatex >/dev/null 2>&1; then
+# TeX Live (full distribution, ~5GB, skip in CI to avoid timeout)
+if ! command -v pdflatex >/dev/null 2>&1 && [[ -z "${CI:-}" ]]; then
     echo "Installing MacTeX (no GUI)..."
     brew install --cask mactex-no-gui
 fi

@@ -77,8 +77,8 @@ else
     echo "All apt packages already installed"
 fi
 
-# TeX Live (very large ~5GB, installed separately to avoid blocking other packages)
-if ! command -v pdflatex >/dev/null 2>&1; then
+# TeX Live (very large ~5GB, skip in CI to avoid timeout)
+if ! command -v pdflatex >/dev/null 2>&1 && [[ -z "${CI:-}" ]]; then
     echo "Installing texlive-full (this may take a while)..."
     sudo apt-get install -y texlive-full || echo "Warning: texlive-full failed to install (non-fatal)"
 fi
