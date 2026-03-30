@@ -104,13 +104,22 @@ sub_sync-secrets() {
     echo "# Do not edit manually — changes will be overwritten on next sync"
     echo ""
 
-    local openai_key
+    local openai_key todoist_key
     openai_key="$(dcli note "OpenAI API" --output text 2>/dev/null)"
     if [[ -n "$openai_key" ]]; then
       echo "export OPENAI_API_KEY=\"$openai_key\""
     else
       echo "# Warning: 'OpenAI API' note not found in Dashlane"
       echo "# export OPENAI_API_KEY=\"\""
+    fi
+
+    echo ""
+    todoist_key="$(dcli note "Todoist API" --output text 2>/dev/null)"
+    if [[ -n "$todoist_key" ]]; then
+      echo "export TODOIST_API_KEY=\"$todoist_key\""
+    else
+      echo "# Warning: 'Todoist API' note not found in Dashlane"
+      echo "# export TODOIST_API_KEY=\"\""
     fi
   } > "$api_keys_file"
   chmod 600 "$api_keys_file"
