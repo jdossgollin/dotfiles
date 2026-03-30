@@ -40,12 +40,9 @@ apt_packages=(
     "tree"                      # Directory tree viewer
     "tldr"                      # Simplified man pages with examples
     "jq"                        # JSON processor
-    "direnv"                    # Per-directory environment variables
 
     # Dev tools
     "shellcheck"                # Shell script linter
-    "nodejs:node"               # JavaScript runtime
-    "npm"                       # Node.js package manager
 
     # Media & science
     "aspell"                    # Spell checker
@@ -134,25 +131,6 @@ fi
 if ! command -v uv >/dev/null 2>&1; then
     echo "Installing uv..."
     curl -LsSf https://astral.sh/uv/install.sh | sh || echo "Warning: uv failed to install"
-fi
-
-# yq (YAML processor, not in standard apt repos)
-if ! command -v yq >/dev/null 2>&1; then
-    echo "Installing yq..."
-    (
-        YQ_VERSION=$(curl -sS https://api.github.com/repos/mikefarah/yq/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
-        if [[ -n "$YQ_VERSION" ]]; then
-            curl -fLo /tmp/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64"
-            sudo install /tmp/yq /usr/local/bin/yq
-            rm -f /tmp/yq
-        fi
-    ) || echo "Warning: yq failed to install"
-fi
-
-# ruff (fast Python linter/formatter, not in standard apt repos)
-if ! command -v ruff >/dev/null 2>&1 && command -v uv >/dev/null 2>&1; then
-    echo "Installing ruff..."
-    uv tool install ruff || echo "Warning: ruff failed to install"
 fi
 
 # git-delta (syntax-highlighted diffs, replaces diff-so-fancy)

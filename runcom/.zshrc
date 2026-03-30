@@ -42,12 +42,6 @@ source "$DOTFILES_DIR/system/.path"
 # Source API keys if they exist (gitignored)
 [[ -f "$DOTFILES_DIR/secrets/.api_keys" ]] && source "$DOTFILES_DIR/secrets/.api_keys"
 
-# === DIRENV HOOK ===
-# Automatically load/unload .envrc when entering/leaving directories
-if command -v direnv >/dev/null 2>&1; then
-    eval "$(direnv hook zsh)"
-fi
-
 # === FZF KEYBINDINGS ===
 # Enables Ctrl+R (history), Ctrl+T (files), Alt+C (cd)
 if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then

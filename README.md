@@ -41,7 +41,7 @@ See individual install scripts in [`install/`](install/) for the full, authorita
 | Category | macOS | Linux |
 |----------|-------|-------|
 | Shell | zsh, oh-my-zsh, powerlevel10k | same |
-| Dev Tools | git, gh, gcc, node, shellcheck, fd, jq, ruff, lazygit, ... | same (via apt) |
+| Dev Tools | git, gh, gcc, node, shellcheck, fd, jq, ... | same (via apt) |
 | Apps | VSCodium, WezTerm, GitHub Desktop, Slack, Zoom, ... | same (via apt/snap) |
 | Fonts | 40+ coding, scientific, and presentation fonts | same (via apt + download) |
 | Python | Miniforge (conda/mamba), uv, nbdime | same |

@@ -112,7 +112,10 @@ elif is-linux; then
     install_font_zip "GeistMono"    "https://github.com/vercel/geist-font/releases/latest/download/geist-font.zip"
     install_font_zip "CommitMono"   "https://fonts.google.com/download?family=Commit+Mono"
     install_font_zip "IntelOneMono" "https://fonts.google.com/download?family=Intel+One+Mono"
-    install_font_zip "Iosevka"      "https://github.com/be5invis/Iosevka/releases/latest/download/PkgTTF-Iosevka-32.5.1.zip"
+    IOSEVKA_VER=$(curl -sS https://api.github.com/repos/be5invis/Iosevka/releases/latest | grep -oP '"tag_name":\s*"v?\K[^"]+' || echo "")
+    if [[ -n "$IOSEVKA_VER" ]]; then
+        install_font_zip "Iosevka" "https://github.com/be5invis/Iosevka/releases/download/v${IOSEVKA_VER}/PkgTTF-Iosevka-${IOSEVKA_VER}.zip"
+    fi
     install_font_zip "Monaspace"    "https://github.com/githubnext/monaspace/releases/latest/download/monaspace-v1.101.zip"
     install_font_zip "SourceCodePro" "https://github.com/adobe-fonts/source-code-pro/releases/latest/download/OTF-source-code-pro.zip"
     install_font_zip "JuliaMono"    "https://github.com/cormullion/juliamono/releases/latest/download/JuliaMono-ttf.tar.gz"

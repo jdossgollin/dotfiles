@@ -56,7 +56,6 @@ fi
 . "$DOTFILES_DIR/install/install-conda.sh"
 . "$DOTFILES_DIR/install/install-node.sh"
 . "$DOTFILES_DIR/install/install-julia.sh"
-. "$DOTFILES_DIR/install/install-rtk.sh"
 
 # Symbolic links for shell, git, etc (same for all platforms)
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
@@ -94,7 +93,7 @@ if [ -d "$CLAUDE_SKILLS_DIR/.git" ]; then
 else
     echo "Installing Claude skills..."
     git clone https://github.com/jdossgollin/claude-skills "$CLAUDE_SKILLS_DIR" 2>/dev/null || \
-        echo "Note: Could not clone claude-skills. Clone manually or create $CLAUDE_SKILLS_DIR"
+        echo "Note: Could not clone claude-skills (private repo — expected in CI). Clone manually if needed."
 fi
 
 # Symlink skills, agents, rules, and config files from claude-skills repo
