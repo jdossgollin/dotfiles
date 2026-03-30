@@ -16,6 +16,13 @@ if ! command -v brew &>/dev/null; then
     fi
 fi
 
+# In CI, skip package installs (Homebrew is slow in CI; test logic only)
+if [[ -n "${CI:-}" ]]; then
+    echo "Skipped: brew package installs (CI environment)"
+    echo "Homebrew is available at: $(brew --prefix)"
+    return
+fi
+
 brew update
 brew upgrade || echo "brew upgrade reported issues (non-fatal)"
 
@@ -24,12 +31,16 @@ brew upgrade || echo "brew upgrade reported issues (non-fatal)"
 apps=(
     "aspell"            # Spell checker
     "bat"               # Modern cat with syntax highlighting
+    "boost"             # C++ libraries, no command
     "btop"              # Modern resource monitor
     "defaultbrowser"    # Set default browser from CLI
     "eza"               # Modern ls replacement
+    "ffmpeg"            # Audio/video processing
     "fzf"               # Fuzzy finder
+    "gcc"               # GNU compiler collection
     "gh"                # GitHub CLI
     "git"               # Version control
+    "imagemagick:magick" # Image manipulation tools
     "git-delta:delta"   # Better git diff viewer
     "git-extras"        # Additional git commands
     "git-lfs"           # Git Large File Storage
@@ -37,6 +48,7 @@ apps=(
     "ncdu"              # Disk usage analyzer
     "node"              # JavaScript runtime
     "p7zip:7z"          # File archiver
+    "pandoc"            # Document converter
     "ripgrep:rg"        # Fast text search
     "shellcheck"        # Shell script linter
     "tldr"              # Simplified man pages
@@ -72,22 +84,13 @@ else
     echo "All brew formulae already installed"
 fi
 
-# Heavy compile-from-source packages (skip in CI to avoid timeout)
-if [[ -z "${CI:-}" ]]; then
-    brew list boost &>/dev/null || brew install boost              # C++ libraries
-    brew list gcc &>/dev/null || brew install gcc                   # GNU compiler collection
-    brew list ffmpeg &>/dev/null || brew install ffmpeg             # Audio/video processing
-    brew list imagemagick &>/dev/null || brew install imagemagick   # Image manipulation tools
-    brew list pandoc &>/dev/null || brew install pandoc             # Document converter
-fi
-
 # dockutil for managing macOS dock
 if ! command -v dockutil >/dev/null 2>&1; then
     brew install dockutil
 fi
 
-# TeX Live (full distribution, ~5GB, skip in CI to avoid timeout)
-if ! command -v pdflatex >/dev/null 2>&1 && [[ -z "${CI:-}" ]]; then
+# TeX Live (full distribution, ~5GB)
+if ! command -v pdflatex >/dev/null 2>&1; then
     echo "Installing MacTeX (no GUI)..."
     brew install --cask mactex-no-gui
 fi
