@@ -6,6 +6,12 @@ if ! is-macos -o ! is-executable brew; then
     return
 fi
 
+# Skip GUI apps in CI (not testable in headless environment)
+if [[ -n "${CI:-}" ]]; then
+    echo "Skipped: Homebrew-Cask (CI environment)"
+    return
+fi
+
 # Map cask names to their CLI command and/or app bundle name
 # Format: "cask_name:cli_command:App Name" (use - for empty fields)
 cask_apps=(

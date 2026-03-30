@@ -28,7 +28,6 @@ apt_packages=(
     "git-lfs"                   # Git Large File Storage
     "nano"                      # Simple text editor
     "build-essential:gcc"       # C/C++ compiler toolchain
-    "libboost-all-dev"          # C++ Boost libraries (no CLI command)
     "p7zip-full:7z"             # 7-Zip file archiver
 
     # Modern CLI replacements
@@ -75,6 +74,12 @@ if [[ ${#to_install[@]} -gt 0 ]]; then
     sudo apt-get install -y "${to_install[@]}"
 else
     echo "All apt packages already installed"
+fi
+
+# Boost C++ libraries (large, no CLI command, skip in CI)
+if [[ -z "${CI:-}" ]] && ! dpkg -l libboost-all-dev 2>/dev/null | grep -q "^ii"; then
+    echo "Installing libboost-all-dev..."
+    sudo apt-get install -y libboost-all-dev || echo "Warning: libboost-all-dev failed to install (non-fatal)"
 fi
 
 # TeX Live (very large ~5GB, skip in CI to avoid timeout)
@@ -158,6 +163,9 @@ if ! command -v delta >/dev/null 2>&1; then
     ) || echo "Warning: git-delta failed to install"
 fi
 
+# === GUI/Desktop apps (skip in CI — not what CI tests) ===
+if [[ -z "${CI:-}" ]]; then
+
 # Zotero (via zotero-deb repository)
 if ! command -v zotero >/dev/null 2>&1; then
     echo "Installing Zotero..."
@@ -217,6 +225,8 @@ if ! command -v codium >/dev/null 2>&1; then
         sudo apt-get install -y codium
     ) || echo "Warning: VSCodium failed to install"
 fi
+
+fi # end CI skip for GUI apps
 
 # Apps via snap (only for apps not available in apt)
 if is-snap-available; then

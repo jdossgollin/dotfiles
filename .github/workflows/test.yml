@@ -12,6 +12,7 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
     steps:
     - uses: actions/checkout@v4
 
@@ -31,6 +32,8 @@ jobs:
 
     - name: Run install script
       run: bash ~/.dotfiles/install.sh
+      env:
+        CI: true
 
     - name: Verify installation
       run: |

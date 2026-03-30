@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Skip in CI (large download, not essential for install logic tests)
+if [[ -n "${CI:-}" ]]; then
+    echo "Skipped: Miniforge/conda (CI environment)"
+    return 0 2>/dev/null || exit 0
+fi
+
 # Install Miniforge (includes mamba, conda-forge default) on all platforms
 if [[ ! -d "$HOME/miniforge3" ]]; then
     echo "Installing Miniforge..."

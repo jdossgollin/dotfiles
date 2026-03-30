@@ -24,13 +24,11 @@ brew upgrade || echo "brew upgrade reported issues (non-fatal)"
 apps=(
     "aspell"            # Spell checker
     "bat"               # Modern cat with syntax highlighting
-    "boost"             # C++ libraries, no command
     "btop"              # Modern resource monitor
     "defaultbrowser"    # Set default browser from CLI
     "eza"               # Modern ls replacement
     "ffmpeg"            # Audio/video processing
     "fzf"               # Fuzzy finder
-    "gcc"               # GNU compiler collection
     "gh"                # GitHub CLI
     "git"               # Version control
     "imagemagick:magick" # Image manipulation tools
@@ -75,6 +73,12 @@ if [[ ${#to_install[@]} -gt 0 ]]; then
     brew install "${to_install[@]}"
 else
     echo "All brew formulae already installed"
+fi
+
+# Heavy compile-from-source packages (skip in CI to avoid timeout)
+if [[ -z "${CI:-}" ]]; then
+    brew list boost &>/dev/null || brew install boost   # C++ libraries
+    brew list gcc &>/dev/null || brew install gcc        # GNU compiler collection
 fi
 
 # dockutil for managing macOS dock
