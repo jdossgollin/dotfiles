@@ -121,6 +121,15 @@ sub_sync-secrets() {
       echo "# Warning: 'Todoist API' note not found in Dashlane"
       echo "# export TODOIST_API_KEY=\"\""
     fi
+
+    echo ""
+    fireflies_key="$(dcli note "Fireflies API" --output text 2>/dev/null)"
+    if [[ -n "$fireflies_key" ]]; then
+      echo "export FIREFLIES_API_KEY=\"$fireflies_key\""
+    else
+      echo "# Warning: 'Fireflies API' note not found in Dashlane"
+      echo "# export FIREFLIES_API_KEY=\"\""
+    fi
   } > "$api_keys_file"
   chmod 600 "$api_keys_file"
 
