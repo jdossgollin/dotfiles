@@ -18,20 +18,21 @@ bash install.sh  # review and run line by line recommended
 After install:
 
 1. `cp secrets/.git_identity.template secrets/.git_identity` and edit with your name/email
-2. (Optional) `cp secrets/.api_keys.template secrets/.api_keys` and edit
+2. `dcli devices register "My Device"` to authenticate Dashlane CLI, then `dotfiles sync-secrets`
 3. macOS only: `dotfiles dock` and `dotfiles macos`
 4. Linux only: install [Zoom](https://zoom.us/download) manually
 
 ## The `dotfiles` Command
 
 ```
-clean    Clean up caches (brew/apt, conda, julia)
-edit     Open dotfiles in IDE
-help     This help message
-themes   Update oh-my-zsh and powerlevel10k
-update   Update packages and package managers
-dock     Apply macOS Dock settings (macOS only)
-macos    Apply macOS system defaults (macOS only)
+clean          Clean up caches (brew/apt, conda, julia)
+edit           Open dotfiles in IDE
+help           This help message
+sync-secrets   Pull secrets from Dashlane vault to local files
+themes         Update oh-my-zsh and powerlevel10k
+update         Update packages and package managers
+dock           Apply macOS Dock settings (macOS only)
+macos          Apply macOS system defaults (macOS only)
 ```
 
 ## What Gets Installed
