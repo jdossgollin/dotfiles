@@ -35,7 +35,7 @@ elif command -v bat &>/dev/null; then
 fi
 
 # === Platform-specific aliases ===
-if [[ "$OSTYPE" == darwin* ]]; then
+if [[ "$OSTYPE" =~ ^darwin ]]; then
     # macOS: Log off
     alias logoff="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
@@ -57,7 +57,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
     alias o="open"
     alias oo="open ."
 
-elif [[ "$OSTYPE" == linux* ]]; then
+elif [[ "$OSTYPE" =~ ^linux ]]; then
     # Linux: Log off (GNOME/systemd)
     alias logoff="gnome-session-quit --logout --no-prompt 2>/dev/null || loginctl terminate-user $USER"
 

@@ -1,3 +1,6 @@
+# macOS CLI tools via Homebrew. Linux equivalent: install-apt.sh
+# Run /audit-sync to verify parity between platforms.
+
 if ! is-executable curl -o ! is-executable git; then
     echo "Skipped: Homebrew (missing: curl and/or git)"
     return
@@ -11,6 +14,13 @@ if ! command -v brew &>/dev/null; then
     else
         eval "$(/usr/local/bin/brew shellenv)"
     fi
+fi
+
+# In CI, skip package installs (Homebrew is slow in CI; test logic only)
+if [[ -n "${CI:-}" ]]; then
+    echo "Skipped: brew package installs (CI environment)"
+    echo "Homebrew is available at: $(brew --prefix)"
+    return
 fi
 
 brew update
@@ -45,6 +55,8 @@ apps=(
     "tree"              # Directory tree viewer
     "uv"                # Python package manager
     "wget"              # Download files from web
+    "fd"                # Modern find replacement
+    "jq"                # JSON processor
 )
 
 # Install each formula, skipping if command already exists
@@ -74,7 +86,7 @@ if ! command -v dockutil >/dev/null 2>&1; then
     brew install dockutil
 fi
 
-# TeX Live (full distribution, no GUI apps)
+# TeX Live (full distribution, ~5GB)
 if ! command -v pdflatex >/dev/null 2>&1; then
     echo "Installing MacTeX (no GUI)..."
     brew install --cask mactex-no-gui

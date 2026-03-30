@@ -12,6 +12,7 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
     steps:
     - uses: actions/checkout@v4
 
@@ -31,6 +32,9 @@ jobs:
 
     - name: Run install script
       run: bash ~/.dotfiles/install.sh
+      env:
+        CI: true
+        HOMEBREW_NO_AUTO_UPDATE: 1
 
     - name: Verify installation
       run: |

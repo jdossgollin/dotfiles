@@ -308,7 +308,7 @@
         "editor.defaultFormatter": "vscode.html-language-features"
     },
     "todo-tree.regex.regex": "((//|#|<!--|;|/\\\\*|^|%|\\()\\\\s*($TAGS)|^\\\\s*- \\\\[ \\\\])",
-    "vsnotes.defaultNotePath": "/Users/james/Documents/Github/notes",
+    "vsnotes.defaultNotePath": "~/Documents/notes",
     "vsnotes.templates": [
         "meeting"
     ],
@@ -479,7 +479,7 @@
     },
     "quarto.mathjax.theme": "dark",
     "r.bracketedPaste": true,
-    "r.rterm.mac": "/Users/jamesdoss-gollin/anaconda/bin/radian",
+    "r.rterm.mac": "radian",
     "[markdown]": {
         "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
     },
@@ -547,8 +547,8 @@
     "juliaFormatter.whitespaceInKwargs": false,
     "juliaFormatter.whitespaceOpsInIndices": true,
     "juliaFormatter.whitespaceTypedefs": true,
-    "python.condaPath": "/Users/jamesdoss-gollin/anaconda/bin/python",
-    "python.defaultInterpreterPath": "/Users/jamesdoss-gollin/anaconda/bin/python",
+    "python.condaPath": "conda",
+    "python.defaultInterpreterPath": "python",
     "quarto.zotero.groupLibraries": [
         "dossgollin-lab"
     ],
@@ -583,5 +583,5 @@
     "claudeCode.preferredLocation": "panel",
     "claudeCode.respectGitIgnore": false,
     "python.analysis.typeCheckingMode": "standard",
-    "latex-workshop.formatting.latexindent.path": "/Library/TeX/texbin/latexindent"
+    "latex-workshop.formatting.latexindent.path": "latexindent"
 }

@@ -186,10 +186,10 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# Disable disk image verification
-defaults write com.apple.frameworks.diskimages skip-verify -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
-defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+# Keep disk image verification enabled (security best practice)
+defaults write com.apple.frameworks.diskimages skip-verify -bool false
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool false
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool false
 
 # Use AirDrop over every interface.
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
