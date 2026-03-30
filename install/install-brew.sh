@@ -53,7 +53,6 @@ apps=(
     "yq"                # YAML processor
     "direnv"            # Per-directory environments
     "ruff"              # Fast Python linter/formatter
-    "lazygit"           # TUI for git
 )
 
 # Install each formula, skipping if command already exists

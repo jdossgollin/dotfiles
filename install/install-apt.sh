@@ -119,19 +119,6 @@ if ! command -v ruff >/dev/null 2>&1 && command -v uv >/dev/null 2>&1; then
     uv tool install ruff
 fi
 
-# lazygit (TUI for git, not in standard apt repos)
-if ! command -v lazygit >/dev/null 2>&1; then
-    echo "Installing lazygit..."
-    LAZYGIT_VERSION=$(curl -sS https://api.github.com/repos/jesseduffield/lazygit/releases/latest | grep -oP '"tag_name":\s*"v\K[^"]+')
-    if [[ -n "$LAZYGIT_VERSION" ]]; then
-        LAZYGIT_TMP="$(mktemp -d "${TMPDIR:-/tmp}/lazygit.XXXXXXXXXX")"
-        curl -fLo "$LAZYGIT_TMP/lazygit.tar.gz" "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-        tar xzf "$LAZYGIT_TMP/lazygit.tar.gz" -C "$LAZYGIT_TMP"
-        sudo install "$LAZYGIT_TMP/lazygit" /usr/local/bin/lazygit
-        rm -rf "$LAZYGIT_TMP"
-    fi
-fi
-
 # git-delta (syntax-highlighted diffs, replaces diff-so-fancy)
 if ! command -v delta >/dev/null 2>&1; then
     echo "Installing git-delta..."
