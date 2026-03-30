@@ -44,7 +44,6 @@ apt_packages=(
     "direnv"                    # Per-directory environment variables
 
     # Dev tools
-    "gh"                        # GitHub CLI
     "shellcheck"                # Shell script linter
     "pandoc"                    # Universal document converter
     "nodejs:node"               # JavaScript runtime
@@ -54,10 +53,6 @@ apt_packages=(
     "ffmpeg"                    # Audio/video processing
     "imagemagick:magick"        # Image manipulation (convert, resize, etc.)
     "aspell"                    # Spell checker
-    "texlive-full:pdflatex"     # Full TeX/LaTeX distribution
-
-    # Apps
-    "firefox"                   # Web browser
 )
 
 # Build list of packages to install
@@ -82,8 +77,33 @@ else
     echo "All apt packages already installed"
 fi
 
+# TeX Live (very large ~5GB, installed separately to avoid blocking other packages)
+if ! command -v pdflatex >/dev/null 2>&1; then
+    echo "Installing texlive-full (this may take a while)..."
+    sudo apt-get install -y texlive-full || echo "Warning: texlive-full failed to install (non-fatal)"
+fi
+
+# Firefox (snap-only on Ubuntu 24.04+, may not work in all environments)
+if ! command -v firefox >/dev/null 2>&1; then
+    echo "Installing Firefox..."
+    sudo apt-get install -y firefox 2>/dev/null || \
+        (is-snap-available && sudo snap install firefox) || \
+        echo "Warning: Firefox install failed (install manually or via snap)"
+fi
+
 # Install git LFS
 command -v git-lfs >/dev/null 2>&1 && git lfs install --system
+
+# GitHub CLI (not in default Ubuntu repos, needs official PPA)
+if ! command -v gh >/dev/null 2>&1; then
+    echo "Installing GitHub CLI..."
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg >/dev/null
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | \
+        sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
+    sudo apt-get update
+    sudo apt-get install -y gh
+fi
 
 # eza (modern ls replacement, not in standard apt repos)
 if ! command -v eza >/dev/null 2>&1; then
