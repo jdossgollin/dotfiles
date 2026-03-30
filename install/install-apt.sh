@@ -44,13 +44,10 @@ apt_packages=(
 
     # Dev tools
     "shellcheck"                # Shell script linter
-    "pandoc"                    # Universal document converter
     "nodejs:node"               # JavaScript runtime
     "npm"                       # Node.js package manager
 
     # Media & science
-    "ffmpeg"                    # Audio/video processing
-    "imagemagick:magick"        # Image manipulation (convert, resize, etc.)
     "aspell"                    # Spell checker
 )
 
@@ -76,10 +73,16 @@ else
     echo "All apt packages already installed"
 fi
 
-# Boost C++ libraries (large, no CLI command, skip in CI)
-if [[ -z "${CI:-}" ]] && ! dpkg -l libboost-all-dev 2>/dev/null | grep -q "^ii"; then
-    echo "Installing libboost-all-dev..."
-    sudo apt-get install -y libboost-all-dev || echo "Warning: libboost-all-dev failed to install (non-fatal)"
+# Heavy packages with large dependency trees (skip in CI to avoid timeout)
+if [[ -z "${CI:-}" ]]; then
+    dpkg -l libboost-all-dev 2>/dev/null | grep -q "^ii" || \
+        sudo apt-get install -y libboost-all-dev || echo "Warning: libboost-all-dev failed (non-fatal)"
+    command -v ffmpeg >/dev/null 2>&1 || \
+        sudo apt-get install -y ffmpeg || echo "Warning: ffmpeg failed (non-fatal)"
+    command -v magick >/dev/null 2>&1 || \
+        sudo apt-get install -y imagemagick || echo "Warning: imagemagick failed (non-fatal)"
+    command -v pandoc >/dev/null 2>&1 || \
+        sudo apt-get install -y pandoc || echo "Warning: pandoc failed (non-fatal)"
 fi
 
 # TeX Live (very large ~5GB, skip in CI to avoid timeout)

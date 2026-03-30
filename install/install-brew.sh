@@ -27,11 +27,9 @@ apps=(
     "btop"              # Modern resource monitor
     "defaultbrowser"    # Set default browser from CLI
     "eza"               # Modern ls replacement
-    "ffmpeg"            # Audio/video processing
     "fzf"               # Fuzzy finder
     "gh"                # GitHub CLI
     "git"               # Version control
-    "imagemagick:magick" # Image manipulation tools
     "git-delta:delta"   # Better git diff viewer
     "git-extras"        # Additional git commands
     "git-lfs"           # Git Large File Storage
@@ -39,7 +37,6 @@ apps=(
     "ncdu"              # Disk usage analyzer
     "node"              # JavaScript runtime
     "p7zip:7z"          # File archiver
-    "pandoc"            # Document converter
     "ripgrep:rg"        # Fast text search
     "shellcheck"        # Shell script linter
     "tldr"              # Simplified man pages
@@ -77,8 +74,11 @@ fi
 
 # Heavy compile-from-source packages (skip in CI to avoid timeout)
 if [[ -z "${CI:-}" ]]; then
-    brew list boost &>/dev/null || brew install boost   # C++ libraries
-    brew list gcc &>/dev/null || brew install gcc        # GNU compiler collection
+    brew list boost &>/dev/null || brew install boost              # C++ libraries
+    brew list gcc &>/dev/null || brew install gcc                   # GNU compiler collection
+    brew list ffmpeg &>/dev/null || brew install ffmpeg             # Audio/video processing
+    brew list imagemagick &>/dev/null || brew install imagemagick   # Image manipulation tools
+    brew list pandoc &>/dev/null || brew install pandoc             # Document converter
 fi
 
 # dockutil for managing macOS dock
