@@ -135,7 +135,7 @@ fi
 find "$DOTFILES_DIR/bin/" -type f -exec chmod +x {} \;
 
 # macOS-specific defaults
-if is-macos; then
+if is-macos && command -v dockutil >/dev/null 2>&1; then
     . "$DOTFILES_DIR/macos/dock.sh"
 fi
 
