@@ -26,8 +26,8 @@ fi
 # Install nbdime for Jupyter notebook diffs (required by .gitconfig nbdiff/nbmerge drivers)
 if command -v conda >/dev/null 2>&1 && ! command -v git-nbdiffdriver >/dev/null 2>&1; then
     echo "Installing nbdime (notebook diff/merge for git)..."
-    conda install -y -n base -c conda-forge nbdime
-    nbdime config-git --enable --global
+    conda install -y -n base -c conda-forge nbdime && \
+        nbdime config-git --enable --global || echo "Warning: nbdime failed to install"
 fi
 
 echo "Conda/Mamba installed. Create environments manually with: conda env create -f <file>.yml"

@@ -15,5 +15,5 @@ fi
 # Install global npm packages
 # On Linux, install claude-code via npm (macOS uses Homebrew cask)
 if command -v npm >/dev/null 2>&1 && is-linux; then
-    npm install -g @anthropic-ai/claude-code
+    sudo npm install -g @anthropic-ai/claude-code || echo "Warning: claude-code npm install failed"
 fi

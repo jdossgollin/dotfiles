@@ -7,11 +7,11 @@ if command -v rtk >/dev/null 2>&1; then
     echo "RTK already installed: $(rtk --version 2>/dev/null || echo 'unknown version')"
 else
     echo "Installing RTK..."
-    curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
+    curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh || echo "Warning: RTK failed to install"
 fi
 
 # Configure RTK globally for Claude Code (hook + minimal RTK.md)
 if command -v rtk >/dev/null 2>&1; then
     echo "Configuring RTK for Claude Code..."
-    rtk init -g --auto-patch
+    rtk init -g --auto-patch || echo "Warning: RTK configuration failed"
 fi

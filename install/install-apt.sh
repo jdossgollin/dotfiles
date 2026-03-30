@@ -94,118 +94,128 @@ fi
 # Install git LFS
 command -v git-lfs >/dev/null 2>&1 && git lfs install --system
 
+# === Third-party tools (external repos/downloads, failures are non-fatal) ===
+
 # GitHub CLI (not in default Ubuntu repos, needs official PPA)
 if ! command -v gh >/dev/null 2>&1; then
     echo "Installing GitHub CLI..."
-    sudo mkdir -p /etc/apt/keyrings
-    curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg >/dev/null
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | \
-        sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
-    sudo apt-get update
-    sudo apt-get install -y gh
+    (
+        sudo mkdir -p /etc/apt/keyrings
+        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg >/dev/null
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | \
+            sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
+        sudo apt-get update
+        sudo apt-get install -y gh
+    ) || echo "Warning: GitHub CLI failed to install"
 fi
 
 # eza (modern ls replacement, not in standard apt repos)
 if ! command -v eza >/dev/null 2>&1; then
     echo "Installing eza..."
-    sudo mkdir -p /etc/apt/keyrings
-    wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
-    echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] https://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
-    sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
-    sudo apt-get update
-    sudo apt-get install -y eza
+    (
+        sudo mkdir -p /etc/apt/keyrings
+        wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+        echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] https://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+        sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+        sudo apt-get update
+        sudo apt-get install -y eza
+    ) || echo "Warning: eza failed to install"
 fi
 
 # uv (fast Python package manager)
 if ! command -v uv >/dev/null 2>&1; then
     echo "Installing uv..."
-    curl -LsSf https://astral.sh/uv/install.sh | sh
+    curl -LsSf https://astral.sh/uv/install.sh | sh || echo "Warning: uv failed to install"
 fi
 
 # yq (YAML processor, not in standard apt repos)
 if ! command -v yq >/dev/null 2>&1; then
     echo "Installing yq..."
-    YQ_VERSION=$(curl -sS https://api.github.com/repos/mikefarah/yq/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
-    if [[ -n "$YQ_VERSION" ]]; then
-        curl -fLo /tmp/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64"
-        sudo install /tmp/yq /usr/local/bin/yq
-        rm -f /tmp/yq
-    fi
+    (
+        YQ_VERSION=$(curl -sS https://api.github.com/repos/mikefarah/yq/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
+        if [[ -n "$YQ_VERSION" ]]; then
+            curl -fLo /tmp/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64"
+            sudo install /tmp/yq /usr/local/bin/yq
+            rm -f /tmp/yq
+        fi
+    ) || echo "Warning: yq failed to install"
 fi
 
 # ruff (fast Python linter/formatter, not in standard apt repos)
 if ! command -v ruff >/dev/null 2>&1 && command -v uv >/dev/null 2>&1; then
     echo "Installing ruff..."
-    uv tool install ruff
+    uv tool install ruff || echo "Warning: ruff failed to install"
 fi
 
 # git-delta (syntax-highlighted diffs, replaces diff-so-fancy)
 if ! command -v delta >/dev/null 2>&1; then
     echo "Installing git-delta..."
-    DELTA_VERSION=$(curl -sS https://api.github.com/repos/dandavison/delta/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
-    curl -LO "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_amd64.deb"
-    sudo dpkg -i "git-delta_${DELTA_VERSION}_amd64.deb"
-    rm -f "git-delta_${DELTA_VERSION}_amd64.deb"
+    (
+        DELTA_VERSION=$(curl -sS https://api.github.com/repos/dandavison/delta/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
+        curl -LO "https://github.com/dandavison/delta/releases/download/${DELTA_VERSION}/git-delta_${DELTA_VERSION}_amd64.deb"
+        sudo dpkg -i "git-delta_${DELTA_VERSION}_amd64.deb"
+        rm -f "git-delta_${DELTA_VERSION}_amd64.deb"
+    ) || echo "Warning: git-delta failed to install"
 fi
 
 # Zotero (via zotero-deb repository)
 if ! command -v zotero >/dev/null 2>&1; then
     echo "Installing Zotero..."
-    curl -sS https://raw.githubusercontent.com/retorquere/zotero-deb/master/install.sh | sudo bash
-    sudo apt-get update
-    sudo apt-get install -y zotero
+    (
+        curl -sS https://raw.githubusercontent.com/retorquere/zotero-deb/master/install.sh | sudo bash
+        sudo apt-get update
+        sudo apt-get install -y zotero
+    ) || echo "Warning: Zotero failed to install"
 fi
 
 # Quarto (via .deb download)
 if ! command -v quarto >/dev/null 2>&1; then
     echo "Installing Quarto..."
-    QUARTO_VERSION=$(curl -sS https://quarto.org/docs/download/_download.json | grep -oP '"version":\s*"\K[^"]+' | head -1)
-    curl -LO "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
-    sudo dpkg -i "quarto-${QUARTO_VERSION}-linux-amd64.deb"
-    rm -f "quarto-${QUARTO_VERSION}-linux-amd64.deb"
+    (
+        QUARTO_VERSION=$(curl -sS https://quarto.org/docs/download/_download.json | grep -oP '"version":\s*"\K[^"]+' | head -1)
+        curl -LO "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
+        sudo dpkg -i "quarto-${QUARTO_VERSION}-linux-amd64.deb"
+        rm -f "quarto-${QUARTO_VERSION}-linux-amd64.deb"
+    ) || echo "Warning: Quarto failed to install"
 fi
 
 # GitHub Desktop (Git GUI, via shiftkey/desktop Linux fork)
 if ! command -v github-desktop >/dev/null 2>&1; then
     echo "Installing GitHub Desktop..."
-    # Add shiftkey GPG key
-    wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg >/dev/null
-
-    # Add shiftkey repository
-    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" | \
-        sudo tee /etc/apt/sources.list.d/shiftkey-packages.list >/dev/null
-
-    sudo apt-get update
-    sudo apt-get install -y github-desktop
+    (
+        wget -qO - https://apt.packages.shiftkey.dev/gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/shiftkey-packages.gpg >/dev/null
+        echo "deb [arch=amd64 signed-by=/usr/share/keyrings/shiftkey-packages.gpg] https://apt.packages.shiftkey.dev/ubuntu/ any main" | \
+            sudo tee /etc/apt/sources.list.d/shiftkey-packages.list >/dev/null
+        sudo apt-get update
+        sudo apt-get install -y github-desktop
+    ) || echo "Warning: GitHub Desktop failed to install"
 fi
 
 # WezTerm terminal (cross-platform, replaces iTerm2)
 if ! command -v wezterm >/dev/null 2>&1; then
     echo "Installing WezTerm..."
-    curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
-    echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | \
-        sudo tee /etc/apt/sources.list.d/wezterm.list > /dev/null
-    sudo apt-get update
-    sudo apt-get install -y wezterm
+    (
+        curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+        echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | \
+            sudo tee /etc/apt/sources.list.d/wezterm.list > /dev/null
+        sudo apt-get update
+        sudo apt-get install -y wezterm
+    ) || echo "Warning: WezTerm failed to install"
 fi
 
 # VSCodium (open-source VS Code)
 if ! command -v codium >/dev/null 2>&1; then
     echo "Installing VSCodium..."
-    # Install prerequisites
-    sudo apt-get install -y software-properties-common apt-transport-https
-
-    # Add VSCodium GPG key
-    wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
-        | gpg --dearmor \
-        | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
-
-    # Add VSCodium repository
-    echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
-        | sudo tee /etc/apt/sources.list.d/vscodium.list > /dev/null
-
-    sudo apt-get update
-    sudo apt-get install -y codium
+    (
+        sudo apt-get install -y software-properties-common apt-transport-https
+        wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg \
+            | gpg --dearmor \
+            | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
+        echo 'deb [ signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg ] https://download.vscodium.com/debs vscodium main' \
+            | sudo tee /etc/apt/sources.list.d/vscodium.list > /dev/null
+        sudo apt-get update
+        sudo apt-get install -y codium
+    ) || echo "Warning: VSCodium failed to install"
 fi
 
 # Apps via snap (only for apps not available in apt)
