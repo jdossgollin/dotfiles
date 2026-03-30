@@ -41,7 +41,6 @@ apt_packages=(
     "tree"                      # Directory tree viewer
     "tldr"                      # Simplified man pages with examples
     "jq"                        # JSON processor
-    "yq"                        # YAML processor
     "direnv"                    # Per-directory environment variables
 
     # Dev tools
@@ -84,7 +83,7 @@ else
 fi
 
 # Install git LFS
-git lfs install --system
+command -v git-lfs >/dev/null 2>&1 && git lfs install --system
 
 # eza (modern ls replacement, not in standard apt repos)
 if ! command -v eza >/dev/null 2>&1; then
@@ -101,6 +100,17 @@ fi
 if ! command -v uv >/dev/null 2>&1; then
     echo "Installing uv..."
     curl -LsSf https://astral.sh/uv/install.sh | sh
+fi
+
+# yq (YAML processor, not in standard apt repos)
+if ! command -v yq >/dev/null 2>&1; then
+    echo "Installing yq..."
+    YQ_VERSION=$(curl -sS https://api.github.com/repos/mikefarah/yq/releases/latest | grep -oP '"tag_name":\s*"\K[^"]+')
+    if [[ -n "$YQ_VERSION" ]]; then
+        curl -fLo /tmp/yq "https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/yq_linux_amd64"
+        sudo install /tmp/yq /usr/local/bin/yq
+        rm -f /tmp/yq
+    fi
 fi
 
 # ruff (fast Python linter/formatter, not in standard apt repos)
