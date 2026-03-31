@@ -103,6 +103,7 @@ if [ -d "$CLAUDE_SKILLS_DIR" ]; then
     ln -sfnv "$CLAUDE_SKILLS_DIR/rules" ~/.claude/rules
     [ -f "$CLAUDE_SKILLS_DIR/CLAUDE.md" ] && ln -sfv "$CLAUDE_SKILLS_DIR/CLAUDE.md" ~/.claude/CLAUDE.md
     [ -f "$CLAUDE_SKILLS_DIR/dialogue-rules.md" ] && ln -sfv "$CLAUDE_SKILLS_DIR/dialogue-rules.md" ~/.claude/dialogue-rules.md
+    [ -f "$CLAUDE_SKILLS_DIR/settings.json" ] && ln -sfv "$CLAUDE_SKILLS_DIR/settings.json" ~/.claude/settings.json
 fi
 # Set global gitignore
 # Generate ~/.gitconfig.local (identity + credential helper, gitignored)
