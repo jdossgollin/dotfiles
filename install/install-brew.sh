@@ -57,6 +57,8 @@ apps=(
     "wget"              # Download files from web
     "fd"                # Modern find replacement
     "jq"                # JSON processor
+    "cheat"             # Interactive cheatsheets for CLI commands
+    "poppler"           # PDF rendering tools (pdftotext, pdfinfo, etc.)
 )
 
 # Install each formula, skipping if command already exists

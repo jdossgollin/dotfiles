@@ -34,6 +34,8 @@ cask_apps=(
     "slidepilot:-:SlidePilot"          # PDF presentation tool (presenter view)
     "spotify:-:Spotify"                 # Music streaming
     "stats:-:Stats"                     # macOS menubar system monitor
+    "signal:-:Signal"                   # Encrypted messaging
+    "wispr-flow:-:Wispr Flow"           # Voice dictation
 )
 
 # Install each cask, skipping if already installed
