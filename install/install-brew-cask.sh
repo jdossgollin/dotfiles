@@ -36,6 +36,7 @@ cask_apps=(
     "stats:-:Stats"                     # macOS menubar system monitor
     "signal:-:Signal"                   # Encrypted messaging
     "wispr-flow:-:Wispr Flow"           # Voice dictation
+    "iguanatexmac:-:IguanaTex"         # LaTeX equations in Keynote/PowerPoint
 )
 
 # Install each cask, skipping if already installed

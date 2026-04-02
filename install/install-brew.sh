@@ -59,6 +59,10 @@ apps=(
     "jq"                # JSON processor
     "cheat"             # Interactive cheatsheets for CLI commands
     "poppler"           # PDF rendering tools (pdftotext, pdfinfo, etc.)
+    "ghostscript"       # PostScript/PDF interpreter
+    "latexindent"       # LaTeX code formatter
+    "r"                 # R language for statistical computing
+    "typst"             # Modern typesetting system
 )
 
 # Install each formula, skipping if command already exists
