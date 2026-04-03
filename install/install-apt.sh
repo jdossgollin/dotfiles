@@ -216,6 +216,7 @@ if is-snap-available; then
     # Map snap names to cli command and app name for existence checks
     # Format: "snap_name:cli_cmd:app_name:flags" (use - for empty fields)
     snap_apps=(
+        "obsidian:obsidian:Obsidian:-"     # Markdown knowledge base / note-taking
         "slack:slack:Slack:--classic"       # Team messaging
         "spotify:spotify:Spotify:-"         # Music streaming
     )

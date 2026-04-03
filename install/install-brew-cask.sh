@@ -29,6 +29,7 @@ cask_apps=(
     "zoom:-:zoom.us"                    # Video conferencing
 
     # Productivity
+    "obsidian:obsidian:Obsidian"        # Markdown knowledge base / note-taking
     "google-drive:-:Google Drive"       # Cloud file sync
     "zotero:zotero:Zotero"             # Reference manager for academic papers
     "slidepilot:-:SlidePilot"          # PDF presentation tool (presenter view)
