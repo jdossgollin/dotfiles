@@ -22,12 +22,11 @@ add_app "/Applications/zoom.us.app"
 # Reading
 add_app "/Applications/Zotero.app"
 
-dockutil --no-restart --add '' --type small-spacer --section apps
-
 # Code
 add_app "/Applications/WezTerm.app"
 add_app "/Applications/VSCodium.app"
 add_app "/Applications/GitHub Desktop.app"
+add_app "/Applications/Obsidian.app"
 
 # Folders
 dockutil --no-restart --add '' --type small-spacer --section apps
