@@ -27,6 +27,7 @@ add_app "/Applications/WezTerm.app"
 add_app "/Applications/VSCodium.app"
 add_app "/Applications/GitHub Desktop.app"
 add_app "/Applications/Obsidian.app"
+add_app "/Applications/Fireflies.app"
 
 # Folders
 dockutil --no-restart --add '' --type small-spacer --section apps
