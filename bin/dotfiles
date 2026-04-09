@@ -130,6 +130,15 @@ sub_sync-secrets() {
       echo "# Warning: 'Fireflies API' note not found in Dashlane"
       echo "# export FIREFLIES_API_KEY=\"\""
     fi
+
+    echo ""
+    local zotero_block
+    zotero_block="$(dcli note "Zotero API Key" --output text 2>/dev/null)"
+    if [[ -n "$zotero_block" ]]; then
+      echo "$zotero_block"
+    else
+      echo "# Warning: 'Zotero API Key' note not found in Dashlane"
+    fi
   } > "$api_keys_file"
   chmod 600 "$api_keys_file"
 
