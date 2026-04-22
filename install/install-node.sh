@@ -17,3 +17,8 @@ fi
 if command -v npm >/dev/null 2>&1 && is-linux; then
     sudo npm install -g @anthropic-ai/claude-code || echo "Warning: claude-code npm install failed"
 fi
+
+# Cross-platform global npm packages
+if command -v npm >/dev/null 2>&1; then
+    npm install -g canvaslms-cli || echo "Warning: canvaslms-cli npm install failed"  # Canvas LMS CLI
+fi
