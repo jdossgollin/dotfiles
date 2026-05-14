@@ -105,6 +105,12 @@ if [ -d "$CLAUDE_SKILLS_DIR" ]; then
     [ -f "$CLAUDE_SKILLS_DIR/dialogue-rules.md" ] && ln -sfv "$CLAUDE_SKILLS_DIR/dialogue-rules.md" ~/.claude/dialogue-rules.md
     [ -f "$CLAUDE_SKILLS_DIR/settings.json" ] && ln -sfv "$CLAUDE_SKILLS_DIR/settings.json" ~/.claude/settings.json
 fi
+
+# Set up RTK hook for Claude Code (idempotent)
+if command -v rtk &>/dev/null; then
+    rtk init -g --auto-patch
+fi
+
 # Set global gitignore
 # Generate ~/.gitconfig.local (identity + credential helper, gitignored)
 # This is included by .gitconfig via [include] so we never dirty the tracked file.
