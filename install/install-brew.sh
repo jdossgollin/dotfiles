@@ -36,6 +36,7 @@ apps=(
     "defaultbrowser"    # Set default browser from CLI
     "eza"               # Modern ls replacement
     "ffmpeg"            # Audio/video processing
+    "yt-dlp"            # Video/audio downloader (YouTube and others)
     "fzf"               # Fuzzy finder
     "gcc"               # GNU compiler collection
     "gh"                # GitHub CLI

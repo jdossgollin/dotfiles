@@ -46,6 +46,7 @@ apt_packages=(
 
     # Media & science
     "aspell"                    # Spell checker
+    "yt-dlp"                    # Video/audio downloader (YouTube and others)
 )
 
 # Build list of packages to install
