@@ -56,6 +56,7 @@ fi
 . "$DOTFILES_DIR/install/install-conda.sh"
 . "$DOTFILES_DIR/install/install-node.sh"
 . "$DOTFILES_DIR/install/install-julia.sh"
+. "$DOTFILES_DIR/install/install-claude-code.sh"
 
 # Symbolic links for shell, git, etc (same for all platforms)
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~

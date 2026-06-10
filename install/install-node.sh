@@ -12,13 +12,8 @@ elif is-linux; then
     fi
 fi
 
-# Install global npm packages
-# On Linux, install claude-code via npm (macOS uses Homebrew cask)
-if command -v npm >/dev/null 2>&1 && is-linux; then
-    sudo npm install -g @anthropic-ai/claude-code || echo "Warning: claude-code npm install failed"
-fi
-
 # Cross-platform global npm packages
+# Note: Claude Code is installed via install-claude-code.sh (native installer)
 if command -v npm >/dev/null 2>&1; then
     npm install -g canvaslms-cli || echo "Warning: canvaslms-cli npm install failed"  # Canvas LMS CLI
 fi
