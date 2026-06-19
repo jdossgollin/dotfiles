@@ -59,6 +59,7 @@ fi
 . "$DOTFILES_DIR/install/install-claude-code.sh"
 
 # Symbolic links for shell, git, etc (same for all platforms)
+ln -sfv "$DOTFILES_DIR/runcom/.zshenv" ~
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.latexmkrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.p10k.zsh" ~
