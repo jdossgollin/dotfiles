@@ -34,14 +34,16 @@ ask() {
     fi
 }
 
-GITHUB_REPOS="$(ask GITHUB_REPOS "$HOME/Documents")"
+GITHUB_REPOS="$(ask GITHUB_REPOS "$HOME/Documents/Github")"
+GIT_REPOS="$(ask GIT_REPOS "$HOME/Documents/git")"
 GDRIVE_WORK="$(ask GDRIVE_WORK "$HOME/gdrive-work")"
 GDRIVE_PERSONAL="$(ask GDRIVE_PERSONAL "$HOME/gdrive-personal")"
 
-# Start from the template, then override the three anchors with the answers.
+# Start from the template, then override the anchors with the answers.
 # Repo lines hang off the anchors, so they follow automatically.
 cp "$TEMPLATE" "$PATHS_FILE"
 set-config GITHUB_REPOS "$GITHUB_REPOS" "$PATHS_FILE"
+set-config GIT_REPOS "$GIT_REPOS" "$PATHS_FILE"
 set-config GDRIVE_WORK "$GDRIVE_WORK" "$PATHS_FILE"
 set-config GDRIVE_PERSONAL "$GDRIVE_PERSONAL" "$PATHS_FILE"
 

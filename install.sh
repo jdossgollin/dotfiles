@@ -91,7 +91,7 @@ mkdir -p ~/.claude
 if [[ -z "${CLAUDE_SKILLS_DIR:-}" ]]; then
     # Convention: repos live at $GITHUB_REPOS/<owner>/<repo> (set in .paths).
     if is-macos; then
-        CLAUDE_SKILLS_DIR="${GITHUB_REPOS:-$HOME/Documents}/jdossgollin/claude-skills"
+        CLAUDE_SKILLS_DIR="${GITHUB_REPOS:-$HOME/Documents/Github}/jdossgollin/claude-skills"
     else
         CLAUDE_SKILLS_DIR="$HOME/.local/share/jdossgollin/claude-skills"
     fi

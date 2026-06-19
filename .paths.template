@@ -3,9 +3,11 @@
 # Copied to ~/.dotfiles/.paths by install/install-paths.sh (gitignored).
 # Sourced by runcom/.zshrc. These are the only per-machine path knobs.
 #
-# Repos live by convention at $GITHUB_REPOS/<owner>/<repo> — no registry.
+# GitHub clones live by convention at $GITHUB_REPOS/<owner>/<repo> — no registry.
 # Use the `repo` command (claude-skills/shell/env.sh) to cd/clone them.
+# Non-GitHub git checkouts (Overleaf, etc.) go under $GIT_REPOS/<host>/<id>.
 
-export GITHUB_REPOS="$HOME/Documents"      # GitHub clones: $GITHUB_REPOS/<owner>/<repo>
+export GITHUB_REPOS="$HOME/Documents/Github"   # GitHub clones: $GITHUB_REPOS/<owner>/<repo>
+export GIT_REPOS="$HOME/Documents/git"         # non-GitHub git checkouts: $GIT_REPOS/<host>/<id>
 export GDRIVE_WORK="$HOME/gdrive-work"     # work Google Drive base
 export GDRIVE_PERSONAL="$HOME/gdrive-personal"  # personal Google Drive base
