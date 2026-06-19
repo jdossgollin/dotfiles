@@ -1,0 +1,11 @@
+# Per-machine path anchors.
+#
+# Copied to ~/.dotfiles/.paths by install/install-paths.sh (gitignored).
+# Sourced by runcom/.zshrc. These are the only per-machine path knobs.
+#
+# Repos live by convention at $GITHUB_REPOS/<owner>/<repo> — no registry.
+# Use the `repo` command (claude-skills/shell/env.sh) to cd/clone them.
+
+export GITHUB_REPOS="$HOME/Documents"      # GitHub clones: $GITHUB_REPOS/<owner>/<repo>
+export GDRIVE_WORK="$HOME/gdrive-work"     # work Google Drive base
+export GDRIVE_PERSONAL="$HOME/gdrive-personal"  # personal Google Drive base

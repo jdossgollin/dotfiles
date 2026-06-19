@@ -66,6 +66,11 @@ ln -sfv "$DOTFILES_DIR/apps/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/apps/wezterm/wezterm.lua" ~/.wezterm.lua
 
+# Per-machine path anchors (GITHUB_REPOS, GDRIVE_*) -> ~/.dotfiles/.paths
+. "$DOTFILES_DIR/install/install-paths.sh"
+# Load it so the rest of install can use the anchors ($CLAUDE_SKILLS_DIR etc).
+[[ -f "$DOTFILES_DIR/.paths" ]] && source "$DOTFILES_DIR/.paths"
+
 # VSCodium settings (platform-specific paths)
 if is-macos; then
     VSCODIUM_USER_DIR="$HOME/Library/Application Support/VSCodium/User"
@@ -81,13 +86,16 @@ fi
 mkdir -p ~/.claude
 
 # Install Claude skills repo (includes CLAUDE.md and skills)
-# Use platform-appropriate location
-if is-macos; then
-    CLAUDE_SKILLS_DIR="$HOME/Documents/claude-skills"
-else
-    CLAUDE_SKILLS_DIR="$HOME/.local/share/claude-skills"
-    mkdir -p "$(dirname "$CLAUDE_SKILLS_DIR")"
+# Location comes from .paths ($CLAUDE_SKILLS_DIR); fall back per-platform.
+if [[ -z "${CLAUDE_SKILLS_DIR:-}" ]]; then
+    # Convention: repos live at $GITHUB_REPOS/<owner>/<repo> (set in .paths).
+    if is-macos; then
+        CLAUDE_SKILLS_DIR="${GITHUB_REPOS:-$HOME/Documents}/jdossgollin/claude-skills"
+    else
+        CLAUDE_SKILLS_DIR="$HOME/.local/share/jdossgollin/claude-skills"
+    fi
 fi
+mkdir -p "$(dirname "$CLAUDE_SKILLS_DIR")"
 if [ -d "$CLAUDE_SKILLS_DIR/.git" ]; then
     echo "Updating Claude skills..."
     git -C "$CLAUDE_SKILLS_DIR" pull --quiet

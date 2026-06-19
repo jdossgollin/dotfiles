@@ -61,8 +61,15 @@ See individual install scripts in [`install/`](install/) for the full, authorita
 ├── apps/       app configs (git, vscode, wezterm)
 ├── macos/      macOS system defaults (macOS only)
 ├── docs/       font specimens and other documentation
-└── secrets/    git identity and API keys (gitignored, templates tracked)
+├── secrets/    git identity and API keys (gitignored, templates tracked)
+└── .paths      per-machine path anchors (gitignored; .paths.template tracked)
 ```
+
+**Per-machine paths:** `.paths` holds three anchors — `GITHUB_REPOS`,
+`GDRIVE_WORK`, `GDRIVE_PERSONAL`. Created from `.paths.template` by
+`install/install-paths.sh` (prompts for them), sourced by `.zshrc`. Repos live
+by convention at `$GITHUB_REPOS/<owner>/<repo>` (no registry); use the `repo`
+command to cd/clone them. Full docs: `claude-skills/docs/repo-layout.md`.
 
 **Shell startup:** `.zshrc` → oh-my-zsh → p10k → system/{.function, .alias, .env, .path} → secrets. Conda/mamba lazy-loaded on first use. Target: <200ms (`timezsh` to benchmark).
 

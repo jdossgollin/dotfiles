@@ -33,6 +33,14 @@ source "$ZSH/oh-my-zsh.sh"
 # Must be at the end of oh-my-zsh setup
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Per-machine path anchors (GITHUB_REPOS, GDRIVE_*). See .paths.template.
+# Falls back to the template's defaults if the machine-local file is absent.
+if [[ -f "$DOTFILES_DIR/.paths" ]]; then
+    source "$DOTFILES_DIR/.paths"
+elif [[ -f "$DOTFILES_DIR/.paths.template" ]]; then
+    source "$DOTFILES_DIR/.paths.template"
+fi
+
 # Source system configuration files
 source "$DOTFILES_DIR/system/.function"
 source "$DOTFILES_DIR/system/.alias"

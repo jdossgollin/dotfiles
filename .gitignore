@@ -1,4 +1,5 @@
 .cache.sh
+.paths
 secrets/*
 logs/
 .claude/settings.local.json

@@ -33,7 +33,7 @@ app-exists() {
     mdfind "kMDItemKind == 'Application' && kMDItemDisplayName == '${app_name}'" 2>/dev/null | grep -q . && return 0
   elif is-linux; then
     # Check for .desktop file (standard Linux app registration)
-    local desktop_name="${app_name,,}"  # lowercase
+    local desktop_name; desktop_name="$(printf '%s' "$app_name" | tr '[:upper:]' '[:lower:]')"  # lowercase (bash 3.2 safe)
     desktop_name="${desktop_name// /-}" # spaces to dashes
     [[ -f "/usr/share/applications/${desktop_name}.desktop" ]] && return 0
     [[ -f "$HOME/.local/share/applications/${desktop_name}.desktop" ]] && return 0
