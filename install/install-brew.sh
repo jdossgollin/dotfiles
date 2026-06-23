@@ -58,6 +58,7 @@ apps=(
     "wget"              # Download files from web
     "fd"                # Modern find replacement
     "jq"                # JSON processor
+    "rclone"            # Sync files to/from cloud storage
     "cheat"             # Interactive cheatsheets for CLI commands
     "poppler"           # PDF rendering tools (pdftotext, pdfinfo, etc.)
     "ghostscript"       # PostScript/PDF interpreter

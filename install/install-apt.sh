@@ -40,6 +40,7 @@ apt_packages=(
     "tree"                      # Directory tree viewer
     "tldr"                      # Simplified man pages with examples
     "jq"                        # JSON processor
+    "rclone"                    # Sync files to/from cloud storage
 
     # Dev tools
     "shellcheck"                # Shell script linter
