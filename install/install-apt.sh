@@ -35,6 +35,8 @@ apt_packages=(
     "fd-find:fdfind"            # Modern find replacement (Ubuntu names it fd-find)
     "fzf"                       # Fuzzy finder for files, history, etc.
     "ripgrep:rg"                # Fast grep replacement
+    "rclone"                    # Sync files to/from cloud storage (Box, Drive, S3, ...)
+    "librsvg2-bin:rsvg-convert" # SVG rasterization (rsvg-convert)
     "btop"                      # Modern system monitor (top/htop replacement)
     "ncdu"                      # Interactive disk usage analyzer
     "tree"                      # Directory tree viewer

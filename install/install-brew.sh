@@ -50,6 +50,8 @@ apps=(
     "node"              # JavaScript runtime
     "p7zip:7z"          # File archiver
     "pandoc"            # Document converter
+    "rclone"            # Sync files to/from cloud storage (Box, Drive, S3, ...)
+    "librsvg:rsvg-convert" # SVG rasterization (rsvg-convert)
     "ripgrep:rg"        # Fast text search
     "shellcheck"        # Shell script linter
     "tldr"              # Simplified man pages
