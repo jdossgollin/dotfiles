@@ -313,6 +313,18 @@
         "meeting"
     ],
     "terminal.integrated.inheritEnv": false,
+    "terminal.integrated.defaultLocation": "view",
+    "workbench.panel.defaultLocation": "right",
+    "accessibility.signals.terminalBell": {
+        "sound": "off"
+    },
+    "accessibility.signals.terminalCommandFailed": {
+        "sound": "off"
+    },
+    "accessibility.signals.terminalQuickFix": {
+        "sound": "off"
+    },
+    "terminal.integrated.enableBell": false,
     "latex-workshop.intellisense.update.delay": 500,
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.message.badbox.show": "none",
