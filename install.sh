@@ -58,6 +58,20 @@ fi
 . "$DOTFILES_DIR/install/install-julia.sh"
 . "$DOTFILES_DIR/install/install-claude-code.sh"
 
+# Nobie — .xlsx CLI (edits shared Drive spreadsheets). Not in brew/apt.
+# Installer downloads a signed Nobie.app DMG and installs a /usr/local/bin/nobie
+# wrapper (needs sudo — may prompt or leave the wrapper step for you to finish
+# by hand). Skip in CI, idempotent.
+if [[ -z "${CI:-}" ]]; then
+    if command -v nobie >/dev/null 2>&1; then
+        echo "nobie: already installed"
+    else
+        echo "Installing Nobie..."
+        curl -fsSL https://nobie.com/install.sh | sh -s -- --accept-license \
+            || echo "Warning: nobie install incomplete (wrapper needs sudo; see install.sh)"
+    fi
+fi
+
 # Symbolic links for shell, git, etc (same for all platforms)
 ln -sfv "$DOTFILES_DIR/runcom/.zshenv" ~
 ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~

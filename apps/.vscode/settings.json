@@ -324,7 +324,6 @@
     "accessibility.signals.terminalQuickFix": {
         "sound": "off"
     },
-    "terminal.integrated.enableBell": false,
     "latex-workshop.intellisense.update.delay": 500,
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.message.badbox.show": "none",
@@ -596,5 +595,6 @@
     "claudeCode.respectGitIgnore": false,
     "python.analysis.typeCheckingMode": "standard",
     "latex-workshop.formatting.latexindent.path": "latexindent",
-    "editor.accessibilitySupport": "on"
+    "editor.accessibilitySupport": "on",
+    "terminal.integrated.enableVisualBell": false
 }
