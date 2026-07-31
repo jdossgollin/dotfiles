@@ -77,6 +77,15 @@ command to cd/clone them. Full docs: `claude-skills/docs/repo-layout.md`.
 
 **Adding a new tool:** Create `install/install-<tool>.sh`, use platform detection, add the call to `install.sh`. Scripts should be idempotent.
 
+**Default branch is `main`** (renamed from `master`, 2026-07-31). A clone made before the rename still tracks the deleted `master` and will fail to pull:
+
+```bash
+git branch -m master main
+git fetch origin
+git branch -u origin/main main
+git remote set-head origin -a
+```
+
 ## Credits
 
 Built on [webpro/dotfiles](https://github.com/webpro/dotfiles/), [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles), and [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles).
