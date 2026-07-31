@@ -57,6 +57,7 @@ fi
 . "$DOTFILES_DIR/install/install-node.sh"
 . "$DOTFILES_DIR/install/install-julia.sh"
 . "$DOTFILES_DIR/install/install-claude-code.sh"
+. "$DOTFILES_DIR/install/install-playwright.sh"
 
 # Nobie — .xlsx CLI (edits shared Drive spreadsheets). Not in brew/apt.
 # Installer downloads a signed Nobie.app DMG and installs a /usr/local/bin/nobie
