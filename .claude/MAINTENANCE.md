@@ -16,6 +16,7 @@ The following tools were verified to use official recommended installation metho
 
 | Tool | Method | Location | Official Source |
 |------|--------|----------|-----------------|
+| pixi | Standalone installer via curl (brew on macOS) | install-apt.sh:134-138 | https://pixi.sh/latest/installation/ |
 | uv | Standalone installer via curl | install-apt.sh:82 | https://docs.astral.sh/uv/getting-started/installation/ |
 | git-delta | Manual .deb download | install-apt.sh:86-92 | https://dandavison.github.io/delta/installation.html |
 | Zotero | zotero-deb repository | install-apt.sh:95-100 | https://www.zotero.org/support/installation |
@@ -75,11 +76,12 @@ The following tools were verified to use official recommended installation metho
 
 This repository prioritizes scientific computing workflows. When auditing Python/R/Julia tools:
 
-- **Conda/Mamba**: Essential for scientific packages with non-Python dependencies (BLAS, CUDA, etc.)
+- **pixi**: The default environment manager for new Python projects. It resolves conda-forge and PyPI packages in one lockfile, so it covers the scientific packages with non-Python dependencies (BLAS, CUDA, etc.) that plain pip cannot.
+- **Conda/Mamba**: Still installed via Miniforge for existing environments and for anything already defined in an `environment.yml`.
 - **Julia**: juliaup is the official recommended method (not manual downloads)
-- **uv**: Faster than pip but doesn't replace conda for scientific packages
+- **uv**: Retained because several `claude-skills` scripts use PEP 723 inline metadata with `#!/usr/bin/env -S uv run --script` shebangs, which pixi has no equivalent for.
 
-**Do not** suggest replacing conda with mise/asdf unless user explicitly requests workflow simplification.
+**Do not** suggest replacing conda or pixi with mise/asdf unless user explicitly requests workflow simplification.
 
 ### Security Patterns to Monitor
 

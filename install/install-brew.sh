@@ -56,7 +56,8 @@ apps=(
     "shellcheck"        # Shell script linter
     "tldr"              # Simplified man pages
     "tree"              # Directory tree viewer
-    "uv"                # Python package manager
+    "pixi"              # Default Python environment manager (conda-forge + PyPI)
+    "uv"                # Python package manager (PEP 723 script shebangs)
     "wget"              # Download files from web
     "fd"                # Modern find replacement
     "jq"                # JSON processor

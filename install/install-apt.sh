@@ -131,7 +131,13 @@ if ! command -v eza >/dev/null 2>&1; then
     ) || echo "Warning: eza failed to install"
 fi
 
-# uv (fast Python package manager)
+# pixi (default Python environment manager: conda-forge + PyPI)
+if ! command -v pixi >/dev/null 2>&1; then
+    echo "Installing pixi..."
+    curl -fsSL https://pixi.sh/install.sh | sh || echo "Warning: pixi failed to install"
+fi
+
+# uv (still required by PEP 723 script shebangs in claude-skills)
 if ! command -v uv >/dev/null 2>&1; then
     echo "Installing uv..."
     curl -LsSf https://astral.sh/uv/install.sh | sh || echo "Warning: uv failed to install"

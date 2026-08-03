@@ -262,7 +262,7 @@ This dotfiles repo prioritizes scientific computing. Consider:
 - **Conda**: Often necessary for scientific packages (BLAS, CUDA, etc.)
 - **Julia**: juliaup is the official recommended method
 - **R**: Consider multiple installation methods (apt, conda, from source)
-- **Python tools**: uv is newer and faster, but conda needed for non-Python deps
+- **Python tools**: pixi is the default for new projects (conda-forge + PyPI in one lockfile); uv is kept for PEP 723 script shebangs
 - **LaTeX**: Full TeX Live vs minimal texlive-core trade-offs
 
 **Ask user about their needs before suggesting changes in this domain.**
