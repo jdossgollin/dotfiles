@@ -25,7 +25,7 @@ After install:
 ## The `dotfiles` Command
 
 ```
-clean          Clean up caches (brew/apt, conda, julia)
+clean          Clean up caches (brew/apt, conda, julia); prompts before removing conda envs
 edit           Open dotfiles in IDE
 help           This help message
 sync-secrets   Pull secrets from Dashlane vault to local files
@@ -45,7 +45,8 @@ See individual install scripts in [`install/`](install/) for the full, authorita
 | Dev Tools | git, gh, gcc, node, shellcheck, fd, jq, ... | same (via apt) |
 | Apps | VSCodium, WezTerm, GitHub Desktop, Slack, Zoom, ... | same (via apt/snap) |
 | Fonts | 40+ coding, scientific, and presentation fonts | same (via apt + download) |
-| Python | pixi (default), Miniforge (conda/mamba), uv, nbdime | same |
+| Python | pixi (default), Miniforge (conda/mamba), uv | same |
+| pixi globals | nbdime (notebook diff/merge for git) | same |
 | Julia | juliaup | same |
 
 **Fonts:** Managed in [`install/install-fonts.sh`](install/install-fonts.sh). For visual specimens and pairing suggestions: `typst compile docs/font-specimens.typ`

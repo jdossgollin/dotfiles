@@ -3,6 +3,7 @@ typeset -U path
 
 # Custom paths (system paths like /usr/bin are already in PATH)
 prepend-path "$HOME/.local/bin"
+prepend-path "$HOME/.pixi/bin"
 prepend-path "$HOME/bin"
 prepend-path "$DOTFILES_DIR/bin"
 

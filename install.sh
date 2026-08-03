@@ -53,6 +53,7 @@ elif is-linux; then
 fi
 
 # Cross-platform installations
+. "$DOTFILES_DIR/install/install-pixi.sh"
 . "$DOTFILES_DIR/install/install-conda.sh"
 . "$DOTFILES_DIR/install/install-node.sh"
 . "$DOTFILES_DIR/install/install-julia.sh"

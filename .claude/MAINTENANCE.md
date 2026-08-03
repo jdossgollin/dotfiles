@@ -26,6 +26,7 @@ The following tools were verified to use official recommended installation metho
 | Node.js | NodeSource LTS repository | install-node.sh:10 | https://nodejs.org/ |
 | juliaup | Official curl installer | install-julia.sh:10 | https://github.com/JuliaLang/juliaup |
 | Miniforge | Official installer script | install-conda.sh:8-20 | https://github.com/conda-forge/miniforge |
+| nbdime | pixi global install | install-pixi.sh:13-16 | https://nbdime.readthedocs.io/ |
 | Oh My Zsh | Official curl installer | install-zsh.sh:24 | https://ohmyz.sh/ |
 | Homebrew | Official curl installer | install-brew.sh:7 | https://brew.sh/ |
 
@@ -77,7 +78,8 @@ The following tools were verified to use official recommended installation metho
 This repository prioritizes scientific computing workflows. When auditing Python/R/Julia tools:
 
 - **pixi**: The default environment manager for new Python projects. It resolves conda-forge and PyPI packages in one lockfile, so it covers the scientific packages with non-Python dependencies (BLAS, CUDA, etc.) that plain pip cannot.
-- **Conda/Mamba**: Still installed via Miniforge for existing environments and for anything already defined in an `environment.yml`.
+- **Conda/Mamba**: Still installed via Miniforge for existing environments and for anything already defined in an `environment.yml`. Do not propose removing Miniforge without first checking `conda env list` — it typically holds long-lived project environments that pixi does not replace.
+- **pixi globals**: Machine-wide CLI tools installed with `pixi global install` land in `~/.pixi/bin`, which `system/.path` prepends on both platforms. `nbdime` lives here because `.gitconfig` declares the `jupyternotebook` diff/merge drivers; it is deliberately not installed into the conda base env.
 - **Julia**: juliaup is the official recommended method (not manual downloads)
 - **uv**: Retained because several `claude-skills` scripts use PEP 723 inline metadata with `#!/usr/bin/env -S uv run --script` shebangs, which pixi has no equivalent for.
 
