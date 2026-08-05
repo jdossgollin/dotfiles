@@ -130,6 +130,14 @@ if [ -d "$CLAUDE_SKILLS_DIR" ]; then
     [ -f "$CLAUDE_SKILLS_DIR/CLAUDE.md" ] && ln -sfv "$CLAUDE_SKILLS_DIR/CLAUDE.md" ~/.claude/CLAUDE.md
     [ -f "$CLAUDE_SKILLS_DIR/dialogue-rules.md" ] && ln -sfv "$CLAUDE_SKILLS_DIR/dialogue-rules.md" ~/.claude/dialogue-rules.md
     [ -f "$CLAUDE_SKILLS_DIR/settings.json" ] && ln -sfv "$CLAUDE_SKILLS_DIR/settings.json" ~/.claude/settings.json
+
+    # Link skill CLIs (docx, pdf, zotero, ...) into ~/.local/bin. These are real
+    # executables, not aliases, so they work in the non-interactive shells that
+    # agent tooling uses. Idempotent; never clobbers a non-symlink.
+    if [ -x "$CLAUDE_SKILLS_DIR/bin/link-clis.sh" ]; then
+        "$CLAUDE_SKILLS_DIR/bin/link-clis.sh" || \
+            echo "Warning: linking skill CLIs failed; run bin/link-clis.sh manually."
+    fi
 fi
 
 # Set up RTK hook for Claude Code (idempotent)
