@@ -129,7 +129,22 @@ if [ -d "$CLAUDE_SKILLS_DIR" ]; then
     ln -sfnv "$CLAUDE_SKILLS_DIR/rules" ~/.claude/rules
     [ -f "$CLAUDE_SKILLS_DIR/CLAUDE.md" ] && ln -sfv "$CLAUDE_SKILLS_DIR/CLAUDE.md" ~/.claude/CLAUDE.md
     [ -f "$CLAUDE_SKILLS_DIR/dialogue-rules.md" ] && ln -sfv "$CLAUDE_SKILLS_DIR/dialogue-rules.md" ~/.claude/dialogue-rules.md
-    [ -f "$CLAUDE_SKILLS_DIR/settings.json" ] && ln -sfv "$CLAUDE_SKILLS_DIR/settings.json" ~/.claude/settings.json
+    # Claude Code settings. ~/.claude/settings.json is GENERATED, never symlinked:
+    # shell/sync-settings.py deep-merges settings.shared.json (repo, source of truth
+    # for hooks/plugins/policy) with ~/.claude/settings.machine.json (this machine's
+    # model choice and permission paths). Seed the machine file on first install.
+    if [ ! -f ~/.claude/settings.machine.json ] && [ -f "$CLAUDE_SKILLS_DIR/settings.machine.template.json" ]; then
+        cp -v "$CLAUDE_SKILLS_DIR/settings.machine.template.json" ~/.claude/settings.machine.json
+        echo "  Edit ~/.claude/settings.machine.json for this machine's model and permission paths."
+    fi
+    if [ ! -f "$CLAUDE_SKILLS_DIR/shell/sync-settings.py" ]; then
+        echo "Warning: sync-settings.py missing; ~/.claude/settings.json not generated."
+    elif ! command -v uv &>/dev/null; then
+        echo "Warning: uv not found; run shell/sync-settings.py manually to generate ~/.claude/settings.json."
+    else
+        uv run "$CLAUDE_SKILLS_DIR/shell/sync-settings.py" || \
+            echo "Warning: settings sync failed; run shell/sync-settings.py manually."
+    fi
 
     # Link skill CLIs (docx, pdf, zotero, ...) into ~/.local/bin. These are real
     # executables, not aliases, so they work in the non-interactive shells that
@@ -138,11 +153,6 @@ if [ -d "$CLAUDE_SKILLS_DIR" ]; then
         "$CLAUDE_SKILLS_DIR/bin/link-clis.sh" || \
             echo "Warning: linking skill CLIs failed; run bin/link-clis.sh manually."
     fi
-fi
-
-# Set up RTK hook for Claude Code (idempotent)
-if command -v rtk &>/dev/null; then
-    rtk init -g --auto-patch
 fi
 
 # Set global gitignore

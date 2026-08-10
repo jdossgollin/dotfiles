@@ -68,7 +68,6 @@ apps=(
     "latexindent"       # LaTeX code formatter
     "r"                 # R language for statistical computing
     "typst"             # Modern typesetting system
-    "rtk"               # Token-optimized CLI proxy for Claude Code
 )
 
 # Install each formula, skipping if command already exists
