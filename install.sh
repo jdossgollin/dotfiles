@@ -146,12 +146,36 @@ if [ -d "$CLAUDE_SKILLS_DIR" ]; then
             echo "Warning: settings sync failed; run shell/sync-settings.py manually."
     fi
 
-    # Link skill CLIs (docx, pdf, zotero, ...) into ~/.local/bin. These are real
-    # executables, not aliases, so they work in the non-interactive shells that
-    # agent tooling uses. Idempotent; never clobbers a non-symlink.
+    # Link skill CLIs (pdf-extract, zotero, todoist, ...) into ~/.local/bin. These
+    # are real executables, not aliases, so they work in the non-interactive shells
+    # that agent tooling uses. Idempotent; never clobbers a non-symlink.
     if [ -x "$CLAUDE_SKILLS_DIR/bin/link-clis.sh" ]; then
         "$CLAUDE_SKILLS_DIR/bin/link-clis.sh" || \
             echo "Warning: linking skill CLIs failed; run bin/link-clis.sh manually."
+    fi
+
+    # Anthropic's document-skills plugin (docx/pdf/pptx/xlsx). The marketplace and
+    # the enabled-plugin flag ride along in settings.shared.json, but the
+    # marketplace repo still has to be checked out locally.
+    #
+    # `claude plugin marketplace add` shells out to git with a stripped PATH — no
+    # ssh, sed, basename or uname — so its own clone fails. Pre-clone it here and
+    # the add step then finds the existing checkout. Both steps are idempotent.
+    if [[ -z "${CI:-}" ]] && command -v claude &>/dev/null; then
+        MARKETPLACE_DIR="$HOME/.claude/plugins/marketplaces/anthropics-skills"
+        if [ ! -d "$MARKETPLACE_DIR/.git" ]; then
+            mkdir -p "$(dirname "$MARKETPLACE_DIR")"
+            git clone --quiet https://github.com/anthropics/skills "$MARKETPLACE_DIR" || \
+                echo "Warning: could not clone the anthropic-agent-skills marketplace."
+        fi
+        if [ -d "$MARKETPLACE_DIR/.git" ]; then
+            claude plugin marketplace add anthropics/skills >/dev/null || \
+                echo "Warning: could not register the anthropic-agent-skills marketplace."
+            if ! claude plugin list 2>/dev/null | grep -q "document-skills@anthropic-agent-skills"; then
+                claude plugin install document-skills@anthropic-agent-skills || \
+                    echo "Warning: could not install document-skills; install it manually."
+            fi
+        fi
     fi
 fi
 
