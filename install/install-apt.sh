@@ -157,11 +157,11 @@ fi
 # === GUI/Desktop apps (skip in CI — not what CI tests) ===
 if [[ -z "${CI:-}" ]]; then
 
-# Zotero (via zotero-deb repository)
+# Zotero (via the retorquere zotero-pkg repository, formerly zotero-deb)
 if ! command -v zotero >/dev/null 2>&1; then
     echo "Installing Zotero..."
     (
-        curl -sS https://raw.githubusercontent.com/retorquere/zotero-deb/master/install.sh | sudo bash
+        curl -sS https://raw.githubusercontent.com/retorquere/zotero-pkg/master/install.sh | sudo bash
         sudo apt-get update
         sudo apt-get install -y zotero
     ) || echo "Warning: Zotero failed to install"

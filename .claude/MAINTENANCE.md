@@ -59,10 +59,39 @@ The following tools were verified to use official recommended installation metho
 - **Linux Source:** https://github.com/shiftkey/desktop (community-maintained Linux fork)
 - **Dock:** Updated macos/dock.sh to reference GitHub Desktop
 
+### 2026-08-14: Comprehensive Installation Audit
+
+**Auditor:** Claude Code (via `/suggest-improvements`)
+**Scope:** All installation scripts, both platforms
+**Result:** 13/13 tools on correct installation methods; no tool broken, no tool had moved to a better method since January
+
+#### ✅ Verified - No Changes Needed
+
+| Tool | Method | Official Source |
+|------|--------|-----------------|
+| git-delta | Manual .deb from GitHub releases | https://dandavison.github.io/delta/installation.html — still not in apt; manual .deb remains the documented path |
+| Quarto | .deb from GitHub releases | https://quarto.org/docs/download/ — still no official apt repository |
+| pixi | curl installer (brew on macOS) | https://pixi.prefix.dev/latest/installation/ — docs site moved off pixi.sh, but the `pixi.sh/install.sh` install URL is unchanged |
+| Miniforge | Official installer script | https://github.com/conda-forge/miniforge — shell installer still recommended; macOS PKG installers now also offered |
+| uv, gh, eza, WezTerm, VSCodium, GitHub Desktop, Homebrew | unchanged since 2026-01-29 | re-checked, no drift |
+
+#### 🔧 Updated
+
+| Tool | Old Method | New Method | Reason |
+|------|------------|------------|--------|
+| Node.js | `curl ... setup_lts.x \| sudo bash -` | Download setup script to a temp file, then `sudo -E bash` it | Matches NodeSource's current documented instructions and removes the highest-priority pattern in the security list below. A truncated download cannot execute as a partial script. |
+| Zotero | `retorquere/zotero-deb` | `retorquere/zotero-pkg` | Upstream renamed the repo. The old URL still resolves via GitHub's rename redirect, so this was cosmetic, not breakage. |
+| Oh My Zsh | `raw.github.com` | `raw.githubusercontent.com` | Matches the documented URL. The old host redirects, so this was cosmetic. |
+| juliaup (macOS) | `brew install juliaup` | Official curl installer, same as Linux | Upstream advises against package-manager builds: "the Juliaup variants provided by [OS-specific software repositories] currently have some drawbacks." Contradicts the 2026-01-29 table, which listed the brew install as verified. |
+
+**Note on the juliaup change:** guarded by `command -v juliaup`, so it is a no-op on any machine that already has the Homebrew build. Migrating an existing machine requires `brew uninstall juliaup` first. As of this audit, this Mac still runs the Homebrew build (1.21.0).
+
+**Investigated and dismissed:** NodeSource's `setup_*.x` scripts were deprecated in 2023, and much of the web still says so. That deprecation was reversed — the current DEV_README says the scripts are "back by popular demand," and the live script carries no deprecation notice and emits the current `nodistro` suite. The script itself is fine; only the piping pattern changed.
+
 #### Next Audit Recommended
 
-- **When:** 2026-07-29 (6 months)
-- **Focus:** Check for new official repositories or installation method changes
+- **When:** every 3 months, tracked by a recurring Todoist task in Personal ("Audit dotfiles install methods and third-party agent skills"). Cadence moved from 6 months to 3 on 2026-08-14, when third-party agent skills were added; those are pinned and go stale silently.
+- **Focus:** Check for new official repositories or installation method changes, and update pinned agent skills.
 - **Command:** `/suggest-improvements` → Option A (comprehensive audit)
 
 ## Notes for Future Audits
@@ -72,6 +101,13 @@ The following tools were verified to use official recommended installation metho
 - **git-delta**: Currently uses manual .deb download. Monitor for potential official apt repository.
 - **Quarto**: Currently uses manual .deb download. Monitor for potential official apt repository.
 - **NodeSource**: Verify LTS version is still the recommended approach vs. NVM or other methods.
+- **Third-party agent skills** (`install/install-agent-skills.sh`): pinned, never auto-updated. The installer skips any skill already present, and the `skills` CLI copies files rather than checking out a repo, so an installed skill stays at the commit it was fetched at. Check upstream for changes and update deliberately:
+
+  ```bash
+  npx --yes skills update <name> --global
+  ```
+
+  Currently installed: `humanizer` (blader/humanizer), fetched 2026-08-14 at hash `523374d`. Skills run with full agent permissions, so review a diff before updating. Snyk rated this package High Risk at install time while Gen rated it Safe and Socket reported 0 alerts; the contents have not been audited.
 
 ### Scientific Computing Considerations
 
