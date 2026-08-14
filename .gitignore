@@ -4,3 +4,10 @@ secrets/*
 logs/
 .claude/settings.local.json
 .claude/plans/
+
+# apps/git/.gitignore_global ignores .vscode/ so editor settings stay out of
+# other projects. This repo *ships* that config, symlinked to VSCodium by
+# install.sh, so un-ignore it here. Without this, `git add` on the tracked file
+# fails as an ignored path.
+!apps/.vscode/
+!apps/.vscode/**
