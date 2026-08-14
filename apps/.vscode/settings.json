@@ -596,5 +596,13 @@
     "python.analysis.typeCheckingMode": "standard",
     "latex-workshop.formatting.latexindent.path": "latexindent",
     "editor.accessibilitySupport": "on",
-    "terminal.integrated.enableVisualBell": false
+    "terminal.integrated.enableVisualBell": false,
+    "yaml.disableSchemaDetection": [
+        "**/.github/workflows/*.yml",
+        "**/.github/workflows/*.yaml",
+        "**/.gitea/workflows/*.yml",
+        "**/.gitea/workflows/*.yaml",
+        "**/.forgejo/workflows/*.yml",
+        "**/.forgejo/workflows/*.yaml"
+    ]
 }
