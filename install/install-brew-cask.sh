@@ -37,6 +37,7 @@ cask_apps=(
     "signal:-:Signal"                   # Encrypted messaging
     "wispr-flow:-:Wispr Flow"           # Voice dictation
     "iguanatexmac:-:IguanaTex"         # LaTeX equations in Keynote/PowerPoint
+    "selfcontrol:-:SelfControl"        # Website blocker for focused work (macOS only, no Linux version)
 )
 
 # Install each cask, skipping if already installed
