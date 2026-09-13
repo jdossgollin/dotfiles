@@ -38,6 +38,7 @@ cask_apps=(
     "wispr-flow:-:Wispr Flow"           # Voice dictation
     "iguanatexmac:-:IguanaTex"         # LaTeX equations in Keynote/PowerPoint
     "selfcontrol:-:SelfControl"        # Website blocker for focused work (macOS only, no Linux version)
+    "libreoffice:-:LibreOffice"        # Office suite (documents, spreadsheets, presentations)
 )
 
 # Install each cask, skipping if already installed

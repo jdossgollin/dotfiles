@@ -167,6 +167,12 @@ if ! command -v zotero >/dev/null 2>&1; then
     ) || echo "Warning: Zotero failed to install"
 fi
 
+# LibreOffice (office suite: documents, spreadsheets, presentations)
+if ! command -v libreoffice >/dev/null 2>&1; then
+    echo "Installing LibreOffice..."
+    sudo apt-get install -y libreoffice || echo "Warning: LibreOffice failed to install"
+fi
+
 # Quarto (via .deb download)
 if ! command -v quarto >/dev/null 2>&1; then
     echo "Installing Quarto..."
