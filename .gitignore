@@ -11,3 +11,7 @@ logs/
 # fails as an ignored path.
 !apps/.vscode/
 !apps/.vscode/**
+
+# Python bytecode
+__pycache__/
+*.pyc
