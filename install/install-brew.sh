@@ -54,7 +54,7 @@ apps=(
     "librsvg:rsvg-convert" # SVG rasterization (rsvg-convert)
     "ripgrep:rg"        # Fast text search
     "shellcheck"        # Shell script linter
-    "tldr"              # Simplified man pages
+    "tlrc"              # Simplified man pages (tldr client; replaces deprecated tldr)
     "tree"              # Directory tree viewer
     "pixi"              # Default Python environment manager (conda-forge + PyPI)
     "uv"                # Python package manager (PEP 723 script shebangs)
@@ -109,7 +109,7 @@ if ! command -v dcli >/dev/null 2>&1; then
 fi
 
 # Install git LFS
-git lfs install --system
+git lfs install
 
 # Remove outdated versions from the cellar
 brew cleanup
