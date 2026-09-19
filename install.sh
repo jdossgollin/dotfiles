@@ -85,6 +85,7 @@ if [[ -n "$VSCODIUM_USER_DIR" ]]; then
     mkdir -p "$VSCODIUM_USER_DIR"
     ln -sfv "$DOTFILES_DIR/apps/.vscode/settings.json" "$VSCODIUM_USER_DIR/settings.json"
 fi
+. "$DOTFILES_DIR/install/install-codium.sh"
 
 # Claude Code configuration
 mkdir -p ~/.claude
