@@ -54,7 +54,6 @@ apps=(
     "librsvg:rsvg-convert" # SVG rasterization (rsvg-convert)
     "ripgrep:rg"        # Fast text search
     "shellcheck"        # Shell script linter
-    "tlrc"              # Simplified man pages (tldr client; replaces deprecated tldr)
     "tree"              # Directory tree viewer
     "pixi"              # Default Python environment manager (conda-forge + PyPI)
     "uv"                # Python package manager (PEP 723 script shebangs)

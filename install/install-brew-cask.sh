@@ -12,6 +12,9 @@ if [[ -n "${CI:-}" ]]; then
     return
 fi
 
+# Add a couple taps
+brew tap buo/cask-upgrade
+
 # Map cask names to their CLI command and/or app bundle name
 # Format: "cask_name:cli_command:App Name" (use - for empty fields)
 cask_apps=(
@@ -36,7 +39,6 @@ cask_apps=(
     "stats:-:Stats"                     # macOS menubar system monitor
     "signal:-:Signal"                   # Encrypted messaging
     "wispr-flow:-:Wispr Flow"           # Voice dictation
-    "iguanatexmac:-:IguanaTex"         # LaTeX equations in Keynote/PowerPoint
     "selfcontrol:-:SelfControl"        # Website blocker for focused work (macOS only, no Linux version)
     "libreoffice:-:LibreOffice"        # Office suite (documents, spreadsheets, presentations)
 )
@@ -64,11 +66,6 @@ for entry in "${cask_apps[@]}"; do
     echo "Installing $cask_name..."
     brew install --cask "$cask_name" || echo "Warning: $cask_name failed to install"
 done
-
-# Install cask apps
-brew tap buo/cask-upgrade
-
-brew cu --all --cleanup --yes
 
 # Set Firefox as default browser (requires user confirmation dialog)
 if command -v defaultbrowser >/dev/null 2>&1; then
