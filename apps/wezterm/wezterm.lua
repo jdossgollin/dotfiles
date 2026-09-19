@@ -1,8 +1,11 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
--- Font: MesloLGS NF (required for Powerlevel10k)
-config.font = wezterm.font("MesloLGS NF")
+-- Font: Meslo Nerd Font (required for Powerlevel10k glyphs).
+-- The family name differs by install source: the Homebrew cask
+-- (font-meslo-lg-nerd-font, macOS) registers "MesloLGS Nerd Font", while the
+-- powerlevel10k-media download used on Linux registers "MesloLGS NF".
+config.font = wezterm.font_with_fallback({ "MesloLGS Nerd Font", "MesloLGS NF" })
 config.font_size = 13.0
 
 -- Color scheme: MaterialDark
