@@ -12,9 +12,6 @@ if [[ -n "${CI:-}" ]]; then
     return
 fi
 
-# Add a couple taps
-brew tap buo/cask-upgrade
-
 # Map cask names to their CLI command and/or app bundle name
 # Format: "cask_name:cli_command:App Name" (use - for empty fields)
 cask_apps=(
