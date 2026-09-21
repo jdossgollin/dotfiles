@@ -14,6 +14,7 @@ fi
 # Configure Julia versions (platform agnostic)
 if command -v juliaup >/dev/null 2>&1; then
     juliaup add release
-    juliaup default release
+    juliaup add 1.13
+    juliaup default 1.13
     juliaup update
 fi
