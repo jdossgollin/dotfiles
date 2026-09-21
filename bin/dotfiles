@@ -141,6 +141,15 @@ sub_sync-secrets() {
     fi
 
     echo ""
+    google_maps_key="$(dcli note "Google Maps Places API" --output text 2>/dev/null)"
+    if [[ -n "$google_maps_key" ]]; then
+      echo "export GOOGLE_MAPS_API_KEY=\"$google_maps_key\""
+    else
+      echo "# Warning: 'Google Maps Places API' note not found in Dashlane"
+      echo "# export GOOGLE_MAPS_API_KEY=\"\""
+    fi
+
+    echo ""
     local zotero_block
     zotero_block="$(dcli note "Zotero API Key" --output text 2>/dev/null)"
     if [[ -n "$zotero_block" ]]; then
