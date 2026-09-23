@@ -171,6 +171,23 @@ sub_sync-secrets() {
     echo "Warning: 'CDS APIRC' note not found in Dashlane"
   fi
 
+  # --- ~/.config/notes/ (Google Calendar for the notes system) ---
+  local notes_cfg="$HOME/.config/notes"
+  mkdir -p "$notes_cfg"
+  local pair note_name target content
+  for pair in "Google OAuth Client (notes)|google-oauth-client.json" "Google OAuth Token (notes)|google-token.json"; do
+    note_name="${pair%%|*}"
+    target="$notes_cfg/${pair##*|}"
+    echo "Writing $target..."
+    content="$(dcli note "$note_name" --output text 2>/dev/null)"
+    if [[ -n "$content" ]]; then
+      echo "$content" > "$target"
+      chmod 600 "$target"
+    else
+      echo "Warning: '$note_name' note not found in Dashlane"
+    fi
+  done
+
   echo ""
   echo "Secrets synced. Run 'source ~/.zshrc' to reload API keys."
 }
