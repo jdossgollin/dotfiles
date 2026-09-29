@@ -11,3 +11,4 @@ export GITHUB_REPOS="$HOME/Documents/Github"   # GitHub clones: $GITHUB_REPOS/<o
 export GIT_REPOS="$HOME/Documents/git"         # non-GitHub git checkouts: $GIT_REPOS/<host>/<id>
 export GDRIVE_WORK="$HOME/gdrive-work"     # work Google Drive base
 export GDRIVE_PERSONAL="$HOME/gdrive-personal"  # personal Google Drive base
+export GDRIVE_SHARED="$HOME/Library/CloudStorage/GoogleDrive-jd82@rice.edu/Shared drives"  # work account Shared drives (needs Full Disk Access)
