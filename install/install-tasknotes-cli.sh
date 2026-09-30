@@ -2,7 +2,10 @@
 # TaskNotes CLI — terminal interface to TaskNotes Obsidian plugin
 # Requires: node, npm, TaskNotes plugin with API enabled
 # Note: as of 2026-09-22 the CLI's list command is behind the plugin API
-# (uses GET instead of POST for /api/tasks/query). Track upstream for a fix.
+# (uses GET instead of POST for /api/tasks/query). A local commit in the clone
+# (2026-09-29, lib/api.js listTasks) sends filters as POST; `git pull` below
+# keeps it as long as upstream does not touch the same lines. Track upstream.
+# The API needs its token once per machine: tn config --set authToken=<token>.
 
 set -e
 
