@@ -122,14 +122,6 @@ sub_sync-secrets() {
       echo "# export TODOIST_API_KEY=\"\""
     fi
 
-    echo ""
-    fireflies_key="$(dcli note "Fireflies API" --output text 2>/dev/null)"
-    if [[ -n "$fireflies_key" ]]; then
-      echo "export FIREFLIES_API_KEY=\"$fireflies_key\""
-    else
-      echo "# Warning: 'Fireflies API' note not found in Dashlane"
-      echo "# export FIREFLIES_API_KEY=\"\""
-    fi
 
     echo ""
     reclaim_key="$(dcli note "Reclaim API" --output text 2>/dev/null)"
@@ -147,6 +139,15 @@ sub_sync-secrets() {
     else
       echo "# Warning: 'Google Maps Places API' note not found in Dashlane"
       echo "# export GOOGLE_MAPS_API_KEY=\"\""
+    fi
+
+    echo ""
+    raindrop_key="$(dcli note "Raindrop API" --output text 2>/dev/null)"
+    if [[ -n "$raindrop_key" ]]; then
+      echo "export RAINDROP_TOKEN=\"$raindrop_key\""
+    else
+      echo "# Warning: 'Raindrop API' note not found in Dashlane"
+      echo "# export RAINDROP_TOKEN=\"\""
     fi
 
     echo ""
