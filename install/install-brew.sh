@@ -67,7 +67,6 @@ apps=(
     "latexindent"       # LaTeX code formatter
     "r"                 # R language for statistical computing
     "typst"             # Modern typesetting system
-    "pdfpc"             # Presenter view for PDF slides (Typst talks export notes for it)
 )
 
 # Install each formula, skipping if command already exists
