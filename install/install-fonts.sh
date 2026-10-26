@@ -50,6 +50,7 @@ if is-macos; then
         font-lato
         font-montserrat
         font-fira-sans
+        font-source-sans-3
         font-oswald
         font-bebas-neue
         font-varela-round
@@ -137,6 +138,7 @@ elif is-linux; then
     install_font_zip "DMSans"       "https://fonts.google.com/download?family=DM+Sans"
     install_font_zip "AtkinsonHyperlegible" "https://fonts.google.com/download?family=Atkinson+Hyperlegible"
     install_font_zip "FiraSans"     "https://fonts.google.com/download?family=Fira+Sans"
+    install_font_zip "SourceSans3"  "https://fonts.google.com/download?family=Source+Sans+3"
     install_font_zip "Oswald"       "https://fonts.google.com/download?family=Oswald"
     install_font_zip "BebasNeue"    "https://fonts.google.com/download?family=Bebas+Neue"
     install_font_zip "VarelaRound"  "https://fonts.google.com/download?family=Varela+Round"

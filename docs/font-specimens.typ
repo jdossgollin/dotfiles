@@ -95,6 +95,7 @@
 #specimen("Lato", "Lato", "Warm sans-serif — professional without being cold")
 #specimen("Montserrat", "Montserrat", "Geometric sans — great for headings")
 #specimen("Fira Sans", "Fira Sans", "Mozilla — pairs with Fira Code/Mono")
+#specimen("Source Sans 3", "Source Sans 3", "Adobe — pairs with Source Code Pro")
 #specimen("Oswald", "Oswald", "Condensed sans — bold and attention-grabbing")
 #specimen("Bebas Neue", "Bebas Neue", "All-caps display — eye-catching poster titles")
 #specimen("Varela Round", "Varela Round", "Friendly rounded sans-serif")
