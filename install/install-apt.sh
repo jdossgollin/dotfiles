@@ -40,7 +40,7 @@ apt_packages=(
     "btop"                      # Modern system monitor (top/htop replacement)
     "ncdu"                      # Interactive disk usage analyzer
     "tree"                      # Directory tree viewer
-    "tldr"                      # Simplified man pages with examples
+    "tldr-py:tldr"              # Simplified man pages with examples (Ubuntu 26.04 dropped the "tldr" package)
     "jq"                        # JSON processor
     "rclone"                    # Sync files to/from cloud storage
 
