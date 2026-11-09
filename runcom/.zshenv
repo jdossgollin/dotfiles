@@ -12,3 +12,7 @@ if [[ -f "$DOTFILES_DIR/.paths" ]]; then
 elif [[ -f "$DOTFILES_DIR/.paths.template" ]]; then
     source "$DOTFILES_DIR/.paths.template"
 fi
+
+# notes-system: opencode for the vault
+export NOTES_SYSTEM="/Users/jdossgollin/Documents/Github/jdossgollin/notes-system" OPENCODE_DISABLE_CLAUDE_CODE=1 OPENCODE_DISABLE_PROJECT_CONFIG=1
+export PATH="$NOTES_SYSTEM/bin:$PATH"
