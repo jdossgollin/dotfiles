@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "cli_default_open_behavior": "new_window",
   "project_panel": {
     "hide_hidden": true,
     "dock": "right"
@@ -18,6 +19,8 @@
     "dock": "right"
   },
   "agent": {
+    "terminal_init_command": "",
+    "expand_terminal_card": false,
     "dock": "left",
     "favorite_models": [],
     "model_parameters": []
@@ -26,7 +29,9 @@
     "dock": "right"
   },
   "terminal": {
-    "font_family": "JuliaMono"
+    "font_family": "JuliaMono",
+    // Meslo supplies the Nerd Font glyphs Powerlevel10k draws
+    "font_fallbacks": ["MesloLGS Nerd Font", "MesloLGS NF"]
   },
   "agent_servers": {
     "claude-acp": {
