@@ -42,7 +42,6 @@ apt_packages=(
     "tree"                      # Directory tree viewer
     "tldr-py:tldr"              # Simplified man pages with examples (Ubuntu 26.04 dropped the "tldr" package)
     "jq"                        # JSON processor
-    "rclone"                    # Sync files to/from cloud storage
 
     # Dev tools
     "shellcheck"                # Shell script linter
