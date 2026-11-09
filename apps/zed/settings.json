@@ -1,0 +1,93 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "project_panel": {
+    "hide_hidden": true,
+    "dock": "right"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "agent": {
+    "dock": "left",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "git_panel": {
+    "dock": "right"
+  },
+  "terminal": {
+    "font_family": "JuliaMono"
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "default_config_options": {
+        "effort": "high",
+        "mode": "auto"
+      },
+      "type": "registry"
+    }
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+  // Harper: local spelling and grammar checks for prose
+  "auto_install_extensions": {
+    "harper": true,
+  },
+  "lsp": {
+    // Typst live preview: open http://127.0.0.1:23635 in a browser
+    "tinymist": {
+      "initialization_options": {
+        "preview": {
+          "background": {
+            "enabled": true,
+            "args": ["--data-plane-host=127.0.0.1:23635", "--invert-colors=never"],
+          },
+        },
+      },
+    },
+    // LaTeX: build with latexmk on save, then show the cursor line in Skim (macOS only)
+    "texlab": {
+      "settings": {
+        "texlab": {
+          "build": { "onSave": true, "forwardSearchAfter": true },
+          "forwardSearch": {
+            "executable": "/Applications/Skim.app/Contents/SharedSupport/displayline",
+            "args": ["-r", "-g", "%l", "%p", "%f"],
+          },
+        },
+      },
+    },
+  },
+  // Show markup weight and slant in Typst and Markdown source
+  "theme_overrides": {
+    "One Light": {
+      "syntax": {
+        "emphasis": { "font_style": "italic" },
+        "emphasis.strong": { "font_weight": 700 },
+        "title": { "font_weight": 700 },
+      },
+    },
+    "One Dark": {
+      "syntax": {
+        "emphasis": { "font_style": "italic" },
+        "emphasis.strong": { "font_weight": 700 },
+        "title": { "font_weight": 700 },
+      },
+    },
+  },
+}

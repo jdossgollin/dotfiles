@@ -20,6 +20,7 @@ cask_apps=(
     "wezterm:wezterm:WezTerm"           # GPU-accelerated terminal emulator
     "github:-:GitHub Desktop"           # Git GUI client
     "quarto:quarto:-"                   # Scientific publishing (markdown → PDF/HTML/slides)
+    "skim:-:Skim"                       # PDF viewer with SyncTeX jump between LaTeX source and PDF (macOS only)
 
     # Browsers & communication
     "firefox:firefox:Firefox"           # Web browser

@@ -69,6 +69,8 @@ ln -sfv "$DOTFILES_DIR/runcom/.p10k.zsh" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/apps/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/apps/wezterm/wezterm.lua" ~/.wezterm.lua
+mkdir -p ~/.config/zed
+ln -sfv "$DOTFILES_DIR/apps/zed/settings.json" ~/.config/zed/settings.json
 
 # Per-machine path anchors (GITHUB_REPOS, GDRIVE_*) -> ~/.dotfiles/.paths
 . "$DOTFILES_DIR/install/install-paths.sh"
@@ -86,6 +88,17 @@ if [[ -n "$VSCODIUM_USER_DIR" ]]; then
     ln -sfv "$DOTFILES_DIR/apps/.vscode/settings.json" "$VSCODIUM_USER_DIR/settings.json"
 fi
 . "$DOTFILES_DIR/install/install-codium.sh"
+
+# Harper (spelling and grammar checker in Zed) user dictionary (platform-specific paths)
+if is-macos; then
+    HARPER_DICT_DIR="$HOME/Library/Application Support/harper-ls"
+elif is-linux; then
+    HARPER_DICT_DIR="$HOME/.config/harper-ls"
+fi
+if [[ -n "$HARPER_DICT_DIR" ]]; then
+    mkdir -p "$HARPER_DICT_DIR"
+    ln -sfv "$DOTFILES_DIR/apps/harper/dictionary.txt" "$HARPER_DICT_DIR/dictionary.txt"
+fi
 
 # Claude Code configuration
 mkdir -p ~/.claude

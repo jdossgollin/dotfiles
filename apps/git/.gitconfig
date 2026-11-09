@@ -6,6 +6,7 @@
 
 [alias]
   st = status
+  wdiff = diff --word-diff=color
 
 [color]
   ui = auto

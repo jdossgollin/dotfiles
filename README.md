@@ -59,7 +59,7 @@ See individual install scripts in [`install/`](install/) for the full, authorita
 ├── install/    modular install scripts (brew, apt, conda, node, julia, fonts, ...)
 ├── runcom/     shell configs symlinked to ~ (.zshrc, .p10k.zsh, .latexmkrc)
 ├── system/     shell environment sourced by .zshrc (.alias, .path, .env, .function)
-├── apps/       app configs (git, vscode, wezterm)
+├── apps/       app configs (git, vscode, wezterm, zed, harper)
 ├── macos/      macOS system defaults (macOS only)
 ├── docs/       font specimens and other documentation
 ├── secrets/    git identity and API keys (gitignored, templates tracked)
