@@ -172,11 +172,11 @@ sub_sync-secrets() {
     echo "Warning: 'CDS APIRC' note not found in Dashlane"
   fi
 
-  # --- ~/.config/notes/ (Google Calendar for the notes system) ---
+  # --- ~/.config/notes/ (the Meetings calendar's secret iCal address for the notes system) ---
   local notes_cfg="$HOME/.config/notes"
   mkdir -p "$notes_cfg"
   local pair note_name target content
-  for pair in "Google OAuth Client (notes)|google-oauth-client.json" "Google OAuth Token (notes)|google-token.json"; do
+  for pair in "Rice iCal URL (notes)|rice-ical-url"; do
     note_name="${pair%%|*}"
     target="$notes_cfg/${pair##*|}"
     echo "Writing $target..."
