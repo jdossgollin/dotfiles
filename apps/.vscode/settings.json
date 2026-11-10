@@ -308,7 +308,7 @@
         "editor.defaultFormatter": "vscode.html-language-features"
     },
     "todo-tree.regex.regex": "((//|#|<!--|;|/\\\\*|^|%|\\()\\\\s*($TAGS)|^\\\\s*- \\\\[ \\\\])",
-    "vsnotes.defaultNotePath": "~/Documents/notes",
+    "vsnotes.defaultNotePath": "~/Documents/Github/jdossgollin/notes",
     "vsnotes.templates": [
         "meeting"
     ],

@@ -77,10 +77,7 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
     alias preview="xdg-open"
 fi
 
-# Load claude-skills shell integration (aliases: research, todoist, pdf, ...)
-# claude-skills is at ~/Documents/claude-skills until the repo-move lands.
+# Load claude-skills shell integration (the repo() function and GITHUB_REPOS defaults)
 if [[ -f "$GITHUB_REPOS/jdossgollin/claude-skills/shell/env.sh" ]]; then
     source "$GITHUB_REPOS/jdossgollin/claude-skills/shell/env.sh"
-elif [[ -f "$HOME/Documents/claude-skills/shell/env.sh" ]]; then
-    source "$HOME/Documents/claude-skills/shell/env.sh"
 fi
