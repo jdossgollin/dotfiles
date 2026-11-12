@@ -109,6 +109,10 @@ The following tools were verified to use official recommended installation metho
 
   Currently installed: `humanizer` (blader/humanizer), fetched 2026-08-14 at hash `523374d`. Skills run with full agent permissions, so review a diff before updating. Snyk rated this package High Risk at install time while Gen rated it Safe and Socket reported 0 alerts; the contents have not been audited.
 
+  Also installed from mattpocock/skills on 2026-11-11: `grill-me` (`3df14e2`), `grilling` (`f551b6e`), and `teach` (`3fd617b`). All three are Markdown only, with no scripts, and were read in full before install. Gen rated each Safe, Socket reported 0 alerts, and Snyk rated each Low Risk.
+
+  `impeccable` (pbakaus/impeccable, skill version 4.8.2) installed on 2026-11-11 at hash `e92e2e7`, replacing Anthropic's `frontend-design` plugin. It is not Markdown only: on first use its launcher downloads engine 0.1.22 from the repo's GitHub releases into `~/.impeccable/bin/`, verified against the SHA-256 digests in `scripts/engine-checksums.txt`. Gen rated it Safe, Socket reported 1 alert (not inspected), and Snyk rated it Medium Risk. Telemetry is off through `IMPECCABLE_NO_TELEMETRY=1` in the `env` block of `claude-skills/settings.shared.json`.
+
 ### Scientific Computing Considerations
 
 This repository prioritizes scientific computing workflows. When auditing Python/R/Julia tools:

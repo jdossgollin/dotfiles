@@ -28,6 +28,17 @@ AGENT_SKILLS=(
     # Strips AI-writing tells (inflated symbolism, em-dash overuse, rule of
     # three) from prose. Based on Wikipedia's "Signs of AI writing" guide.
     "blader/humanizer:humanizer"
+    # Interviews the user about a plan until every decision is settled.
+    # grill-me only calls grilling, so both are needed.
+    "mattpocock/skills:grill-me"
+    "mattpocock/skills:grilling"
+    # Teaches a topic over several sessions, keeping lessons and learning
+    # records in the current directory.
+    "mattpocock/skills:teach"
+    # Designs, critiques, and polishes frontend UI. Downloads a checksummed
+    # program on first use; telemetry is off via IMPECCABLE_NO_TELEMETRY in
+    # claude-skills/settings.shared.json.
+    "pbakaus/impeccable:impeccable"
 )
 
 for entry in "${AGENT_SKILLS[@]}"; do
@@ -43,7 +54,8 @@ for entry in "${AGENT_SKILLS[@]}"; do
     fi
 
     echo "Installing agent skill: $repo..."
-    npx --yes skills add "$repo" --global --yes \
+    # --skill takes only the named skill from a repo that holds several.
+    npx --yes skills add "$repo" --skill "$skill_dir" --global --yes \
         || echo "Warning: could not install agent skill $repo"
 
     # The CLI writes a symlink relative to ~/.claude/skills, but that path is
