@@ -52,9 +52,6 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 # Restart automatically if the computer freezes
 sudo systemsetup -setrestartfreeze on
 
-# Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2>/dev/null
-
 # Disable smart quotes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 

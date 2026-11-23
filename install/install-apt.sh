@@ -45,6 +45,7 @@ apt_packages=(
 
     # Dev tools
     "shellcheck"                # Shell script linter
+    "libnotify-bin:notify-send" # Send desktop notifications from the command line (Linux counterpart of terminal-notifier)
 
     # Media & science
     "aspell"                    # Spell checker

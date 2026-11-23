@@ -34,6 +34,7 @@ apps=(
     "boost"             # C++ libraries, no command
     "btop"              # Modern resource monitor
     "defaultbrowser"    # Set default browser from CLI
+    "terminal-notifier" # Send macOS notifications from the command line
     "eza"               # Modern ls replacement
     "ffmpeg"            # Audio/video processing
     "yt-dlp"            # Video/audio downloader (YouTube and others)
