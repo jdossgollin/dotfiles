@@ -147,6 +147,18 @@ if [ -d "$CLAUDE_SKILLS_DIR" ]; then
             echo "Warning: settings sync failed; run shell/sync-settings.py manually."
     fi
 
+    # Link the skills the vault chat uses into ~/.agents/skills, which opencode and
+    # other harnesses read and Claude Code does not. Plain symlinks, so an edit in
+    # claude-skills reaches every harness at once.
+    mkdir -p ~/.agents/skills
+    for skill in todoist zotero lit-search; do
+        if [ -e ~/.agents/skills/$skill ] && [ ! -L ~/.agents/skills/$skill ]; then
+            echo "Warning: ~/.agents/skills/$skill is not a symlink; leaving it alone."
+        else
+            ln -sfnv "$CLAUDE_SKILLS_DIR/skills/$skill" ~/.agents/skills/$skill
+        fi
+    done
+
     # Link skill CLIs (pdf-extract, zotero, todoist, ...) into ~/.local/bin. These
     # are real executables, not aliases, so they work in the non-interactive shells
     # that agent tooling uses. Idempotent; never clobbers a non-symlink.
@@ -178,6 +190,14 @@ if [ -d "$CLAUDE_SKILLS_DIR" ]; then
             fi
         fi
     fi
+fi
+
+# notes-system's vault chat: its own installer copies the opencode config, adds the
+# notes-system block to runcom/.zshenv once, and restarts the opencode service.
+NOTES_SYSTEM_DIR="${GITHUB_REPOS:-$HOME/Documents/Github}/jdossgollin/notes-system"
+if [ -x "$NOTES_SYSTEM_DIR/_system/scripts/install_opencode.sh" ] && command -v opencode >/dev/null 2>&1; then
+    "$NOTES_SYSTEM_DIR/_system/scripts/install_opencode.sh" || \
+        echo "Warning: notes-system install_opencode.sh failed; run it manually."
 fi
 
 # Set global gitignore
