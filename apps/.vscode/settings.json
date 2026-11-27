@@ -449,7 +449,7 @@
     "files.associations": {
         "*.rmd": "markdown"
     },
-    "workbench.colorTheme": "Atom One Dark",
+    "workbench.colorTheme": "Atom One Light",
     "[julia]": {
         "editor.defaultFormatter": "julialang.language-julia",
         "editor.fontFamily": "JuliaMono",
@@ -473,7 +473,8 @@
     ],
     "python.showStartPage": false,
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
+        "*.ipynb": "jupyter-notebook",
+        "*.md": "markdownForHumans.editor"
     },
     "redhat.telemetry.enabled": false,
     "terminal.external.osxExec": "iTerm.app",
@@ -491,6 +492,7 @@
     "quarto.mathjax.theme": "dark",
     "r.bracketedPaste": true,
     "r.rterm.mac": "radian",
+    "r.lsp.promptToInstall": false,
     "[markdown]": {
         "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
     },
