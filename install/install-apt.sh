@@ -84,6 +84,9 @@ if [[ -z "${CI:-}" ]]; then
         sudo apt-get install -y imagemagick || echo "Warning: imagemagick failed (non-fatal)"
     command -v pandoc >/dev/null 2>&1 || \
         sudo apt-get install -y pandoc || echo "Warning: pandoc failed (non-fatal)"
+    # Local speech-to-text; packaged only in Ubuntu 26.04 and later
+    command -v whisper-cli >/dev/null 2>&1 || \
+        sudo apt-get install -y whisper.cpp || echo "Warning: whisper.cpp failed (non-fatal)"
 fi
 
 # TeX Live (very large ~5GB, skip in CI to avoid timeout)

@@ -38,6 +38,7 @@ apps=(
     "eza"               # Modern ls replacement
     "ffmpeg"            # Audio/video processing
     "yt-dlp"            # Video/audio downloader (YouTube and others)
+    "whisper.cpp:whisper-cli" # Local speech-to-text (models are not installed; see brew info whisper.cpp)
     "fzf"               # Fuzzy finder
     "gcc"               # GNU compiler collection
     "gh"                # GitHub CLI
