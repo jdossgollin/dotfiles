@@ -35,6 +35,31 @@ AGENT_SKILLS=(
     # Teaches a topic over several sessions, keeping lessons and learning
     # records in the current directory.
     "mattpocock/skills:teach"
+    # Planning and open-ended questions (replaced the Superpowers plugin,
+    # 2026-11-25). wayfinder calls grilling, domain-modeling, research and
+    # prototype; to-spec, to-tickets and wayfinder need the per-repo config
+    # that setup-matt-pocock-skills writes.
+    "mattpocock/skills:wayfinder"
+    "mattpocock/skills:grill-with-docs"
+    "mattpocock/skills:domain-modeling"
+    "mattpocock/skills:research"
+    "mattpocock/skills:prototype"
+    "mattpocock/skills:to-spec"
+    "mattpocock/skills:to-tickets"
+    "mattpocock/skills:handoff"
+    "mattpocock/skills:wait-what"
+    "mattpocock/skills:to-questionnaire"
+    "mattpocock/skills:setup-matt-pocock-skills"
+    # Code work: debugging, test-first, building from a spec, human-only
+    # walkthroughs, and editing skills. Pocock's code-review is left out
+    # because it would shadow Claude Code's built-in /code-review.
+    "mattpocock/skills:diagnosing-bugs"
+    "mattpocock/skills:tdd"
+    # tdd calls codebase-design when a seam's shape is in question.
+    "mattpocock/skills:codebase-design"
+    "mattpocock/skills:implement"
+    "mattpocock/skills:wizard"
+    "mattpocock/skills:writing-for-agents"
     # Designs, critiques, and polishes frontend UI. Downloads a checksummed
     # program on first use; telemetry is off via IMPECCABLE_NO_TELEMETRY in
     # claude-skills/settings.shared.json.

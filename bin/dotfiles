@@ -48,6 +48,10 @@ sub_update() {
   command -v juliaup >/dev/null && juliaup update
   command -v conda >/dev/null && conda update -n base conda --yes
   command -v npm >/dev/null && npm update -g
+
+  # Installs any agent skill added to the list on another machine. Skills
+  # already present are skipped, so pinned versions are not updated here.
+  bash "$DOTFILES_DIR/install/install-agent-skills.sh"
 }
 
 sub_clean() {
